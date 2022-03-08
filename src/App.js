@@ -1,7 +1,9 @@
+import { Home } from "./Components/Layout/Home/Home";
+
 function App() {
   return (
     <div className="App">
-      <p>views</p>
+      < Home />
     </div>
   );
 }
