@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;300&family=Ubuntu:ital,wght@0,300;0,400;1,300&display=swap');
 *{
     margin:0;
     padding:0;
@@ -12,6 +13,7 @@
 }
 
 .wrapper nav{
+    position: relative;
     display: flex;
     max-width: calc(100% - 200px);
     margin: 0 auto;
@@ -32,26 +34,38 @@ nav .content{
 nav .content .links{
     margin-left: 80px;
     display: flex;
-
 }
-
-.content .links li p{
+  
+.content .links li p,.content .links li label{
     color: #fff;
-    font-size: 30px;
+    font-size: 18px;
     font-weight: 500;
     padding: 9px 17px;
     border-radius: 5px;
     transition: all 0.3s ease;
+    font-family: 'Poppins', sans-serif;
+    margin: 0 1%;
+    transition: all 0.3s ease;
 }
 
-.content .links li:hover p{
+.content .links li p:hover,.content .links li label:hover{
     background: #323c4e;
 
 }
 
-.wrapper .search-icon{
-    color: #fff;
 
+
+.wrapper .search-icon,.wrapper .menu-icon{
+    color: #fff;
+    font-size: 18px;
+    cursor: pointer;
+    line-height: 70px;
+    width: 70px;
+    text-align: center;
+}
+
+.wrapper .menu-icon{
+    display: none;
 }
 
 .wrapper .search-box{
@@ -59,4 +73,174 @@ nav .content .links{
     height: 100%;
     max-width: calc(100% - 50px);
     width: 100%;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.wrapper #show-search:checked ~ .search-box{
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* cambio de icono pendiente 
+.wrapper #show-search:checked ~ .search-icon ic::before{
+    content: "\f00d";
+}
+*/
+
+.wrapper input[type="checkbox"]{
+    display: none;
+}
+
+/* dropdown */
+.content .links ul{
+    position: absolute;
+    background-color: #171c24;
+    top: 80px;
+    z-index: -1;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.content .links li:hover ul{
+    top: 70px;
+    opacity: 1;
+    visibility: visible;
+    transition: all 0.3 ease;
+}
+
+.content .links ul p{
+    display: block;
+    width: 100%;
+    line-height: 30px;
+    border-radius: 0px !important;
+}
+
+
+
+.search-box input{
+    width: 100%;
+    height: 100%;
+    border: none;
+    outline: none;
+    font-size:17px;
+    color:#fff;
+    background: #171c24;
+    padding: 0 100px 0 15px;
+}
+
+.search-box input::placeholder{
+    color:#f2f2f2;
+}
+
+.go-icon{
+    color: #fff;
+}
+.search-box .go-icon{
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    line-height: 60px;
+    width: 70px;
+    background: #171c24; 
+    border: none;
+    outline: none;
+    font-size: 18px;
+    cursor: pointer;
+
+}
+
+@media screen and (max-width: 1250px){
+    .wrapper nav{
+        max-width: 100%;
+        padding: 0 20px;
+    }
+
+    nav .content .links{
+        margin-left: 80px;
+    }
+
+    .content .links li p,.content .links li label{
+        padding: 8px 13px;
+    }
+
+    .wrapper .search-box{
+        max-width: calc(100% - 100px);
+    }
+
+    .wrapper .search-box input{
+        padding: 0 100px 0 15px;
+    }
+}
+
+@media screen and (max-width: 900px){
+    .wrapper .menu-icon{
+        display: block;
+    }
+
+    /* cambio de icono pendiente 
+    .wrapper #show-menu:checked ~ .menu-icon::before{
+        content: "\f00d";
+    }
+    */
+
+    nav .content .links{
+        display: block;
+        position: fixed;
+        height: 100%;
+        width: 100%;
+        background:#14181f;
+        top: 70px;
+        left: 0%;
+        margin-left: 0;
+        max-width: 350px;
+        overflow-y: auto;
+        transition: all 0.5s ease;
+    }
+
+    nav #show-menu:checked ~ .content .links{
+        left: 0;
+    }
+
+    .content .links li{
+        margin: 15px 20px;
+    }
+
+    .content .links li p{
+        line-height: 40px;
+        font-size: 20px;
+        display: block;
+        padding: 8px 18px;
+        cursor: pointer;
+    }
+
+    .content .links li  .desktop-link{
+        display: none;
+    }
+
+    /* dropdown */
+    .content .links ul{
+        position: static;
+        opacity: 1;
+        visibility: visible;
+        background: none;
+        max-height: 0px;
+        overflow: hidden;
+    }
+
+    .content .links #show-categorias:checked ~  ul{
+        max-height: 100vh;
+    }
+
+    .content .links ul li{
+        margin: 7px 20px;
+    }
+
+    .content .links ul li p{
+        font-size: 18px;
+        line-height: 30px;
+        border-radius: 5px !important;
+    }
+    
 }
