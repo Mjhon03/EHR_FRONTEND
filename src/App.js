@@ -1,9 +1,11 @@
-import { Home } from "./Components/Layout/Home/Home";
+import { Header } from "./Components/Layout/Header/Header";
+import { Logo } from "./Components/UI/Logo/Logo";
+
 
 function App() {
   return (
     <div className="App">
-      < Home />
+      < Header />
     </div>
   );
 }
