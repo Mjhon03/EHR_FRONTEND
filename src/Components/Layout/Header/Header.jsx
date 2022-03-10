@@ -1,30 +1,30 @@
+import React from 'react'
 import './Header.css';
-import React from 'react';
+import { Logo } from '../../UI/Logo/Logo'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
-
-import './Header.css';
-import { Logo } from '../../UI/Logo/Logo';
+import { faMagnifyingGlass, faLongArrowAltRight } from '@fortawesome/free-solid-svg-icons'
 
 export const Header = () => {
   return (
-    <header className="menu-container">
-      <input type="checkbox" className="btn-menu" id="btn-menu" ></input>
-      <label for="btn-menu"></label>
-      < Logo classLogo={"logo1"} />
-      <nav className="menu">
-        <ul className="menu-content">
-          <li><a>Contacto</a></li>
-          <li><a>Populares</a></li>
-          <li><a>Categorias</a></li>
-          <div className="menu-search">
-            <input className="searchbox" type="search"></input>
-            <FontAwesomeIcon icon={ faMagnifyingGlass } className="icon"/>  
-          </div>
-          <li><a>ingresar</a></li>
-          <li><a>registrar</a></li>
-        </ul>
-      </nav>
-    </header>
+    <div className='wrapper'>
+        <nav>
+            <div className="content">
+            < Logo />
+                <ul className="links">
+                    <li><p>Populares</p></li>
+                    <li><p>Categorias</p></li>
+                    <li><p>Contacto</p></li>
+                    <li><p>Ingresar</p></li>
+                    <li><p>Registar</p></li>   
+                </ul>
+            </div>
+            <div className="search-icon"><FontAwesomeIcon icon={faMagnifyingGlass}/></div>
+            <form action='#' className='search-box'>
+                <input type="text" placeholder="desear buscar algo..."></input>
+                <button className='go-icon'><FontAwesomeIcon icon={faLongArrowAltRight}></FontAwesomeIcon></button>
+            </form>
+        </nav>
+    </div>
+    
   )
 }
