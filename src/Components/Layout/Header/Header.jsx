@@ -17,7 +17,7 @@ export const Header = () => {
             <ul className="links">
                 <NavLink to="/"><li><p>Incio</p></li></NavLink>
                 <NavLink to="/"><li><p>Populares</p></li></NavLink>
-                <NavLink to="/contact"><li><p>contacto</p></li></NavLink>
+                <NavLink to="/contact"><li><p>Contacto</p></li></NavLink>
                 <li>
                     <p className="desktop-link">Categorias</p>
                     <input type="checkbox" id="show-features"/>
