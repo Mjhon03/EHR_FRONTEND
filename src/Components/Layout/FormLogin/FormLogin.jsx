@@ -32,12 +32,12 @@ export const FormLogin = () => {
                     </div>
               </form>
               <div className="remember-password">
-                  <input type='checkbox'></input>
+                  <input className='remember-check' type='checkbox'></input>
                   <label>recuerdame</label>
               </div>
               <div className="forgot-password">
-                  <NavLink to='/forgotPassword'><p>olvidaste tu contraseña</p></NavLink>
-                  <button type='submit'>entrar</button>
+                <button className="login-submit" type='submit'>entrar</button>
+               <NavLink to='/forgotPassword'><p>olvidaste tu contraseña</p></NavLink>    
               </div>
           </div>
       </div>
