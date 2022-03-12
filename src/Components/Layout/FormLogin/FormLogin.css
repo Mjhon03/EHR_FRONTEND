@@ -1,0 +1,64 @@
+.login-form{
+    width: 100%;
+    display: flex;
+}
+
+.form-text{
+    width: 100%;
+    outline: solid 1px red;
+    text-align: center;
+    padding: 2% 0;
+    background: #fff;
+}
+
+.link-icon{
+    font-size: 120%;
+    padding: 2% 5%;
+    width: 60%;
+    margin: 1% 0;
+    background: #171c24;
+    border: none;
+    cursor: pointer;
+    color: #fff;
+}
+
+.fa-icon{
+    color: blue;
+}
+
+.go-icon{
+    color: red;
+}
+
+.separator{
+    margin: 2% 0;
+    width: 100%;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+}
+
+.or{
+    margin: 0 2%;
+    font-size: 120%;
+    font-weight: bolder;
+}
+
+.line{
+    width: 30%;
+    height: .1px;
+    background: grey;
+}
+
+.info{
+    
+    text-align: start;
+    width: 60%;
+    margin: auto;
+}
+
+.info-input{
+    margin: 2% 0;
+    width: 100%;
+    padding:2% 0;
+}
