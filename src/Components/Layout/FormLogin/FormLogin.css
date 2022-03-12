@@ -5,9 +5,8 @@
 
 .form-text{
     width: 100%;
-    outline: solid 1px red;
     text-align: center;
-    padding: 2% 0;
+    padding: 3% 0;
     background: #fff;
 }
 
@@ -15,11 +14,12 @@
     font-size: 120%;
     padding: 2% 5%;
     width: 60%;
-    margin: 1% 0;
+    margin: 2% 0;
     background: #171c24;
     border: none;
     cursor: pointer;
     color: #fff;
+    
 }
 
 .fa-icon{
@@ -31,7 +31,7 @@
 }
 
 .separator{
-    margin: 2% 0;
+    margin: 6% 0;
     width: 100%;
     justify-content: center;
     display: flex;
@@ -61,4 +61,37 @@
     margin: 2% 0;
     width: 100%;
     padding:2% 0;
+    outline:solid 1px grey;
+    border:none;
 }
+
+.remember-password{
+    width: 60%;
+    margin: auto;
+    text-align: start;
+    align-items: center;
+}
+
+.remember-check{
+    margin: 0 1% 0 0;
+    padding: 5%;
+}
+
+.forgot-password{
+    margin: auto;
+    width: 60%;
+}
+
+.login-submit{
+    font-size: 100%;
+    padding: 2% 30%;
+    margin:5% 0;
+}
+
+@media screen and (max-width: 900px){
+    .link-icon{
+        font-size: 90%;
+    }
+    
+}
+
