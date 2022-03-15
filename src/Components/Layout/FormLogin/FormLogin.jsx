@@ -1,5 +1,7 @@
+
+import { GoogleLogin } from 'react-google-login';
+
 import React from 'react'
-import { ActionUI } from '../../UI/ActionUI/ActionUI'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebook, faGoogle } from '@fortawesome/free-brands-svg-icons';
 import { NavLink } from 'react-router-dom';
@@ -9,13 +11,24 @@ import { LoginCover } from '../../UI/LoginCover/LoginCover';
 
 export const FormLogin = () => {
     const URL = 'https://i.ibb.co/BqDQzp6/background.jpg'
+    const responseGoogle=(response)=>{
+        console.log(response)
+    }
+
   return (
       <div className="login-form">
           < LoginCover />
           <div className="form-text">
               <form>
+              
                   <button className='link-icon'><FontAwesomeIcon className='fa-icon' icon={ faFacebook }></FontAwesomeIcon>  Continuar con facebook</button><br></br>
-                  <button className='link-icon'><FontAwesomeIcon className='go-icon' icon={ faGoogle }></FontAwesomeIcon>   Continuar con Google</button>
+                  < GoogleLogin 
+                    clientId = "502993702484-vkdcg537aa1ip1r14mab9s11dt7lf2i2.apps.googleusercontent.com" 
+                    buttonText = "Iniciar sesión con Google" 
+                    onSuccess = { responseGoogle } 
+                    onFailure = { responseGoogle } 
+                    cookiePolicy = { 'single_host_origin' } 
+                / >
                     <div className="separator">
                         <div className="line"></div>
                         <p className='or'>OR</p>
