@@ -11,6 +11,7 @@ import { AboutUs } from "./Components/Page/AboutUs/AboutUs"
 import { ForgotPassword } from "./Components/Page/ForgotPassword/ForgotPassword";
 
 function App() {
+  const user = false;
   return (
     <BrowserRouter>
       <Routes>

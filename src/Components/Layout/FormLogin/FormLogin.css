@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;300&family=Roboto:ital,wght@0,100;1,100&family=Ubuntu:ital,wght@0,300;0,400;1,300&display=swap');
+
 .login-form{
     width: 100%;
     display: flex;
@@ -8,26 +10,6 @@
     text-align: center;
     padding: 3% 0;
     background: #fff;
-}
-
-.link-icon{
-    font-size: 120%;
-    padding: 2% 5%;
-    width: 60%;
-    margin: 2% 0;
-    background: #171c24;
-    border: none;
-    cursor: pointer;
-    color: #fff;
-    
-}
-
-.fa-icon{
-    color: blue;
-}
-
-.go-icon{
-    color: red;
 }
 
 .separator{
@@ -87,6 +69,8 @@
     padding: 2% 30%;
     margin:5% 0;
 }
+
+
 
 @media screen and (max-width: 900px){
     .link-icon{

@@ -12,7 +12,7 @@ export const Home = () => {
     <div>
         < Header />
         <div className="img-responsive-container">
-          <img className='img-responsive' src={ URL} alt="image" />
+          <img className='img-responsive' src={ URL} alt="home" />
           </div>
         <div className="home-container">  
            < HomeCover className="cover"></HomeCover>

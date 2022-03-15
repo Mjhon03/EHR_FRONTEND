@@ -1,6 +1,5 @@
 import React from 'react'
 import './Header.css';
-import { Logo } from '../../UI/Logo/Logo'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faMagnifyingGlass, faLongArrowAltRight , faBars } from '@fortawesome/free-solid-svg-icons'
 import { NavLink } from 'react-router-dom';
