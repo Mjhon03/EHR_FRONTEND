@@ -12,6 +12,25 @@
     background: #fff;
 }
 
+.facebook-auth{
+    padding: 10px 10px 10px 10px;
+    background-color: rgb(255, 255, 255);
+    color: rgba(0, 0, 0, 0.54);
+    box-shadow: rgb(0 0 0 / 24%) 0px 2px 2px 0px, rgb(0 0 0 / 24%) 0px 0px 1px 0px;
+    border-radius: 2px;
+    border: 1px solid transparent;
+    font-size: 14px;
+    font-weight: 500;
+    
+    
+}
+
+.facebook-icon{
+    margin: 0 35px 0 0;
+    font-size: 150%;
+    color: #3b5998;
+}
+
 .separator{
     margin: 6% 0;
     width: 100%;
