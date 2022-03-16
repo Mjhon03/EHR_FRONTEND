@@ -1,26 +1,33 @@
-import FacebookLogin from 'react-facebook-login';
+
 import { GoogleLogin } from 'react-google-login';
 import React, { useState } from 'react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFacebook,  } from '@fortawesome/free-brands-svg-icons';
 import { NavLink } from 'react-router-dom';
 import './FormLogin.css'
 import { LoginCover } from '../../UI/LoginCover/LoginCover';
 import axios from 'axios'
 
+import { signInWithPopup , FacebookAuthProvider} from 'firebase/auth'
+import { auth} from '../../../firebase-config';
 
 const baseurl = "https://localhost:44352/api/Users"
 
 export const FormLogin = () => {
 
+    //facebook auth 
+    const signInWithFcebook = () =>{
+        const provider = new FacebookAuthProvider();
+        signInWithPopup( auth,provider)
+        .then((res)=>{
+            console.log(res)
+        })
+        .catch((err) =>{
+            console.log(err.message)
+        })
+    }
+
     const responseGoogle=(response)=>{
         console.log(response)
     }
-
-    const responseFacebook = (response) => {
-    console.log(response);
-    }
-
 //Login logic 
     const[email, setemail] = useState({email: "email"})
     const[password, setpassword] = useState({password: "password"})
@@ -62,14 +69,7 @@ export const FormLogin = () => {
             < LoginCover />
             <div className="form-text">
                 <form>
-                <FacebookLogin
-                appId="1128110308019125"
-                autoLoad={false}
-                fields="name,email,picture,"   
-                callback={responseFacebook}  
-                textButton="Iniciar sesion con facebook" />
-                
-                
+                    <button onClick={ signInWithFcebook }>ingresar con facebook</button>
                 <br></br><br></br>
                 < GoogleLogin 
                     clientId = "502993702484-vkdcg537aa1ip1r14mab9s11dt7lf2i2.apps.googleusercontent.com" 
