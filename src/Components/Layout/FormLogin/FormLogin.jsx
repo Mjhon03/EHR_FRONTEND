@@ -5,11 +5,14 @@ import { NavLink } from 'react-router-dom';
 import './FormLogin.css'
 import { LoginCover } from '../../UI/LoginCover/LoginCover';
 import axios from 'axios'
-
 import { signInWithPopup , FacebookAuthProvider} from 'firebase/auth'
 import { auth} from '../../../firebase-config';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faFacebook } from '@fortawesome/free-brands-svg-icons';
 
-const baseurl = "https://localhost:44352/api/Users"
+
+const URL = "https://localhost:44352/api/users"
+
 
 export const FormLogin = () => {
 
@@ -25,10 +28,45 @@ export const FormLogin = () => {
         })
     }
 
-    const responseGoogle=(response)=>{
-        console.log(response)
+    //registro auth google and facebook logic
+
+    const[nombre, setNombre] = useState("")
+    const[apellidos,setApellidos] = useState("")
+    const[image,setImage] = useState("")
+    const[correo,setCorreo] = useState("")
+    const[contraseña,setContraseña] = useState("")
+
+    const responseGoogle=(respuesta)=>{
+        setemail(respuesta.profileObj.email)
+        setpassword(respuesta.profileObj.googleId)
+        axios.get(URL, {params:{email:email, contraseña:password}})
+        .then(response=>{
+            // return response.data;
+            if(email != response.data.email || password != response.data.contraseña){
+                setCorreo(respuesta.profileObj.email)
+                setContraseña(respuesta.profileObj.googleId)
+                setNombre(respuesta.profileObj.givenName)
+                setApellidos(respuesta.profileObj.familyName)
+                axios.post(URL,{
+                    "nombre":nombre,
+                    "apellidos":apellidos,
+                    "email":correo,
+                    "contraseña":contraseña,
+                    "estado":"A",
+                    "departamento":25,
+                    "municipio":14       
+                })
+                .then(res => res)
+                .then(data =>{
+                    console.log(data)
+                })  
+            }else{
+                console.log("son iguales")
+            }       
+        })    
     }
-//Login logic 
+//Login logic
+    
     const[email, setemail] = useState({email: "email"})
     const[password, setpassword] = useState({password: "password"})
 
@@ -40,8 +78,10 @@ export const FormLogin = () => {
         setpassword(event.target.value)
     })
 
+    
+
     const login=(()=>{
-        axios.get(baseurl, {params:{email:email, contraseña:password}})
+        axios.get(URL, {params:{email:email, contraseña:password}})
         .then(response=>{
             console.log(response.data);
             return response.data;
@@ -55,6 +95,7 @@ export const FormLogin = () => {
                 localStorage.setItem('email', datos.email)
                 localStorage.setItem('telefono', datos.telefono)
                 alert(`Bienvenido ${datos.nombre} ${datos.apellidos}`)
+                window.Location = '/Home'
             }else{
                 
             }
@@ -69,7 +110,7 @@ export const FormLogin = () => {
             < LoginCover />
             <div className="form-text">
                 <form>
-                    <button onClick={ signInWithFcebook }>ingresar con facebook</button>
+                    <button className="facebook-auth"  onClick={ signInWithFcebook }><FontAwesomeIcon className="facebook-icon" icon={ faFacebook }></FontAwesomeIcon>ingresar con Facebook</button>
                 <br></br><br></br>
                 < GoogleLogin 
                     clientId = "502993702484-vkdcg537aa1ip1r14mab9s11dt7lf2i2.apps.googleusercontent.com" 
