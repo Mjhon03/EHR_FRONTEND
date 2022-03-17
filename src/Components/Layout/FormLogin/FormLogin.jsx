@@ -6,8 +6,7 @@ import axios from 'axios'
 import { GoogleAuth } from '../../UI/GoogleAuth/GoogleAuth';
 import { urlUsers } from '../../ApiRoutes';
 import { FacebookAuth } from '../../UI/FacebookAuth/FacebookAuth';
-import { getUser } from '../../../methodsAxios';
-import { localStorage } from '../../../localStorage';
+
 
 export const FormLogin = () => {
 
@@ -25,9 +24,9 @@ export const FormLogin = () => {
     })
 
     const login=(()=>{
-        getUser(email,password)
+        axios.get(urlUsers, {params:{email:email, contraseña:password}})
         .then(response=>{
-            localStorage(response)
+            console.log(response.data)
         })
         .catch(ex=>{
             console.log(ex);
