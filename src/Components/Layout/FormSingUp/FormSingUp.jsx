@@ -1,31 +1,51 @@
 import React from 'react'
-import { RegisterCover } from '../../UI/RegisterCover/RegisterCover'
 import './FormSingUp.css'
+import { RegisterCover } from '../../UI/RegisterCover/RegisterCover'
+import { GoogleAuth } from '../../UI/GoogleAuth/GoogleAuth';
+import { FacebookAuth } from '../../UI/FacebookAuth/FacebookAuth';
 
 
 export const FormSingUp = () => {
-    const URL = 'https://cdn.pixabay.com/photo/2016/11/18/17/46/house-1836070_960_720.jpg'
     return (
-        <div className="Rgister-form">
-            < RegisterCover/>
-{/* Aqui en la carpeta HomeImgCover me esta produciendo un conflicto y no soy capaz de evitar que me afecte */}
-            <div className="form-text">
-                <section className="FormSingup">
-                    <p className="ParSing">NOMBRE</p>
-                    <input type="text" className="InpSing"></input>
-                    <br></br><br></br>
-                    <p className="ParSing">CORREO ELECTRONICO</p>
-                    <input max="80" type="text" className="InpSing"></input>
-                    <br></br><br></br>
-                    <p className="ParSing">CONTRASEÑA</p>
-                    <input minLength='8' type="text" className="InpSing"></input>
-                    <br></br><br></br>
-                    <p className="ParSing">FECHA DE NACIMIENTO</p>
-                    <input type="date" className="InpSing"></input>
-                    <br></br><br></br>
-                    <input type="submit" value="Crear Cuenta" className="CreateSing"/>
-                </section>
+        <div className="register-form">
+            < RegisterCover />
+            <div className="form-register-text">
+                <form>
+                    <FacebookAuth />
+                <br></br><br></br>
+                    < GoogleAuth />
+                    <div className="separator">
+                        <div className="line"></div>
+                        <p className='or'>OR</p>
+                        <div className="line"></div>
+                    </div>
+                    <div className="info-register">
+                    <label>Nombre</label>
+                    <br></br>
+                    <input type="text" maxLength="80" required className='info-input-register'></input>
+                    <br></br>
+                    <label>Apellidos</label>
+                    <br></br>
+                    <input type="text" maxLength='80' required className='info-input-register'></input>
+                    <label>edad</label>
+                    <br></br>
+                    <input type="number" max="800" required className='info-input-register'></input>
+                    <br></br>
+                    <label>telefono</label>
+                    <br></br>
+                    <input type="text" maxLength="10" placeholder='opcional' required className='info-input-register'></input>
+                    <label>Email</label>
+                    <br></br>
+                    <input type="email" maxLength="80" required className='info-input-register'></input>
+                    <br></br>
+                    <label>contraseña</label>
+                    <br></br>
+                    <input type="password" minLength='8' required className='info-input-register'></input>
+                    </div>                   
+                </form>
+                
+                <button className="register-submit">registrarme</button>            
             </div>
         </div>
-)
+    )  
 }

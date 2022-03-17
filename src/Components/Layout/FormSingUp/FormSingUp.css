@@ -1,21 +1,62 @@
-.Rgister-form{
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;300&family=Roboto:ital,wght@0,100;1,100&family=Ubuntu:ital,wght@0,300;0,400;1,300&display=swap');
+
+.register-form{
     width: 100%;
     display: flex;
 }
 
-.form-text{
+.form-register-text{
     width: 100%;
     text-align: center;
     padding: 3% 0;
     background: #fff;
 }
-.FormSingup{
+
+.facebook-auth{
+    padding: 10px 10px 10px 10px;
+    background-color: rgb(255, 255, 255);
+    color: rgba(0, 0, 0, 0.54);
+    box-shadow: rgb(0 0 0 / 24%) 0px 2px 2px 0px, rgb(0 0 0 / 24%) 0px 0px 1px 0px;
+    border-radius: 2px;
+    border: 1px solid transparent;
+    font-size: 14px;
+    font-weight: 500;  
+}
+
+.facebook-icon{
+    margin: 0 35px 0 0;
+    font-size: 150%;
+    color: #3b5998;
+}
+
+.separator{
+    margin: 6% 0;
+    width: 100%;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+}
+
+.or{
+    margin: 0 2%;
+    font-size: 120%;
+    font-weight: bolder;
+}
+
+.line{
+    width: 30%;
+    height: .1px;
+    background: grey;
+}
+
+.info-register{
+    
     text-align: start;
     width: 60%;
     margin: auto;
 }
 
-.InpSing{
+.info-input-register{
     margin: 2% 0;
     width: 100%;
     padding:2% 0;
@@ -23,8 +64,18 @@
     border:none;
 }
 
-.CreateSing{
+.register-submit{
     font-size: 100%;
-    padding: 2% 30%;
+    padding: 2% 20%;
     margin:5% 0;
 }
+
+
+
+@media screen and (max-width: 900px){
+    .link-icon{
+        font-size: 90%;
+    }
+    
+}
+
