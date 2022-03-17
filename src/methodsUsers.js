@@ -2,11 +2,11 @@ import axios from "axios"
 import { urlUsers } from "./Components/ApiRoutes"
 
 
-export const postUsers = (nombre, apellidos ,fechaNacimiento , telefono ,email ,contraseña , estado , departamento , municipio ) => {
+export const postUsers = (nombre, apellidos ,edad, telefono ,email ,contraseña , estado , departamento , municipio ) => {
     axios.post(urlUsers,{
         "nombre":nombre,
         "apellidos":apellidos,
-        "fechaNacimento": fechaNacimiento,
+        "edad": edad,
         "telefono" : telefono, 
         "email": email,
         "contraseña":contraseña,

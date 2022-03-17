@@ -3,6 +3,11 @@ import './FormSingUp.css'
 import { RegisterCover } from '../../UI/RegisterCover/RegisterCover'
 import { GoogleAuth } from '../../UI/GoogleAuth/GoogleAuth';
 import { FacebookAuth } from '../../UI/FacebookAuth/FacebookAuth';
+import { SelectDepartment } from '../../UI/SelectDepartment/SelectDepartment';
+import { urLDepartments, urlMunicipality, urlUsers } from '../../ApiRoutes';
+import { useState , useEffect } from 'react'
+import axios from 'axios';
+import { postUsers } from '../../../methodsUsers';
 
 
 export const FormSingUp = () => {
@@ -39,12 +44,49 @@ export const FormSingUp = () => {
         setPassword(event.target.value)
     }) 
 
+    useEffect(() =>{
+        fetchDeparments()
+        fetchMunicipality()
+    },[])
+
+    const [ datadeparment , setdatadeparment ] = useState([{ nombre : ''}])
+    const [ datamunicipality , setdatamunicipality ] = useState([{ nombre : ''}])
+
+
+    const fetchDeparments = () =>{
+        axios.get(urLDepartments)
+        .then(response => {
+            console.log(response.data)     
+            setdatadeparment(response.data)
+        })
+        .catch(e => {
+            console.log(e);
+        })
+    }
+
+    const fetchMunicipality = () =>{
+        axios.get(urlMunicipality)
+        .then(response => {
+            console.log(response.data)
+            setdatamunicipality(response.data)
+        })
+        .catch(e => {
+            console.log(e);
+        })
+    }
+
+    
+
+    const registerData = () =>{
+        postUsers(name,lastName,yearsOld,phoneNumber,email,password,"A",)
+    }
+
     return (
         <div className="register-form">
             < RegisterCover />
             <div className="form-register-text">
                 <form>
-                    <FacebookAuth />
+                    <FacebookAuth buttonText={"registar por facebook"} />
                 <br></br><br></br>
                     < GoogleAuth />
                     <div className="separator">
@@ -63,7 +105,9 @@ export const FormSingUp = () => {
                     <label>edad</label>
                     <input type="number" max="800" required className='info-input-register' onChange={ setEventToYearsOld }></input>
                     <br></br>
-                       
+                    <SelectDepartment data={ datadeparment } name={ "Departamento"} />
+                    <SelectDepartment data={ datamunicipality} name={"Municipio"} />
+                    <br></br>
                     <label>Telefono</label>
                     <br></br>
                     <input type="text" maxLength="10" placeholder='opcional' required className='info-input-register' onChange={ setEventToPhoneNumber }></input>
@@ -77,7 +121,7 @@ export const FormSingUp = () => {
                     </div>                   
                 </form>
                 
-                <button className="register-submit">registrarme</button>            
+                <button className="register-submit" onClick={ registerData }>registrarme</button>            
             </div>
         </div>
     )  

@@ -1,10 +1,10 @@
-import React, { useState } from 'react'
+import React, { useState , useEffect } from 'react'
 import { NavLink } from 'react-router-dom';
 import './FormLogin.css'
 import { LoginCover } from '../../UI/LoginCover/LoginCover';
 import axios from 'axios'
 import { GoogleAuth } from '../../UI/GoogleAuth/GoogleAuth';
-import { urlUsers } from '../../ApiRoutes';
+import { urLDepartments, urlUsers } from '../../ApiRoutes';
 import { FacebookAuth } from '../../UI/FacebookAuth/FacebookAuth';
 
 
