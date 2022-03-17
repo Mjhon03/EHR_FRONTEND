@@ -15,7 +15,7 @@ export const postUsers = (nombre, apellidos ,fechaNacimiento , telefono ,email ,
         "municipio":municipio
     })
     .then(res =>{
-        
+        console.log(res.status)
     })
 }
 

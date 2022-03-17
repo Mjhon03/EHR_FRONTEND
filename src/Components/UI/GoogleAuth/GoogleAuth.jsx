@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { GoogleLogin } from 'react-google-login';
-import { getUser, postUsers } from '../../../methodsAxios';
+import { getUser, postUsers } from '../../../methodsUsers';
 
 export const GoogleAuth = () => {
 

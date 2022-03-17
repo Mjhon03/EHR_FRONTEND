@@ -38,7 +38,7 @@ export const FormLogin = () => {
             < LoginCover />
             <div className="form-text">
                 <form>
-                    <FacebookAuth />
+                    <FacebookAuth buttonText={"ingresar por facebook"}/>
                 <br></br><br></br>
                     < GoogleAuth />
                     <div className="separator">
