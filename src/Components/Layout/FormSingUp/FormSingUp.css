@@ -1,0 +1,30 @@
+.Rgister-form{
+    width: 100%;
+    display: flex;
+}
+
+.form-text{
+    width: 100%;
+    text-align: center;
+    padding: 3% 0;
+    background: #fff;
+}
+.FormSingup{
+    text-align: start;
+    width: 60%;
+    margin: auto;
+}
+
+.InpSing{
+    margin: 2% 0;
+    width: 100%;
+    padding:2% 0;
+    outline:solid 1px grey;
+    border:none;
+}
+
+.CreateSing{
+    font-size: 100%;
+    padding: 2% 30%;
+    margin:5% 0;
+}
