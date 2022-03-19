@@ -55,8 +55,7 @@ export const FormSingUp = () => {
 
     const fetchDeparments = () =>{
         axios.get(urLDepartments)
-        .then(response => {
-            console.log(response.data)     
+        .then(response => {     
             setdatadeparment(response.data)
         })
         .catch(e => {
@@ -64,10 +63,14 @@ export const FormSingUp = () => {
         })
     }
 
+    const setNameDepartment = (event) =>{
+        console.log(event.target.value)
+    }
+
+
     const fetchMunicipality = () =>{
         axios.get(urlMunicipality)
         .then(response => {
-            console.log(response.data)
             setdatamunicipality(response.data)
         })
         .catch(e => {
@@ -100,17 +103,21 @@ export const FormSingUp = () => {
                     <input type="text" maxLength="80" required className='info-input-register' onChange={ setEventToName }></input>
                     <br></br>
                     <label>Apellidos</label>
-                    <br></br>
-                    <input type="text" maxLength='80' required className='info-input-register' onChange={ setEventToLastName }></input>
-                    <label>edad</label>
-                    <input type="number" max="800" required className='info-input-register' onChange={ setEventToYearsOld }></input>
-                    <br></br>
-                    <SelectDepartment data={ datadeparment } name={ "Departamento"} />
-                    <SelectDepartment data={ datamunicipality} name={"Municipio"} />
-                    <br></br>
-                    <label>Telefono</label>
-                    <br></br>
-                    <input type="text" maxLength="10" placeholder='opcional' required className='info-input-register' onChange={ setEventToPhoneNumber }></input>
+                    <input type="text" maxLength="80" required className='info-input-register' onChange={ setEventToLastName }></input>
+                    <div className="department-info">
+                        <div className="yearsOld-info">
+                            <label>edad</label>
+                            <input type="number" max="800" required className='info-aditional' onChange={ setEventToYearsOld }></input>
+                        </div>
+                        <div className="phoneNumber-info">
+                            <label>telefono</label>
+                            <input type="text" maxLength="10" placeholder='opcional' required className='info-input-register' onChange={ setEventToPhoneNumber }></input>
+                        </div>
+                    </div>
+                    <div className="department-info">
+                        <SelectDepartment data={ datadeparment } name={ "Departamento"} event={setNameDepartment}/>
+                        <SelectDepartment data={ datamunicipality} name={"Municipio"} />
+                    </div>
                     <label>Email</label>
                     <br></br>
                     <input type="email" maxLength="80" required className='info-input-register' onChange={ setEventToEmail } ></input>

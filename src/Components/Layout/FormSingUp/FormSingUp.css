@@ -59,15 +59,39 @@
 .info-input-register{
     margin: 2% 0;
     width: 100%;
-    padding:2% 0;
+    padding:2% 2%;
     outline:solid 1px grey;
     border:none;
 }
+
+.phoneNumber-info{
+    width: 70%;
+}
+
+.yearsOld-info{
+    width: 27%;
+}
+
+.info-aditional{
+    margin-top: 5%;
+    padding: 5% 0;
+    width: 100%;
+    outline:solid 1px grey;
+    border:none;
+    text-align: center;
+}
+
 
 .register-submit{
     font-size: 100%;
     padding: 2% 20%;
     margin:5% 0;
+}
+
+.department-info{
+    display: flex;
+    justify-content: space-between;
+    margin: 0 0 4% 0;
 }
 
 
