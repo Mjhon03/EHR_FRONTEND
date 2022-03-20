@@ -1,7 +1,10 @@
 .img-register-container{
     width: 142%;
-    height: 100%;
 }
+
+
+
+
 
 @media screen and (max-width: 899px){
     .img-register-container{

@@ -10,6 +10,7 @@
   background: #171c24;
   position: sticky;
   width: 100%;
+  z-index: 2;
 }
 .wrapper nav{
   position: relative;
@@ -27,6 +28,7 @@ nav .content{
 nav .content .links{
   margin-left: 80px;
   display: flex;
+  z-index: 2;
 }
 .content .logo p{
   color: #fff;

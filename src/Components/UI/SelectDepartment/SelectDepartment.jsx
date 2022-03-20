@@ -1,4 +1,5 @@
 import React from 'react'
+import './SelectDepartment.css'
 
 export const SelectDepartment = ({ data , event  , name }) => {
   return (

@@ -10,8 +10,8 @@ export const Header = () => {
         <nav>
         <input type="checkbox" id="show-search"/>
         <input type="checkbox" id="show-menu"/>
-        <label for="show-menu" className="menu-icon"><FontAwesomeIcon icon={ faBars }></FontAwesomeIcon></label>
-        <div class="content">
+        <label htmlFor="show-menu" className="menu-icon"><FontAwesomeIcon icon={ faBars }></FontAwesomeIcon></label>
+        <div className="content">
         <div className="logo"><p>EHR</p></div>
             <ul className="links">
                 <NavLink to="/"><li><p>Incio</p></li></NavLink>
@@ -20,7 +20,7 @@ export const Header = () => {
                 <li>
                     <p className="desktop-link">Categorias</p>
                     <input type="checkbox" id="show-features"/>
-                    <label for="show-features">Categorias</label>
+                    <label htmlFor="show-features">Categorias</label>
                     <ul>
                     <li><p>Apartamentos</p></li>
                     <li><p>Hogares</p></li>
@@ -33,7 +33,7 @@ export const Header = () => {
                 <NavLink to="/register"><li><p>registrar</p></li></NavLink>
             </ul>
         </div>
-        <label for="show-search" className="search-icon"><FontAwesomeIcon icon={ faMagnifyingGlass }></FontAwesomeIcon></label>
+        <label htmlFor="show-search" className="search-icon"><FontAwesomeIcon icon={ faMagnifyingGlass }></FontAwesomeIcon></label>
         <form action="#" className="search-box">
             <input type="text" placeholder="Type Something to Search..." required/>
             <button type="submit" className="go-icon"><FontAwesomeIcon icon={ faLongArrowAltRight }></FontAwesomeIcon></button>
