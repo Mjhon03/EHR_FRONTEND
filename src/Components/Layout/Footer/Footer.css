@@ -1,0 +1,24 @@
+
+
+.links-footer{
+    list-style: none;
+    display: inline-block;
+    margin:5rem ;
+    color: #fff;
+
+}
+ .links-footer:hover{
+    list-style: un;
+} 
+
+.footer{
+    background-color:#171c24;
+    
+}
+
+.footer-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
