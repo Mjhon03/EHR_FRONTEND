@@ -2,6 +2,7 @@ import React from 'react'
 import { Header } from '../../Layout/Header/Header'
 import { HomeCover } from '../../UI/HomeCover/HomeCover'
 import { HomeImgCover } from '../../UI/HomeImgCover/HomeImgCover'
+import { Footer } from '../../Layout/Footer/Footer'
 import './Home.css'
 
 
@@ -18,6 +19,8 @@ export const Home = () => {
            < HomeCover className="cover"></HomeCover>
            < HomeImgCover />
         </div>
+        <Footer/>
     </div>
+
   )
 }
