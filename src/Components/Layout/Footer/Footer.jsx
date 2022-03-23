@@ -1,38 +1,34 @@
-import {FaFacebookF} from 'react-icons/fa';
-import {FaInstagram} from 'react-icons/fa'
-import { FaTwitter} from 'react-icons/fa'
-import logoapp2 from '../../../img/logoapp2.ico'
 import './Footer.css'
-import { NavLink } from 'react-router-dom';
-export const Footer = ()=>{
-    return(
-        <>
-        <footer className='footer'>
-            <div className='footer-container'>
-                <div className='div1'>
-                    <img className='logo-app' src={logoapp2}    />
-                    <p className='under-logo'>¿Necesitas ayuda?</p><NavLink className="navlink" to=""><p className='links-writeus'>Escríbenos</p></NavLink>
-                </div>
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faFacebook, faInstagram , faGoogleDrive , faWhatsapp } from '@fortawesome/free-brands-svg-icons';
+import drive from '../../../icons/google-drive.png'
+import facebook from '../../../icons/facebook.png'
+import instagram from '../../../icons/instagram.png'
+import whatsapp from '../../../icons/whatsapp.png'
 
-                <div>
-                    <NavLink className="navlink" to="/TerminosCondiciones"><li className='links-footer'>Términos y condiciones</li></NavLink> 
-                </div>
 
-                <div>
-                    <NavLink className="navlink" to="/PoliticasPrivacidad"><li className='links-footer'>Políticas de privacidad</li></NavLink> 
-                </div>
-
-                <div>
-                     <p className='followus'>Síguenos
-                     <li className='icons '><FaFacebookF color='#FFFF'/></li> 
-                     <li className='icons'><FaInstagram color='#FFFF'/></li>  
-                     <li className='icons' ><FaTwitter color='#FFFF'/></li></p>
-                </div>
-            </div>
-            <br/>
-        <hr />
-        <p className='last-line'>	&copy; 2022  Easy House Rent Todos los derechos reservados</p>
-        </footer>
-        </>
-    )
+export const Footer = () => {
+  return (
+    <div className="footer-container">
+        <div className="footer-links">
+            <p className='redirect'>Documento de uso</p>
+            <p className='redirect'>Terminos y condiciones</p>
+            <p className='redirect'>Sobre nosotros</p>
+            <p className='redirect'>Contacto</p>
+        </div>
+        <div className="icon-links">
+            <img src={facebook} className="icon-link" alt="facebook" />
+            <img src={instagram} className="icon-link" alt="instagram" />
+            <img src={whatsapp} className="icon-link" alt="whatsapp" />
+            <img src={drive} className="icon-link" alt="drive"/>
+        </div>
+            <div className="footer-info">
+            <p className='footer-text'>Armenia - Quindio - Colombia</p>
+            <p className='footer-text'>+57 317 458 3592</p>
+            <p className='footer-text'>easyhouserent02@gmail.com</p>
+        </div>
+        <div className="line-footer" />
+        <p className='copyright'>Copyright &copy; 2022 Easy House Rent - todos los derechos reservados</p>
+    </div>
+  )
 }

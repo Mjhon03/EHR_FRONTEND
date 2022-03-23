@@ -1,70 +1,56 @@
-
-
-.links-footer{
-    list-style: none;
-    display: inline-block;
-    margin:2rem ;
-    color: #fff;
-
-}
- .links-footer:hover{
-    text-decoration: underline;
-} 
-
-.footer{
-    background-color:#171c24;
-    
-}
-
 .footer-container{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: auto;
-    margin-left: 2%;
+    width: 100%;
+    height: auto;
+    padding: 1% 0;
+    outline: 1px solid black;
+}
+
+.footer-links{
     width: 80%;
-
+    display: flex;
+    margin: 0  auto;
+    text-align: center;
+    justify-content: center;
 }
 
-.last-line{
-    color: #fff;
+.icon-links{
+    width: 40%;
+    margin: 3% auto;
+    display: flex;
+    justify-content: space-between;
+}
+
+.redirect{
+    margin:0 5%;
+}
+
+.icon{
+    font-size: 5vh;
+}
+
+.footer-info{
+    width: 50%;
+    margin: 1% auto;
     text-align: center;
 }
 
-.followus{
-    color: #fff;
+.line-footer{
+    width: 65%;
+    height: .1px;
+    margin: 1% auto;
+    background: grey;
 }
 
-.logo-app{
-    width: 200px;
-    margin-top: 2%;
-}
-
-.div1{
-    /* border:1px solid #fff; */
-    height: 200px;
-}
-
-.under-logo{
-    color: #fff;
-    margin-top: -2rem;
+.copyright{
+    width: 50%;
+    margin: 1% auto;
     text-align: center;
 }
 
-.links-writeus{
-    color: #fff;
-    text-align: center; 
-    margin-bottom: 10px;
+.icon-link{
+    width: 6%;
 }
 
-.links-writeus:hover{
-    text-decoration: underline;
-    
-}
-
-.icons{
-    margin: 10px;
-    display: inline-block;
-    list-style: none;
-    cursor: pointer;
+.footer-text{
+    margin: 1% 0;
 }
