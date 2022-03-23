@@ -8,7 +8,7 @@ export const SelectDepartment = ({ data , event  , name }) => {
         {
             data.map(element =>(
                 <>
-                    <option key={element.value}>{element.nombre}</option>
+                    <option value={element.iddepartamento}>{element.nombre}</option>
                 </>
             ))
         }
