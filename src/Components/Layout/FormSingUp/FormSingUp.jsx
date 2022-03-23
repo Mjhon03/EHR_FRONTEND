@@ -45,9 +45,10 @@ export const FormSingUp = () => {
     }) 
 
     useEffect(() =>{
-        fetchDeparments()
-        fetchMunicipality()
+        fetchDeparments()            
     },[])
+
+    
 
     const [ datadeparment , setdatadeparment ] = useState([{ nombre : ''}])
     const [ datamunicipality , setdatamunicipality ] = useState([{ nombre : ''}])
@@ -63,25 +64,30 @@ export const FormSingUp = () => {
         })
     }
 
+    let idDepartament
+    let idMunicipality
     const setNameDepartment = (event) =>{
-        console.log(event.target.value)
+        idDepartament=event.target.value
+        console.log(event.target.value);
+        console.log(idDepartament);
+        const fetchMunicipality = () =>{
+            axios.get(`${urlMunicipality}/0?iddepartamento=${event.target.value}`)
+            .then(response => {
+                setdatamunicipality(response.data)
+                idMunicipality=response.data[0].idmunicipio
+                console.log(idMunicipality);
+            })
+            .catch(e => {
+                console.log(e);
+            })
+        }
+        fetchMunicipality()
     }
-
-
-    const fetchMunicipality = () =>{
-        axios.get(urlMunicipality)
-        .then(response => {
-            setdatamunicipality(response.data)
-        })
-        .catch(e => {
-            console.log(e);
-        })
-    }
-
+    
     
 
     const registerData = () =>{
-        postUsers(name,lastName,yearsOld,phoneNumber,email,password,"A",)
+        postUsers(name,lastName,yearsOld,phoneNumber,email,password,"A",idDepartament,idMunicipality)
     }
 
     return (

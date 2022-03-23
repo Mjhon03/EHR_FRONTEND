@@ -10,7 +10,7 @@ export const postUsers = (nombre, apellidos ,edad, telefono ,email ,contraseña 
         "telefono" : telefono, 
         "email": email,
         "contraseña":contraseña,
-        "estado": estado,
+        "estado": "A",
         "departamento":departamento,
         "municipio":municipio
     })
