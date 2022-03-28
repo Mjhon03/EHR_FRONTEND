@@ -15,7 +15,7 @@ export const FormSingUp = () => {
     const [photo, setPhoto] = useState("")
     const [phoneNumber, setPhoneNumber] = useState("")
     const [name, setName] = useState("")
-    const [yearsOld , setYearsOld] = useState("")
+    const [yearsOld , setYearsOld] = useState(0)
     const [lastName, setLastName] = useState("")
     const [email,setEmail] = useState("")
     const [password, setPassword] = useState("")
@@ -65,32 +65,18 @@ export const FormSingUp = () => {
         })
     }
 
+    useEffect(() => {
+        // fetchMunicipality()
+        console.log(iddepartment)
+    }, [iddepartment])
+    
+
     const setNameDepartment = (event) =>{
         setIdDepartment(event.target.value)
-        console.log(event.target.value);
-        let setDepartment = event.target.value
-        setIdDepartment(setDepartment)
-        console.log(setDepartment)
-
-        const fetchMunicipality = () =>{
-            axios.get(`${urlMunicipality}/0?iddepartamento=${setDepartment}`)
-            .then(response => {
-                setdatamunicipality(response.data)
-                console.log(response.data)
-                setIdMunicipality(response.data.idmunicipio)
-                console.log(idmunicipality);
-            })
-            .catch(e => {
-                console.log(e);
-            })
-        }
-        fetchMunicipality()
     }
-    
-    
 
-    const registerData = () =>{
-        postUsers(name,lastName,yearsOld,phoneNumber,email,password,"a",iddepartment,)
+    const fetchMunicipality = () =>{
+        axios.get(urlMunicipality)
     }
 
     return (
@@ -137,7 +123,7 @@ export const FormSingUp = () => {
                     </div>                   
                 </form>
                 
-                <button className="register-submit" onClick={ registerData }>registrarme</button>            
+                <button className="register-submit" >registrarme</button>            
             </div>
         </div>
     )  

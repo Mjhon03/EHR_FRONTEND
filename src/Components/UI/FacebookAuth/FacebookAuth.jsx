@@ -28,12 +28,8 @@ export const FacebookAuth = ({ buttonText }) => {
                 let passwordProvider = (res.user.uid).toString();
             
                  axios.get(`https://localhost:44352/api/Users?email=${emailProvider}&contrase%C3%B1a=${passwordProvider}`)
-                .then(response=>{
-                    console.log(response.data);
-                    if (response.data[0].email === emailProvider ){
-                         console.log("usuario ya registrado anteriormente")
-                    }else{
-                        
+                .then(response=> {
+                    if(response.data === []){
                         setName(res.user.displayName)
                         setEmail(res.user.email)
                         setPhoneNumber(res.user.phoneNumber)
@@ -42,6 +38,15 @@ export const FacebookAuth = ({ buttonText }) => {
 
                         postUsers(name,"","",phoneNumber,email,password,"A",1,100)
                         console.log("usuario nuevo")
+                    }
+                } )
+                .then(response=>{
+                    console.log(response.data);
+                    if (response.data[0].email === emailProvider ){
+                         console.log("usuario ya registrado anteriormente")
+                    }else{
+                        
+                        
                     }                     
                 })
                 .catch(function (error) {
