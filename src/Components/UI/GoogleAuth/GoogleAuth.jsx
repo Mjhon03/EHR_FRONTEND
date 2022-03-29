@@ -1,26 +1,41 @@
 import React, { useState } from 'react'
 import { GoogleLogin } from 'react-google-login';
-import { getUser, postUsers } from '../../../methodsUsers';
+import { postUsers } from '../../../methodsUsers';
+import axios, { Axios } from 'axios';
 
 export const GoogleAuth = () => {
 
-    const [email, setemail] = useState({ email: "email" })
-    const [password, setpassword] = useState({ password: "password" })
+    const [photo, setPhoto] = useState("")
+    const [name, setName] = useState("")
+    const [lastName, setLastName] = useState("")
+    const [email, setEmail] = useState("")
+    const [password, setPassword] = useState("")
 
-    const [nombre, setNombre] = useState("")
-    const [apellidos, setApellidos] = useState("")
-    const [correo, setCorreo] = useState("")
-    const [contraseña, setContraseña] = useState("")
 
     const responseGoogle = (response) => {
         console.log(response)
 
-        setCorreo(response.profileObj.email)
-        setContraseña(response.profileObj.googleId)
-        setNombre(response.profileObj.givenName)
-        setApellidos(response.profileObj.familyName)
-        postUsers(nombre, apellidos, "", "", correo, contraseña, "A", 1, 100)
+        let emailProvider = response.profileObj.email
+        let passwordProvider = response.profileObj.googleId
 
+        axios.get(`https://localhost:44352/api/Users?email=${emailProvider}&contrase%C3%B1a=${passwordProvider}`)
+        .then(res => {
+            console.log(res.data);
+            if (res.data[0].email === emailProvider || passwordProvider === res.data[0].contraseña) {
+                console.log("usuario ya registrado anteriormente")
+            } else {
+                setName(response.profileObj.name)
+                setLastName(response.profileObj.familyName)
+                setEmail(response.profileObj.email)
+                setPassword(response.profileObj.googleId)
+                setPhoto(response.profileObj.imageUrl)
+
+                postUsers(name, lastName, "", "", email, password, "A", 1, 100)
+            }
+        })
+        .catch(function (error) {
+            console.log(error);
+        })
     }
 
     return (

@@ -15,7 +15,7 @@ export const FormSingUp = () => {
     const [photo, setPhoto] = useState("")
     const [phoneNumber, setPhoneNumber] = useState("")
     const [name, setName] = useState("")
-    const [yearsOld , setYearsOld] = useState("")
+    const [yearsOld , setYearsOld] = useState(0)
     const [lastName, setLastName] = useState("")
     const [email,setEmail] = useState("")
     const [password, setPassword] = useState("")
@@ -48,7 +48,8 @@ export const FormSingUp = () => {
         fetchDeparments()            
     },[])
 
-    
+    const [ iddepartment , setIdDepartment ] = useState()
+    const [ idmunicipality , setIdMunicipality ] = useState()
 
     const [ datadeparment , setdatadeparment ] = useState([{ nombre : ''}])
     const [ datamunicipality , setdatamunicipality ] = useState([{ nombre : ''}])
@@ -64,32 +65,32 @@ export const FormSingUp = () => {
         })
     }
 
-    let idDepartament
-    let idMunicipality
-    const setNameDepartment = (event) =>{
-        idDepartament=event.target.value
-        console.log(event.target.value);
-        console.log(idDepartament);
-        const fetchMunicipality = () =>{
-            axios.get(`${urlMunicipality}/0?iddepartamento=${event.target.value}`)
-            .then(response => {
-                setdatamunicipality(response.data)
-                idMunicipality=response.data[0].idmunicipio
-                console.log(idMunicipality);
-            })
-            .catch(e => {
-                console.log(e);
-            })
-        }
+    useEffect(() => {
+        // fetchMunicipality()
+        console.log(iddepartment)
+        console.log(idmunicipality)
         fetchMunicipality()
-    }
-    
+    }, [iddepartment],[idmunicipality])
     
 
-    const registerData = () =>{
-        postUsers(name,lastName,yearsOld,phoneNumber,email,password,"A",idDepartament,idMunicipality)
+    const setNameDepartment = (event) =>{
+        setIdDepartment(event.target.value)
     }
 
+    const getIdMunicipality = (event) =>{
+        setIdMunicipality(event.target.value)
+    }
+
+    const fetchMunicipality = () =>{
+        axios.get(`${urlMunicipality}${iddepartment}`)
+        .then(response => {
+            console.log(response.data);
+            setdatamunicipality(response.data)
+        })
+        .catch(e =>{
+            console.log(e);
+        })
+    }
     return (
         <div className="register-form">
             < RegisterCover />
@@ -122,7 +123,7 @@ export const FormSingUp = () => {
                     </div>
                     <div className="department-info">
                         <SelectDepartment data={ datadeparment } name={ "Departamento"} event={setNameDepartment}/>
-                        <SelectDepartment data={ datamunicipality} name={"Municipio"} />
+                        <SelectDepartment data={ datamunicipality} name={"Municipio"} event={getIdMunicipality} />
                     </div>
                     <label>Email</label>
                     <br></br>
@@ -134,7 +135,7 @@ export const FormSingUp = () => {
                     </div>                   
                 </form>
                 
-                <button className="register-submit" onClick={ registerData }>registrarme</button>            
+                <button className="register-submit" >registrarme</button>            
             </div>
         </div>
     )  

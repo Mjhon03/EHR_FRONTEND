@@ -3,7 +3,7 @@ import './SelectDepartment.css'
 
 export const SelectDepartment = ({ data , event  , name }) => {
   return (
-    <select className='selector' onChange={ event}>
+    <select className='selector' onChange={event}>
         <option value='departments'>{ name }</option>
         {
             data.map(element =>(
