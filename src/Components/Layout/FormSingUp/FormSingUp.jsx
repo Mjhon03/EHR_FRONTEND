@@ -68,17 +68,29 @@ export const FormSingUp = () => {
     useEffect(() => {
         // fetchMunicipality()
         console.log(iddepartment)
-    }, [iddepartment])
+        console.log(idmunicipality)
+        fetchMunicipality()
+    }, [iddepartment],[idmunicipality])
     
 
     const setNameDepartment = (event) =>{
         setIdDepartment(event.target.value)
     }
 
-    const fetchMunicipality = () =>{
-        axios.get(urlMunicipality)
+    const getIdMunicipality = (event) =>{
+        setIdMunicipality(event.target.value)
     }
 
+    const fetchMunicipality = () =>{
+        axios.get(`${urlMunicipality}${iddepartment}`)
+        .then(response => {
+            console.log(response.data);
+            setdatamunicipality(response.data)
+        })
+        .catch(e =>{
+            console.log(e);
+        })
+    }
     return (
         <div className="register-form">
             < RegisterCover />
@@ -111,7 +123,7 @@ export const FormSingUp = () => {
                     </div>
                     <div className="department-info">
                         <SelectDepartment data={ datadeparment } name={ "Departamento"} event={setNameDepartment}/>
-                        <SelectDepartment data={ datamunicipality} name={"Municipio"} />
+                        <SelectDepartment data={ datamunicipality} name={"Municipio"} event={getIdMunicipality} />
                     </div>
                     <label>Email</label>
                     <br></br>
