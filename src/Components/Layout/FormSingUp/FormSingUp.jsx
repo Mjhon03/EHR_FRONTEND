@@ -4,10 +4,12 @@ import { RegisterCover } from '../../UI/RegisterCover/RegisterCover'
 import { GoogleAuth } from '../../UI/GoogleAuth/GoogleAuth';
 import { FacebookAuth } from '../../UI/FacebookAuth/FacebookAuth';
 import { SelectDepartment } from '../../UI/SelectDepartment/SelectDepartment';
+import { SelectMunicipality } from '../../UI/SelectMunicipality/SelectMunicipality';
 import { urLDepartments, urlMunicipality, urlUsers } from '../../ApiRoutes';
 import { useState , useEffect } from 'react'
 import axios from 'axios';
 import { postUsers } from '../../../methodsUsers';
+import { type } from '@testing-library/user-event/dist/type';
 
 
 export const FormSingUp = () => {
@@ -67,11 +69,12 @@ export const FormSingUp = () => {
 
     useEffect(() => {
         // fetchMunicipality()
-        console.log(iddepartment)
-        console.log(idmunicipality)
         fetchMunicipality()
-    }, [iddepartment],[idmunicipality])
+    }, [iddepartment])
     
+    useEffect(() => {
+        console.log(idmunicipality)
+    }, [idmunicipality])
 
     const setNameDepartment = (event) =>{
         setIdDepartment(event.target.value)
@@ -84,12 +87,16 @@ export const FormSingUp = () => {
     const fetchMunicipality = () =>{
         axios.get(`${urlMunicipality}${iddepartment}`)
         .then(response => {
-            console.log(response.data);
             setdatamunicipality(response.data)
         })
         .catch(e =>{
             console.log(e);
         })
+    }
+
+    const userRegister = () =>{
+        console.log(typeof(name),typeof(lastName),typeof(yearsOld) ,typeof(phoneNumber), typeof(email),typeof(password),"A",typeof(iddepartment), typeof(idmunicipality));
+        postUsers(name,lastName, parseInt(yearsOld),phoneNumber,email,password,"A",parseInt(iddepartment),parseInt(idmunicipality));
     }
     return (
         <div className="register-form">
@@ -123,7 +130,7 @@ export const FormSingUp = () => {
                     </div>
                     <div className="department-info">
                         <SelectDepartment data={ datadeparment } name={ "Departamento"} event={setNameDepartment}/>
-                        <SelectDepartment data={ datamunicipality} name={"Municipio"} event={getIdMunicipality} />
+                        <SelectMunicipality data={ datamunicipality} event={getIdMunicipality} />
                     </div>
                     <label>Email</label>
                     <br></br>
@@ -135,7 +142,7 @@ export const FormSingUp = () => {
                     </div>                   
                 </form>
                 
-                <button className="register-submit" >registrarme</button>            
+                <button className="register-submit" onClick={userRegister}>registrarme</button>            
             </div>
         </div>
     )  
