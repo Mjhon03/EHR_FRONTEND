@@ -19,9 +19,9 @@ export const FacebookAuth = ({ buttonText }) => {
     const[faEmail, setFaEmail] = useState({email: "email"})
     const[faPassword, setFaPassword] = useState({password: "password"})
 
-    const signInWithFcebook = () => {
+    const signInWithFcebook = async () => {
         const provider = new FacebookAuthProvider();
-        signInWithPopup(authFacebook, provider)
+        await signInWithPopup(authFacebook, provider)
             .then((res) => {
                 setFaEmail(res.user.email)
                 setFaPassword(res.user.uid)
