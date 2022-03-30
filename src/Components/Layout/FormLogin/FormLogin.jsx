@@ -1,4 +1,4 @@
-import React, { useState , useEffect } from 'react'
+import React, { useState , useEffect} from 'react'
 import { NavLink } from 'react-router-dom';
 import './FormLogin.css'
 import { LoginCover } from '../../UI/LoginCover/LoginCover';
@@ -6,6 +6,9 @@ import axios from 'axios'
 import { GoogleAuth } from '../../UI/GoogleAuth/GoogleAuth';
 import { urLDepartments, urlUsers } from '../../ApiRoutes';
 import { FacebookAuth } from '../../UI/FacebookAuth/FacebookAuth';
+import { Home } from '../../Page/Home/Home';
+import { browserPopupRedirectResolver } from 'firebase/auth';
+
 
 
 export const FormLogin = () => {
@@ -26,7 +29,13 @@ export const FormLogin = () => {
     const login=(()=>{
         axios.get(urlUsers, {params:{email:email, contraseña:password}})
         .then(response=>{
-            console.log(response.data)
+            console.log(response.data[0].nombre)
+            localStorage.setItem('UserName', response.data[0].nombre)
+            localStorage.setItem('UserLastName', response.data[0].apellidos)
+            localStorage.setItem('PhoneNumber', response.data[0].telefono)
+            localStorage.setItem('UserEmail', response.data[0].email)
+            
+
         })
         .catch(ex=>{
             console.log(ex);
@@ -62,7 +71,7 @@ export const FormLogin = () => {
                 </div>
                 <div className="forgot-password">
                 <button className="login-submit" type='submit' onClick={login}>entrar</button>
-                <NavLink to='/forgotPassword'><p>olvidaste tu contraseña</p></NavLink>    
+                <NavLink to='/forgotPassword'><p>Olvidaste tu contraseña</p></NavLink>    
                 </div>
             </div>
         </div>
