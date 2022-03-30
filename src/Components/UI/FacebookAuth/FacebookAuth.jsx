@@ -1,59 +1,43 @@
-import React, { useState } from 'react'
+import React, { useState , useEffect} from 'react'
 import { postUsers } from '../../../methodsUsers';
 import { signInWithPopup, FacebookAuthProvider} from 'firebase/auth'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebook } from '@fortawesome/free-brands-svg-icons';
 import { authFacebook } from '../../../firebase-config';
 
-import axios from 'axios';;
-
+import axios from 'axios';import { urlUsers } from '../../ApiRoutes';
+;
 
 export const FacebookAuth = ({ buttonText }) => {
 
-    const [photo, setPhoto] = useState("")
-    const [phoneNumber, setPhoneNumber] = useState("")
-    const [name, setName] = useState("")
-    const [yearsOld , setYearsOld] = useState("")
-    const [lastName, setLastName] = useState("")
-    const [email,setEmail] = useState("")
-    const [password, setPassword] = useState("")
+    const[faData , setFaData] = useState()
+    const[faEmail, setFaEmail] = useState({email: "email"})
+    const[faPassword, setFaPassword] = useState({password: "password"})
 
     const signInWithFcebook = () => {
         const provider = new FacebookAuthProvider();
         signInWithPopup(authFacebook, provider)
             .then((res) => {
-
-                console.log(res.user)
-                let emailProvider = (res.user.email);
-                let passwordProvider = (res.user.uid).toString();
+                setFaEmail(res.user.email)
+                setFaPassword(res.user.uid)     
+            })
             
-                 axios.get(`https://localhost:44352/api/Users?email=${emailProvider}&contrase%C3%B1a=${passwordProvider}`)
-                .then(response=> {
-                    if(response.data === []){
-                        setName(res.user.displayName)
-                        setEmail(res.user.email)
-                        setPhoneNumber(res.user.phoneNumber)
-                        setPhoto(res.user.photoURL)
-                        setPassword(res.user.uid)
-
-                        postUsers(name,"","",phoneNumber,email,password,"A",1,100)
-                        console.log("usuario nuevo")
-                    }
-                } )
-                .then(response=>{
-                    console.log(response.data);
-                    if (response.data[0].email === emailProvider ){
-                         console.log("usuario ya registrado anteriormente")
-                    }else{
-                        
-                        
-                    }                     
-                })
-                .catch(function (error) {
-                    console.log(error);
-                })
-            })    
         }
+
+        const userValidate =(()=>{
+            axios.get(urlUsers, {params:{email: faEmail, contraseña: faPassword}})
+            .then(response=>{
+                console.log(response.data)
+                if(response.data.length === 1){
+                    console.log("usuario registrado anteriormente")
+                }else{
+                }
+            })
+            .catch(ex=>{
+                console.log(ex);
+            })
+        })
+
     return (
         <button className="facebook-auth" onClick={signInWithFcebook}><FontAwesomeIcon className="facebook-icon" icon={faFacebook}></FontAwesomeIcon>{ buttonText }</button>
     )
