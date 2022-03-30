@@ -2,41 +2,55 @@ import React, { useState } from 'react'
 import { GoogleLogin } from 'react-google-login';
 import { postUsers } from '../../../methodsUsers';
 import axios, { Axios } from 'axios';
+import { urlUsers } from '../../ApiRoutes';
 
 export const GoogleAuth = () => {
 
-    const [photo, setPhoto] = useState("")
-    const [name, setName] = useState("")
-    const [lastName, setLastName] = useState("")
-    const [email, setEmail] = useState("")
-    const [password, setPassword] = useState("")
+    const[goEmail, setGoEmail] = useState({email: "email"})
+    const[goPassword, setGoPassword] = useState({password: "password"})
 
+    const[ name , setName ] = useState("")
+    const[ lastName , setLastName ] = useState("")
+    const[ email , setEmail ] = useState("")
+    const[ password , setPassword ] = useState("")
+    const[ photo , setPhoto ] = useState("")
 
-    const responseGoogle = (response) => {
+    const responseGoogle = async (response => {
         console.log(response)
 
-        let emailProvider = response.profileObj.email
-        let passwordProvider = response.profileObj.googleId
+        await setGoEmail(response.profileObj.email)
+        await setGoPassword(response.profileObj.googleId)
 
-        axios.get(`https://localhost:44352/api/Users?email=${emailProvider}&contrase%C3%B1a=${passwordProvider}`)
-        .then(res => {
-            console.log(res.data);
-            if (res.data[0].email === emailProvider || passwordProvider === res.data[0].contraseña) {
-                console.log("usuario ya registrado anteriormente")
-            } else {
-                setName(response.profileObj.name)
-                setLastName(response.profileObj.familyName)
-                setEmail(response.profileObj.email)
-                setPassword(response.profileObj.googleId)
-                setPhoto(response.profileObj.imageUrl)
+        await setName(response.profileObj.givenName)
+        await setLastName(response.profileObj.familyName)
+        await setEmail(response.profileObj.email)
+        await setPassword(response.profileObj.googleId)
+        await setPhoto(response.profileObj.imageUrl)
+        
+        userGoogleValidate()
+    })
 
-                postUsers(name, lastName, "", "", email, password, "A", 1, 100)
+
+    const userGoogleValidate =(()=>{
+        axios.get(urlUsers, {params:{email: goEmail, contraseña: goPassword}})
+        .then(response=>{
+            console.log(response.data)
+            if(response.data.length === 1){
+                console.log("usuario registrado anteriormente")
+            }else{
+                console.log("usuario registrado")
+                registerGoogleUser()
             }
         })
-        .catch(function (error) {
-            console.log(error);
+        .catch(ex=>{
+            console.log(ex);    
         })
+    })
+
+    const registerGoogleUser  =() =>{
+        postUsers(name, lastName,0 ,"" , email , password , "A", 100 , 1121)
     }
+
 
     return (
         < GoogleLogin
