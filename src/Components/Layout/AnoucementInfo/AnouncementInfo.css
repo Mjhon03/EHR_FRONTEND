@@ -1,0 +1,46 @@
+.anouncement-container{
+    outline: solid 1px red;
+    display: flex;
+    height: auto;
+}
+
+.anouncement-info{
+    outline: solid 1px green;
+    width: 50%;
+}
+
+.anouncement-images{
+    width: 50%;
+    outline: solid 1px grey;
+    padding: 2% 5%;
+}
+
+.image-container{
+    outline: solid 1px grey;
+    width: 100%;
+    height: 40vh;
+    margin: 2% 0;
+}
+
+.first-image{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.other-images{
+    width: 100%;
+    display: flex;
+    gap: 3%;
+}
+
+.other-image-container{
+    width: 20%;
+    height: 10vh;
+}
+
+.other-image{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}

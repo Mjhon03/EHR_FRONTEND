@@ -10,6 +10,8 @@ import { Register } from "./Components/Page/Register/Register";
 import { AboutUs } from "./Components/Page/AboutUs/AboutUs"
 import { ForgotPassword } from "./Components/Page/ForgotPassword/ForgotPassword";
 import { Profile } from "./Components/Page/Profile/Profile"
+import { Anouncement } from "./Components/Page/Anouncement/Anouncement";
+
 
 function App() {
   const user = false;
@@ -23,6 +25,7 @@ function App() {
         <Route path="/aboutUs" element={<AboutUs />} />
         <Route path="/forgotPassword" element={<ForgotPassword/>} />
         <Route path="/profile" element={<Profile/>}/>
+        <Route path="/anouncement" element={<Anouncement />} />
       </Routes> 
     </BrowserRouter>
   );
