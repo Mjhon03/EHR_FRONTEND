@@ -15,17 +15,16 @@ export const GoogleAuth = () => {
     const[ password , setPassword ] = useState("")
     const[ photo , setPhoto ] = useState("")
 
-    const responseGoogle = async (response => {
+    const responseGoogle =  (response => {
         console.log(response)
 
-        await setGoEmail(response.profileObj.email)
-        await setGoPassword(response.profileObj.googleId)
-
-        await setName(response.profileObj.givenName)
-        await setLastName(response.profileObj.familyName)
-        await setEmail(response.profileObj.email)
-        await setPassword(response.profileObj.googleId)
-        await setPhoto(response.profileObj.imageUrl)
+        setGoEmail(response.profileObj.email)
+        setGoPassword(response.profileObj.googleId)
+        setName(response.profileObj.givenName)
+        setLastName(response.profileObj.familyName)
+        setEmail(response.profileObj.email)
+        setPassword(response.profileObj.googleId)
+        setPhoto(response.profileObj.imageUrl)
         
         userGoogleValidate()
     })
