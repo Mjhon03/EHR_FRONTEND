@@ -1,5 +1,6 @@
 import React from 'react'
 import './AnouncementInfo.css'
+import { StarRating } from "../../UI/StarRating/StarRating"
 
 export const AnouncementInfo = () => {
     return (
@@ -26,24 +27,30 @@ export const AnouncementInfo = () => {
                     <p>2 Baños</p>
                     <p>sin garaje</p>
                 </div>
-                <div className="action-buttons">
-                    <button>chat</button>
-                    <button>Correo</button>
-                </div>
+                
             </div>
             <div className="anouncement-info">
                 <div className="info-text">
-                    <p>Desde<br></br>250.000.000 COP</p>
-                    <p>Informacion Principal</p>
-                    <h3>Barrio o zona</h3>
-                    <p>providencia - Zona norte</p>
-                    <h3>Direccion</h3>
-                    <p>Cra 19 - calle 24 - bloque 03</p>
-                    <h3>Tipo de inmueble</h3>
-                    <p>Apartamento</p>
-                    <h3>Propietario</h3>
-                    <p>Juliancito Amaya</p>
+                    <p className='info-size'>Desde<br></br>250.000.000 COP</p>
+                    <p className='info-title'>Informacion Principal</p>
+                    <h3 className='info-subtitle'>Barrio o zona</h3>
+                    <p className='info-paragraph'>providencia - Zona norte</p>
+                    <h3 className='info-subtitle'>Direccion</h3>
+                    <p className='info-paragraph'>Cra 19 - calle 24 - bloque 03</p>
+                    <h3 className='info-subtitle'>Tipo de inmueble</h3>
+                    <p className='info-paragraph'>Apartamento</p>
+                    <h3 className='info-subtitle'>Propietario</h3>
+                    <p className='info-paragraph'>Juliancito Amaya</p>
+                
+                    <div className="rating-container">
+                        <StarRating />
+                    </div>    
                 </div>
+                <div className="action-buttons">
+                        <button  className='action-button-profile'>chat</button>
+                        <button className='action-button-profile'>Correo</button>
+                    </div>
+                
             </div>
         </div>
     )
