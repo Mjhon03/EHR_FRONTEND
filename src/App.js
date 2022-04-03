@@ -12,6 +12,8 @@ import { ForgotPassword } from "./Components/Page/ForgotPassword/ForgotPassword"
 import { Profile } from "./Components/Page/Profile/Profile"
 import { Anouncement } from "./Components/Page/Anouncement/Anouncement";
 import  {StarRating}  from "./Components/UI/StarRating/StarRating";
+import { PasswordResetForm } from "./Components/Layout/PasswordReset/PasswordResetForm";
+import { ModifyPasswordForm } from "./Components/Layout/ConfirmModifyPassword/ModifyPasswordForm";
 
 
 
@@ -22,12 +24,14 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={< StarRating/>} />
+        <Route path="/" element={< Home/>} />
         <Route path="/Contact" element={<Contact />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/aboutUs" element={<AboutUs />} />
         <Route path="/forgotPassword" element={<ForgotPassword/>} />
+        <Route path="/passwordReset" element={ < PasswordResetForm /> }/>
+        <Route path="/modifyPassword" element={ < ModifyPasswordForm /> }/>
         <Route path="/profile" element={<Profile/>}/>
         <Route path="/anouncement" element={<Anouncement />} />
       </Routes> 
