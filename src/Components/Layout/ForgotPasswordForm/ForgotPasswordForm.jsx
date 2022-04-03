@@ -2,8 +2,11 @@ import axios from 'axios'
 import React , { useState } from 'react'
 import { ButtonEmail } from '../../UI/ButtonEmail/ButtonEmail'
 import './ForgotPassword.css'
+import { NavLink } from 'react-router-dom';
 
 export const ForgotPasswordForm = () => {
+
+    const urlUsers = ''
 
     const[email, setemail] = useState({email: "email"})
 
@@ -32,7 +35,7 @@ export const ForgotPasswordForm = () => {
             <h2 className='forgot-title'>Recuperacion de Contraseña</h2>
             <input className='email-put' type="email" placeholder='Correo electrónico' required onChange={ captureValue }></input>
             <p className='create-account'>no tiene cuenta...<p>Crear una</p></p>
-            <ButtonEmail />
+            <NavLink to='/passwordReset'><ButtonEmail /></NavLink>
             </div>
       </div>
     
