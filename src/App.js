@@ -14,6 +14,7 @@ import { Anouncement } from "./Components/Page/Anouncement/Anouncement";
 import  {StarRating}  from "./Components/UI/StarRating/StarRating";
 import { PasswordResetForm } from "./Components/Layout/PasswordReset/PasswordResetForm";
 import { ModifyPasswordForm } from "./Components/Layout/ConfirmModifyPassword/ModifyPasswordForm";
+import {ShareP} from "./Components/Page/Share/Share"
 
 
 
@@ -34,6 +35,7 @@ function App() {
         <Route path="/modifyPassword" element={ < ModifyPasswordForm /> }/>
         <Route path="/profile" element={<Profile/>}/>
         <Route path="/anouncement" element={<Anouncement />} />
+        <Route path="/share" element={<ShareP/>}/>
       </Routes> 
     </BrowserRouter>
   );
