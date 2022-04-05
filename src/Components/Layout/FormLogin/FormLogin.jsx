@@ -29,13 +29,15 @@ export const FormLogin = () => {
     const login=(()=>{
         axios.get(urlUsers, {params:{email:email, contraseña:password}})
         .then(response=>{
-            console.log(response.data[0].nombre)
-            localStorage.setItem('UserName', response.data[0].nombre)
-            localStorage.setItem('UserLastName', response.data[0].apellidos)
-            localStorage.setItem('PhoneNumber', response.data[0].telefono)
-            localStorage.setItem('UserEmail', response.data[0].email)
-            
-
+            console.log(response.data)
+            if(response.data.length === 0){
+                console.log("usuario no existente")
+            }else{
+                localStorage.setItem('UserName', response.data[0].nombre)
+                localStorage.setItem('UserLastName', response.data[0].apellidos)
+                localStorage.setItem('PhoneNumber', response.data[0].telefono)
+                localStorage.setItem('UserEmail', response.data[0].email)
+            }
         })
         .catch(ex=>{
             console.log(ex);
