@@ -1,0 +1,33 @@
+.information-container{
+    width: 100%;
+    display: flex;
+    padding-bottom: 15%;
+}
+.img-container-settings{
+    width: 80%;
+    border-radius: 100%;
+}
+
+.Image-Profile-settings{
+    width: 8em;
+    height: 8em;
+    border-radius: 150%;
+}
+h2{
+    width: 15%;
+    font-size: 1.8em;
+}
+.Share-links{
+    padding-left: 5%;
+}
+li{
+    list-style-type: none;
+}
+
+.Share-Link{
+    padding: 2%;
+}
+
+.settings-Container{
+    background-color: rgb(238, 238, 238);
+}
