@@ -1,29 +1,33 @@
 import axios from 'axios'
 import React , { useState } from 'react'
-import { ButtonEmail } from '../../UI/ButtonEmail/ButtonEmail'
 import './ForgotPassword.css'
-import { NavLink } from 'react-router-dom';
+import emailjs from '@emailjs/browser';
 
 export const ForgotPasswordForm = () => {
 
-    const urlUsers = ''
+    const EMAILURL = 'https://localhost:44352/api/confirmationEmail'
 
     const[email, setemail] = useState({email: "email"})
 
     const captureValue =((event)=>{
         setemail(event.target.value)
-        validateUser()
     })
 
-    const validateUser = () =>{
-        axios.get(urlUsers, {params:{email:email }})
+    const sendEmail = (event) =>{
+        event.preventDefault()
+        axios.get(EMAILURL,{params:{email:email }})
         .then(response =>{
-            if(response === true ){
-                
+            if(response.data.length === 0){
+                console.log("usuario no existente")
+            }else{
+                console.log(response.data)
+                emailjs.sendForm('service_8uodl5r','template_9ea0axg',event.target,'KYHPZomx00qkEwjDP')
+                .then(res => console.log(res))
+                .catch(err => console.log(err)) 
             }
         })
-    }
 
+    }
 
   return (
       <div className="body-container">
@@ -33,10 +37,12 @@ export const ForgotPasswordForm = () => {
                 <p>Easy House Rent</p>
             </div>
             <h2 className='forgot-title'>Recuperacion de Contraseña</h2>
-            <input className='email-put' type="email" placeholder='Correo electrónico' required onChange={ captureValue }></input>
-            <p className='create-account'>no tiene cuenta...<p>Crear una</p></p>
-            <NavLink to='/passwordReset'><ButtonEmail /></NavLink>
-            </div>
+            <form onSubmit={sendEmail}>
+                <input className='email-put' type="email" placeholder='Correo electrónico' name="user_name" onChange={ captureValue }></input>
+                <p className='create-account'>no tiene cuenta...<p>Crear una</p></p>
+                <button className='send-email'>Enviar</button>
+            </form>
+        </div>
       </div>
     
   )
