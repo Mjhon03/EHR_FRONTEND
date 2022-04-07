@@ -2,15 +2,41 @@
 
 .register-form{
     width: 100%;
+    height: 100vh;
     display: flex;
+    justify-content: center;
+    padding: 4% 0;
 }
 
-.form-register-text{
-    width: 100%;
-    text-align: center;
-    padding: 3% 0;
-    background: #fff;
+.info-input-register{
+    width: 70%;
+    padding: 1% 1%;
+    border: 1px solid grey;
+    margin: 2% 0;
 }
+
+.form-register{
+    outline: solid 1px red;
+    width: 40%;
+    padding: 2% 2%;
+    text-align: center;
+}
+
+.add-register-info{
+    display: flex;
+    width: 72%;
+    margin: auto;
+    justify-content: space-between;
+    padding: 0;
+}
+
+.info-input-add{
+    margin: 0;
+    width: 95%;
+    border: 1px solid grey;
+    padding: 1% 1%;
+}
+
 
 .facebook-auth{
     padding: 10px 10px 10px 10px;
@@ -22,84 +48,3 @@
     font-size: 14px;
     font-weight: 500;  
 }
-
-.facebook-icon{
-    margin: 0 35px 0 0;
-    font-size: 150%;
-    color: #3b5998;
-}
-
-.separator{
-    margin: 6% 0;
-    width: 100%;
-    justify-content: center;
-    display: flex;
-    align-items: center;
-}
-
-.or{
-    margin: 0 2%;
-    font-size: 120%;
-    font-weight: bolder;
-}
-
-.line{
-    width: 30%;
-    height: .1px;
-    background: grey;
-}
-
-.info-register{
-    
-    text-align: start;
-    width: 60%;
-    margin: auto;
-}
-
-.info-input-register{
-    margin: 2% 0;
-    width: 100%;
-    padding:2% 2%;
-    outline:solid 1px grey;
-    border:none;
-}
-
-.phoneNumber-info{
-    width: 70%;
-}
-
-.yearsOld-info{
-    width: 27%;
-}
-
-.info-aditional{
-    margin-top: 5%;
-    padding: 5% 0;
-    width: 100%;
-    outline:solid 1px grey;
-    border:none;
-    text-align: center;
-}
-
-
-.register-submit{
-    font-size: 100%;
-    padding: 2% 20%;
-    margin:5% 0 0 0;
-}
-
-.department-info{
-    display: flex;
-    justify-content: space-between;
-    margin: 0 0 4% 0;
-}
-
-
-
-@media screen and (max-width: 900px){
-    .link-icon{
-        font-size: 90%;
-    }
-    
-}
-

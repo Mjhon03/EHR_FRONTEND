@@ -1,6 +1,5 @@
 import React from 'react'
 import './FormSingUp.css'
-import { RegisterCover } from '../../UI/RegisterCover/RegisterCover'
 import { GoogleAuth } from '../../UI/GoogleAuth/GoogleAuth';
 import { FacebookAuth } from '../../UI/FacebookAuth/FacebookAuth';
 import { SelectDepartment } from '../../UI/SelectDepartment/SelectDepartment';
@@ -100,50 +99,32 @@ export const FormSingUp = () => {
     }
     return (
         <div className="register-form">
-            < RegisterCover />
-            <div className="form-register-text">
-                <form>
+                <form className='form-register'>
                     <FacebookAuth buttonText={"registar por facebook"} />
                 <br></br><br></br>
                     < GoogleAuth />
-                    <div className="separator">
-                        <div className="line"></div>
-                        <p className='or'>OR</p>
-                        <div className="line"></div>
-                    </div>
                     <div className="info-register">
-                    <label>Nombre</label>
-                    <br></br>
-                    <input type="text" maxLength="80" required className='info-input-register' onChange={ setEventToName }></input>
-                    <br></br>
-                    <label>Apellidos</label>
-                    <input type="text" maxLength="80" required className='info-input-register' onChange={ setEventToLastName }></input>
-                    <div className="department-info">
+                    
+                    <input type="text" placeholder='nombre' maxLength="80" required className='info-input-register' onChange={ setEventToName }></input>
+        
+                    <input type="text" placeholder='Apellidos' maxLength="80" required className='info-input-register' onChange={ setEventToLastName }></input>
+                    <div className="add-register-info">
                         <div className="yearsOld-info">
-                            <label>edad</label>
-                            <input type="number" max="800" required className='info-aditional' onChange={ setEventToYearsOld }></input>
+                            <input type="number" max="800"  placeholder='Edad' required className='info-input-add' onChange={ setEventToYearsOld }></input>
                         </div>
                         <div className="phoneNumber-info">
-                            <label>telefono</label>
-                            <input type="text" maxLength="10" placeholder='opcional' required className='info-input-register' onChange={ setEventToPhoneNumber }></input>
+                            <input type="text" maxLength="10" placeholder='Telefono' required className='info-input-add' onChange={ setEventToPhoneNumber }></input>
                         </div>
                     </div>
                     <div className="department-info">
                         <SelectDepartment data={ datadeparment } name={ "Departamento"} event={setNameDepartment}/>
                         <SelectMunicipality data={ datamunicipality} event={getIdMunicipality} />
+                    </div>                 
+                   <input type="email" placeholder='Correo electronico' maxLength="80" required className='info-input-register' onChange={ setEventToEmail } ></input>        
+                    <input type="password" placeholder='Contraseña' minLength='8' required className='info-input-register' onChange={ SetEventToPassword}></input>
                     </div>
-                    <label>Email</label>
-                    <br></br>
-                    <input type="email" maxLength="80" required className='info-input-register' onChange={ setEventToEmail } ></input>
-                    <br></br>
-                    <label>Contraseña</label>
-                    <br></br>
-                    <input type="password" minLength='8' required className='info-input-register' onChange={ SetEventToPassword}></input>
-                    </div>                   
+                    <button className="register-submit" onClick={userRegister}>registrarme</button>                    
                 </form>
-                
-                <button className="register-submit" onClick={userRegister}>registrarme</button>            
-            </div>
         </div>
     )  
 }

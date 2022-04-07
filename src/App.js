@@ -11,7 +11,6 @@ import { AboutUs } from "./Components/Page/AboutUs/AboutUs"
 import { ForgotPassword } from "./Components/Page/ForgotPassword/ForgotPassword";
 import { Profile } from "./Components/Page/Profile/Profile"
 import { Anouncement } from "./Components/Page/Anouncement/Anouncement";
-import  {StarRating}  from "./Components/UI/StarRating/StarRating";
 import { PasswordResetForm } from "./Components/Layout/PasswordReset/PasswordResetForm";
 import { ModifyPasswordForm } from "./Components/Layout/ConfirmModifyPassword/ModifyPasswordForm";
 import {ShareP} from "./Components/Page/Share/Share"
