@@ -2,6 +2,7 @@ import axios from 'axios'
 import React , { useState } from 'react'
 import './ForgotPassword.css'
 import emailjs from '@emailjs/browser';
+import { NavLink } from 'react-router-dom';
 
 export const ForgotPasswordForm = () => {
 
@@ -39,8 +40,10 @@ export const ForgotPasswordForm = () => {
             <h2 className='forgot-title'>Recuperacion de Contraseña</h2>
             <form onSubmit={sendEmail}>
                 <input className='email-put' type="email" placeholder='Correo electrónico' name="user_name" onChange={ captureValue }></input>
-                <p className='create-account'>no tiene cuenta...<p>Crear una</p></p>
-                <button className='send-email'>Enviar</button>
+                <p className='create-account'>no tiene cuenta...<NavLink to="/register"><p className='send-register'>Cree una</p></NavLink></p>
+                <div className="send-content">
+                    <button className='send-email'>Enviar</button>
+                </div>  
             </form>
         </div>
       </div>
