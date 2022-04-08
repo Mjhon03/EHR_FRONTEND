@@ -8,8 +8,6 @@ import { urLDepartments, urlMunicipality, urlUsers } from '../../ApiRoutes';
 import { useState , useEffect } from 'react'
 import axios from 'axios';
 import { postUsers } from '../../../methodsUsers';
-import { type } from '@testing-library/user-event/dist/type';
-
 
 export const FormSingUp = () => {
 
@@ -98,11 +96,13 @@ export const FormSingUp = () => {
         postUsers(name,lastName, parseInt(yearsOld),phoneNumber,email,password,"A",parseInt(iddepartment),parseInt(idmunicipality));
     }
     return (
-        <div className="register-form">
-                <form className='form-register'>
-                    <FacebookAuth buttonText={"registar por facebook"} />
+        <div className="form-register-valid">
+                <form className='register-valid-info'>
+                    <FacebookAuth buttonText={"registrar por facebook"} />
                 <br></br><br></br>
-                    < GoogleAuth />
+                    < GoogleAuth 
+                        
+                    />
                     <div className="info-register">
                     
                     <input type="text" placeholder='nombre' maxLength="80" required className='info-input-register' onChange={ setEventToName }></input>
@@ -110,7 +110,7 @@ export const FormSingUp = () => {
                     <input type="text" placeholder='Apellidos' maxLength="80" required className='info-input-register' onChange={ setEventToLastName }></input>
                     <div className="add-register-info">
                         <div className="yearsOld-info">
-                            <input type="number" max="800"  placeholder='Edad' required className='info-input-add' onChange={ setEventToYearsOld }></input>
+                            <input type="text" max="800"  placeholder='Edad' required className='info-input-add' onChange={ setEventToYearsOld }></input>
                         </div>
                         <div className="phoneNumber-info">
                             <input type="text" maxLength="10" placeholder='Telefono' required className='info-input-add' onChange={ setEventToPhoneNumber }></input>

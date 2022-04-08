@@ -1,50 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;300&family=Roboto:ital,wght@0,100;1,100&family=Ubuntu:ital,wght@0,300;0,400;1,300&display=swap');
-
-.register-form{
+.form-register-valid{
     width: 100%;
     height: 100vh;
     display: flex;
     justify-content: center;
-    padding: 4% 0;
 }
 
-.info-input-register{
-    width: 70%;
-    padding: 1% 1%;
-    border: 1px solid grey;
-    margin: 2% 0;
-}
-
-.form-register{
+.register-valid-info{
     outline: solid 1px red;
-    width: 40%;
-    padding: 2% 2%;
-    text-align: center;
-}
-
-.add-register-info{
-    display: flex;
-    width: 72%;
-    margin: auto;
-    justify-content: space-between;
-    padding: 0;
-}
-
-.info-input-add{
-    margin: 0;
-    width: 95%;
-    border: 1px solid grey;
-    padding: 1% 1%;
-}
-
-
-.facebook-auth{
-    padding: 10px 10px 10px 10px;
-    background-color: rgb(255, 255, 255);
-    color: rgba(0, 0, 0, 0.54);
-    box-shadow: rgb(0 0 0 / 24%) 0px 2px 2px 0px, rgb(0 0 0 / 24%) 0px 0px 1px 0px;
-    border-radius: 2px;
-    border: 1px solid transparent;
-    font-size: 14px;
-    font-weight: 500;  
+    width: 35%;
 }
