@@ -8,8 +8,6 @@ import { urLDepartments, urlMunicipality, urlUsers } from '../../ApiRoutes';
 import { useState , useEffect } from 'react'
 import axios from 'axios';
 import { postUsers } from '../../../methodsUsers';
-import { type } from '@testing-library/user-event/dist/type';
-
 
 export const FormSingUp = () => {
 
@@ -98,32 +96,33 @@ export const FormSingUp = () => {
         postUsers(name,lastName, parseInt(yearsOld),phoneNumber,email,password,"A",parseInt(iddepartment),parseInt(idmunicipality));
     }
     return (
-        <div className="register-form">
-                <form className='form-register'>
-                    <FacebookAuth buttonText={"registar por facebook"} />
-                <br></br><br></br>
-                    < GoogleAuth />
-                    <div className="info-register">
-                    
-                    <input type="text" placeholder='nombre' maxLength="80" required className='info-input-register' onChange={ setEventToName }></input>
-        
-                    <input type="text" placeholder='Apellidos' maxLength="80" required className='info-input-register' onChange={ setEventToLastName }></input>
-                    <div className="add-register-info">
-                        <div className="yearsOld-info">
+        <div className="form-register-valid">
+                <form className='register-valid-info'>
+                    <FacebookAuth buttonText={"Iniciar sesion con facebook"} />
+                    <br></br><br></br>
+                    < GoogleAuth
+                        buttonText={"iniciar sesion con Google"}
+                    />
+                    <div className="separator-container">
+                        <div className="line-separator"/>
+                        <p className='separator-info'>OR</p>
+                        <div className="line-separator"/>
+                    </div>
+                    <div className="info-register"> 
+                        <input type="text" placeholder='nombre' maxLength="80" required className='info-input-register' onChange={ setEventToName }></input><br></br>         
+                        <input type="text" placeholder='Apellidos' maxLength="80" required className='info-input-register' onChange={ setEventToLastName }></input>
+                        <div className="add-register-info">
                             <input type="number" max="800"  placeholder='Edad' required className='info-input-add' onChange={ setEventToYearsOld }></input>
+                            <input type="numbers" maxLength="10" placeholder='Telefono' required className='info-input-add' onChange={ setEventToPhoneNumber }></input>         
                         </div>
-                        <div className="phoneNumber-info">
-                            <input type="text" maxLength="10" placeholder='Telefono' required className='info-input-add' onChange={ setEventToPhoneNumber }></input>
-                        </div>
+                        <div className="department-info">
+                            <SelectDepartment data={ datadeparment } name={"Departamento"} event={setNameDepartment}/>
+                            <SelectMunicipality data={ datamunicipality} name={"Municipio"} event={getIdMunicipality} />
+                        </div>                 
+                        <input type="email" placeholder='Correo electronico' maxLength="80" required className='info-input-register' onChange={ setEventToEmail } ></input>        
+                        <input type="password" placeholder='Contraseña' minLength='8' required className='info-input-register' onChange={ SetEventToPassword}></input>
                     </div>
-                    <div className="department-info">
-                        <SelectDepartment data={ datadeparment } name={ "Departamento"} event={setNameDepartment}/>
-                        <SelectMunicipality data={ datamunicipality} event={getIdMunicipality} />
-                    </div>                 
-                   <input type="email" placeholder='Correo electronico' maxLength="80" required className='info-input-register' onChange={ setEventToEmail } ></input>        
-                    <input type="password" placeholder='Contraseña' minLength='8' required className='info-input-register' onChange={ SetEventToPassword}></input>
-                    </div>
-                    <button className="register-submit" onClick={userRegister}>registrarme</button>                    
+                    <button className="register-submit" onClick={userRegister}>REGISTRAR</button>                    
                 </form>
         </div>
     )  

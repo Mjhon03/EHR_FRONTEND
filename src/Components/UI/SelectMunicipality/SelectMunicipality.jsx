@@ -3,12 +3,12 @@ import './SelectMunicipality.css'
 
 export const SelectMunicipality = ({ data , event }) => {
   return (
-    <select className='selector' onChange={event}>
-        <option placeholder='Municipio'></option>
+    <select className='select-municipality' onChange={event} >
+        <option value='municipality'>Municipio</option>
         {
             data.map(element =>(
                 <>
-                    <option value={element.idmunicipio}>{element.nombre}</option>
+                    <option value={element.idmunicipio}>{element.nombre} </option>
                 </>
             ))
         }
