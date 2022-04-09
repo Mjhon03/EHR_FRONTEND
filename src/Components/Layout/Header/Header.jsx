@@ -27,14 +27,14 @@ export const Header = () => {
                     </ul>
                 </li>
                 <NavLink to="/contact"><li><p className="desktop-link">Contacto</p></li></NavLink>
-                <NavLink to="/aboutUs"><li><p>About</p></li></NavLink>
+                <NavLink to="/aboutUs"><li><p>Nosotros</p></li></NavLink>
                 <NavLink to="/register"><li><p>Registrarme</p></li></NavLink>
 
             </ul>
         </div>
         <label htmlFor="show-search" class="search-icon"><FontAwesomeIcon icon={ faSearch }></FontAwesomeIcon></label>
         <form action="#" className="search-box">
-            <input type="text" placeholder="Busca por Zona , lugar o nombre" required></input>
+            <input className='search-box-home' type="text" placeholder="Busca por zona , lugar o nombre" required></input>
             <button type="submit" class="go-icon"><FontAwesomeIcon icon={ faLongArrowAltRight }></FontAwesomeIcon></button>
         </form>
         </nav>

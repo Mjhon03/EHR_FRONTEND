@@ -38,3 +38,20 @@
     color: rgba(154,204,207,1);
 }
 
+@media screen and (max-width: 900px){
+    .footer-relinks{
+        width: 30%;
+    }
+}
+
+@media screen and (max-width: 400px){
+    .footer-icon{
+        font-size: 120%;
+        margin: 0 4%;
+    }
+
+    .footer-relinks{
+        width: 60%;
+    }
+}
+

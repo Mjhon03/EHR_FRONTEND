@@ -3,6 +3,6 @@ import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
 
 /* media querys */
 
-@media screen and (max-width: 400px)
-@media screen and (max-width: 900px)
 @media screen and (max-width: 1250px)
+@media screen and (max-width: 900px)
+@media screen and (max-width: 400px)
