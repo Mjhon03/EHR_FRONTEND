@@ -1,33 +1,25 @@
 import React from 'react'
 import { Header } from '../../Layout/Header/Header'
-import { HomeCover } from '../../UI/HomeCover/HomeCover'
-import { HomeImgCover } from '../../UI/HomeImgCover/HomeImgCover'
-import { Footer } from '../../Layout/Footer/Footer'
+import { HomeSection } from '../../Layout/HomeSection/HomeSection'
+import { MostPopular } from '../../Layout/MostPopular/MostPopular'
 import './Home.css'
 
 
 
 export const Home = () => {
-  const URL = 'https://cdn.pixabay.com/photo/2017/04/06/02/46/bogota-2207075_960_720.jpg'
   
-  const userData = () =>{
-    localStorage.getItem('UserName')
-    localStorage.getItem('UserLastName')
-    localStorage.getItem('PhoneNumber')
-    localStorage.getItem('UserEmail')
-  }
+  // const userData = () =>{
+  //   localStorage.getItem('UserName')
+  //   localStorage.getItem('UserLastName')
+  //   localStorage.getItem('PhoneNumber')
+  //   localStorage.getItem('UserEmail')
+  // }
   
   return (
     <div>
         < Header />
-        <div className="img-responsive-container">
-          <img className='img-responsive' src={ URL} alt="home" />
-          </div>
-        <div className="home-container">  
-           < HomeCover className="cover"></HomeCover>
-           < HomeImgCover />
-        </div>
-        <Footer/>
+        <HomeSection />
+        < MostPopular />
     </div>
 
   )

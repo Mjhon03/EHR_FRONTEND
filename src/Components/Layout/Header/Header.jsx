@@ -1,44 +1,43 @@
 import React from 'react'
-import './Header.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMagnifyingGlass, faLongArrowAltRight , faBars } from '@fortawesome/free-solid-svg-icons'
-import { NavLink } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faBars , faSearch , faLongArrowAltRight} from '@fortawesome/free-solid-svg-icons'
+import './Header.css'
+import { NavLink } from 'react-router-dom'
 
 export const Header = () => {
   return (
-    <div className="wrapper">
+    <div class="wrapper">
         <nav>
-        <input type="checkbox" id="show-search"/>
-        <input type="checkbox" id="show-menu"/>
-        <label htmlFor="show-menu" className="menu-icon"><FontAwesomeIcon icon={ faBars }></FontAwesomeIcon></label>
+        <input type="checkbox" id="show-search"></input>
+        <input type="checkbox" id="show-menu"></input>
+        <label for="show-menu" class="menu-icon"><FontAwesomeIcon icon={ faBars }></FontAwesomeIcon></label>
         <div className="content">
-        <div className="logo"><p>EHR</p></div>
+        <div className="logo"><NavLink to="/"><p>EHR</p></NavLink></div>
             <ul className="links">
-                <NavLink to="/"><li><p>Incio</p></li></NavLink>
-                <NavLink to="/"><li><p>Populares</p></li></NavLink>
-                <NavLink to="/contact"><li><p>Contacto</p></li></NavLink>
+                <NavLink to="/"><li><p>Inicio</p></li></NavLink>
                 <li>
                     <p className="desktop-link">Categorias</p>
-                    <input type="checkbox" id="show-features"/>
+                    <input type="checkbox" id="show-features"></input>
                     <label htmlFor="show-features">Categorias</label>
                     <ul>
-                    <li><p>Apartamentos</p></li>
-                    <li><p>Hogares</p></li>
-                    <li><p>fincas</p></li>
                     <li><p>En venta</p></li>
-                    <li><p>En arriendo</p></li>
+                    <li><p>Ultimas Publicaciones</p></li>
+                    <li><p>Apartamentos</p></li>
+                    <li><p>Arrendos</p></li>
                     </ul>
                 </li>
-                <NavLink to="/login"><li><p>ingresar</p></li></NavLink>
-                <NavLink to="/register"><li><p>registrar</p></li></NavLink>
+                <NavLink to="/contact"><li><p className="desktop-link">Contacto</p></li></NavLink>
+                <NavLink to="/aboutUs"><li><p>Nosotros</p></li></NavLink>
+                <NavLink to="/register"><li><p>Registrarme</p></li></NavLink>
+
             </ul>
         </div>
-        <label htmlFor="show-search" className="search-icon"><FontAwesomeIcon icon={ faMagnifyingGlass }></FontAwesomeIcon></label>
+        <label htmlFor="show-search" class="search-icon"><FontAwesomeIcon icon={ faSearch }></FontAwesomeIcon></label>
         <form action="#" className="search-box">
-            <input type="text" placeholder="Type Something to Search..." required/>
-            <button type="submit" className="go-icon"><FontAwesomeIcon icon={ faLongArrowAltRight }></FontAwesomeIcon></button>
+            <input className='search-box-home' type="text" placeholder="Busca por zona , lugar o nombre" required></input>
+            <button type="submit" class="go-icon"><FontAwesomeIcon icon={ faLongArrowAltRight }></FontAwesomeIcon></button>
         </form>
-    </nav>
+        </nav>
   </div>
   )
 }

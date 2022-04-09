@@ -8,6 +8,7 @@ import { urLDepartments, urlMunicipality, urlUsers } from '../../ApiRoutes';
 import { useState , useEffect } from 'react'
 import axios from 'axios';
 import { postUsers } from '../../../methodsUsers';
+import { NavLink } from 'react-router-dom';
 
 export const FormSingUp = () => {
 
@@ -98,7 +99,7 @@ export const FormSingUp = () => {
     return (
         <div className="form-register-valid">
                 <form className='register-valid-info'>
-                    <FacebookAuth buttonText={"Iniciar sesion con facebook"} />
+                    <FacebookAuth buttonText={"Ingresar con facebook"} />
                     <br></br><br></br>
                     < GoogleAuth
                         buttonText={"iniciar sesion con Google"}
@@ -122,7 +123,11 @@ export const FormSingUp = () => {
                         <input type="email" placeholder='Correo electronico' maxLength="80" required className='info-input-register' onChange={ setEventToEmail } ></input>        
                         <input type="password" placeholder='Contraseña' minLength='8' required className='info-input-register' onChange={ SetEventToPassword}></input>
                     </div>
-                    <button className="register-submit" onClick={userRegister}>REGISTRAR</button>                    
+                    <button className="register-submit" onClick={userRegister}>REGISTRAR</button>
+                    <div className="create-account-login create-account-register">
+                        <p>ya tienes cuenta.. </p>
+                        <NavLink to="/login"><p className='create-account-link'>iniciar sesion</p></NavLink>
+                    </div>                
                 </form>
         </div>
     )  

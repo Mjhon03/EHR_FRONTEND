@@ -95,3 +95,23 @@
     height: 1px;
     border: solid .1px grey;
 }
+
+.create-account-register{
+    margin: 4% 0 0 0;
+}
+
+/* @media screen and (max-width: 900px)
+@media screen and (max-width: 1250px) */
+
+@media screen and (max-width: 900px){
+    .register-valid-info{
+        width: 70%;
+    }
+}
+
+@media screen and (max-width: 450px){
+    .register-valid-info{
+        width: 90%;
+    }
+}
+

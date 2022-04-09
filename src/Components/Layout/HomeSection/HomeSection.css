@@ -1,0 +1,100 @@
+.home-section-container{
+    background: url("https://cdn.pixabay.com/photo/2021/01/19/14/45/alley-5931413_960_720.jpg");
+    margin: auto;
+    width: 100%;
+    height: 40rem;
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    padding: 10% 0 0 0;
+}
+
+.home-section-info{
+    width: 80%;
+    text-align: center;
+}
+
+
+.section-container-slogan{
+    font-size:110%;
+    color: rgba(256,256,256,0.65);
+    margin-bottom: -2%;
+}
+
+.section-container-title{
+    letter-spacing: 3px;
+    font-size: 4.9rem;
+    color: #FFFFFF;
+    
+}
+
+.search-home-container{
+    width: 80%;
+    margin: 2% auto;
+    display: flex;
+    justify-content: center;
+    gap: 1%;
+}
+
+.search-box-home{
+    width: 70%;
+    padding: 1% 2%;
+    border-radius: 30px;
+    border: none;
+    transition: 0.2s ease;
+}
+
+.search-box-home:focus{
+    border: none;
+    outline: 2px solid rgba(136,136,136,0.70);
+}
+
+.search-home-submit{
+    color: #FFFFFF;
+    font-weight: bolder;
+    font-size: 105%;
+    width: 14%;
+    padding: 1% 2%;
+    border-radius: 30px;
+    border: none;
+    background: #1FCCFC;
+    transition: .5s ease;
+}
+
+.search-home-submit:hover{
+    color: #1FCCFC;
+    background: #FFFFFF;
+    transform: scale(102%);
+}
+
+.content-page-info{
+    width: 100%;
+    margin: 5% 0;
+    display: flex;
+    justify-content: space-around;
+    gap: 2%;
+}
+
+.apartment-info,.rent-info,.cabin-info{
+    width: 35%;
+    padding: 2%;
+    display: flex;
+    align-items: center;
+    background: rgba(220,220,220,0.75);
+    justify-content: center;
+}
+
+.apartment-text,.rent-text,.cabin-text{
+    width: 70%;
+    padding: 1%;
+}
+
+.house-icon{
+    width: 30%;
+    padding: 1%;
+}
+
+.icon-home-title{
+    font-size: 130%;
+}
