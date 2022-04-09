@@ -1,10 +1,10 @@
 import React from 'react'
 import './SelectDepartment.css'
 
-export const SelectDepartment = ({ data , event  , name }) => {
+export const SelectDepartment = ({ data , event }) => {
   return (
-    <select className='selector' onChange={event}>
-        <option value='departments'>{ name }</option>
+    <select className='select-department' onChange={event}>
+        <option value='departments'>Departamento</option>
         {
             data.map(element =>(
                 <>

@@ -4,7 +4,7 @@ import { postUsers } from '../../../methodsUsers';
 import axios, { Axios } from 'axios';
 import { urlUsers } from '../../ApiRoutes';
 
-export const GoogleAuth = () => {
+export const GoogleAuth = ({ buttonText }) => {
 
     const[goEmail, setGoEmail] = useState({email: "email"})
     const[goPassword, setGoPassword] = useState({password: "password"})
@@ -54,10 +54,10 @@ export const GoogleAuth = () => {
     return (
         < GoogleLogin
             clientId="502993702484-vkdcg537aa1ip1r14mab9s11dt7lf2i2.apps.googleusercontent.com"
-            buttonText="Iniciar sesión con Google"
+            buttonText={ buttonText }
             onSuccess={responseGoogle}
             onFailure={responseGoogle}
-            cookiePolicy={'single_host_origin'}
+            cookiePolicy={'single_host_origin'} 
         />
     )
 }
