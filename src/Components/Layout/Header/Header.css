@@ -8,9 +8,8 @@
 }
 .wrapper{
   background: #171c24;
-  position: sticky;
+  position: fixed;
   width: 100%;
-  z-index: 2;
 }
 .wrapper nav{
   position: relative;
@@ -28,7 +27,6 @@ nav .content{
 nav .content .links{
   margin-left: 80px;
   display: flex;
-  z-index: 2;
 }
 .content .logo p{
   color: #fff;
@@ -37,7 +35,8 @@ nav .content .links{
 }
 .content .links li{
   list-style: none;
-  
+  line-height: 30px;
+  margin: 0 1%;
 }
 .content .links li p,
 .content .links li label{
@@ -70,7 +69,6 @@ nav .content .links{
 .wrapper #show-search:checked ~ .search-icon i::before{
   content: "\f00d";
 }
-
 .wrapper .search-box{
   position: absolute;
   height: 100%;
@@ -114,8 +112,7 @@ nav .content .links{
 .wrapper input[type="checkbox"]{
   display: none;
 }
-
-/* Dropdown  */
+/* Dropdown Menu code start */
 .content .links ul{
   position: absolute;
   background: #171c24;
@@ -147,8 +144,7 @@ nav .content .links{
 .content .links ul li:hover ul{
   top: 0;
 }
-
-/* Responsive  */
+/* Responsive code start */
 @media screen and (max-width: 1250px){
   .wrapper nav{
     max-width: 100%;
@@ -167,7 +163,6 @@ nav .content .links{
     padding: 0 100px 0 15px;
   }
 }
-
 @media screen and (max-width: 900px){
   .wrapper .menu-icon{
     display: block;
@@ -206,8 +201,7 @@ nav .content .links{
   .content .links li p.desktop-link{
     display: none;
   }
-
-  /* dropdown responsive  */
+  /* dropdown responsive code start */
   .content .links ul,
   .content .links ul ul{
     position: static;
@@ -217,7 +211,9 @@ nav .content .links{
     max-height: 0px;
     overflow: hidden;
   }
-  .content .links #show-features:checked ~ ul{
+  .content .links #show-features:checked ~ ul,
+  .content .links #show-services:checked ~ ul,
+  .content .links #show-items:checked ~ ul{
     max-height: 100vh;
   }
   .content .links ul li{
@@ -229,12 +225,11 @@ nav .content .links{
     border-radius: 5px!important;
   }
 }
-
 @media screen and (max-width: 400px){
   .wrapper nav{
     padding: 0 10px;
   }
-  .content .logo a{
+  .content .logo p{
     font-size: 27px;
   }
   .wrapper .search-box{
@@ -248,4 +243,13 @@ nav .content .links{
     padding-right: 30px;
   }
 }
-
+.dummy-text{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  z-index: -1;
+  padding: 0 20px;
+  text-align: center;
+  transform: translate(-50%, -50%);
+}
