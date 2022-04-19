@@ -79,20 +79,21 @@
 .apartment-info,.rent-info,.cabin-info{
     width: 35%;
     padding: 2%;
-    display: flex;
     align-items: center;
     background: rgba(220,220,220,0.75);
     justify-content: center;
 }
 
 .apartment-text,.rent-text,.cabin-text{
-    width: 70%;
+    width: 100%;
+    display: flex;
     padding: 1%;
 }
 
 .house-icon{
-    width: 30%;
+    width: 35%;
     padding: 1%;
+    margin: 2%;
 }
 
 .icon-home-title{

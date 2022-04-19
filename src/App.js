@@ -14,6 +14,7 @@ import { Anouncement } from "./Components/Page/Anouncement/Anouncement";
 import { PasswordResetForm } from "./Components/Layout/PasswordReset/PasswordResetForm";
 import { ModifyPasswordForm } from "./Components/Layout/ConfirmModifyPassword/ModifyPasswordForm";
 import {ShareP} from "./Components/Page/Share/Share"
+import { Page404 } from "./Components/Page/Page404/Page404";
 
 
 
@@ -25,17 +26,18 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={< Home/>} />
-        <Route path="/Contact" element={<Contact />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/aboutUs" element={<AboutUs />} />
-        <Route path="/forgotPassword" element={<ForgotPassword/>} />
-        <Route path="/passwordReset" element={ < PasswordResetForm /> }/>
-        <Route path="/modifyPassword" element={ < ModifyPasswordForm /> }/>
-        <Route path="/profile" element={<Profile/>}/>
-        <Route path="/anouncement" element={<Anouncement />} />
-        <Route path="/share" element={<ShareP/>}/>
+        <Route exact path="/" element={< Home/>} />
+        <Route exact path="/Contact" element={<Contact />} />
+        <Route exact path="/login" element={<Login />} />
+        <Route exact path="/register" element={<Register />} />
+        <Route exact path="/aboutUs" element={<AboutUs />} />
+        <Route exact path="/forgotPassword" element={<ForgotPassword/>} />
+        <Route exact path="/passwordReset" element={ < PasswordResetForm /> }/>
+        <Route exact path="/modifyPassword" element={ < ModifyPasswordForm /> }/>
+        <Route exact path="/profile" element={<Profile/>}/>
+        <Route exact path="/anouncement" element={<Anouncement />} />
+        <Route exact path="/share" element={<ShareP/>}/>
+        <Route exact path="*" element={<Page404/>}/>
       </Routes> 
     </BrowserRouter>
   );
