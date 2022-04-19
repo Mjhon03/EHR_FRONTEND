@@ -15,18 +15,7 @@ export const Header = () => {
         <div className="logo"><NavLink to="/"><p>EHR</p></NavLink></div>
             <ul className="links">
                 <NavLink to="/"><li><p>Inicio</p></li></NavLink>
-                <li>
-                    <p className="desktop-link">Categorias</p>
-                    <input type="checkbox" id="show-features"></input>
-                    <label htmlFor="show-features">Categorias</label>
-                    <ul>
-                    <li><p>En venta</p></li>
-                    <li><p>Ultimas Publicaciones</p></li>
-                    <li><p>Apartamentos</p></li>
-                    <li><p>Arrendos</p></li>
-                    </ul>
-                </li>
-                <NavLink to="/contact"><li><p className="desktop-link">Contacto</p></li></NavLink>
+                <NavLink to="/contact"><li><p>Contacto</p></li></NavLink>
                 <NavLink to="/aboutUs"><li><p>Nosotros</p></li></NavLink>
                 <NavLink to="/register"><li><p>Registrarme</p></li></NavLink>
 

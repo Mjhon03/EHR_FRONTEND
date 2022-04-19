@@ -2,6 +2,8 @@ import React from 'react'
 import { Header } from '../../Layout/Header/Header'
 import { HomeSection } from '../../Layout/HomeSection/HomeSection'
 import { MostPopular } from '../../Layout/MostPopular/MostPopular'
+import { CategoriesBar } from '../../UI/CategoriesBar/CategoriesBar'
+import { RegisterFooter } from '../../Layout/RegisterFooter/RegisterFooter'
 import './Home.css'
 
 
@@ -19,7 +21,9 @@ export const Home = () => {
     <div>
         < Header />
         <HomeSection />
-        < MostPopular />
+        <CategoriesBar />
+        <MostPopular />
+        <RegisterFooter />
     </div>
 
   )

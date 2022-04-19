@@ -16,23 +16,23 @@ export const HomeSection = () => {
             </div>
             <div className="content-page-info">
                 <div className="apartment-info">
-                    <img className="house-icon" src='https://cdn-icons.flaticon.com/png/512/767/premium/767201.png?token=exp=1649531893~hmac=2d3202478e5be3cc8e472d06f5d4d84d' alt='apartment-icon'></img>
+                    <h3 className='icon-home-title'>diversidad de inmuebles</h3>
                     <div className="apartment-text">
-                        <h3 className='icon-home-title'>diversidad de inmuebles</h3>
+                        <img className="house-icon" src='https://cdn-icons-png.flaticon.com/512/916/916771.png' alt='apartment-icon'></img>
                         <p>no solo viviendas, tambien contamos con locales, apartamentos... etc</p>
                     </div>
                 </div>
                 <div className="rent-info">
-                    <img className="house-icon" src='https://cdn-icons-png.flaticon.com/512/1786/1786971.png' alt='apartment-icon'></img>       
+                   <h3 className='icon-home-title'>facilidad de contacto</h3>
                     <div className="rent-text">
-                        <h3 className='icon-home-title'>facilidad de contacto</h3>
+                        <img className="house-icon" src='https://cdn-icons-png.flaticon.com/512/1786/1786971.png' alt='apartment-icon'></img>       
                         <p>contamos con medios que falicitan el contacto entre usuario y propietario</p>
                     </div>
                 </div>
                 <div className="cabin-info">
-                    <img className="house-icon" src='https://cdn-icons-png.flaticon.com/512/2971/2971926.png' alt='apartment-icon'></img>       
+                    <h3 className='icon-home-title'>diversidad de sectores</h3>
                     <div className="cabin-text">
-                        <h3 className='icon-home-title'>ambieguedad de sectores</h3>
+                        <img className="house-icon" src='https://cdn-icons-png.flaticon.com/512/2971/2971926.png' alt='apartment-icon'></img>       
                         <p>publicaciones ofertadas no solo en sector urbano, tambien en sector rural</p>
                     </div>
                 </div>
