@@ -29,41 +29,18 @@
 }
 
 .category-one{
-    background: rgba(243,152,147,1);
-}
-
-.category-two{
-    background: rgba(245,165,114,1);
-}
-
-.category-three{
-    background: rgba(171,209,148,1);
-}
-
-.category-four{
-    background: rgba(33,137,140,1);
-}
-
-.category-five{
-    background: rgba(83,187,180,1);
+    background: rgb(117,126,133);
 }
 
 .color-icon-one{
-    color:#BF7874;
+    color: rgb(37,46,53);
+}
+
+.category-two{
+    background: rgb(89,228,168) ;
 }
 
 .color-icon-two{
-    color:#BD7658;
-}
-
-.color-icon-three{
-    color:#8EAC7A;
-}
-
-.color-icon-four{
-    color:#17666A;
-}
-
-.color-icon-five{
-    color:#43958F;
+    color: rgb(9,138,88)
+    
 }

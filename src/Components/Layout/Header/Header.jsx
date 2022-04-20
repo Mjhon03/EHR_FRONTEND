@@ -15,6 +15,7 @@ export const Header = () => {
         <div className="logo"><NavLink to="/"><p>EHR</p></NavLink></div>
             <ul className="links">
                 <NavLink to="/"><li><p>Inicio</p></li></NavLink>
+                <NavLink to="/"><li><p>Populares</p></li></NavLink>
                 <NavLink to="/contact"><li><p>Contacto</p></li></NavLink>
                 <NavLink to="/aboutUs"><li><p>Nosotros</p></li></NavLink>
                 <NavLink to="/register"><li><p>Registrarme</p></li></NavLink>
