@@ -41,6 +41,7 @@
 @media screen and (max-width: 900px){
     .footer-relinks{
         width: 30%;
+        margin: 2% auto;
     }
 }
 

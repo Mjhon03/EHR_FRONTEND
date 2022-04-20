@@ -13,7 +13,7 @@ export const Page404 = () => {
                 <div className="info-error">
                     <h1 className='error-title'>Oooops!</h1>
                     <p className='error-subtitle'>lo sentimos, Pagina no encontrada...</p>
-                    <p className='error-subtitled'>Intenta buscar otra cosa</p>
+                    <p className='error-subtitle'>Intenta buscar otra cosa</p>
                     <button className='error-relink'>Regresar al inicio</button>
 
                 </div>
