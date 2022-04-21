@@ -11,17 +11,17 @@ export const CategoriesBar = () => {
             <FontAwesomeIcon className='category-icon color-icon-one' icon={ faHouse }></FontAwesomeIcon>
             <p className='color-icon-one'>Hogares</p>
         </div>
-        <div className="categories-bar-container category-two">
-            <FontAwesomeIcon className='category-icon color-icon-two'  icon={ faHouseUser }></FontAwesomeIcon>
-            <p className='color-icon-two'>Rentas</p>
+        <div className="categories-bar-container category-one">
+            <FontAwesomeIcon className='category-icon color-icon-one'  icon={ faHouseUser }></FontAwesomeIcon>
+            <p className='color-icon-one'>Rentas</p>
         </div>
         <div className="categories-bar-container category-one">
             <FontAwesomeIcon className='category-icon color-icon-one' icon={ faTractor }></FontAwesomeIcon>
             <p className='color-icon-one'>Rural</p>
         </div>
-        <div className="categories-bar-container category-two">
-            <FontAwesomeIcon className='category-icon color-icon-two'  icon={ faBuilding }></FontAwesomeIcon>
-            <p className='color-icon-two'>Apartamentos</p>
+        <div className="categories-bar-container category-one">
+            <FontAwesomeIcon className='category-icon color-icon-one'  icon={ faBuilding }></FontAwesomeIcon>
+            <p className='color-icon-one'>Apartamentos</p>
         </div>
         <div className="categories-bar-container  category-one">
             <FontAwesomeIcon className='category-icon color-icon-one'  icon={ faShop }></FontAwesomeIcon>
