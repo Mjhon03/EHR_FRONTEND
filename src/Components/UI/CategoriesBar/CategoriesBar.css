@@ -13,7 +13,7 @@
     margin: 0 1%;
     padding: 1.5% 0;
     text-align: center;
-    -webkit-box-shadow: 5px 5px 7px 0px #545454; 
+    -webkit-box-shadow: 5px 5px 4px 0px #656565; 
     box-shadow: 5px 5px 7px 0px #545454;
     transition: 0.2s ease;
 }
@@ -29,7 +29,7 @@
 }
 
 .category-one{
-    outline:solid 1px red;
+    outline:solid 1px #000;
 }
 
 .color-icon-one{

@@ -42,6 +42,7 @@
     border-radius: 30px;
     border: none;
     transition: 0.2s ease;
+    text-align: center;
 }
 
 .search-box-home:focus{
@@ -52,24 +53,23 @@
 .search-home-submit{
     font-weight: bolder;
     font-size: 105%;
-    width: 14%;
+    width: 16%;
     padding: 1% 2%;
     border-radius: 30px;
     border: none;
     transition: .5s ease;
-    color: rgb(89,228,168) ;
+    color: #FFFFFF ;
     background : rgb(37,46,53);
 }
 
 .search-home-submit:hover{
     background: rgb(89,228,168) ;
-    color : rgb(37,46,53);
+    color : #FFFFFF;
     transform: scale(105%);
 }
 
 .content-page-info{
     display: flex;
-    padding: 2%  0 0 0 ;
     width: 100%;
     justify-content: space-around;
 }
@@ -93,4 +93,101 @@
     text-align: center;
     width: 100%;
     margin: 2% auto;
+}
+
+@media screen and (max-width:900px){
+    .search-home-submit{
+        font-size: 90%;
+        width: 20%;
+    }
+
+    .rent-info{
+        outline: solid 1px red;
+        width: 100%;
+    }
+
+    .rent-text-title{
+        font-size: 100%;
+        font-weight: bolder;
+    }
+
+    .rent-info-text{
+        font-size: 90%;
+        width: 90%;
+        margin: 2% auto;
+    }
+}
+
+@media screen and (max-width:720px){
+    .section-container-title{
+        line-height: 65px;
+        font-size: 3.2rem;
+        width: 100%;
+        margin: 2% auto;
+    }
+
+    .rent-text-title{
+        font-size: 150%;
+    }
+
+    .rent-info-text{
+        font-size: 110%;
+        width: 75%;
+        margin: 2% auto;
+    }
+
+    .rent-info{
+        outline: solid 1px red;
+        width: 100%;
+    }
+
+    .house-icon{
+        width: 5rem;
+    }
+
+    .content-page-info{
+        flex-wrap: wrap;
+         
+    }
+
+    .search-box-home{
+        width: 120%;
+        padding: 2% 5%;
+    }
+
+    .search-box-home::placeholder{
+        font-size: 120%;
+    }
+
+    .search-home-submit{
+        display: none;
+    }
+
+    .search-box-home{
+        font-size: 60%;
+        padding: 3% 5%;
+        
+    }
+}
+
+@media screen and (max-width:400px){
+    .section-container-title{
+        margin: 2% auto 8% auto;
+        font-size: 2.6rem;
+        line-height: 40px;
+        letter-spacing: 1px;
+        text-align: center;
+    }
+
+    .section-container-slogan{
+        font-size:70%;
+        color: rgba(256,256,256,0.65);
+        margin-bottom: -2%;
+    }
+
+    .search-home-container{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 }

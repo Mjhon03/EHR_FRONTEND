@@ -15,8 +15,8 @@ export const RegisterFooter = () => {
             <FontAwesomeIcon className="footer-icon" icon={faWhatsapp}></FontAwesomeIcon>
         </div>
         <div className="footer-relinks">
-            <p>PRIVACY POLICY</p>
-            <p>ABOUT US</p>
+            <NavLink to="/aboutUs" className="footer-textInfo"><p>PRIVACY POLICY</p></NavLink>
+            <NavLink to="/aboutUs" className="footer-textInfo"><p>ABOUT US</p></NavLink>
         </div>
     </div>
   )
