@@ -53,9 +53,7 @@ nav .content .links{
 .content .links li label{
   display: none;
 }
-/* .content .links li p:hover,
-.content .links li label:hover{
-} */
+
 .wrapper .search-icon,
 .wrapper .menu-icon{
   color: #fff;
@@ -79,7 +77,7 @@ nav .content .links{
   width: 100%;
   opacity: 0;
   pointer-events: none;
-  transition: all 0.3s ease;
+  transition: all 0.4s ease;
 }
 .wrapper #show-search:checked ~ .search-box{
   opacity: 1;
@@ -87,7 +85,7 @@ nav .content .links{
 }
 
 .links li p:hover{
-  font-size: 1.5rem;
+  font-size: 1.3rem;
 }
 
 .search-box input{
@@ -128,7 +126,8 @@ nav .content .links{
 .wrapper input[type="checkbox"]{
   display: none;
 }
-/* Dropdown Menu code start */
+
+
 .content .links ul{
   position: absolute;
   top: 80px;
@@ -159,7 +158,7 @@ nav .content .links{
 .content .links ul li:hover ul{
   top: 0;
 }
-/* Responsive code start */
+
 @media screen and (max-width: 1250px){
   .wrapper nav{
     max-width: 100%;
@@ -182,6 +181,7 @@ nav .content .links{
   .wrapper .menu-icon{
     display: block;
   }
+
   .wrapper #show-menu:checked ~ .menu-icon i::before{
     content: "\f00d";
   }
@@ -215,30 +215,8 @@ nav .content .links{
   .content .links li p.desktop-link{
     display: none;
   }
-  /* dropdown responsive code start */
-  .content .links ul,
-  .content .links ul ul{
-    position: static;
-    opacity: 1;
-    visibility: visible;
-    background: none;
-    max-height: 0px;
-    overflow: hidden;
-  }
-  .content .links #show-features:checked ~ ul,
-  .content .links #show-services:checked ~ ul,
-  .content .links #show-items:checked ~ ul{
-    max-height: 100vh;
-  }
-  .content .links ul li{
-    margin: 7px 20px;
-  }
-  .content .links ul li p{
-    font-size: 18px;
-    line-height: 30px;
-    border-radius: 5px!important;
-  }
 }
+
 @media screen and (max-width: 400px){
   .wrapper nav{
     padding: 0 10px;

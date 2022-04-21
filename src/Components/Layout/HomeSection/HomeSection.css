@@ -2,12 +2,11 @@
     background: url("https://cdn.pixabay.com/photo/2021/01/19/14/45/alley-5931413_960_720.jpg");
     margin: auto;
     width: 100%;
-    height: 40rem;
     background-repeat: no-repeat;
     background-size: cover;
     display: flex;
     justify-content: center;
-    padding: 10% 0 0 0;
+    padding: 8% 0;
 }
 
 .home-section-info{
@@ -69,33 +68,29 @@
 }
 
 .content-page-info{
-    width: 100%;
-    margin: 5% 0;
     display: flex;
+    padding: 2%  0 0 0 ;
+    width: 100%;
     justify-content: space-around;
-    gap: 2%;
 }
 
-.apartment-info,.rent-info,.cabin-info{
-    width: 35%;
+.rent-info{
+    width: 30%;
     padding: 2%;
-    align-items: center;
-    background: rgba(220,220,220,0.75);
-    justify-content: center;
-}
-
-.apartment-text,.rent-text,.cabin-text{
-    width: 100%;
-    display: flex;
-    padding: 1%;
+    text-align: center;
 }
 
 .house-icon{
-    width: 35%;
-    padding: 1%;
-    margin: 2%;
+    width: 20%;
+    margin: 0 0 4% 0;
+}
+.rent-text-title{
+    font-size: 120%;
+    font-weight: bolder;
 }
 
-.icon-home-title{
-    font-size: 130%;
+.rent-info-text{
+    text-align: center;
+    width: 100%;
+    margin: 2% auto;
 }

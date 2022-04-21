@@ -4,7 +4,6 @@
     margin: 2% auto;
     padding: 0 1%;
     justify-content: space-around;    
-    /* Created with https://www.css-gradient.com */
     
 }
 
@@ -25,22 +24,15 @@
 }
 
 .category-icon{
-    font-size: 2.1rem;
+    font-size: 2.8rem;
+    margin: 0 0 2% 0;
 }
 
 .category-one{
-    background: rgb(117,126,133);
+    outline:solid 1px red;
 }
 
 .color-icon-one{
     color: rgb(37,46,53);
 }
 
-.category-two{
-    background: rgb(89,228,168) ;
-}
-
-.color-icon-two{
-    color: rgb(9,138,88)
-    
-}
