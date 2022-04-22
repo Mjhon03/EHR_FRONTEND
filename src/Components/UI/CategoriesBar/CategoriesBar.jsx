@@ -8,24 +8,24 @@ export const CategoriesBar = () => {
   return (
     <div className='categories-bar'>
         <div className="categories-bar-container category-one">
-            <FontAwesomeIcon className='category-icon color-icon-one' icon={ faHouse }></FontAwesomeIcon>
-            <p className='color-icon-one'>Hogares</p>
+            <FontAwesomeIcon className='category-icon' icon={ faHouse }></FontAwesomeIcon>
+            <p className='category-text-font'>Hogares</p>
         </div>
         <div className="categories-bar-container category-one">
-            <FontAwesomeIcon className='category-icon color-icon-one'  icon={ faHouseUser }></FontAwesomeIcon>
-            <p className='color-icon-one'>Rentas</p>
+            <FontAwesomeIcon className='category-icon'  icon={ faHouseUser }></FontAwesomeIcon>
+            <p className='category-text-font'>Rentas</p>
         </div>
         <div className="categories-bar-container category-one">
-            <FontAwesomeIcon className='category-icon color-icon-one' icon={ faTractor }></FontAwesomeIcon>
-            <p className='color-icon-one'>Rural</p>
+            <FontAwesomeIcon className='category-icon' icon={ faTractor }></FontAwesomeIcon>
+            <p className='category-text-font'>Rural</p>
         </div>
         <div className="categories-bar-container category-one">
-            <FontAwesomeIcon className='category-icon color-icon-one'  icon={ faBuilding }></FontAwesomeIcon>
-            <p className='color-icon-one'>Apartamentos</p>
+            <FontAwesomeIcon className='category-icon'  icon={ faBuilding }></FontAwesomeIcon>
+            <p className='category-text-font'>Apartamentos</p>
         </div>
         <div className="categories-bar-container  category-one">
-            <FontAwesomeIcon className='category-icon color-icon-one'  icon={ faShop }></FontAwesomeIcon>
-            <p className='color-icon-one'>Locales</p>
+            <FontAwesomeIcon className='category-icon'  icon={ faShop }></FontAwesomeIcon>
+            <p className='category-text-font'>Locales</p>
         </div>
     </div>
   )
