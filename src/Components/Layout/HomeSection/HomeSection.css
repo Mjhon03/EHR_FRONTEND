@@ -102,7 +102,6 @@
     }
 
     .rent-info{
-        outline: solid 1px red;
         width: 100%;
     }
 
@@ -137,12 +136,12 @@
     }
 
     .rent-info{
-        outline: solid 1px red;
         width: 100%;
     }
 
     .house-icon{
-        width: 5rem;
+        width: 15%;
+        margin: 2% 0 0 0;
     }
 
     .content-page-info{
@@ -166,7 +165,6 @@
     .search-box-home{
         font-size: 60%;
         padding: 3% 5%;
-        
     }
 }
 
