@@ -1,4 +1,4 @@
-import axios from 'axios'
+import axios, { Axios } from 'axios'
 import React , { useState } from 'react'
 import './ForgotPasswordForm.css'
 import emailjs from '@emailjs/browser';
@@ -23,9 +23,14 @@ export const ForgotPasswordForm = () => {
                 console.log("usuario no existente")
             }else{
                 console.log(response.data)
-                emailjs.sendForm('service_8uodl5r','template_9ea0axg',event.target,'KYHPZomx00qkEwjDP')
-                .then(res => console.log(res))
-                .catch(err => console.log(err)) 
+                axios.post(EMAILURL,{ params:{ email:email}})
+                .then(res =>{
+                    console.log(res.data.token);
+                })
+                // console.log(response.data)
+                // emailjs.sendForm('service_7uodl5r','template_9ea0axg',event.target,'KYHPZomx00qkEwjDP')
+                // .then(res => console.log(res))
+                // .catch(err => console.log(err)) 
             }
         })
 
