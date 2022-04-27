@@ -1,7 +1,12 @@
 import './PasswordReset.css'
 import { NavLink } from 'react-router-dom';
+import { useLocation } from 'react-router';
 
 export const PasswordResetForm = () => {
+
+    let location = useLocation()
+    console.log(location);
+
     return (
         <div className='div-passwordReset'>
             <div className='div-infoReset'>

@@ -33,7 +33,7 @@ function App() {
         <Route exact path="/aboutUs" element={<AboutUs />} />
         <Route exact path="/forgotPassword" element={<ForgotPassword/>} />
         <Route exact path="/passwordReset" element={ < PasswordResetForm /> }/>
-        <Route exact path="/modifyPassword" element={ < ModifyPasswordForm /> }/>
+        <Route exact path="/modifyPassword/" element={ < ModifyPasswordForm /> }/>
         <Route exact path="/profile" element={<Profile/>}/>
         <Route exact path="/anouncement" element={<Anouncement />} />
         <Route exact path="/share" element={<ShareP/>}/>
