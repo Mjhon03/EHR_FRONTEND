@@ -1,39 +1,30 @@
 import './PasswordReset.css'
-import { NavLink } from 'react-router-dom';
-import { useLocation } from 'react-router';
+import { NavLink, useSearchParams } from 'react-router-dom';
 
 export const PasswordResetForm = () => {
 
-    let location = useLocation()
-    console.log(location);
+    const GetToken =  () => {
+        const [searchParams] = useSearchParams();
+        console.log(searchParams.get('token')); // 'name'
+    }
+
+    GetToken();
 
     return (
-        <div className='div-passwordReset'>
-            <div className='div-infoReset'>
-
-                <div className="reset-logoContainer">
+        <div className="body-container">
+            <div className="forgot-password-container">
+                <div className="logo-container">
                     <h3>EHR</h3>
                     <p>Easy House Rent</p>
                 </div>
-
-                <div className='div-titleReset'>
-                    <h2>Reestablecer Contraseña</h2>
-                    <p>Escribe tu nueva contraseña y repitela</p>
-                </div>
-
-                <div className='div-formReset'>
-                    <form className='formResetPassword'>
-                        <p>Nueva contraseña</p>
-                        <input type="text" placeholder='********'/>
-
-                        <p>Repite tu contraseña</p>
-                        <input type="text" placeholder='********'/><br/>
-
-                        <NavLink to='/'><b><button>Guardar</button></b></NavLink> 
-                    </form>
-                </div>
-
+                <h2 className='forgot-title'>Cambio de contraseña</h2>
+                <form>
+                    <input className='email-put' type="password" placeholder='Nueva contraseña' name="user_name"></input>
+                    <div className="separator"></div>
+                    <input className='email-put' type="password" placeholder='Confirmacion nueva contraseña' name="user_name"></input>                    
+                    <button className='send-email'>Enviar</button>      
+                </form>
             </div>
-        </div>
+      </div>
     )
 }

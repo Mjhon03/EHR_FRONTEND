@@ -40,7 +40,7 @@ export const ForgotPasswordForm = () => {
     const tokenReceived = async () => {
         await axios.post(EMAILURL,{ params:{ email:email}})
         .then(res =>{
-            setToken(`https://localhost:3000/passwordReset/?${res.data.token}`)
+            setToken(`https://localhost:3000/passwordReset/?token=${res.data.token}`)
             sendEmail()
         })
        
