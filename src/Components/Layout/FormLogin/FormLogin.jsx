@@ -5,6 +5,7 @@ import axios from 'axios'
 import { GoogleAuth } from '../../UI/GoogleAuth/GoogleAuth';
 import { FacebookAuth } from '../../UI/FacebookAuth/FacebookAuth';
 import { urlUsers } from '../../ApiRoutes';
+import { useNavigate } from 'react-router';
 
 export const FormLogin = () => {
 
@@ -32,6 +33,8 @@ export const FormLogin = () => {
                     localStorage.setItem('UserLastName', response.data[0].apellidos)
                     localStorage.setItem('PhoneNumber', response.data[0].telefono)
                     localStorage.setItem('UserEmail', response.data[0].email)
+                    
+                           
                 }
             })
             .catch(ex => {
