@@ -1,9 +1,10 @@
-import axios, { Axios } from 'axios'
-import React , { useState } from 'react'
+import axios  from 'axios'
+import React , { useState , useEffect  } from 'react'
 import './ForgotPasswordForm.css'
 import emailjs from '@emailjs/browser';
 import { NavLink } from 'react-router-dom';
-import { useJwt } from "react-jwt";
+import { useLocation, useParams } from 'react-router';
+
 
 export const ForgotPasswordForm = () => {
 
@@ -11,29 +12,52 @@ export const ForgotPasswordForm = () => {
 
     const[email, setemail] = useState({email: "email"})
 
+    const[ user , setUser ] = useState(null);
+    const[ token , setToken] = useState(null);
+
+    useEffect(() => {
+        console.log(token);
+        console.log(user);
+      }, [token],[user])
+
     const captureValue =((event)=>{
         setemail(event.target.value)
+        setUser(event.target.value)
     })
 
-    const sendEmail = (event) =>{
+    const verifyEmail = (event) =>{
         event.preventDefault()
         axios.get(EMAILURL,{params:{email:email }})
         .then(response =>{
-            if(response.data === false){
-                console.log("usuario no existente")
+            if(response.data === true){
+                tokenReceived()
             }else{
-                console.log(response.data)
-                axios.post(EMAILURL,{ params:{ email:email}})
-                .then(res =>{
-                    console.log(res.data.token);
-                })
-                // console.log(response.data)
-                // emailjs.sendForm('service_7uodl5r','template_9ea0axg',event.target,'KYHPZomx00qkEwjDP')
-                // .then(res => console.log(res))
-                // .catch(err => console.log(err)) 
+                console.log(response.data) 
             }
         })
+    }
 
+    const tokenReceived = async () => {
+        await axios.post(EMAILURL,{ params:{ email:email}})
+        .then(res =>{
+            setToken(`https://localhost:3000/passwordReset/?token=${res.data.token}`)
+            sendEmail()
+        })
+       
+    }
+
+    let params = {
+        user : user,
+        userToken : token
+    }
+
+    const sendEmail = () =>{
+        emailjs.send('service_8uodl5r','template_9ea0axg',params,'KYHPZomx00qkEwjDP')
+        .then(function(response){  
+            console.log(response);
+        },function(error){
+            console.log(error);
+        })
     }
 
   return (
@@ -44,11 +68,11 @@ export const ForgotPasswordForm = () => {
                 <p>Easy House Rent</p>
             </div>
             <h2 className='forgot-title'>Recuperacion de Contraseña</h2>
-            <form onSubmit={sendEmail}>
+            <form>
                 <input className='email-put' type="email" placeholder='Correo electrónico' name="user_name" onChange={ captureValue }></input>
                 <p className='create-account'>No tienes cuenta...<NavLink to="/register"><p className='send-register'>Cree una</p></NavLink></p>
                 <div className="send-content">
-                    <button className='send-email'>Enviar</button>
+                    <button onClick={verifyEmail} className='send-email'>Enviar</button>
                 </div>  
             </form>
         </div>
