@@ -7,6 +7,8 @@ import { NavLink } from 'react-router-dom';
 
 export const ForgotPasswordForm = () => {
 
+    
+
     const EMAILURL = 'https://localhost:44352/api/confirmationEmail'
 
     const[email, setemail] = useState({email: "email"})

@@ -7,9 +7,12 @@ import { FacebookAuth } from '../../UI/FacebookAuth/FacebookAuth';
 import { urlUsers } from '../../ApiRoutes';
 import { useNavigate } from 'react-router';
 
+
 export const FormLogin = () => {
 
     //Login logic
+
+    const navigate = useNavigate();
 
     const [email, setemail] = useState({ email: "email" })
     const [password, setpassword] = useState({ password: "password" })
@@ -34,6 +37,7 @@ export const FormLogin = () => {
                     localStorage.setItem('PhoneNumber', response.data[0].telefono)
                     localStorage.setItem('UserEmail', response.data[0].email)
                     
+                    navigate('/')
                            
                 }
             })
