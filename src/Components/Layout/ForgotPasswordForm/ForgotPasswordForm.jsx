@@ -8,7 +8,7 @@ import { useLocation, useParams } from 'react-router';
 
 export const ForgotPasswordForm = () => {
 
-    const EMAILURL = 'https://localhost:44352/api/confirmationEmail'
+    const EMAILURL = 'https://localhost:44375/api/confirmationEmail'
 
     const[email, setemail] = useState({email: "email"})
 

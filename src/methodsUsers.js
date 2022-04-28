@@ -22,6 +22,6 @@ export const postUsers = (nombre, apellidos ,edad, telefono ,email ,contraseña 
 export const getUser = (email , password )=>{
     axios.get(urlUsers, {params:{email:email, contraseña:password}})
     .then(response=>{
-       return response.data;
+        return response.data;
     })
 }
