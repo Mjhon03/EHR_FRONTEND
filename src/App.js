@@ -15,7 +15,7 @@ import { PasswordResetForm } from "./Components/Layout/PasswordReset/PasswordRes
 import { ModifyPasswordForm } from "./Components/Layout/ConfirmModifyPassword/ModifyPasswordForm";
 import {ShareP} from "./Components/Page/Share/Share"
 import { Page404 } from "./Components/Page/Page404/Page404";
-
+import { ModalCreateAnouncement } from "./Components/Modal/ModalCreateAnouncement/ModalCreateAnouncement";
 
 
 
@@ -38,6 +38,7 @@ function App() {
         <Route exact path="/anouncement" element={<Anouncement />} />
         <Route exact path="/share" element={<ShareP/>}/>
         <Route exact path="*" element={<Page404/>}/>
+        <Route exact path='/createAnouncement' element={<ModalCreateAnouncement />}/>
       </Routes> 
     </BrowserRouter>
   );
