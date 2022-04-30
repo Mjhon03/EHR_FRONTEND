@@ -19,7 +19,8 @@ export const Header = () => {
                 <NavLink to="/contact"><li><p>Contacto</p></li></NavLink>
                 <NavLink to="/aboutUs"><li><p>Nosotros</p></li></NavLink>
                 <NavLink to="/register"><li><p>Registrarme</p></li></NavLink>
-
+                <NavLink to="/login"><li><p>Ingreso</p></li></NavLink>
+                
             </ul>
         </div>
         <label htmlFor="show-search" class="search-icon"><FontAwesomeIcon icon={ faSearch }></FontAwesomeIcon></label>

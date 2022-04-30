@@ -3,12 +3,12 @@ import React , { useState , useEffect  } from 'react'
 import './ForgotPasswordForm.css'
 import emailjs from '@emailjs/browser';
 import { NavLink } from 'react-router-dom';
-import { useLocation, useParams } from 'react-router';
 
 
 export const ForgotPasswordForm = () => {
 
     const EMAILURL = 'https://localhost:44375/api/confirmationEmail'
+
 
     const[email, setemail] = useState({email: "email"})
 
@@ -38,7 +38,8 @@ export const ForgotPasswordForm = () => {
     }
 
     const tokenReceived = async () => {
-        await axios.post(EMAILURL,{ params:{ email:email}})
+        await axios.post(EMAILURL,{ params:{ email:email 
+        }})
         .then(res =>{
             setToken(`https://localhost:3000/passwordReset/?token=${res.data.token}`)
             sendEmail()
