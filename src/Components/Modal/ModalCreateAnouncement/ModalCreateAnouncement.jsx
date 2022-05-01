@@ -25,7 +25,7 @@ export const ModalCreateAnouncement = () => {
 
   return (
     <div className="create-container">
-      <h1 className='create-title'>publica tu propiedad</h1>
+      <h1 className='create-title'>Publica tu propiedad</h1>
       {
         formSection === 0 &&
         <div className="principal-create-form">
@@ -34,17 +34,16 @@ export const ModalCreateAnouncement = () => {
             <p>2</p>
             <p>3</p>
           </div>
-          <p>
-            formulario 1
-          </p>
           <div className="create-info">
             <h2 className='create-subtitle'>Informacion Basica</h2>
             <div className="required-info">
-              <input type='text' placeholder='Titulo de la publicacion' />
-              <textarea placeholder='descripcion de la vivienda' />
+              <input type='text' placeholder='Titulo de la publicacion' className='create-input-add' />
+              <textarea className='create-description' placeholder='descripcion de la vivienda ( detalles de la vivienda , consideraciones , aportes importantes a tener en cuenta )' />
             </div> 
           </div>
-          <button className='create-action-button' onClick={changeMoreStatus}>siguente</button>
+          <div className="first-action-container">
+            <button className='create-action-button' onClick={changeMoreStatus}>siguente</button>         
+          </div>
         </div>
         
       }
@@ -56,24 +55,23 @@ export const ModalCreateAnouncement = () => {
             <p className='form-stage'>2</p>
             <p>3</p>
           </div>
-          <p>formulario 2</p>
           <div className="create-info">
             <h2 className='create-subtitle'>Informacion detallada</h2>
             <div className="required-info">
-              <input type='text' placeholder='direccion'/>
-              <select>
+              <input className='create-input-add' type='text' placeholder='direccion'/>
+              <select className='create-input-add'>
                 <option value="zona">zona</option>
                 <option value="">Urbano</option>
                 <option value="">Rural</option>
               </select>
-              <select>
+              <select className='create-input-add'>
                 <option value="">modalidad</option>
                 <option value="">venta</option>
                 <option value="">Arriendo</option>
                 <option value="">Permutar</option>
 
-              </select>
-              <select name="" id="">
+              </select >
+              <select  className='create-input-add' name="" id="">
                 <option value="">tipo de vivienda</option>
                 <option value="">Casa</option>
                 <option value="">Local</option>
@@ -84,8 +82,10 @@ export const ModalCreateAnouncement = () => {
             </div>
             
           </div>
-          <button className='create-action-button' onClick={decreaseStatus}>anterior</button>
-          <button className='create-action-button' onClick={changeMoreStatus}>siguente</button>
+          <div className="create-action-container">
+            <button className='create-action-button' onClick={decreaseStatus}>anterior</button>
+            <button className='create-action-button' onClick={changeMoreStatus}>siguente</button>   
+          </div>
         </div>
       }
       {
@@ -96,7 +96,6 @@ export const ModalCreateAnouncement = () => {
             <p>2</p>
             <p  className='form-stage'>3</p>
           </div>
-          <p>formulario 3</p>
           <div className="create-info">
             <h2 className='create-subtitle'>Verificacion de datos</h2>
             <div className="required-info">
@@ -107,10 +106,10 @@ export const ModalCreateAnouncement = () => {
               <label>ubicacion</label>
             </div>
           </div>
-          
-          <button className='create-action-button' onClick={decreaseStatus}>anterior</button>
-          <button className='create-action-button' >publicar</button>
-
+          <div className="create-action-container">
+            <button className='create-action-button' onClick={decreaseStatus}>anterior</button>
+            <button className='create-action-button' >publicar</button>
+          </div>
         </div>
       }
     </div>
