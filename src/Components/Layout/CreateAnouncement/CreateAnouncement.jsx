@@ -1,10 +1,10 @@
 import React from 'react'
 import { AnouncementButton } from '../../UI/AnouncementButton/AnouncementButton'
-import './CreateAnouncement.css'
+
 
 export const CreateAnouncement = () => {
   return (
-    <div className="create-container">
+    <div className='create-container'>
         <div>
             <h1>Crea tu publicacion</h1>
             <form>

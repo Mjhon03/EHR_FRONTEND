@@ -1,0 +1,55 @@
+.create-progress{
+    display: flex;
+    width: 60%;
+    justify-content: space-between;
+    outline: solid 1px purple;
+    margin: 1em auto;
+}
+
+.form-stage{
+    outline: solid 1px red;
+    width: 2em;
+    text-align: center;
+    background-color: black;
+    color: white;
+    border-radius: 250px;
+}
+
+.create-container{
+    height: 80vh;
+    width: 50%;
+    margin: 5% auto;
+    outline: solid 1px black;
+    padding: 2% 4%;
+    text-align: center;
+}
+
+.create-title{
+    outline: solid 1px red;
+}
+
+.create-subtitle{
+    outline: solid 1px red;
+    width: 100%;
+}
+
+.required-info{
+    display: flex;
+    flex-direction: column;
+    outline: solid 1px red;
+    width: 100%;
+    padding: 2%
+}
+
+.create-action-button{
+    padding: 2% 10%;
+    margin: 2%;
+}
+
+
+
+
+.create-info{
+    display: flex;
+    flex-direction: column;
+}
