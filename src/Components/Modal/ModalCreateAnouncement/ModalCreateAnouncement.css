@@ -5,20 +5,21 @@
     outline: solid 1px purple;
     margin: 1em auto;
 }
-
-.create-container{
-    height: 80vh;
-    width: 45%;
-    margin: 5% auto;
-    outline: solid 1px black;
-    padding: 2% 4%;
-    text-align: center;
-    border-radius: 5px;
-    background-color: #fff;
-}
-
 .create-title{
     outline: solid 1px red;
+}
+
+.close-svg{
+    cursor: pointer;
+    transition: 0.3s ease all;
+}
+
+
+.header-modal{
+    margin: 0 0 0 5%;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
 }
 
 .form-stage{

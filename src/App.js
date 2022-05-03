@@ -39,6 +39,7 @@ function App() {
         <Route exact path="/share" element={<ShareP/>}/>
         <Route exact path="*" element={<Page404/>}/>
         <Route exact path='/createAnouncement' element={<ModalCreateAnouncement />}/>
+
       </Routes> 
     </BrowserRouter>
   );

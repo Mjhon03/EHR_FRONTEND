@@ -10,6 +10,7 @@ import{faLock} from '@fortawesome/free-solid-svg-icons'
 import{faUserPen} from '@fortawesome/free-solid-svg-icons'
 import{faGears} from '@fortawesome/free-solid-svg-icons'
 import{faArrowRightFromBracket} from '@fortawesome/free-solid-svg-icons'
+import { ModalCreateAnouncement } from "../../Modal/ModalCreateAnouncement/ModalCreateAnouncement";
 
 export const SettingsProfi = () =>{
     return(
@@ -19,6 +20,7 @@ export const SettingsProfi = () =>{
                     <h2>jhon Maicol Montoya</h2>
                 </div>
                 <ul className="Share-links">
+                <ModalCreateAnouncement />
                 <NavLink to="/share"><li ><p className="Share-Link"><FontAwesomeIcon icon={faShareNodes}/>Compartir</p></li></NavLink>
                 <NavLink to="/profile"><li ><p className="Share-Link"><FontAwesomeIcon icon={faUser}/>Perfil</p></li></NavLink>
                 <NavLink to="/"><li ><p className="Share-Link"><FontAwesomeIcon icon={faMessage}/>Chat</p></li></NavLink>

@@ -19,7 +19,6 @@ export const Profile = () => {
         </div>
         <div className="img-profile-container">
             <div className='img-container-settings'>
-              <img className='img-profile' src='https://cdn.pixabay.com/photo/2017/02/16/23/10/smile-2072907_960_720.jpg' alt='profile'></img>
             </div>
         </div>
         <div className="info-addons">
