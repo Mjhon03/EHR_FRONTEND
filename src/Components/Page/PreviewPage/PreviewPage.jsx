@@ -1,10 +1,10 @@
 import React from 'react'
-import { ModalCreateAnouncement } from '../../Modal/ModalCreateAnouncement/ModalCreateAnouncement'
+import { ProfileSettings } from '../../Modal/ProfileSettings/ProfileSettings'
 
 export const PreviewPage = () => {
   return (
     <>
-     <ModalCreateAnouncement />
+      <ProfileSettings />
     </>
   )
 }

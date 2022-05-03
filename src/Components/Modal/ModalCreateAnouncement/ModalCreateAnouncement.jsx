@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import './ModalCreateAnouncement.css'
 import { Overlay, CloseModal, Modal } from '../../StyledComponents/Overlay/StyledComponents'
 
-export const ModalCreateAnouncement = ({ visiblity }) => {
+export const ModalCreateAnouncement = () => {
 
   const [visibility, setVisibility] = useState(false)
   const [formSection, setFormSection] = useState(0)

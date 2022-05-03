@@ -26,3 +26,21 @@ export const Modal = styled.div`
   border-radius: 5px;
   background-color: #fff;
 `
+
+export const ProfileModal = styled.div`
+  margin: 1em;
+  padding: 1em;
+  width:20vw;
+  float: right;
+  text-align: center;
+  border-radius: 10px;
+  -webkit-box-shadow: 1px 5px 11px -2px #919191; 
+  box-shadow: 1px 5px 11px -2px #919191;
+`;
+
+
+export const SettingsSpace = styled.div`
+  width: 100%;
+  height: .1px;
+  background: rgba(0,0,0,0.40);
+`
