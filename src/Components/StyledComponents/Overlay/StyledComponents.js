@@ -19,7 +19,6 @@ export const CloseModal = styled.button`
 `;
 
 export const Modal = styled.div`
-  height: 85vh;
   width: 45%;
   outline: solid 1px black;
   padding: 0 2% 2% 2%;

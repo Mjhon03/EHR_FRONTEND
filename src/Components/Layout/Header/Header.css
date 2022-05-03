@@ -11,6 +11,7 @@
   top: 0;
   width: 100%;
   background: rgba(25,25, 25, 1);
+  outline: solid 1px white;
 
 }
 .wrapper nav{
@@ -26,6 +27,11 @@
 nav .content{
   display: flex;
   align-items: center;
+}
+
+.nav-header{
+  display: flex;
+  justify-content: space-between;
 }
 nav .content .links{
   margin-left: 80px;
