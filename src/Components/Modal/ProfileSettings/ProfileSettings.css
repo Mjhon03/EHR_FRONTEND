@@ -1,3 +1,14 @@
+
+.profile-modal-activate{
+    padding: 0 1.2em;
+    border-radius: 5px;
+    border: none;
+}
+
+.activate-profile-icon{
+    font-size: 1.3em;
+}
+
 .settings-basic-info{
     width: 90%;
     margin: 0 auto;

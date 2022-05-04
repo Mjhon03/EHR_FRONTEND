@@ -1,5 +1,5 @@
 import { faRocketchat } from '@fortawesome/free-brands-svg-icons'
-import { faCircleInfo, faGears, faIdCardClip } from '@fortawesome/free-solid-svg-icons'
+import { faCaretDown, faCircleInfo,  faEllipsisV,  faEllipsisVertical,  faGears, faIdCardClip } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React,{ useEffect, useState } from 'react'
 import { ProfileAction, ProfileActionText, ProfileModal, SettingsSpace } from '../../StyledComponents/Overlay/StyledComponents'
@@ -27,7 +27,7 @@ export const ProfileSettings = () => {
   }
   return (
     <>
-    <button onClick={()=> changeSettings()}>mostrar Ajustes</button>
+    <button className='profile-modal-activate' onClick={()=> changeSettings()}><FontAwesomeIcon className='activate-profile-icon' icon={ faCaretDown} /></button>
     {settingsVisibility &&
       <ProfileModal>
         <div className="settings-basic-info">
