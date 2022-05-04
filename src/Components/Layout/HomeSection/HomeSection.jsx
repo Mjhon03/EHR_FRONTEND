@@ -13,8 +13,8 @@ export const HomeSection = () => {
                     <div className="search-home-container">
                         <input className="search-box-home" type="text" placeholder='Busca por zona , lugar o nombre'></input>
                         <button className='search-home-submit'>Buscar</button>
-                    </div>
-                </div>
+                    </div> 
+                </div> 
             </div>
             <div className="content-page-info">
                 <div className="rent-info">
