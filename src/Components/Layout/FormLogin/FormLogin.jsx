@@ -12,7 +12,6 @@ export const FormLogin = () => {
 
     //Login logic
 
-    const navigate = useNavigate();
 
     const [email, setemail] = useState({ email: "email" })
     const [password, setpassword] = useState({ password: "password" })
@@ -36,9 +35,7 @@ export const FormLogin = () => {
                     localStorage.setItem('UserLastName', response.data[0].apellidos)
                     localStorage.setItem('PhoneNumber', response.data[0].telefono)
                     localStorage.setItem('UserEmail', response.data[0].email)
-                    
-                    navigate('/')
-                           
+                                     
                 }
             })
             .catch(ex => {

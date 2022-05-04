@@ -1,4 +1,3 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
 import './HomeSection.css'
 
@@ -38,6 +37,7 @@ export const HomeSection = () => {
                         <h3 className='rent-text-title'>diversidad de sectores</h3>
                         <p className='rent-info-text'>publicaciones ofertadas no solo en sector urbano, tambien en sector rural</p>
                     </div>
+
                 </div>
             </div>
         </div>

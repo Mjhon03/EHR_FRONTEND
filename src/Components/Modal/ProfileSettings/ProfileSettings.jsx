@@ -1,11 +1,14 @@
+import { faRocketchat } from '@fortawesome/free-brands-svg-icons'
+import { faCircleInfo, faGears, faIdCardClip } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React,{ useEffect, useState } from 'react'
-import { ProfileModal, SettingsSpace } from '../../StyledComponents/Overlay/StyledComponents'
+import { ProfileAction, ProfileActionText, ProfileModal, SettingsSpace } from '../../StyledComponents/Overlay/StyledComponents'
 import './ProfileSettings.css'
 
 export const ProfileSettings = () => {
 
 
-  const [ settingsVisibility , setSettingsVisibility ] = useState(true)
+  const [ settingsVisibility , setSettingsVisibility ] = useState(false)
 
   useEffect(()=>{
     console.log(settingsVisibility);
@@ -28,40 +31,27 @@ export const ProfileSettings = () => {
     {settingsVisibility &&
       <ProfileModal>
         <div className="settings-basic-info">
-          <p>Nombre de usuario</p>
-          <p>ver tu perfil</p>
           <div className="settings-image-container">
-            <img src="" alt="settings-image" className='settings-image' />
+            <img src="https://cdn.pixabay.com/photo/2017/08/12/18/31/male-2634974_960_720.jpg" alt="settings-image" className='settings-image' />
           </div>
-        </div>
-        <div className="settings-actions">
-          <div className="settings-action-container">
-            <img src="" alt="settings-action" />
-            <p> Compartir perfil</p>
+          <div className="settings-profile">
+            <p className='settings-profile-name'>Jhon maicol</p>
+            <p className='send-profile-button'>ver tu perfil</p>
           </div>
+          
         </div>
         <SettingsSpace />
-        <div className="settings-action-container">
-            <img src="" alt="settings-action" />
-            <p>Chat</p>
-          </div>
-          <div className="settings-action-container">
-            <img src="" alt="settings-action" />
-            <p></p>
-          </div>
-          <div className="settings-action-container">
-            <img src="" alt="settings-action" />
-            <p>Ayuda y soporte</p>
-          </div>
-          <div className="settings-action-container">
-            <img src="" alt="settings-action" />
-            <p></p>
-          </div>
+        <div className="settings-container">
+          <ProfileAction><FontAwesomeIcon className='settings-action-icon' icon={ faRocketchat }/><ProfileActionText>Mensajes</ProfileActionText></ProfileAction>
+          <ProfileAction><FontAwesomeIcon className='settings-action-icon' icon={ faGears } /><ProfileActionText>Configuracion</ProfileActionText></ProfileAction>
+          <ProfileAction><FontAwesomeIcon className='settings-action-icon' icon={ faCircleInfo }/><ProfileActionText>Ayuda y soporte</ProfileActionText></ProfileAction>
+          <ProfileAction><FontAwesomeIcon className='settings-action-icon' icon={ faIdCardClip }/><ProfileActionText>Contacto</ProfileActionText></ProfileAction>
+        </div>
         <SettingsSpace />
           <div className="settings-action-container">
-            <button>Cerrar Sesion</button>
+            <button className='settings-close'>Cerrar sesion</button>
           </div>
-      </ProfileModal>
+        </ProfileModal>
       }
     </>
   )

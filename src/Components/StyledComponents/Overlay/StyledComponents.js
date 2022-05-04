@@ -30,17 +30,47 @@ export const Modal = styled.div`
 export const ProfileModal = styled.div`
   margin: 1em;
   padding: 1em;
-  width:20vw;
+  width:30vw;
   float: right;
   text-align: center;
   border-radius: 10px;
   -webkit-box-shadow: 1px 5px 11px -2px #919191; 
   box-shadow: 1px 5px 11px -2px #919191;
+  position: relative;
+  overflow: hidden;
+  z-index: 100;
 `;
 
 
 export const SettingsSpace = styled.div`
-  width: 100%;
+  margin: 5% auto;
+  width: 90%;
   height: .1px;
   background: rgba(0,0,0,0.40);
+`
+
+export const ProfileAction = styled.button`
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  align-items: center;
+  padding: 1.5em 0;
+  gap: 0.5em;
+  border-radius: 5px;
+  border: none;
+  box-shadow: 1px 5px 4px -4px #919191;
+  transition: 0.3s ease;
+  cursor: pointer;
+
+  &:hover {
+    transform: scale(104%);
+    background: rgba(0,0,0,0.1);
+  }
+`
+
+export const ProfileActionText = styled.p`
+  color: rgba(0,0,0,0.65);
+  font-size: 1em;
+
+  
 `
