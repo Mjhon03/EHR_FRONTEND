@@ -1,4 +1,4 @@
-import{
+import {
   BrowserRouter,
   Routes,
   Route
@@ -13,10 +13,11 @@ import { Profile } from "./Components/Page/Profile/Profile"
 import { Anouncement } from "./Components/Page/Anouncement/Anouncement";
 import { PasswordResetForm } from "./Components/Layout/PasswordReset/PasswordResetForm";
 import { ModifyPasswordForm } from "./Components/Layout/ConfirmModifyPassword/ModifyPasswordForm";
-import {ShareP} from "./Components/Page/Share/Share"
+import { ShareP } from "./Components/Page/Share/Share"
 import { Page404 } from "./Components/Page/Page404/Page404";
 import { ModalCreateAnouncement } from "./Components/Modal/ModalCreateAnouncement/ModalCreateAnouncement";
 import { PreviewPage } from "./Components/Page/PreviewPage/PreviewPage";
+import { UserProvider } from "./UserProvider/UserProvider";
 
 
 
@@ -25,26 +26,26 @@ import { PreviewPage } from "./Components/Page/PreviewPage/PreviewPage";
 function App() {
   const user = false;
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route exact path="/" element={< Home/>} />
-        <Route exact path="/Contact" element={<Contact />} />
-        <Route exact path="/login" element={<Login />} />
-        <Route exact path="/register" element={<Register />} />
-        <Route exact path="/aboutUs" element={<AboutUs />} />
-        <Route exact path="/forgotPassword" element={<ForgotPassword/>} />
-        <Route exact path="/passwordReset/" element={ < PasswordResetForm /> }/>
-        <Route exact path="/modifyPassword/" element={ < ModifyPasswordForm /> }/>
-        <Route exact path="/profile" element={<Profile/>}/>
-        <Route exact path="/anouncement" element={<Anouncement />} />
-        <Route exact path="/share" element={<ShareP/>}/>
-        <Route exact path="*" element={<Page404/>}/>
-        <Route exact path='/createAnouncement' element={<ModalCreateAnouncement />}/>
-        <Route exact path='/Preview' element={<PreviewPage/>}/>
-
-
-      </Routes> 
-    </BrowserRouter>
+    <UserProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route exact path="/" element={< Home />} />
+          <Route exact path="/Contact" element={<Contact />} />
+          <Route exact path="/login" element={<Login />} />
+          <Route exact path="/register" element={<Register />} />
+          <Route exact path="/aboutUs" element={<AboutUs />} />
+          <Route exact path="/forgotPassword" element={<ForgotPassword />} />
+          <Route exact path="/passwordReset/" element={< PasswordResetForm />} />
+          <Route exact path="/modifyPassword/" element={< ModifyPasswordForm />} />
+          <Route exact path="/profile" element={<Profile />} />
+          <Route exact path="/anouncement" element={<Anouncement />} />
+          <Route exact path="/share" element={<ShareP />} />
+          <Route exact path="*" element={<Page404 />} />
+          <Route exact path='/createAnouncement' element={<ModalCreateAnouncement />} />
+          <Route exact path='/Preview' element={<PreviewPage />} />
+        </Routes>
+      </BrowserRouter>
+    </UserProvider>
   );
 }
 
