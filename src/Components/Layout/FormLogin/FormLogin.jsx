@@ -5,15 +5,17 @@ import axios from 'axios'
 import { GoogleAuth } from '../../UI/GoogleAuth/GoogleAuth';
 import { FacebookAuth } from '../../UI/FacebookAuth/FacebookAuth';
 import { urlLogin } from '../../ApiRoutes';
+import { useNavigate } from 'react-router-dom'
 
 
 export const FormLogin = () => {
 
     //Login logic
 
+    const navigate = useNavigate()
 
-    const [email, setemail] = useState({ email: "email" })
-    const [password, setpassword] = useState({ password: "password" })
+    const [email, setemail] = useState("")
+    const [password, setpassword] = useState("")
 
     const setEventToEmail = ((event) => {
         setemail(event.target.value)
@@ -23,35 +25,36 @@ export const FormLogin = () => {
         setpassword(event.target.value)
     })
 
-    // const login = ((e)  => {
-    //     e.preventDefault() 
-    //     fetch(urlLogin, {
-    //         method: 'POST',
-    //         body: { 
-    //             email: email,
-    //             password: password
-    //         }
-    //     })
-    //     .then(response => response.json())
-    //     .then(response => console.log(response))
-    // })
     const login = ((e) => {
         e.preventDefault()
-        axios.post(urlLogin, { params: { email: email, password: password } })
+        axios.post(urlLogin, {
+            "email" : email,
+            "password" : password
+        })
             .then(response => {
                 console.log(response.data)
+                localStorage.setItem("userInfo", JSON.stringify(response.data))
+                navigate('/')
             })
             .catch(ex => {
                 console.log(ex);
             })
     })
 
+    const enterLogin=(event)=>{
+        let charCode = event.keyCode;
+        if (charCode===13){
+            login()
+        }
+    }
+
+
     return (
         <div className="login-form">
             <form className="login-valid-info">
                 <div className="auth-services">
-                    <FacebookAuth buttonText={"ingresar por facebook"} /><br></br><br></br>
-                    < GoogleAuth buttonText={"iniciar sesion con Google"} />
+                    <GoogleAuth buttonText={"Iniciar sesion con Google"} /><br></br><br></br>
+                    <FacebookAuth buttonText={"Ingresar por facebook"} />
                 </div>
                 <div className="separator-container">
                     <div className="line-separator" />
@@ -60,7 +63,7 @@ export const FormLogin = () => {
                 </div>
                 <div className="info">
                     <input type="email" max="80" required className='info-input-register' placeholder="Correo electronico" onChange={setEventToEmail}></input><br></br>
-                    <input type="password" minLength='8' required className='info-input-register' placeholder="Contraseña" onChange={SetEventToPassword}></input>
+                    <input type="password" minLength='8' required className='info-input-register' placeholder="Contraseña" onChange={SetEventToPassword} onKeyUp={e=>(enterLogin(e))} ></input>
                 </div>
                 <div className="remember-password">
                     <input className='remember-check' type='checkbox'></input>
