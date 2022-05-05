@@ -1,8 +1,7 @@
 import React from 'react'
 import { Header } from '../../Layout/Header/Header'
 import './Profile.css'
-import {SettingsProfi} from '../../Layout/SettingsProfile/SettingsProfile'
-import './ModalSetttingsProfile.css'
+
 
 export const Profile = () => {
   return (
@@ -10,16 +9,11 @@ export const Profile = () => {
       < Header />
       <div className="info-container">
         <input type="checkbox" id='checkM' />
-        <label for="checkM" className='popup'>ventana Settings</label>
-            <div className='Modal'>  
-              <div className='ventana-popup'><SettingsProfi/></div>          
-            </div>
         <div className="Profile-cover">
           <img className='profile-img-cover' src='https://cdn.pixabay.com/photo/2017/10/03/20/18/building-2813980_960_720.jpg' alt='cover-profile'></img>
         </div>
         <div className="img-profile-container">
             <div className='img-container-settings'>
-              <img className='img-profile' src='https://cdn.pixabay.com/photo/2017/02/16/23/10/smile-2072907_960_720.jpg' alt='profile'></img>
             </div>
         </div>
         <div className="info-addons">

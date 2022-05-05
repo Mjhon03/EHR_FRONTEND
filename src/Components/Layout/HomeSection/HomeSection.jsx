@@ -1,4 +1,3 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
 import './HomeSection.css'
 
@@ -14,8 +13,8 @@ export const HomeSection = () => {
                     <div className="search-home-container">
                         <input className="search-box-home" type="text" placeholder='Busca por zona , lugar o nombre'></input>
                         <button className='search-home-submit'>Buscar</button>
-                    </div>
-                </div>
+                    </div> 
+                </div> 
             </div>
             <div className="content-page-info">
                 <div className="rent-info">
@@ -38,6 +37,7 @@ export const HomeSection = () => {
                         <h3 className='rent-text-title'>diversidad de sectores</h3>
                         <p className='rent-info-text'>publicaciones ofertadas no solo en sector urbano, tambien en sector rural</p>
                     </div>
+
                 </div>
             </div>
         </div>

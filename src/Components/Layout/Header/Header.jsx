@@ -1,34 +1,44 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faBars , faSearch , faLongArrowAltRight} from '@fortawesome/free-solid-svg-icons'
+import { faHouseChimneyUser, faFilterCircleDollar, faCircleInfo, faNewspaper, faHeadset } from '@fortawesome/free-solid-svg-icons'
 import './Header.css'
 import { NavLink } from 'react-router-dom'
+import { ProfileSettings, profileSettings } from '../../Modal/ProfileSettings/ProfileSettings'
 
 export const Header = () => {
-  return (
-    <div class="wrapper">
-        <nav>
-        <input type="checkbox" id="show-search"></input>
-        <input type="checkbox" id="show-menu"></input>
-        <label for="show-menu" class="menu-icon"><FontAwesomeIcon icon={ faBars }></FontAwesomeIcon></label>
-        <div className="content">
-        <div className="logo"><NavLink to="/"><p>EHR</p></NavLink></div>
-            <ul className="links">
-                <NavLink to="/"><li><p>Inicio</p></li></NavLink>
-                <NavLink to="/"><li><p>Populares</p></li></NavLink>
-                <NavLink to="/contact"><li><p>Contacto</p></li></NavLink>
-                <NavLink to="/aboutUs"><li><p>Nosotros</p></li></NavLink>
-                <NavLink to="/register"><li><p>Registrarme</p></li></NavLink>
-                <NavLink to="/login"><li><p>Ingreso</p></li></NavLink>
-                
-            </ul>
-        </div>
-        <label htmlFor="show-search" class="search-icon"><FontAwesomeIcon icon={ faSearch }></FontAwesomeIcon></label>
-        <form action="#" className="search-box">
-            <input className='search-box-home' type="text" placeholder="Busca por zona , lugar o nombre" required></input>
-            <button type="submit" class="go-icon"><FontAwesomeIcon icon={ faLongArrowAltRight }></FontAwesomeIcon></button>
-        </form>
-        </nav>
-  </div>
-  )
+
+    const [userSession, setUserSession] = useState(0)
+    return (
+        <>
+            <div className="header-container">
+                <div className="header-logo-container">
+                    <p className='header-logo'>EHR</p>
+                </div>
+                <div className="header-actions">
+                    <button className='header-action-button'><FontAwesomeIcon className='header-action-icon' icon={faHouseChimneyUser} /></button>
+                    <button className='header-action-button'><FontAwesomeIcon className='header-action-icon' icon={faFilterCircleDollar} /></button>
+                    <button className='header-action-button'><FontAwesomeIcon className='header-action-icon' icon={faCircleInfo} /></button>
+                    <button className='header-action-button'><FontAwesomeIcon className='header-action-icon' icon={faNewspaper} /></button>
+                    <button className='header-action-button'><FontAwesomeIcon className='header-action-icon' icon={faHeadset} /></button>
+                </div>
+                {userSession === 0 &&
+                    <div className="header-nouser-actions">
+                        <NavLink to='/login'><button className='nouser-action'>Ingresar</button></NavLink>
+                        <NavLink to='/register'><button className='nouser-action'>Registrarme</button></NavLink>
+
+                    </div>
+                }
+                {userSession === 1 &&
+                    <div className="header-nouser-actions">
+                        <div className="header-user-settings">
+                            <img src="https://cdn.pixabay.com/photo/2017/08/12/18/31/male-2634974_960_720.jpg" className='header-profile' alt="header-profile" />
+                            <p className='text-header-profile'>jhon maicol</p>
+                        </div>
+                        <ProfileSettings />
+                    </div>
+                }
+            </div>
+            
+        </>
+    )
 }
