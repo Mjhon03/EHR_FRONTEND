@@ -1,8 +1,15 @@
 
 .profile-modal-activate{
-    padding: 0 1.2em;
+    padding: 0 1.6em;
     border-radius: 5px;
     border: none;
+    transition: 0.3s ease;
+    cursor: pointer;
+    background: rgb(255,255,255);
+}
+
+.profile-modal-activate:hover{
+    background-color: rgba(0,0,0,0.6);
 }
 
 .activate-profile-icon{

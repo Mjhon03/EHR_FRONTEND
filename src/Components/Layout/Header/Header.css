@@ -9,12 +9,12 @@
 .header-container{
   display: flex;
   width: 100%;
-  justify-content: center;
-  padding: 0 0.6em;
+  justify-content: flex-end;
   position: sticky;
   top: 0;
-  background: #FFF;
-  padding: 0.5em 2em;
+  background: rgb(229,229,229);
+  padding: 0.5em;
+  border-bottom: .1px solid rgba(0,0,0,0.2);
 }
 
 .header-logo-container{
@@ -42,11 +42,20 @@
   border: none;
   cursor: pointer;
   transition: 0.4s ease ;
+  background: #FFFF;
 }
-  
+
+.header-action-button:hover{
+  background: rgba(0,0,0,0.6);
+}
+
 .header-action-icon{
   font-size: 1.5em;
-  color: rgba(0,0,0,0.6)
+  color: rgba(0,0,0,0.7);
+}
+
+.header-action-button:hover ~ .header-action-icon{
+  color:rgba(0,0,0,0.1);
 }
 
 .header-nouser-actions{
@@ -55,33 +64,46 @@
   justify-content: flex-end;
   padding: 0 1em;
   gap: 4%;
+  align-items: center;
 }
 
 .nouser-action{
   cursor: pointer;
-  width: 45%;
+  width: 100%;
   border-radius: 5px;
   border: none;
+  font-size: 0.8em;
+  font-weight: bolder;
+  color: rgba(0,0,0,0.7);
+  transition: 0.3s ease;
+  padding: 0.8em ;
+  background: rgb(255,255,255);
+}
+
+.nouser-action:hover{
+  background: rgba(0,0,0,0.6);
 }
 
 .header-user-settings{
-  width: 50%;
   display: flex;
+  width: 100%;
   align-items: center;
   justify-content: flex-end;
   padding: 0.5em;
   gap: 4%;
-  background :rgba(0,0,0,0.1);
+  background :rgba(255,255,255);
   border-radius: 5px;
 }
 
 .text-header-profile{
-  font-size: 1.1em;
+  width: 100%;
+  font-size: 0.9em;
+  padding: 0 1em;
 }
 
 .header-profile{
-  width: 35px;
-  height: 35px;
+  width: 30px;
+  height: 30px;
   object-fit: cover;
   border-radius: 255px;
 }

@@ -7,7 +7,7 @@ import { ProfileSettings, profileSettings } from '../../Modal/ProfileSettings/Pr
 
 export const Header = () => {
 
-    const [userSession, setUserSession] = useState(1)
+    const [userSession, setUserSession] = useState(0)
     return (
         <>
             <div className="header-container">
@@ -23,8 +23,9 @@ export const Header = () => {
                 </div>
                 {userSession === 0 &&
                     <div className="header-nouser-actions">
-                        <button className='nouser-action'>registrarme</button>
-                        <button className='nouser-action'>Ingresar</button>
+                        <NavLink to='/login'><button className='nouser-action'>Ingresar</button></NavLink>
+                        <NavLink to='/register'><button className='nouser-action'>Registrarme</button></NavLink>
+
                     </div>
                 }
                 {userSession === 1 &&

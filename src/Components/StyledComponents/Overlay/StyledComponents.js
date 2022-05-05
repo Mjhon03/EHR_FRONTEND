@@ -28,17 +28,17 @@ export const Modal = styled.div`
 `
 
 export const ProfileModal = styled.div`
-  margin: 1em;
   padding: 1em;
   width:30vw;
-  float: right;
   text-align: center;
   border-radius: 10px;
   -webkit-box-shadow: 1px 5px 11px -2px #919191; 
   box-shadow: 1px 5px 11px -2px #919191;
-  position: relative;
-  overflow: hidden;
-  z-index: 100;
+  position: fixed;
+  top: 1.2%;
+  right: 1.5%;
+  
+  background: #FFFFFF;
 `;
 
 
