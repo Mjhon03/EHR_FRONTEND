@@ -26,6 +26,7 @@ export const FormLogin = () => {
     })
 
     const login = ((e) => {
+        e.preventDefault();
         axios.post(urlLogin, {
             "email" : email,
             "password" : password
@@ -69,7 +70,7 @@ export const FormLogin = () => {
                     <p>recuerdame</p>
                 </div>
                 <div className="forgot-password">
-                    <button className="register-submit" onClick={(e) => login(e)} type='submit'>entrar</button>
+                    <button className="register-submit" onClick={(e) => login(e)}>entrar</button>
                     <NavLink to='/forgotPassword'><p className='login-forgot-password'>Olvidaste tu contraseña</p></NavLink>
                 </div>
                 <div className="create-account-login">

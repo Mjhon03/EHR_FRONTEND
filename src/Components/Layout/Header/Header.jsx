@@ -9,7 +9,7 @@ import { UserContext, UserProvider } from '../../../UserProvider/UserProvider'
 
 export const Header = () => {
 
-    const [userSession, setUserSession] = useState(0)
+    const [userSession, setUserSession] = useState(1)
 
     useEffect(() => {
         console.log(userSession);
@@ -17,12 +17,19 @@ export const Header = () => {
 
     const userData = useContext(UserContext)
     
+
     const SetUserData = () =>{
         if(userData != null){
-            console.log(userData);                                                                                                                                                                                                                                                                                                                                       
+            console.log(userData);   
+            setUserSession(1)                                                                                                                                                                                                                                                                                                                                    
         }
-
     }
+
+    useEffect(() =>{
+        SetUserData()
+    })
+    
+
     return (
         <>
             <div className="header-container">
