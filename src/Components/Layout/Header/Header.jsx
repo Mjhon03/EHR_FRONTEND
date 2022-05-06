@@ -1,4 +1,4 @@
-import React, { useState, useContext} from 'react'
+import React, { useState, useContext, useEffect} from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHouseChimneyUser, faFilterCircleDollar, faCircleInfo, faNewspaper, faHeadset } from '@fortawesome/free-solid-svg-icons'
 import './Header.css'
@@ -10,19 +10,19 @@ import { UserContext, UserProvider } from '../../../UserProvider/UserProvider'
 export const Header = () => {
 
     const [userSession, setUserSession] = useState(0)
+
+    useEffect(() => {
+        console.log(userSession);
+    },[userSession])
+
+    const userData = useContext(UserContext)
     
-
-    const GetUserData = async () => {
-        const userData = useContext(UserContext)
-        if(userData.length === 0){
-            console.log('usuario vacio');
-        }else{
-            console.log(userData);
+    const SetUserData = () =>{
+        if(userData != null){
+            console.log(userData);                                                                                                                                                                                                                                                                                                                                       
         }
+
     }
-
-    GetUserData()
-
     return (
         <>
             <div className="header-container">

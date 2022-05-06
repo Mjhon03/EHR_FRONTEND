@@ -26,7 +26,6 @@ export const FormLogin = () => {
     })
 
     const login = ((e) => {
-        e.preventDefault()
         axios.post(urlLogin, {
             "email" : email,
             "password" : password
