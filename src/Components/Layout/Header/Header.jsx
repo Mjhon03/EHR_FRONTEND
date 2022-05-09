@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect} from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHouseChimneyUser, faFilterCircleDollar, faCircleInfo, faNewspaper, faHeadset } from '@fortawesome/free-solid-svg-icons'
 import './Header.css'
@@ -14,22 +14,22 @@ export const Header = () => {
 
     useEffect(() => {
         console.log(userSession);
-    },[userSession])
+    }, [userSession])
 
     const userData = useContext(UserContext)
-    
 
-    const SetUserData = () =>{
-        if(userData != null){
-            console.log(userData);   
-            setUserSession(1)                    
+
+    const SetUserData = () => {
+        if (userData != null) {
+            console.log(userData);
+            setUserSession(1)
         }
     }
 
-    useEffect(() =>{
+    useEffect(() => {
         SetUserData()
     })
-    
+
 
     return (
         <>
@@ -38,11 +38,21 @@ export const Header = () => {
                     <p className='header-logo'>EHR</p>
                 </div>
                 <div className="header-actions">
-                    <button className='header-action-button'><FontAwesomeIcon className='header-action-icon' icon={faHouseChimneyUser} /></button>
-                    <button className='header-action-button'><FontAwesomeIcon className='header-action-icon' icon={faFilterCircleDollar} /></button>
-                    <button className='header-action-button'><FontAwesomeIcon className='header-action-icon' icon={faCircleInfo} /></button>
-                    <button className='header-action-button'><FontAwesomeIcon className='header-action-icon' icon={faNewspaper} /></button>
-                    <button className='header-action-button'><FontAwesomeIcon className='header-action-icon' icon={faHeadset} /></button>
+                    <NavLink to='/'>
+                        <button className='header-action-button'><FontAwesomeIcon className='header-action-icon' icon={faHouseChimneyUser} /></button>
+                    </NavLink>
+                    <NavLink to='/'>
+                        <button className='header-action-button'><FontAwesomeIcon className='header-action-icon' icon={faFilterCircleDollar} /></button>
+                    </NavLink>
+                    <NavLink to='/'>
+                        <button className='header-action-button'><FontAwesomeIcon className='header-action-icon' icon={faCircleInfo} /></button>
+                    </NavLink>
+                    <NavLink to='/'>
+                        <button className='header-action-button'><FontAwesomeIcon className='header-action-icon' icon={faNewspaper} /></button>
+                    </NavLink>
+                    <NavLink to='/'>
+                        <button className='header-action-button'><FontAwesomeIcon className='header-action-icon' icon={faHeadset} /></button>
+                    </NavLink>
                 </div>
                 {userSession === 0 &&
                     <div className="header-nouser-actions">
@@ -59,11 +69,11 @@ export const Header = () => {
                                 <p className='text-header-profile'>{userData[0].nombre}</p>
                             </div>
                         </NavLink>
-                        <ProfileSettings userData={ userData }/>
+                        <ProfileSettings userData={userData} />
                     </div>
                 }
             </div>
-            
+
         </>
     )
 }

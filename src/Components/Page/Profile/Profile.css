@@ -1,9 +1,65 @@
+.profile-page{
+    height: 100vh;
+    background: rgb(229,229,229);
+}
+
 .profile-user-container{
     outline: solid 1px red;
     display: flex;
 }
 
+.user-card{
+    width: 20em;
+    margin: 1.5em;
+    box-shadow: -1px 5px 7px -2px #919191;
+    border-radius: 5px;
+}
+
 .profile-user-info{
-    outline: solid 1px red;
-    width: 18em;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 1em 3em;
+    background-color: rgb(255,255,255);
+    border-radius: 5px;
+}
+
+.user-image-container{
+    width: 80%;
+    height: 11em;
+    margin: 0 auto;
+    border-radius: 255px;
+}
+
+.profile-user-image{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 255px;
+}
+
+.profile-info-data{
+    padding: 0 0 0 1em;
+    margin: 1em 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3em;
+    color: rgb(50,50,50);
+}
+    
+.add-settings-account{
+    justify-content: space-between;
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-profile-container{
+    background:rgb(235,235,235);
+    padding: 1.5em;
+    text-align: center;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    font-size: 0.9em;
+    color: rgb(50,50,50);
 }

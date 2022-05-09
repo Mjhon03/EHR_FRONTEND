@@ -20,7 +20,7 @@ export const FormSingUp = () => {
     const uploadImage = () =>{
         const formData = new FormData()
         formData.append("file",imageSelected)
-        formData.append("upload_preset","profiles")
+        formData.append("upload_preset","profile")
 
         axios.post("https://api.cloudinary.com/v1_1/easyhouserent/image/upload" , formData)
         .then(response =>{

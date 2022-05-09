@@ -1,10 +1,10 @@
 import React from 'react'
 import { ProfileCardButton } from '../../StyledComponents/Overlay/StyledComponents'
 
-export const UpdateInfo = () => {
+export const SettingsAcount = () => {
   return (
     <>
-        <ProfileCardButton>Actualizar</ProfileCardButton>
+        <ProfileCardButton>Ajustes adicionales</ProfileCardButton>
     </>
   )
 }
