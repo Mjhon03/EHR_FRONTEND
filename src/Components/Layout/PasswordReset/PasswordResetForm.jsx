@@ -2,8 +2,8 @@ import './PasswordReset.css'
 import { useSearchParams } from 'react-router-dom';
 import React , { useEffect, useState } from 'react'
 import axios from 'axios';
+import { urlPassword } from '../../ApiRoutes';
 
- 
 export const PasswordResetForm = () => {
 
     const [ tokenState , setTokenState ] = useState(false)
@@ -25,6 +25,7 @@ export const PasswordResetForm = () => {
 
     const [ password , setPassword ] = useState('');
     const [ verifyPassword , setVerifyPassword ] = useState('')
+    const [ email, setEmail ] = useState('')
     
     const getPassword = ((e) => {
         setPassword(e.target.value)
@@ -38,14 +39,20 @@ export const PasswordResetForm = () => {
 
     console.log(emailToken);
 
-    // const sendNewData = () =>{
-    //     axios.post("passwordURL",{ params:{ token:emailToken , newPassword:password , newVerifyPassword: verifyPassword }})
-    //     .then(response => {
-    //         console.log(response.status);
-    //     }).catch(err =>{
-    //         console.log(err);
-    //     })
-    // }
+    const config = {
+        headers: { Authorization: `Bearer ${emailToken}` }
+    }
+
+
+    const sendNewPassword = (e) => {
+        e.preventDefault();
+        axios.put(urlPassword, { params:{newPassword:password, email: }}, config)
+        .then(response => {
+            console.log(response.status);
+        }).catch(ex => {
+            console.log(ex);
+        })
+    }
 
 
     return (
@@ -63,12 +70,12 @@ export const PasswordResetForm = () => {
                         <div className="separator"></div>
                         <input className='password-put' type="password" placeholder='Confirmacion nueva contraseña' onChange={getVerifyPassword} name="user_name"></input>                    
                         <div className="send-content">
-                        <button className='send-email'>Restaurar</button>
+                        <button className='send-email' onClick={(e) => sendNewPassword(e)}>Restaurar</button>
                     </div>      
                     </form>
                 </div>
         </div>
         }
-      </>
+    </>
     )
 }

@@ -58,8 +58,7 @@ export const FormLogin = () => {
             login()
         }
     }
-
-
+    
     return (
         <div className="login-form">
             <form className="login-valid-info">
@@ -68,7 +67,7 @@ export const FormLogin = () => {
                     <FacebookAuth buttonText={"Ingresar por facebook"} />
                 </div>
                 <div className="separator-container">
-                    <div className="line-separator" />
+                        <div className="line-separator" />
                     <p className='separator-info'>OR</p>
                     <div className="line-separator" />
                 </div>
