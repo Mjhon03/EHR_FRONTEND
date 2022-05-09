@@ -37,7 +37,7 @@
 }
 
 .header-action-button{
-  padding: 0 2.3em;
+  padding: 1em 2.3em;
   border-radius: 5px;
   border: none;
   cursor: pointer;
@@ -99,6 +99,7 @@
   width: 100%;
   font-size: 0.9em;
   padding: 0 1em;
+  text-decoration: none;
 }
 
 .header-profile{

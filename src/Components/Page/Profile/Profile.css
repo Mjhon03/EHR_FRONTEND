@@ -1,75 +1,65 @@
-.profile-img-cover{
-    height: 40vh;
+.profile-page{
+    height: 100vh;
+    background: rgb(229,229,229);
 }
 
-.img-profile-container{
-    margin: auto;
-    margin-top: -7%; 
-    position: relative;
-    width: 15%;
-    height: 200px;
-    border: solid 1px white;
-    border-radius: 100%;
+.profile-user-container{
+    outline: solid 1px red;
+    display: flex;
 }
 
-.img-profile{
+.user-card{
+    width: 20em;
+    margin: 1.5em;
+    box-shadow: -1px 5px 7px -2px #919191;
+    border-radius: 5px;
+}
+
+.profile-user-info{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 1em 3em;
+    background-color: rgb(255,255,255);
+    border-radius: 5px;
+}
+
+.user-image-container{
+    width: 80%;
+    height: 11em;
+    margin: 0 auto;
+    border-radius: 255px;
+}
+
+.profile-user-image{
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: 100%;
+    border-radius: 255px;
 }
 
-.info-addons{
-    width: 100%;
-    text-align: center;
-    margin: 1% auto;
-}
-
-.profile-description{
-    width: 50%;
-    margin: 2% auto;
-}
-
-.profile-email{
-    font-size: 80%;
-    color: rgb(80,80,80);
-}
-
-.profile-options{
+.profile-info-data{
+    padding: 0 0 0 1em;
+    margin: 1em 0;
     display: flex;
+    flex-direction: column;
+    gap: 0.3em;
+    color: rgb(50,50,50);
+}
     
-    width: 80%;
-    margin: 4% auto;
+.add-settings-account{
     justify-content: space-between;
-}
-
-.aditional-info{
     display: flex;
-    align-items: center;
+    flex-direction: column;
 }
 
-.add-on{
-    width: 100%;
-    padding: 3% 20%;
-    align-items: center;
-}
-
-.add-on-border-left{
-    border-left: 1px solid rgb(80,80,80); ;
-}
-
-.add-on-border{
-    border-right: 1px solid rgb(80,80,80); ;
-    border-left: 1px solid rgb(80,80,80); ;
-}
-
-.contact-actions{
-    width: 60%;
-}
-
-.action-button{
-    padding: 2% 8%;
-    margin: 0 2%;
-    border: none;
-    border: .1px solid black
+.footer-profile-container{
+    background:rgb(235,235,235);
+    padding: 1.5em;
+    text-align: center;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    font-size: 0.9em;
+    color: rgb(50,50,50);
 }
