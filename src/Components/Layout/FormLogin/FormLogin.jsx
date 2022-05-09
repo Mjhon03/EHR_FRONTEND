@@ -41,6 +41,17 @@ export const FormLogin = () => {
             })
     })
 
+    const validateDataInput = ((e ) => {
+        e.preventDefault();
+        if(email === "" || password === ""){
+            alert("Please fill all the fields")
+        }
+        else{
+            login(e)
+        }
+    })
+
+
     const enterLogin=(event)=>{
         let charCode = event.keyCode;
         if (charCode===13){
@@ -70,12 +81,12 @@ export const FormLogin = () => {
                     <p>recuerdame</p>
                 </div>
                 <div className="forgot-password">
-                    <button className="register-submit" onClick={(e) => login(e)}>entrar</button>
+                    <button className="register-submit" onClick={(e) => validateDataInput(e)}>Entrar</button>
                     <NavLink to='/forgotPassword'><p className='login-forgot-password'>Olvidaste tu contraseña</p></NavLink>
                 </div>
                 <div className="create-account-login">
-                    <p>no tienes cuenta.. </p>
-                    <NavLink to="/register"><p className='create-account-link'>crea una</p></NavLink>
+                    <p>No tienes cuenta.. </p>
+                    <NavLink to="/register"><p className='create-account-link'>Crea una</p></NavLink>
                 </div>
             </form>
         </div>
