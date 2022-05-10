@@ -1,12 +1,12 @@
 .profile-page{
     background: rgb(229,229,229);
+    padding: 0 0 1em 0;
 }
 
 .profile-user-container{
-    outline: solid 1px red;
     display: flex;
-    height: 90vh;
-    padding: 1.5em 2.5em;
+    height: 100vh;
+    padding: 1.5em 2em;
     gap: 2em;
     
 }
@@ -31,7 +31,7 @@
 }
 
 .user-image-container{
-    width: 80%;
+    width: 175px;
     height: 11em;
     margin: 0 auto;
     border-radius: 255px;
@@ -67,6 +67,7 @@
     border-bottom-left-radius: 5px;
     font-size: 0.9em;
     color: rgb(50,50,50);
+    
 }
 
 /* anoucement profile */

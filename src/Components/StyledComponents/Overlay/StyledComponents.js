@@ -12,17 +12,11 @@ export const Overlay = styled.div`
   align-items: center;
 `;
 
-export const CloseModal = styled.button`
-  padding: 2% ;
-  background: none;
-  border: none;
-`;
-
 export const Modal = styled.div`
   width: 45%;
-  height: 80vh;
+  height: 90vh;
   outline: solid 1px black;
-  padding: 0 2% 2% 2%;
+
   text-align: center;
   border-radius: 5px;
   background-color: #fff;
@@ -41,7 +35,6 @@ export const ProfileModal = styled.div`
   position: fixed;
   top: 1.2%;
   right: 1.5%;
-  
   background: #FFFFFF;
 `;
 
@@ -97,7 +90,7 @@ export const ProfileActions = styled.div`
   background: rgb(255,255,255);
   box-shadow: -1px 5px 7px -2px #919191;
   display: flex;
-  padding: 0 1em;
+  padding: 1em;
   justify-content: flex-end;
   align-items: center;
 `
