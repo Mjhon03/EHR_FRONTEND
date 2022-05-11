@@ -34,6 +34,7 @@ export const ForgotPasswordForm = () => {
             .then(response => {
                 if (response.data.state === true) {
                     setToken(`https://localhost:3000/passwordReset/?token=${response.data.token}`)
+                    localStorage.setItem('email', email)
                     sendEmail()
                 } else {
                     console.log(response.data)

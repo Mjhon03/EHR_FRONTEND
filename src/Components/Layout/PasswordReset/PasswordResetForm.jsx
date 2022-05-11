@@ -11,8 +11,6 @@ export const PasswordResetForm = () => {
     const [searchParams] = useSearchParams();
 
     let emailToken = searchParams.get('token');
-
-    
     const getToken = () => {
         if(emailToken != null){
             setTokenState(true)
@@ -25,8 +23,17 @@ export const PasswordResetForm = () => {
 
     const [ password , setPassword ] = useState('');
     const [ verifyPassword , setVerifyPassword ] = useState('')
-    const [ email, setEmail ] = useState('')
-    
+    const [ email, setemail] = useState('');
+    const getemail = () => {
+        if (email != null) {
+            setemail(localStorage.getItem('email'))
+        }
+    }
+
+    useEffect(()=>{
+        getemail()
+    })    
+
     const getPassword = ((e) => {
         setPassword(e.target.value)
         console.log(e.target.value);
@@ -38,17 +45,17 @@ export const PasswordResetForm = () => {
     })
 
     console.log(emailToken);
+    console.log(email);
 
     const config = {
         headers: { Authorization: `Bearer ${emailToken}` }
     }
 
-
     const sendNewPassword = (e) => {
         e.preventDefault();
-        axios.put(urlPassword, { params:{newPassword:password, email: }}, config)
+        axios.put(urlPassword, { params:{newPassword:password, email:localStorage.getItem('email') }}, config)
         .then(response => {
-            console.log(response.status);
+            console.log(response);
         }).catch(ex => {
             console.log(ex);
         })
