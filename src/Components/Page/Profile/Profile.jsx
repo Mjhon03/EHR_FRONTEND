@@ -4,6 +4,8 @@ import { UpdateInfo } from '../../Modal/UpateInfo/UpdateInfo'
 import { Header } from '../../Layout/Header/Header'
 import './Profile.css'
 import { SettingsAcount } from '../../Modal/SettingsAcount/SettingsAcount';
+import { ProfileActions, ProfileInfoContent } from '../../StyledComponents/Overlay/StyledComponents'
+import { ModalCreateAnouncement } from '../../Modal/ModalCreateAnouncement/ModalCreateAnouncement'
 
 export const Profile = () => {
 
@@ -33,7 +35,12 @@ export const Profile = () => {
                         <p>&copy; Easy House Rent 2022</p>
                     </div>
                 </div>
-
+                <div className="anouncement-user-container">
+                    <ProfileInfoContent />
+                    <ProfileActions><ModalCreateAnouncement />
+                    </ProfileActions>
+                    <ProfileInfoContent />
+                </div>
             </div>
         </div>
     )

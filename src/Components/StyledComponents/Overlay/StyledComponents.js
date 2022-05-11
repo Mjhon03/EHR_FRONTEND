@@ -12,19 +12,17 @@ export const Overlay = styled.div`
   align-items: center;
 `;
 
-export const CloseModal = styled.button`
-  padding: 2% ;
-  background: none;
-  border: none;
-`;
-
 export const Modal = styled.div`
   width: 45%;
+  height: 90vh;
   outline: solid 1px black;
-  padding: 0 2% 2% 2%;
+
   text-align: center;
   border-radius: 5px;
   background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 `
 
 export const ProfileModal = styled.div`
@@ -37,7 +35,6 @@ export const ProfileModal = styled.div`
   position: fixed;
   top: 1.2%;
   right: 1.5%;
-  
   background: #FFFFFF;
 `;
 
@@ -85,4 +82,22 @@ export const ProfileCardButton = styled.button`
   font-weight: 500;
   cursor: pointer;
   margin: 0.5em 0;
+`
+export const ProfileActions = styled.div`
+  width: 100%;
+  height: 10vh;
+  border-radius: 5px;
+  background: rgb(255,255,255);
+  box-shadow: -1px 5px 7px -2px #919191;
+  display: flex;
+  padding: 1em;
+  justify-content: flex-end;
+  align-items: center;
+`
+export const ProfileInfoContent = styled.div`
+  width: 100%;
+  height: 40vh;
+  border-radius: 5px;
+  background: rgb(255,255,255);
+  box-shadow: -1px 5px 7px -2px #919191;
 `
