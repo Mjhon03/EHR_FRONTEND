@@ -9,6 +9,10 @@ export const ModalCreateAnouncement = () => {
   const [visibility, setVisibility] = useState(false)
   const [formSection, setFormSection] = useState(0)
 
+  const [title, setTitle] = useState('')
+  const [description, setDescription] = useState('')
+  const [address, setAddress] = useState(' ')
+
   useEffect(() => {
     console.log(formSection)
   }, [formSection])
@@ -33,6 +37,63 @@ export const ModalCreateAnouncement = () => {
     }
   }
 
+  const [images, setimages] = useState([]);
+
+  const changeInput = (e) => {
+    //esto es el indice que se le dará a cada imagen, a partir del indice de la ultima foto
+    let indexImg;
+
+    //aquí evaluamos si ya hay imagenes antes de este input, para saber en dónde debe empezar el index del proximo array
+    if (images.length > 0) {
+      indexImg = images[images.length - 1].index + 1;
+    } else {
+      indexImg = 0;
+    }
+
+    let newImgsToState = readmultifiles(e, indexImg);
+    let newImgsState = [...images, ...newImgsToState];
+    setimages(newImgsState);
+
+    console.log(newImgsState);
+  };
+
+  function readmultifiles(e, indexInicial) {
+    const files = e.currentTarget.files;
+
+    //el array con las imagenes nuevas
+    const arrayImages = [];
+
+    Object.keys(files).forEach((i) => {
+      const file = files[i];
+
+      let url = URL.createObjectURL(file);
+
+      //console.log(file);
+      arrayImages.push({
+        index: indexInicial,
+        name: file.name,
+        url,
+        file
+      });
+
+      indexInicial++;
+    });
+
+    //despues de haber concluido el ciclo retornamos las nuevas imagenes
+    return arrayImages;
+  }
+
+  function deleteImg(indice) {
+    //console.log("borrar img " + indice);
+
+    const newImgs = images.filter(function (element) {
+      return element.index !== indice;
+    });
+    console.log(newImgs);
+    setimages(newImgs);
+  }
+
+
   return (
     <>
       <button onClick={() => changeModal()} class="noselect">
@@ -47,7 +108,7 @@ export const ModalCreateAnouncement = () => {
         <Overlay>
           <Modal>
             <div className="header-modal">
-              <FontAwesomeIcon className='header-modal-icon' onClick={ closeModal } icon={faArrowRightFromBracket}></FontAwesomeIcon>
+              <FontAwesomeIcon className='header-modal-icon' onClick={closeModal} icon={faArrowRightFromBracket}></FontAwesomeIcon>
             </div>
             <div className="modal-content-item">
               <h1 className='create-title'>Publica tu propiedad</h1>
@@ -58,7 +119,7 @@ export const ModalCreateAnouncement = () => {
                     <p className='form-stage'>1</p>
                     <p>2</p>
                     <p>3</p>
-                  </div>
+                    "C:\Users\adsi\AppData\Local\Programs\Microsoft VS Code\Code.exe"</div>
                   <div className="create-info">
                     <h2 className='create-subtitle'>Informacion Basica</h2>
                     <div className="required-info">
@@ -85,24 +146,11 @@ export const ModalCreateAnouncement = () => {
                     <div className="required-info">
                       <input className='create-input-add' type='text' placeholder='direccion' />
                       <select className='create-input-add'>
-                        <option value="zona">zona</option>
-                        <option value="">Urbano</option>
-                        <option value="">Rural</option>
                       </select>
                       <select className='create-input-add'>
-                        <option value="">modalidad</option>
-                        <option value="">venta</option>
-                        <option value="">Arriendo</option>
-                        <option value="">Permutar</option>
 
                       </select >
                       <select className='create-input-add' name="" id="">
-                        <option value="">tipo de vivienda</option>
-                        <option value="">Casa</option>
-                        <option value="">Local</option>
-                        <option value="">Apartamento</option>
-                        <option value="">Finca</option>
-                        <option value="">Lote</option>
                       </select>
                     </div>
 
@@ -123,12 +171,36 @@ export const ModalCreateAnouncement = () => {
                   </div>
                   <div className="create-info">
                     <h2 className='create-subtitle'>Verificacion de datos</h2>
-                    <div className="required-info">
-                      <label htmlFor="">Certificado de propiedad</label>
-                      <input type='file'></input>
-                      <label htmlFor="">Imagenes de la propiedad</label>
-                      <input type='file'></input>
-                      <label>ubicacion</label>
+                    <div className="container-fluid">
+                      <br></br>
+                      {/* INPUT IMAGES */}
+                      <label className="btn btn-warning">
+                        <span>Seleccionar archivos </span>
+                        <input hidden type="file" multiple onChange={changeInput}></input>
+                      </label>
+
+                      {/* VIEW IMAGES */}
+                      <div className="row">
+                        {images.map((imagen) => (
+                          <div className="col-6 col-sm-4 col-lg-3 square" key={imagen.index}>
+                            <div className="content_img">
+                              <button
+                                className="position-absolute btn btn-danger"
+                                onClick={deleteImg.bind(this, imagen.index)}
+                              >
+                                x
+                              </button>
+                              <img
+                                alt="algo"
+                                src={imagen.url}
+                                data-toggle="modal"
+                                data-target="#ModalPreViewImg"
+                                className="img-responsive"
+                              ></img>
+                            </div>
+                          </div>
+                        ))}
+                      </div>
                     </div>
                   </div>
                   <div className="create-action-container">
