@@ -119,7 +119,7 @@ export const ModalCreateAnouncement = () => {
                     <p className='form-stage'>1</p>
                     <p>2</p>
                     <p>3</p>
-                    "C:\Users\adsi\AppData\Local\Programs\Microsoft VS Code\Code.exe"</div>
+                  </div>
                   <div className="create-info">
                     <h2 className='create-subtitle'>Informacion Basica</h2>
                     <div className="required-info">

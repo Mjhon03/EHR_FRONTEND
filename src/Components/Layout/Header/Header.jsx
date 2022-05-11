@@ -33,6 +33,7 @@ export const Header = () => {
         <>
             <div className="header-container">
                 <div className="header-logo-container">
+                    <img src="https://i.ibb.co/zQHyDyt/logo.png" alt="logoEhr" className='logo-header' />
                     <p className='header-logo'>EHR</p>
                 </div>
                 <div className="header-actions">
