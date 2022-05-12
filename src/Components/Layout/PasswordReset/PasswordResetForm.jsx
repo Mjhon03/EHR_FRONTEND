@@ -2,7 +2,6 @@ import './PasswordReset.css'
 import { useSearchParams } from 'react-router-dom';
 import React , { useEffect, useState } from 'react'
 import axios from 'axios';
-import { urlPassword } from '../../ApiRoutes';
 
 export const PasswordResetForm = () => {
 
@@ -51,9 +50,14 @@ export const PasswordResetForm = () => {
         headers: { Authorization: `Bearer ${emailToken}` }
     }
 
+    const bodyParameters = {
+        password: password,
+        email: email
+    };
+
     const sendNewPassword = (e) => {
         e.preventDefault();
-        axios.put(urlPassword, { params:{newPassword:password, email:localStorage.getItem('email') }}, config)
+        axios.put(`https://localhost:44375/api/Password`, bodyParameters, {headers:{ Authorization: `Bearer ${emailToken}` }})
         .then(response => {
             console.log(response);
         }).catch(ex => {
