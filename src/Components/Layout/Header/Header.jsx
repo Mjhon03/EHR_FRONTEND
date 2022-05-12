@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHouseChimneyUser, faFilterCircleDollar, faCircleInfo, faNewspaper, faHeadset } from '@fortawesome/free-solid-svg-icons'
+import { faHouseChimneyUser, faFilterCircleDollar, faCircleInfo, faNewspaper, faHeadset, faCommentDots } from '@fortawesome/free-solid-svg-icons'
 import './Header.css'
 import { NavLink } from 'react-router-dom'
 import { ProfileSettings, profileSettings } from '../../Modal/ProfileSettings/ProfileSettings'
@@ -45,6 +45,9 @@ export const Header = () => {
                     </NavLink>
                     <NavLink to='/'>
                         <button className='header-action-button'><FontAwesomeIcon className='header-action-icon' icon={faCircleInfo} /></button>
+                    </NavLink>
+                    <NavLink to='/'>
+                        <button className='header-action-button'><FontAwesomeIcon className='header-action-icon' icon={faCommentDots} /></button>
                     </NavLink>
                     <NavLink to='/'>
                         <button className='header-action-button'><FontAwesomeIcon className='header-action-icon' icon={faNewspaper} /></button>

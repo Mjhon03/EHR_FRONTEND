@@ -156,27 +156,23 @@ export const ModalCreateAnouncement = () => {
                   </div>
                   <div className="create-info">
                     <h2 className='create-subtitle'>Verificacion de datos</h2>
-                    <div className="container-fluid">
+                    <div className="required-info">
                       <br></br>
-                      {/* INPUT IMAGES */}
                       <label className="btn btn-warning">
                         <span>Seleccionar archivos </span>
                         <input hidden type="file" multiple onChange={changeInput}></input>
                       </label>
-
-                      {/* VIEW IMAGES */}
                       <div className="row">
                         {images.map((imagen) => (
-                          <div className="col-6 col-sm-4 col-lg-3 square" key={imagen.index}>
+                          <div className="square" key={imagen.index}>
                             <div className="content_img">
                               <button
-                                className="position-absolute btn btn-danger"
-                                onClick={deleteImg.bind(this, imagen.index)}
+                                onClick={deleteImg.bind(this, imagen.index)} className='image-delete'
                               >
                                 x
                               </button>
                               <img
-                                alt="algo"
+                                alt="previewAnouncement"
                                 src={imagen.url}
                                 data-toggle="modal"
                                 data-target="#ModalPreViewImg"
