@@ -40,10 +40,7 @@ export const ModalCreateAnouncement = () => {
   const [images, setimages] = useState([]);
 
   const changeInput = (e) => {
-    //esto es el indice que se le dará a cada imagen, a partir del indice de la ultima foto
     let indexImg;
-
-    //aquí evaluamos si ya hay imagenes antes de este input, para saber en dónde debe empezar el index del proximo array
     if (images.length > 0) {
       indexImg = images[images.length - 1].index + 1;
     } else {
@@ -53,46 +50,34 @@ export const ModalCreateAnouncement = () => {
     let newImgsToState = readmultifiles(e, indexImg);
     let newImgsState = [...images, ...newImgsToState];
     setimages(newImgsState);
-
-    console.log(newImgsState);
   };
 
   function readmultifiles(e, indexInicial) {
     const files = e.currentTarget.files;
-
-    //el array con las imagenes nuevas
     const arrayImages = [];
 
     Object.keys(files).forEach((i) => {
       const file = files[i];
 
       let url = URL.createObjectURL(file);
-
-      //console.log(file);
       arrayImages.push({
         index: indexInicial,
         name: file.name,
         url,
         file
       });
-
       indexInicial++;
     });
-
-    //despues de haber concluido el ciclo retornamos las nuevas imagenes
     return arrayImages;
   }
 
   function deleteImg(indice) {
-    //console.log("borrar img " + indice);
-
     const newImgs = images.filter(function (element) {
       return element.index !== indice;
     });
     console.log(newImgs);
     setimages(newImgs);
   }
-
 
   return (
     <>
