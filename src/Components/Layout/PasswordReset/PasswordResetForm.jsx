@@ -1,6 +1,7 @@
 import './PasswordReset.css'
 import { useSearchParams } from 'react-router-dom';
 import React , { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import axios from 'axios';
 
 export const PasswordResetForm = () => {
@@ -8,6 +9,8 @@ export const PasswordResetForm = () => {
     const [ tokenState , setTokenState ] = useState(false)
 
     const [searchParams] = useSearchParams();
+
+    const navigate = useNavigate()
 
     let emailToken = searchParams.get('token');
     const getToken = () => {
@@ -35,20 +38,11 @@ export const PasswordResetForm = () => {
 
     const getPassword = ((e) => {
         setPassword(e.target.value)
-        console.log(e.target.value);
     })
 
     const getVerifyPassword = ((e) =>{
         setVerifyPassword(e.target.value)
-        console.log(e.target.value);
     })
-
-    console.log(emailToken);
-    console.log(email);
-
-    const config = {
-        headers: { Authorization: `Bearer ${emailToken}` }
-    }
 
     const bodyParameters = {
         password: password,
@@ -59,12 +53,19 @@ export const PasswordResetForm = () => {
         e.preventDefault();
         axios.put(`https://localhost:44375/api/Password`, bodyParameters, {headers:{ Authorization: `Bearer ${emailToken}` }})
         .then(response => {
-            console.log(response);
+            alert('Password has been changed')
+            navigate('/login')
         }).catch(ex => {
             console.log(ex);
         })
     }
 
+    const enterLogin=(event)=>{
+        let charCode = event.keyCode;
+        if (charCode===13){
+            sendNewPassword()
+        }
+    }
 
     return (
         <>
@@ -79,7 +80,7 @@ export const PasswordResetForm = () => {
                     <form>
                         <input className='password-put' type="password" placeholder='Nueva contraseña' onChange={getPassword}  name="user_name"></input>
                         <div className="separator"></div>
-                        <input className='password-put' type="password" placeholder='Confirmacion nueva contraseña' onChange={getVerifyPassword} name="user_name"></input>                    
+                        <input className='password-put' type="password" placeholder='Confirmacion nueva contraseña' onChange={getVerifyPassword} name="user_name" onKeyUp={e => (enterLogin(e))}></input>                    
                         <div className="send-content">
                         <button className='send-email' onClick={(e) => sendNewPassword(e)}>Restaurar</button>
                     </div>      

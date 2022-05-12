@@ -10,8 +10,6 @@ import { useNavigate } from 'react-router-dom'
 
 export const FormLogin = () => {
 
-    //Login logic
-
     const navigate = useNavigate()
 
     const [email, setemail] = useState("")
@@ -77,7 +75,7 @@ export const FormLogin = () => {
                 </div>
                 <div className="remember-password">
                     <input className='remember-check' type='checkbox'></input>
-                    <p>recuerdame</p>
+                    <p>Recuerdame</p>
                 </div>
                 <div className="forgot-password">
                     <button className="register-submit" onClick={(e) => validateDataInput(e)}>Entrar</button>
