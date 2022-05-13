@@ -1,8 +1,28 @@
-import React from 'react'
+import React,{useEffect , useState} from 'react'
 import './HomeSection.css'
+import { useNavigate } from 'react-router-dom'
 
 export const HomeSection = () => {
+
+    const navigate = useNavigate()
+
+    const [ param , setParam ] = useState('')
+
+    useEffect(()=>{
+        console.log(param);
+    },[param])
+
+    const getParam = (e) =>{
+        console.log(e.target.value);
+        setParam(e.target.value)
+    }
+
+    const sendSearch = () =>{
+        navigate(`/result/?value=${param}`)
+    }
+
     return (
+
         <div>
             <div className='home-section-container'>
                 <div className="home-section-info">
@@ -11,8 +31,8 @@ export const HomeSection = () => {
                         <h3 className='section-container-title'>Easy House Rent</h3>
                     </div>
                     <div className="search-home-container">
-                        <input className="search-box-home" type="text" placeholder='Busca por zona , lugar o nombre'></input>
-                        <button className='search-home-submit'>Buscar</button>
+                        <input className="search-box-home" onChange={(e)=> getParam(e)} type="text" placeholder='Busca por zona , lugar o nombre'></input>
+                        <button onClick={sendSearch} className='search-home-submit'>Buscar</button>
                     </div> 
                 </div> 
             </div>

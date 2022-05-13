@@ -17,7 +17,6 @@ export const Header = () => {
 
     const SetUserData = () => {
         if (userData != null) {
-            console.log(userData);
             setUserSession(1)
         }else{
             setUserSession(0)

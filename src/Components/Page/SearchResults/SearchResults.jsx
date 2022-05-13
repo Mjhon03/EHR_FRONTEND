@@ -1,35 +1,36 @@
 import React, { useEffect, useState } from 'react'
 import { ResultCards } from '../../UI/ResultCards/ResultCards';
+import { useSearchParams } from 'react-router-dom'
+import { urlSearch } from '../../ApiRoutes'
+import axios from 'axios'
+import { Header } from '../../Layout/Header/Header';
 
 export const SearchResults = () => {
 
+  const [searchParams] = useSearchParams();
   let searchParam = searchParams.get('value');
   console.log(searchParam);
-  const [params, setParams] = useState(true)
 
-  const [ resultData , setResultData ] = useState([])
+  const [resultData, setResultData] = useState(['data'])
 
-  useEffect(()=>{
-    console.log(resultData);
-  },[resultData])
+  useEffect(() => {
+    getData()
+  },[])
 
-  const getResults = () =>{
-    axios.get('urlbusqueda' , { params : { value : searchParam }})
-    .then(response => {
-      console.log(response);
-      setResultData(response.data)
-    })
-    .catch(ex => {
-      console.log(ex);
-    })
+  const getData = () => {
+    axios.get(`${urlSearch}?value=${searchParam}`)
+      .then(response => {
+        setResultData(response.data)
+      })
+      .catch(ex => {
+        console.log(ex);
+      })
   }
   return (
     <>
-      {params &&
-        <div className="search-results-container">
-          < ResultCards data={ resultData } />
-        </div>
-      }
+      <div className="search-results-container">
+        < Header />
+      </div>
     </>
   )
 }
