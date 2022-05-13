@@ -1,20 +1,16 @@
 import React from 'react'
+import './ResultCards.css'
 
 export const ResultCards = ({ data }) => {
+    const { idanuncio , titulo , zona , direccion , fecha , valor , url1  } = data
     return (
-        <>
-            {data.map(element => {
-                <div className="card-search-container">
-                    <p>{element.titulo}</p>
-                    <p>{element.descripcion}</p>
-                    <div className="card-search-description">
-                        <p>{element.direccion}</p>
-                        <p>{element.zona}</p>
-                        <p>{element.valor}</p>
-                        <img src={element.url1} alt='previewImage'/>
-                    </div>
-                </div>
-            })}
-        </>
+        <div  key={ idanuncio} className="card-render-container">
+            <h2>{ titulo }</h2>
+            <p>{ fecha }</p>
+            <p>{zona }</p>
+            <p>{ direccion }</p>
+            <img src={url1} alt='url' />
+            
+        </div>
     )
 }

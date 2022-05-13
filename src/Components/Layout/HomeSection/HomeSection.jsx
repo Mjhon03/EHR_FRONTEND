@@ -21,6 +21,13 @@ export const HomeSection = () => {
         navigate(`/result/?value=${param}`)
     }
 
+    const sendEvent =(event)=>{
+        let charCode = event.keyCode;
+        if (charCode===13){
+            sendSearch()
+        }
+    }
+
     return (
 
         <div>
@@ -31,7 +38,7 @@ export const HomeSection = () => {
                         <h3 className='section-container-title'>Easy House Rent</h3>
                     </div>
                     <div className="search-home-container">
-                        <input className="search-box-home" onChange={(e)=> getParam(e)} type="text" placeholder='Busca por zona , lugar o nombre'></input>
+                        <input className="search-box-home" onKeyUp={sendEvent} onChange={(e)=> getParam(e)} type="text" placeholder='Busca por zona , lugar o nombre'></input>
                         <button onClick={sendSearch} className='search-home-submit'>Buscar</button>
                     </div> 
                 </div> 

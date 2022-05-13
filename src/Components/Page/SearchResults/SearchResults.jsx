@@ -11,25 +11,36 @@ export const SearchResults = () => {
   let searchParam = searchParams.get('value');
   console.log(searchParam);
 
-  const [resultData, setResultData] = useState(['data'])
-
-  useEffect(() => {
-    getData()
-  },[])
+  const [resultData, setResultData] = useState([])
 
   const getData = () => {
     axios.get(`${urlSearch}?value=${searchParam}`)
       .then(response => {
+        console.log(response.data);
         setResultData(response.data)
       })
       .catch(ex => {
         console.log(ex);
       })
   }
+
+  useEffect(() => {
+    getData()
+  }, [])
+
   return (
     <>
       <div className="search-results-container">
-        < Header />
+        <div className="cards-content">
+          < Header />
+          {
+            resultData.map(
+              resultData => (
+                <ResultCards key={resultData.idanuncio} data={resultData} />
+              )
+            )
+          }
+        </div>
       </div>
     </>
   )
