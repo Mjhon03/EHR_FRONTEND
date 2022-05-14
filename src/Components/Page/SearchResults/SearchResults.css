@@ -1,0 +1,9 @@
+.cards-content{
+    margin: auto;
+    outline: solid 1px red;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    padding: 2em;
+    gap: 1em;
+}

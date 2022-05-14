@@ -4,6 +4,7 @@ import { useSearchParams } from 'react-router-dom'
 import { urlSearch } from '../../ApiRoutes'
 import axios from 'axios'
 import { Header } from '../../Layout/Header/Header';
+import './SearchResults.css'
 
 export const SearchResults = () => {
 
@@ -31,8 +32,8 @@ export const SearchResults = () => {
   return (
     <>
       <div className="search-results-container">
+        < Header />
         <div className="cards-content">
-          < Header />
           {
             resultData.map(
               resultData => (
