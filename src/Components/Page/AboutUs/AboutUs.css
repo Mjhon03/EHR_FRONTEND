@@ -1,0 +1,56 @@
+.textTitle-nosotros{
+    color: #ffffff;
+    /* text-align: center; */
+
+}
+.menu-documentation{
+    display: flex;
+    justify-content: center;
+    /* border: #000 1px solid;  */
+    width: 450px;
+    margin: auto;
+    padding: 20px;
+}
+.link-documentation{
+    margin: 15px;
+    text-decoration: none;
+    color: #000;
+}
+
+.link-documentation:hover{
+    color: #f4f4f4;
+}
+
+.grid-div{
+    background-color: #f4f4f4;
+    width: 350px;
+    height: 250px;
+    /* margin: 10px; */
+    border-radius: 9px;
+    margin: auto;
+    
+}
+
+.allcontainers{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    grid-gap: 20px;
+    align-content: center;
+    /* border: 1px solid #000;  */
+    width: 50%;
+    margin: auto;
+    margin-top: 100px;
+}
+
+#grid-item-photo{
+    background-color: #ffffff;
+}
+
+.title-content{
+    /* background-color: #000; */
+    height:200px ;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url("https://cdn.pixabay.com/photo/2018/06/22/11/02/schnoor-3490494_1280.jpg"); 
+}
