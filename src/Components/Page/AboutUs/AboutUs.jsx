@@ -7,7 +7,6 @@ export const AboutUs = () => {
     <>
     < Header />
     <div className='title-content'>
-      {/* <img src='https://pixabay.com/es/photos/schnoor-el-barrio-de-schnoorviertel-3490494/' alt='background'/> */}
       <h1 className='textTitle-nosotros'>Nosotros</h1>
     </div> 
     <div className='allcontainers'>

@@ -15,12 +15,22 @@
     margin: 15px;
     text-decoration: none;
     color: #000;
+    display: block;
 }
 
-.link-documentation:hover{
-    color: #f4f4f4;
+a::after{
+    content: '';
+    display: block;
+    width: 0;
+    height: 2px;
+    background-color: #000;
+    /* transition: width 3.s; */
+    transition: width 0.25s ease-out;
 }
-
+a:hover::after{
+    width: 100%;
+    transition: width 3.s;
+}
 .grid-div{
     background-color: #f4f4f4;
     width: 350px;
