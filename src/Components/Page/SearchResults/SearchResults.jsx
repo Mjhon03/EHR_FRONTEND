@@ -5,6 +5,7 @@ import { urlSearch } from '../../ApiRoutes'
 import axios from 'axios'
 import { Header } from '../../Layout/Header/Header';
 import './SearchResults.css'
+import { RegisterFooter } from '../../Layout/RegisterFooter/RegisterFooter'
 
 export const SearchResults = () => {
 
@@ -33,15 +34,21 @@ export const SearchResults = () => {
     <>
       <div className="search-results-container">
         < Header />
-        <div className="cards-content">
-          {
-            resultData.map(
-              resultData => (
-                <ResultCards key={resultData.idanuncio} data={resultData} />
+        <div className="result-view">
+          <div className="results-menu">
+            
+          </div>
+          <div className="cards-content">
+            {
+              resultData.map(
+                resultData => (
+                  <ResultCards key={resultData.idanuncio} data={resultData} />
+                )
               )
-            )
-          }
+            }
+          </div>
         </div>
+        <RegisterFooter />
       </div>
     </>
   )
