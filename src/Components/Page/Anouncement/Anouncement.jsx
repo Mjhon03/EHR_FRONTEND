@@ -7,13 +7,14 @@ import { useSearchParams } from 'react-router-dom';
 export const Anouncement = () => {
   
   const [searchParams] = useSearchParams();
-  let searchParam = searchParams.get('idAnouncement');
-  console.log(searchParam); 
+  let idAnouncement = searchParams.get('idanounce');
+  let zone = searchParams.get('adzone') 
+  console.log(idAnouncement , zone );
 
   const [ anouncementData , setAnoucementData ] = useState([])
 
   const getDataAnouncement = () =>[
-    axios.get('urlAnouncements',{ params : { idanuncio : searchParam}})
+    axios.get('urlAnouncements',{ params : { idanuncio : idAnouncement}})
     .then(response => {
       setAnoucementData(response.data)
       console.log(response.data);
