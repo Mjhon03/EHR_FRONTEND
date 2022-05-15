@@ -22,7 +22,7 @@
     cursor: pointer;
     display: flex;
     align-items: center;
-    background: red;
+    background: rgb(37,46,53);
     border: none;
     border-radius: 5px;
     box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.15);
@@ -42,7 +42,7 @@
 
 .noselect .icon {
     position: absolute;
-    border-left: 1px solid #c41b1b;
+    border-left: rgb(37,46,53);
     transform: translateX(170px);
     height: 40px;
     width: 40px;
@@ -57,7 +57,7 @@
 }
 
 .noselect:hover {
-    background: #ff3636;
+    backgroundr: rgb(37,46,53);
 }
 
 .noselect:hover .text {
@@ -192,3 +192,47 @@
     border-radius: 5px;
     border: solid .1px rgba(136, 136, 136, 0.60);
 }
+.row{
+    outline: solid 1px red;
+    width: 100%;
+     height:20em;
+     display: grid;
+     grid-template-columns: 25% 25% 25% 25%;
+     grid-template-rows: 25%;
+}
+
+.content_img{
+     outline: solid 1px red;
+     width: 100%;
+     height: 10em;
+     position: relative;
+     display: flex;
+     justify-content: flex-start;
+     transition: 0.3s ease;
+}
+
+.img-responsive{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    outline: solid 1px red;
+}
+.image-delete{
+    display: none;
+}
+
+.content_img:hover .image-delete {
+    position: absolute;
+    transition: 0.3s ease;
+    display: inline-block;
+    cursor: pointer;
+    border-radius: 255px;
+    background: rgb(0,0,0);
+    color: rgb(255,255,255);
+    margin: 0.2em 0 0 0.2em;
+    padding: 0.2em 0.7em;
+    transition: 0.3s ease;
+}
+
+
+ 
