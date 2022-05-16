@@ -46,6 +46,8 @@ function App() {
           <Route exact path="*" element={<Page404 />} />
           <Route exact path='/createAnouncement' element={<ModalCreateAnouncement />} />
           <Route exact path='/Preview' element={<PreviewPage />} />
+          
+          
           <Route exact path='/support' element={<SuportP />} />
         </Routes>
       </BrowserRouter>

@@ -4,4 +4,4 @@ export const urlMunicipality = "https://localhost:44375/api/Municipality/0?iddep
 export const urlLogin = "https://localhost:44375/api/Login"
 
 
-export const urlPassword = "https://localhost:44375/api/Password"
+// export const urlPassword = "https://localhost:44375/api/Password"
