@@ -35,7 +35,8 @@
 }
 
 .add-settings-account{
-    width: 60%;
+    width: 48em;
+    outline: solid 1px red;
     display: flex;
     gap: 2em;
     align-items: center;
