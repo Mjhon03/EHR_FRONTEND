@@ -18,6 +18,7 @@ import { Page404 } from "./Components/Page/Page404/Page404";
 import { ModalCreateAnouncement } from "./Components/Modal/ModalCreateAnouncement/ModalCreateAnouncement";
 import { PreviewPage } from "./Components/Page/PreviewPage/PreviewPage";
 import { UserProvider } from "./UserProvider/UserProvider";
+import { SuportP } from "./Components/Page/Support/Suports";
 
 
 
@@ -43,6 +44,7 @@ function App() {
           <Route exact path="*" element={<Page404 />} />
           <Route exact path='/createAnouncement' element={<ModalCreateAnouncement />} />
           <Route exact path='/Preview' element={<PreviewPage />} />
+          <Route exact path='/support' element={<SuportP />} />
         </Routes>
       </BrowserRouter>
     </UserProvider>
