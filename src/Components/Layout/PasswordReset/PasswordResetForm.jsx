@@ -12,6 +12,8 @@ export const PasswordResetForm = () => {
 
     const navigate = useNavigate()
 
+    
+    
     let emailToken = searchParams.get('token');
     const getToken = () => {
         if(emailToken != null){
