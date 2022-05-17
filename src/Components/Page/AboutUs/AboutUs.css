@@ -1,7 +1,6 @@
 .textTitle-nosotros{
     color: #ffffff;
-    font-size: 3rem;
-    /* text-align: center; */
+    font-size: 5rem;
 
 }
 .menu-documentation{
@@ -36,7 +35,6 @@
     background-color: #f4f4f4;
     width: 350px;
     height: 260px;
-    /* margin: 10px; */
     border-radius: 9px;
     margin: auto;
     padding: 15px;
@@ -50,14 +48,22 @@
     grid-gap: 20px;
     align-content: center;
     /* border: 1px solid #000;  */
-    width: 50%;
+    width: 70%;
     margin: auto;
     margin-top: 100px;
 }
 
 #grid-item-photo{
     background-color: #ffffff;
+    /* border: #000 1px solid; */
+    display: flex;
+    align-items: center;
+    justify-items: center;
 }
+/* 
+#grid-div-shadow{
+    box-shadow: 0px 1px 10px rgba(0,0,0, 0.2); 
+} */
 
 .title-content{
     height:300px ;
@@ -65,4 +71,20 @@
     justify-content: center;
     align-items: center;
     background-image: url("https://cdn.pixabay.com/photo/2018/06/22/11/02/schnoor-3490494_1280.jpg"); 
+    backdrop-filter: blur(60px);
+}
+
+.Computer-img{
+    width: 350px;
+    padding: auto;
+    border-radius: 9px;
+}
+
+@media screen and (max-width:720px){
+    .allcontainers{
+        grid-template-columns: repeat(1, 1fr);
+    }
+    .grid-div{
+        background-color: aquamarine;
+    }
 }
