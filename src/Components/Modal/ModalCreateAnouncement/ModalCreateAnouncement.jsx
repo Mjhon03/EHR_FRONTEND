@@ -8,10 +8,13 @@ export const ModalCreateAnouncement = () => {
 
   const [visibility, setVisibility] = useState(false)
   const [formSection, setFormSection] = useState(0)
-
+ 
   const [title, setTitle] = useState('')
   const [description, setDescription] = useState('')
   const [address, setAddress] = useState(' ')
+  const [ rooms , setRooms ] = useState(' ')
+  const [ garage , setGarage ] = useState(' ')
+
 
   useEffect(() => {
     console.log(formSection)
@@ -135,12 +138,16 @@ export const ModalCreateAnouncement = () => {
                       <input className='create-input-add' type='text' placeholder='direccion' onChange={(e)=> {setAddress(e.target.value)
                       console.log(e.target.value)}} />
                       <select className='create-input-add'>
+                        <option value="">zona</option>
+                        <option value="rural">rural</option>
+                        <option value="">norte</option>
+                        <option value="">sur</option>
+                        <option value="">centro</option>
                       </select>
-                      <select className='create-input-add'>
-
-                      </select >
-                      <select className='create-input-add' name="" id="">
-                      </select>
+                      <input type='number' placeholder='habitaciones' className='create-input-add' onChange={(e) => { setGarage(e.target.value)
+                      console.log(e.target.value)}}/>
+                      <input type='number' placeholder='garaje' className='create-input-add' onChange={(e) => { setGarage(e.target.value)
+                      console.log(e.target.value)}}/>     
                     </div>
 
                   </div>
