@@ -3,11 +3,12 @@ import { faCaretDown, faCircleInfo, faGears, faIdCardClip } from '@fortawesome/f
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React,{ useEffect, useState } from 'react'
 import { Navigate, NavLink } from 'react-router-dom'
+import { UserProvider } from '../../../UserProvider/UserProvider'
 import { ProfileAction, ProfileActionText, ProfileModal, SettingsSpace } from '../../StyledComponents/Overlay/StyledComponents'
 import './ProfileSettings.css'
 
-export const ProfileSettings = ({ userData }) => {
 
+export const ProfileSettings = ({ userData }) => {
 
   const [ settingsVisibility , setSettingsVisibility ] = useState(false)
 
@@ -27,7 +28,8 @@ export const ProfileSettings = ({ userData }) => {
     setSettingsVisibility(false)
   }
 
-  const deleteSesion = () => {
+
+  const deleteSesion = () =>{
     localStorage.removeItem("userInfo")
     Navigate('/')
     window.location.reload()
@@ -47,7 +49,7 @@ export const ProfileSettings = ({ userData }) => {
           
             <div className="settings-profile">
               <p className='settings-profile-name'>{ userData[0].nombre}</p>
-              <p className='send-profile-button'>ver tu perfil</p>
+              <p className='send-profile-button'>Ver tu perfil</p>
             </div>
         </div>
         </NavLink>
