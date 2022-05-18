@@ -1,0 +1,17 @@
+.result-view{
+    width: 100%;
+    display: flex;
+}
+
+.results-menu{
+    width: 20%;
+}
+
+.cards-content{
+    outline: solid 1px red;
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    padding: 1em 2em;
+    gap: 1em;
+}

@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHouseChimneyUser, faFilterCircleDollar, faCircleInfo, faNewspaper, faHeadset } from '@fortawesome/free-solid-svg-icons'
+import { faHouseChimneyUser, faFilterCircleDollar, faCircleInfo, faNewspaper, faHeadset, faCommentDots } from '@fortawesome/free-solid-svg-icons'
 import './Header.css'
 import { NavLink } from 'react-router-dom'
 import { ProfileSettings, profileSettings } from '../../Modal/ProfileSettings/ProfileSettings'
@@ -10,19 +10,16 @@ import { UserContext, UserProvider } from '../../../UserProvider/UserProvider'
 
 export const Header = () => {
 
-    const [userSession, setUserSession] = useState(1)
-
-    useEffect(() => {
-        console.log(userSession);
-    }, [userSession])
+    const [userSession, setUserSession] = useState(0)
 
     const userData = useContext(UserContext)
 
 
     const SetUserData = () => {
         if (userData != null) {
-            console.log(userData);
             setUserSession(1)
+        }else{
+            setUserSession(0)
         }
     }
 
@@ -35,6 +32,7 @@ export const Header = () => {
         <>
             <div className="header-container">
                 <div className="header-logo-container">
+                    <img src="https://i.ibb.co/zQHyDyt/logo.png" alt="logoEhr" className='logo-header' />
                     <p className='header-logo'>EHR</p>
                 </div>
                 <div className="header-actions">
@@ -46,6 +44,9 @@ export const Header = () => {
                     </NavLink>
                     <NavLink to='/'>
                         <button className='header-action-button'><FontAwesomeIcon className='header-action-icon' icon={faCircleInfo} /></button>
+                    </NavLink>
+                    <NavLink to='/'>
+                        <button className='header-action-button'><FontAwesomeIcon className='header-action-icon' icon={faCommentDots} /></button>
                     </NavLink>
                     <NavLink to='/'>
                         <button className='header-action-button'><FontAwesomeIcon className='header-action-icon' icon={faNewspaper} /></button>

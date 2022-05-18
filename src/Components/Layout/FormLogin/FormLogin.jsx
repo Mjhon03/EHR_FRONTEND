@@ -32,7 +32,8 @@ export const FormLogin = () => {
             .then(response => {
                 console.log(response.data)
                 localStorage.setItem("userInfo", JSON.stringify(response.data))
-                navigate('/')
+                navigate('/') 
+                window.location.reload()
             })
             .catch(ex => {
                 console.log(ex);

@@ -9,6 +9,7 @@ import { useState, useEffect } from 'react'
 import axios from 'axios';
 import { postUsers } from '../../../methodsUsers';
 import { NavLink } from 'react-router-dom';
+import { upload } from '@testing-library/user-event/dist/upload';
 
 export const FormSingUp = () => {
 
@@ -113,8 +114,8 @@ export const FormSingUp = () => {
     }
 
     const userRegister = () => {
-        console.log(typeof (name), typeof (lastName), typeof (yearsOld), typeof (phoneNumber), typeof (email), typeof (password), "A", typeof (iddepartment), typeof (idmunicipality));
-        postUsers(name, lastName, parseInt(yearsOld), phoneNumber, email, password, "A", parseInt(iddepartment), parseInt(idmunicipality));
+        postUsers(name, lastName, parseInt(yearsOld), phoneNumber, email, password, "A", parseInt(iddepartment), parseInt(idmunicipality) , photo);
+        uploadImage()
     }
     return (
         <div className="form-register-valid">
@@ -137,11 +138,9 @@ export const FormSingUp = () => {
                         name='file'
                         onChange={(event) =>{
                             setImageSelected(event.target.files[0])
+                            uploadImage()
                         }}
                     />
-                    <button onClick={uploadImage}>upload Image</button>
-
-
                     <input type="text" placeholder='nombre' maxLength="80" required className='info-input-register' onChange={setEventToName}></input><br></br>
                     <input type="text" placeholder='Apellidos' maxLength="80" required className='info-input-register' onChange={setEventToLastName}></input>
                     <div className="add-register-info">
