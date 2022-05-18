@@ -17,8 +17,8 @@
 }
 
 .noselect {
-    width: 13.5rem;
-    height: 50px;
+    width: 60.5rem;
+    height: 55px;
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -57,7 +57,7 @@
 }
 
 .noselect:hover {
-    backgroundr: rgb(37,46,53);
+    background: rgb(37,46,53);
 }
 
 .noselect:hover .text {

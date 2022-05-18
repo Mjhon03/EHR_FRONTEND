@@ -9,11 +9,9 @@ export const HomeSection = () => {
     const [ param , setParam ] = useState('')
 
     useEffect(()=>{
-        console.log(param);
     },[param])
 
     const getParam = (e) =>{
-        console.log(e.target.value);
         setParam(e.target.value)
     }
 

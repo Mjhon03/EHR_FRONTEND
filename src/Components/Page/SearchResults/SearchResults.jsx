@@ -11,14 +11,12 @@ export const SearchResults = () => {
 
   const [searchParams] = useSearchParams();
   let searchParam = searchParams.get('value');
-  console.log(searchParam);
 
   const [resultData, setResultData] = useState([])
 
   const getData = () => {
     axios.get(`${urlSearch}?value=${searchParam}`)
       .then(response => {
-        console.log(response.data);
         setResultData(response.data)
       })
       .catch(ex => {

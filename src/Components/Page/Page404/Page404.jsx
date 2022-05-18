@@ -3,8 +3,16 @@ import { Header } from '../../Layout/Header/Header'
 import { RegisterFooter } from '../../Layout/RegisterFooter/RegisterFooter'
 import './Page404.css'
 import errorPage from '../../../images/404.jpg'
+import { useNavigate } from 'react-router-dom'
 
 export const Page404 = () => {
+
+    const navigate = useNavigate()
+
+    const sendHome = () =>{
+        navigate('/')
+    }
+
   return (
     <div>
         < Header/>
@@ -14,7 +22,7 @@ export const Page404 = () => {
                     <h1 className='error-title'>Oooops!</h1>
                     <p className='error-subtitle'>lo sentimos, Pagina no encontrada...</p>
                     <p className='error-subtitle'>Intenta buscar otra cosa</p>
-                    <button className='error-relink'>Regresar al inicio</button>
+                    <button onClick={ sendHome } className='error-relink'>Regresar al inicio</button>
 
                 </div>
                 <div className="error-image-container">

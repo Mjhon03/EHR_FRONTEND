@@ -1,9 +1,15 @@
 import React from 'react'
 import './ResultCards.css'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 
 export const ResultCards = ({ data }) => {
-    const { idanuncio, titulo, descripcion, calificaion, zona, direccion, fecha, valor, url1 } = data
+    const { idanuncio, titulo, descripcion, calificacion, zona, direccion, fecha, valor, url1 } = data
+
+    const navigate = useNavigate()
+
+    const sendToSelect = () => {
+        navigate(`/anouncement/?idanounce=${idanuncio}&adzone=${zona}`)
+    }
     return (
         <div key={idanuncio} className="card-render-container">
             <div className="image-url-container">
@@ -21,7 +27,7 @@ export const ResultCards = ({ data }) => {
                     <p>fecha de publicacion : {fecha}</p>
                 </div>
                 <div className="button-anouncement-redirect">
-                    <NavLink to=''><button className='open-anouncement'>Ver publicacion</button></NavLink>
+                    <button onClick={ sendToSelect} className='open-anouncement'>Ver publicacion</button>
                 </div>
             </div>
 
