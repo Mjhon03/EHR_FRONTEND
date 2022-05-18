@@ -81,9 +81,9 @@ export const ModalCreateAnouncement = () => {
 
   return (
     <>
-      <button onClick={() => changeModal()} class="noselect">
-        <span class='text'>Crear Publicacion</span>
-        <span class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-house" viewBox="0 0 16 16">
+      <button onClick={() => changeModal()} className="noselect">
+        <span className='text'>Crear Publicacion</span>
+        <span className="icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" className="bi bi-house" viewBox="0 0 16 16">
           <path fill-rule="evenodd" d="M2 13.5V7h1v6.5a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5V7h1v6.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5zm11-11V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z" />
           <path fill-rule="evenodd" d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z" />
         </svg>
@@ -108,8 +108,11 @@ export const ModalCreateAnouncement = () => {
                   <div className="create-info">
                     <h2 className='create-subtitle'>Informacion Basica</h2>
                     <div className="required-info">
-                      <input type='text' placeholder='Titulo de la publicacion' className='create-input-add' />
-                      <textarea className='create-description' placeholder='descripcion de la vivienda ( detalles de la vivienda , consideraciones , aportes importantes a tener en cuenta )' />
+                      <input type='text' placeholder='Titulo de la publicacion' className='create-input-add' onChange={(e) => { setTitle(e.target.value)
+                      console.log(e.target.value)}}/>
+                      <textarea className='create-description' placeholder='descripcion de la vivienda ( detalles de la vivienda , consideraciones , aportes importantes a tener en cuenta )'
+                       onChange={(e)=> {setDescription(e.target.value)
+                       console.log(e.target.value);}}/>
                     </div>
                   </div>
                   <div className="first-action-container">
@@ -129,7 +132,8 @@ export const ModalCreateAnouncement = () => {
                   <div className="create-info">
                     <h2 className='create-subtitle'>Informacion detallada</h2>
                     <div className="required-info">
-                      <input className='create-input-add' type='text' placeholder='direccion' />
+                      <input className='create-input-add' type='text' placeholder='direccion' onChange={(e)=> {setAddress(e.target.value)
+                      console.log(e.target.value)}} />
                       <select className='create-input-add'>
                       </select>
                       <select className='create-input-add'>

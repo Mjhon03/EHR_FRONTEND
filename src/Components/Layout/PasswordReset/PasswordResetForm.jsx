@@ -8,15 +8,10 @@ export const PasswordResetForm = () => {
 
     const [ tokenState , setTokenState ] = useState(false)
 
+    const navigate = useNavigate()
+
     const [searchParams] = useSearchParams();
 
-
-    let emailToken = searchParams.get('token');
-    
-    // const navigate = useNavigate()
-
-    
-    
     let emailToken = searchParams.get('token');
     const getToken = () => {
         if(emailToken != null){
