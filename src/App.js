@@ -21,6 +21,9 @@ import { UserProvider } from "./UserProvider/UserProvider";
 import { SearchResults } from "./Components/Page/SearchResults/SearchResults";
 
 
+import { SuportP } from "./Components/Page/Support/Suports";
+
+
 
 
 
@@ -44,7 +47,6 @@ function App() {
           <Route exact path="*" element={<Page404 />} />
           <Route exact path='/createAnouncement' element={<ModalCreateAnouncement />} />
           <Route exact path='/Preview' element={<PreviewPage />} />
-          <Route exact path='/result' element={<SearchResults />}/>
         </Routes>
       </BrowserRouter>
     </UserProvider>
