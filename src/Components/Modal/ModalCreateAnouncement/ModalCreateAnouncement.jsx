@@ -85,8 +85,6 @@ export const ModalCreateAnouncement = () => {
     setimages(newImgs);
   }
 
-  const [imageSelected, setImageSelected] = useState('')
-
   const sendPhoto = () => {
     images.forEach(element => {
       const formData = new FormData()
