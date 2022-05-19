@@ -1,9 +1,8 @@
 import { faRocketchat } from '@fortawesome/free-brands-svg-icons'
 import { faCaretDown, faCircleInfo, faGears, faIdCardClip } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import React,{ useEffect, useState } from 'react'
-import { Navigate, NavLink } from 'react-router-dom'
-import { UserProvider } from '../../../UserProvider/UserProvider'
+import React,{ useEffect, useState} from 'react'
+import { NavLink } from 'react-router-dom'
 import { ProfileAction, ProfileActionText, ProfileModal, SettingsSpace } from '../../StyledComponents/Overlay/StyledComponents'
 import './ProfileSettings.css'
 
@@ -31,7 +30,7 @@ export const ProfileSettings = ({ userData }) => {
 
   const deleteSesion = () =>{
     localStorage.removeItem("userInfo")
-    Navigate('/')
+    localStorage.setItem("userInfo", null)
     window.location.reload()
   }
 
