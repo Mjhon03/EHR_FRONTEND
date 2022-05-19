@@ -10,13 +10,15 @@ import axios from 'axios';
 import { postUsers } from '../../../methodsUsers';
 import { NavLink } from 'react-router-dom';
 import { upload } from '@testing-library/user-event/dist/upload';
+import validator from 'validator';
 
 export const FormSingUp = () => {
 
     const [ imageSelected, setImageSelected] = useState('')
-
     const [ photo , setPhoto ] = useState('')
-    
+
+    const [emailError, setemailError] = useState("")
+    const [passwordError, setpasswordError] = useState("")
 
     const uploadImage = () =>{
         const formData = new FormData()
@@ -58,10 +60,28 @@ export const FormSingUp = () => {
 
     const setEventToEmail = ((event) => {
         setEmail(event.target.value)
+        if(validator.isEmail(event.target.value)){
+            setemailError("")
+        }
+        else{
+            setemailError("El correo no es valido.")
+        }
+        if (event.target.value === "") {
+            setemailError("")
+        }
     })
 
     const SetEventToPassword = ((event) => {
         setPassword(event.target.value)
+        if (validator.isLength(event.target.value, { min: 8, max: undefined })) {
+            setpasswordError("")
+        }
+        else{
+            setpasswordError("La contraseña debe tener al menos 8 caracteres.")
+        }
+        if (event.target.value === "") {
+            setpasswordError("")    
+        }
     })
 
     useEffect(() => {
@@ -131,8 +151,6 @@ export const FormSingUp = () => {
                     <div className="line-separator" />
                 </div>
                 <div className="info-register">
-
-
                     <input
                         type='file'
                         name='file'
@@ -151,8 +169,16 @@ export const FormSingUp = () => {
                         <SelectDepartment data={datadeparment} name={"Departamento"} event={setNameDepartment} />
                         <SelectMunicipality data={datamunicipality} name={"Municipio"} event={getIdMunicipality} />
                     </div>
-                    <input type="email" placeholder='Correo electronico' maxLength="80" required className='info-input-register' onChange={setEventToEmail} ></input>
-                    <input type="password" placeholder='Contraseña' minLength='8' required className='info-input-register' onChange={SetEventToPassword}></input>
+                    <input type="email" placeholder='Correo electronico' maxLength="80" required className='info-input-register' onChange={setEventToEmail} ></input><br></br>
+                    <span style={{
+                        fontSize: "12px",
+                        color: "red",
+                    }}>{emailError}</span>
+                    <input type="password" placeholder='Contraseña' minLength='8' required className='info-input-register' onChange={SetEventToPassword}></input><br></br>
+                    <span style={{
+                        fontSize: "12px",
+                        color: "red"
+                    }}>{passwordError}</span>
                 </div>
                 <button className="register-submit" onClick={userRegister}>REGISTRAR</button>
                 <div className="create-account-login create-account-register">
