@@ -3,18 +3,19 @@ import './ModalCreateAnouncement.css'
 import { Overlay, Modal } from '../../StyledComponents/Overlay/StyledComponents'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRightFromBracket } from '@fortawesome/free-solid-svg-icons';
+import axios from 'axios';
 
 export const ModalCreateAnouncement = () => {
 
   const [visibility, setVisibility] = useState(false)
   const [formSection, setFormSection] = useState(0)
- 
+
   const [title, setTitle] = useState('')
   const [description, setDescription] = useState('')
   const [address, setAddress] = useState(' ')
-  const [ rooms , setRooms ] = useState(' ')
-  const [ garage , setGarage ] = useState(' ')
-
+  const [zone, setZone] = useState(' ')
+  const [rooms, setRooms] = useState(' ')
+  const [garage, setGarage] = useState(' ')
 
   useEffect(() => {
     console.log(formSection)
@@ -41,6 +42,8 @@ export const ModalCreateAnouncement = () => {
   }
 
   const [images, setimages] = useState([]);
+
+  console.log(images);
 
   const changeInput = (e) => {
     let indexImg;
@@ -82,6 +85,23 @@ export const ModalCreateAnouncement = () => {
     setimages(newImgs);
   }
 
+  const [imageSelected, setImageSelected] = useState('')
+
+  const sendPhoto = () => {
+    images.forEach(element => {
+      const formData = new FormData()
+      formData.append("file", element.file)
+      formData.append("upload_preset", "anouncement")
+      axios.post("https://api.cloudinary.com/v1_1/easyhouserent/image/upload", formData)
+        .then(response => {
+          console.log(response);
+        })
+        .catch(err => {
+          console.log(err);
+        })
+    });
+  }
+
   return (
     <>
       <button onClick={() => changeModal()} className="noselect">
@@ -111,11 +131,15 @@ export const ModalCreateAnouncement = () => {
                   <div className="create-info">
                     <h2 className='create-subtitle'>Informacion Basica</h2>
                     <div className="required-info">
-                      <input type='text' placeholder='Titulo de la publicacion' className='create-input-add' onChange={(e) => { setTitle(e.target.value)
-                      console.log(e.target.value)}}/>
+                      <input type='text' placeholder='Titulo de la publicacion' className='create-input-add' onChange={(e) => {
+                        setTitle(e.target.value)
+                        console.log(e.target.value)
+                      }} />
                       <textarea className='create-description' placeholder='descripcion de la vivienda ( detalles de la vivienda , consideraciones , aportes importantes a tener en cuenta )'
-                       onChange={(e)=> {setDescription(e.target.value)
-                       console.log(e.target.value);}}/>
+                        onChange={(e) => {
+                          setDescription(e.target.value)
+                          console.log(e.target.value);
+                        }} />
                     </div>
                   </div>
                   <div className="first-action-container">
@@ -135,19 +159,28 @@ export const ModalCreateAnouncement = () => {
                   <div className="create-info">
                     <h2 className='create-subtitle'>Informacion detallada</h2>
                     <div className="required-info">
-                      <input className='create-input-add' type='text' placeholder='direccion' onChange={(e)=> {setAddress(e.target.value)
-                      console.log(e.target.value)}} />
-                      <select className='create-input-add'>
+                      <input className='create-input-add' type='text' placeholder='direccion' onChange={(e) => {
+                        setAddress(e.target.value)
+                        console.log(e.target.value)
+                      }} />
+                      <select className='create-input-add' onChange={(e) => {
+                        setZone(e.target.value)
+                        console.log(e.target.value);
+                      }}>
                         <option value="">zona</option>
                         <option value="rural">rural</option>
-                        <option value="">norte</option>
-                        <option value="">sur</option>
-                        <option value="">centro</option>
+                        <option value="norte">norte</option>
+                        <option value="sur">sur</option>
+                        <option value="centro">centro</option>
                       </select>
-                      <input type='number' placeholder='habitaciones' className='create-input-add' onChange={(e) => { setGarage(e.target.value)
-                      console.log(e.target.value)}}/>
-                      <input type='number' placeholder='garaje' className='create-input-add' onChange={(e) => { setGarage(e.target.value)
-                      console.log(e.target.value)}}/>     
+                      <input type='number' placeholder='habitaciones' className='create-input-add' onChange={(e) => {
+                        setGarage(e.target.value)
+                        console.log(e.target.value)
+                      }} />
+                      <input type='number' placeholder='garaje' className='create-input-add' onChange={(e) => {
+                        setGarage(e.target.value)
+                        console.log(e.target.value)
+                      }} />
                     </div>
 
                   </div>
@@ -171,7 +204,7 @@ export const ModalCreateAnouncement = () => {
                       <br></br>
                       <label className="btn btn-warning">
                         <span>Seleccionar archivos </span>
-                        <input hidden type="file" multiple onChange={changeInput}></input>
+                        <input hidden type="file" multiple onChange={(e) => { changeInput(e) }}></input>
                       </label>
                       <div className="row">
                         {images.map((imagen) => (
@@ -197,7 +230,7 @@ export const ModalCreateAnouncement = () => {
                   </div>
                   <div className="create-action-container">
                     <button className='create-action-button' onClick={decreaseStatus}>anterior</button>
-                    <button className='create-action-button' >publicar</button>
+                    <button className='create-action-button' onClick={sendPhoto}>publicar</button>
                   </div>
                 </div>
               }
