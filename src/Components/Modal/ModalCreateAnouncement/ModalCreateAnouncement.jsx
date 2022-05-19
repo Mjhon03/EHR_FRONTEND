@@ -14,8 +14,10 @@ export const ModalCreateAnouncement = () => {
   const [description, setDescription] = useState('')
   const [address, setAddress] = useState(' ')
   const [zone, setZone] = useState(' ')
+  const [structure, setStructure] = useState('')
   const [rooms, setRooms] = useState(' ')
   const [garage, setGarage] = useState(' ')
+  const [ modality ,setModality ] = useState('')
 
   useEffect(() => {
     console.log(formSection)
@@ -133,6 +135,10 @@ export const ModalCreateAnouncement = () => {
                         setTitle(e.target.value)
                         console.log(e.target.value)
                       }} />
+                      <input className='create-input-add' type='text' placeholder='direccion' onChange={(e) => {
+                        setAddress(e.target.value)
+                        console.log(e.target.value)
+                      }} />
                       <textarea className='create-description' placeholder='descripcion de la vivienda ( detalles de la vivienda , consideraciones , aportes importantes a tener en cuenta )'
                         onChange={(e) => {
                           setDescription(e.target.value)
@@ -157,10 +163,13 @@ export const ModalCreateAnouncement = () => {
                   <div className="create-info">
                     <h2 className='create-subtitle'>Informacion detallada</h2>
                     <div className="required-info">
-                      <input className='create-input-add' type='text' placeholder='direccion' onChange={(e) => {
-                        setAddress(e.target.value)
-                        console.log(e.target.value)
-                      }} />
+
+                      <select className='create-input-add' onChange={(e)=> {setModality(e.target.value)
+                      console.log(e.target.value)}}>
+                        <option value="">modalidad</option>
+                        <option value="venta">venta</option>
+                        <option value="arrendo">arrendo</option>
+                      </select>
                       <select className='create-input-add' onChange={(e) => {
                         setZone(e.target.value)
                         console.log(e.target.value);
@@ -170,6 +179,18 @@ export const ModalCreateAnouncement = () => {
                         <option value="norte">norte</option>
                         <option value="sur">sur</option>
                         <option value="centro">centro</option>
+                      </select>
+
+                      <select className='create-input-add' onChange={(e) => {
+                        setStructure(e.target.value)
+                        console.log(e.target.value);
+                      }}>
+                        <option value="">tipo de edificacion</option>
+                        <option value="finca">finca</option>
+                        <option value="apartamento">apartamento</option>
+                        <option value="terreno">terreno</option>
+                        <option value="local">local</option>
+                        <option value="hogar">hogar</option>
                       </select>
                       <input type='number' placeholder='habitaciones' className='create-input-add' onChange={(e) => {
                         setGarage(e.target.value)
