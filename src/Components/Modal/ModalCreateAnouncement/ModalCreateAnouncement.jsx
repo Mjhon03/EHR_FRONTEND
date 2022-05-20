@@ -1,11 +1,16 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useContext, useState } from 'react'
 import './ModalCreateAnouncement.css'
 import { Overlay, Modal } from '../../StyledComponents/Overlay/StyledComponents'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRightFromBracket } from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios';
+import { UserContext } from '../../../UserProvider/UserProvider'
+import { createAnouncement } from '../../../methodAdversitement';
 
 export const ModalCreateAnouncement = () => {
+
+  const userData = useContext(UserContext)
+  console.log(userData);
 
   const [visibility, setVisibility] = useState(false)
   const [formSection, setFormSection] = useState(0)
@@ -14,14 +19,18 @@ export const ModalCreateAnouncement = () => {
   const [description, setDescription] = useState('')
   const [address, setAddress] = useState(' ')
   const [zone, setZone] = useState(' ')
-  const [structure, setStructure] = useState('')
+  const [edification, setEdification] = useState('')
   const [rooms, setRooms] = useState(' ')
   const [garage, setGarage] = useState(' ')
-  const [ modality ,setModality ] = useState('')
+  const [modality, setModality] = useState('')
+  const [price, setPrice] = useState(' ')
 
   useEffect(() => {
     console.log(formSection)
   }, [formSection])
+
+  let date = new Date();
+  let newDate = (date.toISOString().split('T')[0]);
 
   const changeModal = () => {
     setVisibility(true)
@@ -42,6 +51,7 @@ export const ModalCreateAnouncement = () => {
       setFormSection(0)
     }
   }
+
 
   const [images, setimages] = useState([]);
 
@@ -87,14 +97,15 @@ export const ModalCreateAnouncement = () => {
     setimages(newImgs);
   }
 
-  const sendPhoto = () => {
+  const sendPhotos = () => {
     images.forEach(element => {
       const formData = new FormData()
       formData.append("file", element.file)
       formData.append("upload_preset", "anouncement")
       axios.post("https://api.cloudinary.com/v1_1/easyhouserent/image/upload", formData)
         .then(response => {
-          console.log(response);
+          console.log(response.data.url);
+          imagesUrl.push(response.data.url)
         })
         .catch(err => {
           console.log(err);
@@ -102,13 +113,19 @@ export const ModalCreateAnouncement = () => {
     });
   }
 
+  const createUser = () => {
+    createAnouncement(userData[0].idusuario, title, address, description, modality, zone, edification, rooms, garage, price, newDate, arrayURL)
+  }
+
+ 
+
   return (
     <>
       <button onClick={() => changeModal()} className="noselect">
         <span className='text'>Crear Publicacion</span>
         <span className="icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" className="bi bi-house" viewBox="0 0 16 16">
-          <path fill-rule="evenodd" d="M2 13.5V7h1v6.5a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5V7h1v6.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5zm11-11V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z" />
-          <path fill-rule="evenodd" d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z" />
+          <path d="M2 13.5V7h1v6.5a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5V7h1v6.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5zm11-11V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z" />
+          <path d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z" />
         </svg>
         </span>
       </button>
@@ -163,26 +180,29 @@ export const ModalCreateAnouncement = () => {
                   <div className="create-info">
                     <h2 className='create-subtitle'>Informacion detallada</h2>
                     <div className="required-info">
-
-                      <select className='create-input-add' onChange={(e)=> {setModality(e.target.value)
-                      console.log(e.target.value)}}>
-                        <option value="">modalidad</option>
-                        <option value="venta">venta</option>
-                        <option value="arrendo">arrendo</option>
-                      </select>
+                      <div className="modality-medium">
+                        <select className='create-input-add' onChange={(e) => {
+                          setModality(e.target.value)
+                          console.log(e.target.value)
+                        }}>
+                          <option value="">modalidad</option>
+                          <option value="venta">venta</option>
+                          <option value="arrendo">arrendo</option>
+                        </select>
+                        <div className="medium-inputs"></div>
+                        <select className='create-input-add' onChange={(e) => {
+                          setZone(e.target.value)
+                          console.log(e.target.value);
+                        }}>
+                          <option value="">zona</option>
+                          <option value="rural">rural</option>
+                          <option value="norte">norte</option>
+                          <option value="sur">sur</option>
+                          <option value="centro">centro</option>
+                        </select>
+                      </div>
                       <select className='create-input-add' onChange={(e) => {
-                        setZone(e.target.value)
-                        console.log(e.target.value);
-                      }}>
-                        <option value="">zona</option>
-                        <option value="rural">rural</option>
-                        <option value="norte">norte</option>
-                        <option value="sur">sur</option>
-                        <option value="centro">centro</option>
-                      </select>
-
-                      <select className='create-input-add' onChange={(e) => {
-                        setStructure(e.target.value)
+                        setEdification(e.target.value)
                         console.log(e.target.value);
                       }}>
                         <option value="">tipo de edificacion</option>
@@ -193,11 +213,15 @@ export const ModalCreateAnouncement = () => {
                         <option value="hogar">hogar</option>
                       </select>
                       <input type='number' placeholder='habitaciones' className='create-input-add' onChange={(e) => {
-                        setGarage(e.target.value)
+                        setRooms(e.target.value)
                         console.log(e.target.value)
                       }} />
                       <input type='number' placeholder='garaje' className='create-input-add' onChange={(e) => {
                         setGarage(e.target.value)
+                        console.log(e.target.value)
+                      }} />
+                      <input type='number' placeholder='precio' className='create-input-add' onChange={(e) => {
+                        setPrice(e.target.value)
                         console.log(e.target.value)
                       }} />
                     </div>
@@ -249,7 +273,7 @@ export const ModalCreateAnouncement = () => {
                   </div>
                   <div className="create-action-container">
                     <button className='create-action-button' onClick={decreaseStatus}>anterior</button>
-                    <button className='create-action-button' onClick={sendPhoto}>publicar</button>
+                    <button className='create-action-button'>publicar</button>
                   </div>
                 </div>
               }

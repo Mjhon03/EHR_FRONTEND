@@ -1,10 +1,9 @@
 import axios from 'axios'
-import { urlAdversitement } from './Components/ApiRoutes'
 
-export const createAnouncement = ({ iduser , title , adress , description ,
-   modality , zone , edification , rooms , garage , price , date , images }) =>{
+export const createAnouncement = (iduser , title , adress , description ,
+   modality , zone , edification , rooms , garage , price , date , image1,image2, image3, image4 ) =>{
 
-    axios.post(urlAdversitement ,{
+    axios.post('https://localhost:44375/api/Advertisement' ,{
         idusuario : iduser,
         titulo : title,
         direccion : adress,
@@ -16,11 +15,10 @@ export const createAnouncement = ({ iduser , title , adress , description ,
         garaje : garage,
         precio : price,
         fecha : date,
-        estado : 'A',
-        url1 : images[0],
-        url2 : images[1],
-        url3 : images[2],
-        url4 : images[3]
+        url1 : image1,
+        url2 : image2,
+        url3 : image3,
+        url4 : image4
     })
     .then(response => {
         console.log(response.status);
