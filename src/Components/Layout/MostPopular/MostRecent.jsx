@@ -1,19 +1,40 @@
 import React from 'react'
+import axios from 'axios'
 import './MostRecent.css'
+import { useState, useEffect } from 'react'
+import { CardMostRecent } from './CardMostRecent/CardMostRecent'
 
-export const MostPopular = () => {
+export const MostRecent = () => {
+
+  const [cardMostRecent, setCardMostRecent] = useState([])
+  const URLCMR = `https://localhost:44375/api/Home/MostRecent`
+
+  const GetMostRecent = (event) => {
+      axios.get(URLCMR)
+      .then(response => {
+          setCardMostRecent(response.data)
+          console.log(response.data);
+      })
+      .catch(error => {
+          console.log(error)
+      })
+  }
+
+  useEffect(() => {
+    GetMostRecent()
+  }, [URLCMR])
+
   return (
-    <div className='most-popular-container'>
-      <p>card1</p>
-      <p>card2</p>
-      <p>card3</p>
-      <p>card4</p>
-      <p>card5</p>
-      <p>card6</p>
-      <p>card7</p>
-      <p>card8</p>
-      <p>card9</p>
-      <p>card10</p>
+    <div className='mostRecentContainer'>
+      <div className='divCardMostRecentItem'>
+        {
+          cardMostRecent.map(
+            cardMostRecent => (
+              <CardMostRecent key={cardMostRecent.idanuncio} data={cardMostRecent}/>
+            )
+          )
+        }
+      </div>
     </div>
   )
 }
