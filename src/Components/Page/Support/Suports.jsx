@@ -7,7 +7,7 @@ import { RegisterFooter } from "../../Layout/RegisterFooter/RegisterFooter";
 export const SuportP =()=>{
   return(
     <>
-    {/* <Header/> */}
+    <Header/>
     <TecnicalSupport/>
     <RegisterFooter/>
     </>

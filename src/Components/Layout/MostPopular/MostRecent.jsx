@@ -1,5 +1,5 @@
 import React from 'react'
-import './MostPopular.css'
+import './MostRecent.css'
 
 export const MostPopular = () => {
   return (
