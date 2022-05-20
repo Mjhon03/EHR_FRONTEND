@@ -42,7 +42,7 @@ export const Header = () => {
                     <NavLink to='/'>
                         <button className='header-action-button'><FontAwesomeIcon className='header-action-icon' icon={faFilterCircleDollar} /></button>
                     </NavLink>
-                    <NavLink to='/'>
+                    <NavLink to='/AboutUs'>
                         <button className='header-action-button'><FontAwesomeIcon className='header-action-icon' icon={faCircleInfo} /></button>
                     </NavLink>
                     <NavLink to='/'>
@@ -54,6 +54,7 @@ export const Header = () => {
                     <NavLink to='/'>
                         <button className='header-action-button'><FontAwesomeIcon className='header-action-icon' icon={faHeadset} /></button>
                     </NavLink>
+                    
                 </div>
                 {userSession === 0 &&
                     <div className="header-nouser-actions">
