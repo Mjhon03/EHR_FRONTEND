@@ -150,6 +150,7 @@ export const FormSingUp = () => {
                         name='file'
                         onChange={(event) =>{
                             setImageSelected(event.target.files[0])
+                            console.log(event.target.files[0]);
                             uploadImage()
                         }}
                     />

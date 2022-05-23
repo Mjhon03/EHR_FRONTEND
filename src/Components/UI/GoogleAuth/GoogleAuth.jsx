@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { GoogleLogin } from 'react-google-login';
 import { postUsers } from '../../../methodsUsers';
-import axios, { Axios } from 'axios';
+import axios from 'axios';
 import { urlUsers } from '../../ApiRoutes';
 
 export const GoogleAuth = ({ buttonText }) => {
@@ -13,7 +13,7 @@ export const GoogleAuth = ({ buttonText }) => {
     const[ lastName , setLastName ] = useState("")
     const[ email , setEmail ] = useState("")
     const[ password , setPassword ] = useState("")
-    const[ photo , setPhoto ] = useState("")
+    const[ photo , setPhoto ] = useState([])
 
     const responseGoogle =  (response => {
         console.log(response)
