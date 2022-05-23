@@ -6,6 +6,7 @@ import { GoogleAuth } from '../../UI/GoogleAuth/GoogleAuth';
 import { FacebookAuth } from '../../UI/FacebookAuth/FacebookAuth';
 import { urlLogin } from '../../ApiRoutes';
 import { useNavigate } from 'react-router-dom'
+import validator from 'validator';
 
 
 export const FormLogin = () => {
@@ -14,9 +15,19 @@ export const FormLogin = () => {
 
     const [email, setemail] = useState("")
     const [password, setpassword] = useState("")
+    const [emailError, setemailError] = useState("")
 
     const setEventToEmail = ((event) => {
         setemail(event.target.value)
+        if(validator.isEmail(event.target.value)){
+            setemailError("")
+        }
+        else{
+            setemailError("El correo no es valido.")
+        }
+        if (event.target.value === "") {
+            setemailError("")
+        }
     })
 
     const SetEventToPassword = ((event) => {
@@ -49,14 +60,14 @@ export const FormLogin = () => {
             login(e)
         }
     })
-
-
     const enterLogin=(event)=>{
         let charCode = event.keyCode;
         if (charCode===13){
             login()
         }
     }
+
+
     
     return (
         <div className="login-form">
@@ -72,6 +83,10 @@ export const FormLogin = () => {
                 </div>
                 <div className="info">
                     <input type="email" max="80" required className='info-input-register' placeholder="Correo electronico" onChange={setEventToEmail}></input><br></br>
+                    <span style={{
+                        color: "red",
+                    }}>{emailError}</span>
+                    <br></br>
                     <input type="password" minLength='8' required className='info-input-register' placeholder="Contraseña" onChange={SetEventToPassword} onKeyUp={e=>(enterLogin(e))} ></input>
                 </div>
                 <div className="remember-password">

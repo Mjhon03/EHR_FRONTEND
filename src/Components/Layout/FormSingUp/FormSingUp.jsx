@@ -4,25 +4,25 @@ import { GoogleAuth } from '../../UI/GoogleAuth/GoogleAuth';
 import { FacebookAuth } from '../../UI/FacebookAuth/FacebookAuth';
 import { SelectDepartment } from '../../UI/SelectDepartment/SelectDepartment';
 import { SelectMunicipality } from '../../UI/SelectMunicipality/SelectMunicipality';
-import { urLDepartments, urlMunicipality, urlUsers } from '../../ApiRoutes';
+import { urLDepartments, urlMunicipality} from '../../ApiRoutes';
 import { useState, useEffect } from 'react'
 import axios from 'axios';
 import { postUsers } from '../../../methodsUsers';
 import { NavLink } from 'react-router-dom';
-import { upload } from '@testing-library/user-event/dist/upload';
+import validator from 'validator';
 
 export const FormSingUp = () => {
 
     const [ imageSelected, setImageSelected] = useState('')
-
     const [ photo , setPhoto ] = useState('')
-    
+
+    const [emailError, setemailError] = useState("")
+    const [passwordError, setpasswordError] = useState("")
 
     const uploadImage = () =>{
         const formData = new FormData()
         formData.append("file",imageSelected)
         formData.append("upload_preset","profile")
-
         axios.post("https://api.cloudinary.com/v1_1/easyhouserent/image/upload" , formData)
         .then(response =>{
             console.log(response);
@@ -58,10 +58,28 @@ export const FormSingUp = () => {
 
     const setEventToEmail = ((event) => {
         setEmail(event.target.value)
+        if(validator.isEmail(event.target.value)){
+            setemailError("")
+        }
+        else{
+            setemailError("El correo no es valido.")
+        }
+        if (event.target.value === "") {
+            setemailError("")
+        }
     })
 
     const SetEventToPassword = ((event) => {
         setPassword(event.target.value)
+        if (validator.isStrongPassword(event.target.value, { min: 8, max: undefined, minLowercase:1, minUppercase:1, minNumbers:1, minSymbols:1})) {
+            setpasswordError("")
+        }
+        else{
+            setpasswordError("La contraseña debe contener al menos una mayuscula, una minuscula, un numero y un simbolo")
+        }
+        if (event.target.value === "") {
+            setpasswordError("")    
+        }
     })
 
     useEffect(() => {
@@ -90,10 +108,6 @@ export const FormSingUp = () => {
     useEffect(() => {
         fetchMunicipality()
     }, [iddepartment])
-
-    useEffect(() => {
-        console.log(idmunicipality)
-    }, [idmunicipality])
 
     const setNameDepartment = (event) => {
         setIdDepartment(event.target.value)
@@ -131,8 +145,6 @@ export const FormSingUp = () => {
                     <div className="line-separator" />
                 </div>
                 <div className="info-register">
-
-
                     <input
                         type='file'
                         name='file'
@@ -152,13 +164,21 @@ export const FormSingUp = () => {
                         <SelectDepartment data={datadeparment} name={"Departamento"} event={setNameDepartment} />
                         <SelectMunicipality data={datamunicipality} name={"Municipio"} event={getIdMunicipality} />
                     </div>
-                    <input type="email" placeholder='Correo electronico' maxLength="80" required className='info-input-register' onChange={setEventToEmail} ></input>
-                    <input type="password" placeholder='Contraseña' minLength='8' required className='info-input-register' onChange={SetEventToPassword}></input>
+                    <input type="email" placeholder='Correo electronico' maxLength="80" required className='info-input-register' onChange={setEventToEmail} ></input><br></br>
+                    <span style={{
+                        fontSize: "12px",
+                        color: "red",
+                    }}>{emailError}</span>
+                    <input type="password" placeholder='Contraseña' minLength='8' required className='info-input-register' onChange={SetEventToPassword}></input><br></br>
+                    <span style={{
+                        fontSize: "12px",
+                        color: "red"
+                    }}>{passwordError}</span>
                 </div>
-                <button className="register-submit" onClick={userRegister}>REGISTRAR</button>
+                <button className="register-submit" disabled={false} onClick={userRegister}>REGISTRAR</button>
                 <div className="create-account-login create-account-register">
-                    <p>ya tienes cuenta.. </p>
-                    <NavLink to="/login"><p className='create-account-link'>iniciar sesion</p></NavLink>
+                    <p>Ya tienes cuenta... </p>
+                    <NavLink to="/login"><p className='create-account-link'>Iniciar sesion</p></NavLink>
                 </div>
             </form>
         </div>

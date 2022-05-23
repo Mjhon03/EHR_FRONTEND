@@ -1,0 +1,35 @@
+.titleMostRecent {
+    margin:1em;
+}
+.divCardMostRecent {
+    width:100%;
+    margin-right:1%;
+    background-color:rgba(188,188,188,0.70);
+    margin:1em;
+    border-radius:10px;
+}
+.divImageCardMostRecent {
+    width:80%;
+    margin:auto;
+}
+.imageCardMostCecent{
+    width: 90%;
+    height:25vh;
+    object-fit: cover;
+    border-radius:3px;
+}
+.btnCardMostRecent {
+    border:none;
+    width:40%;
+    padding:3px;
+    border-radius:5px;
+    margin-bottom:2em;
+    margin-top:1em;
+    background:rgba(0,0,0,0.6);
+    cursor: pointer;
+    color:#FFFFFF;
+}
+.btnCardMostRecent:hover {
+    border:none;
+    background-color:rgba(35,35,35,0.95);
+}

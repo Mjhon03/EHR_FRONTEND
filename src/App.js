@@ -1,5 +1,9 @@
+<<<<<<< HEAD
 import React from "react";
 
+=======
+import React from "react"
+>>>>>>> main
 import {
   BrowserRouter,
   Routes,
@@ -24,9 +28,6 @@ import { SearchResults } from "./Components/Page/SearchResults/SearchResults";
 
 
 import { SuportP } from "./Components/Page/Support/Suports";
-
-
-
 
 
 function App() {

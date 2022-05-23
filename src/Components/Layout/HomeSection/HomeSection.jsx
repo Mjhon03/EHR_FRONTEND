@@ -1,4 +1,4 @@
-import React,{useEffect , useState} from 'react'
+import React,{ useState} from 'react'
 import './HomeSection.css'
 import { useNavigate } from 'react-router-dom'
 
@@ -8,8 +8,6 @@ export const HomeSection = () => {
 
     const [ param , setParam ] = useState('')
 
-    useEffect(()=>{
-    },[param])
 
     const getParam = (e) =>{
         setParam(e.target.value)
