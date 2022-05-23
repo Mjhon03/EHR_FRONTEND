@@ -1,10 +1,9 @@
 import React from 'react'
-import { ProfileSettings } from '../../Modal/ProfileSettings/ProfileSettings'
-import { Header } from '../../Layout/Header/Header'
+import { ProfileImage } from '../../UI/ProfileImage/ProfileImage'
 export const PreviewPage = () => {
   return (
     <>
-      <Header />
+      <ProfileImage />
     </>
   )
 }
