@@ -21,8 +21,7 @@ import { ModalCreateAnouncement } from "./Components/Modal/ModalCreateAnouncemen
 import { PreviewPage } from "./Components/Page/PreviewPage/PreviewPage";
 import { UserProvider } from "./UserProvider/UserProvider";
 import { SearchResults } from "./Components/Page/SearchResults/SearchResults";
-
-
+import { OtherUser } from "./Components/Page/OtherUser/OtherUser";
 import { SuportP } from "./Components/Page/Support/Suports";
 
 
@@ -47,6 +46,8 @@ function App() {
           <Route exact path='/createAnouncement' element={<ModalCreateAnouncement />} />
           <Route exact path='/Preview' element={<PreviewPage />} />
           <Route exact path='/result' element={<SearchResults />}/>
+          <Route exact path='/support' element={<SuportP />}/>
+          <Route exact path="/user/profile" element={<OtherUser />}/>
         </Routes>
       </BrowserRouter>
     </UserProvider>

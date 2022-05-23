@@ -6,7 +6,6 @@ import { faArrowRightFromBracket } from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios';
 import { UserContext } from '../../../UserProvider/UserProvider'
 import { createAnouncement } from '../../../methodAdversitement';
-import { async } from '@firebase/util';
 
 export const ModalCreateAnouncement = () => {
 
