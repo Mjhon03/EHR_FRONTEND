@@ -98,6 +98,12 @@
 .secondary-create-form{
     height: 100%;
 }
+ 
+.modality-medium{
+    display: flex;
+    width: 100%;
+    gap: 0.5em;
+}
 .create-title {
     outline: solid 1px red;
 }

@@ -1,4 +1,9 @@
+<<<<<<< HEAD
+import React from "react";
+
+=======
 import React from "react"
+>>>>>>> main
 import {
   BrowserRouter,
   Routes,
