@@ -6,6 +6,7 @@ import { faArrowRightFromBracket } from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios';
 import { UserContext } from '../../../UserProvider/UserProvider'
 import { createAnouncement } from '../../../methodAdversitement';
+import { async } from '@firebase/util';
 
 export const ModalCreateAnouncement = () => {
 
@@ -96,8 +97,11 @@ export const ModalCreateAnouncement = () => {
     console.log(newImgs);
     setimages(newImgs);
   }
+  
+  const [ arrayImages , setArraytImages ] = useState([])
 
-  const sendPhotos = () => {
+  const sendPhotos = async () => {
+    let imagesUrl = []
     images.forEach(element => {
       const formData = new FormData()
       formData.append("file", element.file)
@@ -105,18 +109,26 @@ export const ModalCreateAnouncement = () => {
       axios.post("https://api.cloudinary.com/v1_1/easyhouserent/image/upload", formData)
         .then(response => {
           console.log(response.data.url);
+          imagesUrl.push(response.data.url)
+
         })
         .catch(err => {
           console.log(err);
         })
     });
+    setArraytImages(imagesUrl)
   }
+
+
 
   const createUser = () => {
-    createAnouncement(userData[0].idusuario, title, address, description, modality, zone, edification, rooms, garage, price, newDate )
+    createAnouncement(userData[0].idusuario, title, address, description, modality, zone, edification, rooms, garage, price, newDate , arrayImages)
   }
 
- 
+  const sendProfile = async () => {
+    await sendPhotos() 
+    createUser()
+  }
 
   return (
     <>
@@ -272,7 +284,7 @@ export const ModalCreateAnouncement = () => {
                   </div>
                   <div className="create-action-container">
                     <button className='create-action-button' onClick={decreaseStatus}>anterior</button>
-                    <button className='create-action-button'>publicar</button>
+                    <button className='create-action-button' onClick={sendProfile}>publicar</button>
                   </div>
                 </div>
               }
