@@ -5,6 +5,6 @@ export const UserProvider = ({ children }) => {
   return (
     <UserContext.Provider value={JSON.parse(localStorage.getItem('userInfo'))}>
         {children}
-    </UserContext.Provider>
+        </UserContext.Provider>
   )
 }

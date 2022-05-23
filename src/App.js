@@ -25,9 +25,6 @@ import { SearchResults } from "./Components/Page/SearchResults/SearchResults";
 import { SuportP } from "./Components/Page/Support/Suports";
 
 
-
-
-
 function App() {
   const user = false;
   return (

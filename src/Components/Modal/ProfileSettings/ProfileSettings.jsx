@@ -1,13 +1,13 @@
 import { faRocketchat } from '@fortawesome/free-brands-svg-icons'
 import { faCaretDown, faCircleInfo, faGears, faIdCardClip } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import React,{ useEffect, useState } from 'react'
-import { Navigate, NavLink } from 'react-router-dom'
+import React,{ useEffect, useState} from 'react'
+import { NavLink } from 'react-router-dom'
 import { ProfileAction, ProfileActionText, ProfileModal, SettingsSpace } from '../../StyledComponents/Overlay/StyledComponents'
 import './ProfileSettings.css'
 
-export const ProfileSettings = ({ userData }) => {
 
+export const ProfileSettings = ({ userData }) => {
 
   const [ settingsVisibility , setSettingsVisibility ] = useState(false)
 
@@ -27,9 +27,10 @@ export const ProfileSettings = ({ userData }) => {
     setSettingsVisibility(false)
   }
 
-  const deleteSesion = () => {
+
+  const deleteSesion = () =>{
     localStorage.removeItem("userInfo")
-    Navigate('/')
+    localStorage.setItem("userInfo", null)
     window.location.reload()
   }
 
@@ -47,7 +48,7 @@ export const ProfileSettings = ({ userData }) => {
           
             <div className="settings-profile">
               <p className='settings-profile-name'>{ userData[0].nombre}</p>
-              <p className='send-profile-button'>ver tu perfil</p>
+              <p className='send-profile-button'>Ver tu perfil</p>
             </div>
         </div>
         </NavLink>
