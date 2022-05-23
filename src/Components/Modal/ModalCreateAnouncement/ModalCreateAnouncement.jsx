@@ -105,7 +105,6 @@ export const ModalCreateAnouncement = () => {
       axios.post("https://api.cloudinary.com/v1_1/easyhouserent/image/upload", formData)
         .then(response => {
           console.log(response.data.url);
-          imagesUrl.push(response.data.url)
         })
         .catch(err => {
           console.log(err);
@@ -114,7 +113,7 @@ export const ModalCreateAnouncement = () => {
   }
 
   const createUser = () => {
-    createAnouncement(userData[0].idusuario, title, address, description, modality, zone, edification, rooms, garage, price, newDate, arrayURL)
+    createAnouncement(userData[0].idusuario, title, address, description, modality, zone, edification, rooms, garage, price, newDate )
   }
 
  
