@@ -8,14 +8,9 @@ import validator from 'validator';
 export const PasswordResetForm = () => {
 
     const [ tokenState , setTokenState ] = useState(false)
-<<<<<<< HEAD
-=======
-
     const navigate = useNavigate()
 
->>>>>>> 0d1ba145fca0387e7ea35f30c7a4491aeaf96be1
     const [searchParams] = useSearchParams();
-    const navigate = useNavigate()
     const [passwordError, setpasswordError] = useState("")
     const [verifyPasswordError, setverifyPasswordError] = useState("")
     const [passwordmatch, setpasswordmatch] = useState("")
