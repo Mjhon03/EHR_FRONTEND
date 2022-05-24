@@ -17,7 +17,7 @@ export const ShareProfileForm = () =>{
                 <h4>Quieres compartir tu perfil?</h4>
                 <br/><br/>
                 <div className="Link-container">
-                    <a href="" >easyhouserent/profile/carme0210</a>
+                    <p href="" >easyhouserent/profile/carme0210</p>
                     <button className="Icon-Share">
                         <FontAwesomeIcon icon={faCopy} />
                     </button>
