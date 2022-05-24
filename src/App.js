@@ -24,6 +24,7 @@ import { SearchResults } from "./Components/Page/SearchResults/SearchResults";
 
 
 import { SuportP } from "./Components/Page/Support/Suports";
+import { BuildingFilters } from "./Components/UI/CategoriesBar/BuildingFIlters/BuildingFIlters";
 
 
 function App() {
@@ -47,6 +48,7 @@ function App() {
           <Route exact path='/createAnouncement' element={<ModalCreateAnouncement />} />
           <Route exact path='/Preview' element={<PreviewPage />} />
           <Route exact path='/result' element={<SearchResults />}/>
+          <Route exact path='/Edification' element={<BuildingFilters/>}/>
         </Routes>
       </BrowserRouter>
     </UserProvider>
