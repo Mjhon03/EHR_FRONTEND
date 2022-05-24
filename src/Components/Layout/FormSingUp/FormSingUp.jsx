@@ -19,19 +19,7 @@ export const FormSingUp = () => {
     const [emailError, setemailError] = useState("")
     const [passwordError, setpasswordError] = useState("")
 
-    const uploadImage = () =>{
-        const formData = new FormData()
-        formData.append("file",imageSelected)
-        formData.append("upload_preset","profile")
-        axios.post("https://api.cloudinary.com/v1_1/easyhouserent/image/upload" , formData)
-        .then(response =>{
-            console.log(response);
-            setPhoto(response.data.url)
-        })
-        .catch(err =>{
-            console.log(err);
-        })
-    }
+  
 
     const [phoneNumber, setPhoneNumber] = useState("")
     const [name, setName] = useState("")
@@ -129,7 +117,6 @@ export const FormSingUp = () => {
 
     const userRegister = () => {
         postUsers(name, lastName, parseInt(yearsOld), phoneNumber, email, password, "A", parseInt(iddepartment), parseInt(idmunicipality) , photo);
-        uploadImage()
     }
     return (
         <div className="form-register-valid">
@@ -145,15 +132,6 @@ export const FormSingUp = () => {
                     <div className="line-separator" />
                 </div>
                 <div className="info-register">
-                    <input
-                        type='file'
-                        name='file'
-                        onChange={(event) =>{
-                            setImageSelected(event.target.files[0])
-                            console.log(event.target.files[0]);
-                            uploadImage()
-                        }}
-                    />
                     <input type="text" placeholder='nombre' maxLength="80" required className='info-input-register' onChange={setEventToName}></input><br></br>
                     <input type="text" placeholder='Apellidos' maxLength="80" required className='info-input-register' onChange={setEventToLastName}></input>
                     <div className="add-register-info">

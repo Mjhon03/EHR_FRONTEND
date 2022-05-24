@@ -3,9 +3,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHouseChimneyUser, faFilterCircleDollar, faCircleInfo, faNewspaper, faHeadset, faCommentDots } from '@fortawesome/free-solid-svg-icons'
 import './Header.css'
 import { NavLink } from 'react-router-dom'
-import { ProfileSettings, profileSettings } from '../../Modal/ProfileSettings/ProfileSettings'
-import { UserContext, UserProvider } from '../../../UserProvider/UserProvider'
-
+import { ProfileSettings } from '../../Modal/ProfileSettings/ProfileSettings'
+import { UserContext } from '../../../UserProvider/UserProvider'
+import { useNavigate } from 'react-router'
 
 
 export const Header = () => {
@@ -27,13 +27,19 @@ export const Header = () => {
         SetUserData()
     })
 
+    const navigate = useNavigate()
+
+    const sendHome = () =>{
+        navigate('/')
+    }
+
 
     return (
         <>
             <div className="header-container">
                 <div className="header-logo-container">
-                    <img src="https://i.ibb.co/zQHyDyt/logo.png" alt="logoEhr" className='logo-header' />
-                    <p className='header-logo'>EHR</p>
+                    <img onClick={sendHome} src="https://i.ibb.co/zQHyDyt/logo.png" alt="logoEhr" className='logo-header' />
+                    <p onClick={sendHome} className='header-logo'>EHR</p>
                 </div>
                 <div className="header-actions">
                     <NavLink to='/'>
@@ -48,7 +54,7 @@ export const Header = () => {
                     <NavLink to='/'>
                         <button className='header-action-button'><FontAwesomeIcon className='header-action-icon' icon={faCommentDots} /></button>
                     </NavLink>
-                    <NavLink to='/'>
+                    <NavLink to='/support'>
                         <button className='header-action-button'><FontAwesomeIcon className='header-action-icon' icon={faNewspaper} /></button>
                     </NavLink>
                     <NavLink to='/'>
