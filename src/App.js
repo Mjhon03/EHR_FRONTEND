@@ -23,6 +23,7 @@ import { UserProvider } from "./UserProvider/UserProvider";
 import { SearchResults } from "./Components/Page/SearchResults/SearchResults";
 import { OtherUser } from "./Components/Page/OtherUser/OtherUser";
 import { SuportP } from "./Components/Page/Support/Suports";
+import { CategoriesResult } from "./Components/Page/CategoriesResult/CategoriesResult";
 
 
 function App() {
@@ -48,6 +49,8 @@ function App() {
           <Route exact path='/result' element={<SearchResults />}/>
           <Route exact path='/support' element={<SuportP />}/>
           <Route exact path="/user/profile" element={<OtherUser />}/>
+          <Route exact path='/categories/' element={<CategoriesResult />}/> 
+
         </Routes>
       </BrowserRouter>
     </UserProvider>

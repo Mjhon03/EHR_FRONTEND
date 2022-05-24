@@ -6,6 +6,7 @@
 }
 
 .categories-bar-container{
+    cursor: pointer;
     padding:3% 5%;
     text-align: center;
     width: 20%;
