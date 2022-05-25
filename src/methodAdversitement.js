@@ -3,7 +3,7 @@ import axios from 'axios'
 export const createAnouncement = (iduser , title , adress , description ,
    modality , zone , edification , rooms , garage , price , date , images ) =>{
 
-    axios.post('https://localhost:44375/api/Advertisement' ,{
+    axios.post('https://easy-house-rent.azurewebsites.net/api/Advertisement' ,{
         idusuario : iduser,
         titulo : title,
         direccion : adress,
