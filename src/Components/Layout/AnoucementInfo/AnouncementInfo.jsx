@@ -1,18 +1,32 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useNavigate } from 'react-router';
 import './AnouncementInfo.css'
 import emailjs from '@emailjs/browser';
+import axios from 'axios';
+
 export const AnouncementInfo = ({ data }) => {
-    console.log(data);
-    
-    const navigate = useNavigate()
 
     const sendOtherProfile = () => {
-        navigate(`/user/profile?idUser=${data[0].idusuario}`)
+        navigate(`/user/profile?idUser=${data}`)
     }
+
+    const [ email , setEmail ] = useState(0)
+
+    const getEmailToSend = () => { 
+        axios.get('https://easy-house-rent.azurewebsites/api/Users/GetUser', { 
+            
+        })
+        .then(response => {
+            console.log(response);
+            setEmail(response.data.email)
+        }).catch(err => { 
+            console.log(err);
+        })
+    }
+
         
     let params = {
-        sendUser: data[0].email
+        toUser : email   
     }
 
     const sendNotification = () => {
@@ -27,8 +41,6 @@ export const AnouncementInfo = ({ data }) => {
     return (
         <div className="anouncement-info-render">
             <button onClick={sendOtherProfile}>perfil de usuario</button>
-
-            <button onClick={sendNotification}>Correo de interes</button>
         </div>
     )
 }

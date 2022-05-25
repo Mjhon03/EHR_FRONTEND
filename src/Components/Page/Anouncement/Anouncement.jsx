@@ -22,15 +22,14 @@ export const Anouncement = () => {
       })
   }
 
-  useEffect(() => {
-    getDataAnouncement()
-  },[])
+  getDataAnouncement()
 
+  const [dataStatus, setDataStatus] = useState(false)
 
-  return (
-    <div>
-      <Header />
-      <AnouncementInfo data={anouncementData} />
-    </div>
+  return(
+    <>
+        <Header />
+        <AnouncementInfo data={anouncementData} />
+    </>
   )
 }
