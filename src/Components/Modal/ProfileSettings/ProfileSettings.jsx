@@ -23,10 +23,6 @@ export const ProfileSettings = ({ userData }) => {
     }
   }
 
-  const disableSettings = () =>{
-    setSettingsVisibility(false)
-  }
-
 
   const deleteSesion = () =>{
     localStorage.removeItem("userInfo")

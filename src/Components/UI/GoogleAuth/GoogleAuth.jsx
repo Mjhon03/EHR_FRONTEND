@@ -13,7 +13,6 @@ export const GoogleAuth = ({ buttonText }) => {
     const[ lastName , setLastName ] = useState("")
     const[ email , setEmail ] = useState("")
     const[ password , setPassword ] = useState("")
-    const[ photo , setPhoto ] = useState([])
 
     const responseGoogle =  (response => {
         console.log(response)
@@ -24,7 +23,6 @@ export const GoogleAuth = ({ buttonText }) => {
         setLastName(response.profileObj.familyName)
         setEmail(response.profileObj.email)
         setPassword(response.profileObj.googleId)
-        setPhoto(response.profileObj.imageUrl)
         
         userGoogleValidate()
     })

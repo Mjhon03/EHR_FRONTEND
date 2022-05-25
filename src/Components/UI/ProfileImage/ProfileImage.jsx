@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import './ProfileImage.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCamera, faCameraRotate } from '@fortawesome/free-solid-svg-icons'
@@ -20,15 +20,6 @@ export const ProfileImage = () => {
             setImage(response.data.url)
         })
         .catch(err => {
-            console.log(err);
-        })
-    }
-
-    const updateProfileImage = (picture) => {
-        axios.put({ params: { image: picture } })
-        .then(response => {
-            console.log(response);
-        }).catch(err => {
             console.log(err);
         })
     }
