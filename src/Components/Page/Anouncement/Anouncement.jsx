@@ -4,6 +4,7 @@ import { AnouncementInfo } from '../../Layout/AnoucementInfo/AnouncementInfo.jsx
 import { Header } from '../../Layout/Header/Header'
 import { useSearchParams } from 'react-router-dom';
 import { urlAdversitement } from '../../ApiRoutes.js';
+import { RegisterFooter } from '../../Layout/RegisterFooter/RegisterFooter'
 
 export const Anouncement = () => {
 
@@ -31,6 +32,7 @@ export const Anouncement = () => {
     <>
         <Header />
         <AnouncementInfo data={anouncementData} />
+        <RegisterFooter />
     </>
   )
 }

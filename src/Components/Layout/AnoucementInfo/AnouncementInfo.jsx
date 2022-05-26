@@ -129,7 +129,7 @@ export const AnouncementInfo = ({ data }) => {
 
 
 
-                <button>perfil de usuario</button>
+                <button onClick={sendOtherProfile}>perfil de usuario</button>
                 <button onClick={sendNotification}>notificacion de interes</button>
             </div>
         </>

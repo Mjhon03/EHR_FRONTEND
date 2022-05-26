@@ -1,12 +1,17 @@
 .anouncement-info-render{
     display: flex;
+    padding: 0 1em;
+    gap: 1em;
+    margin: 1em;
 }
 
 .anouncement-images-container{
-    padding: 1em 2em;
+    padding: 1em;
     width: 50%;
     display: flex;
     gap: 1em;
+    background: rgba(0,0,0,0.10);
+    outline: solid .1px rgba(0,0,0,0.30);
 }
 
 .first-image{
