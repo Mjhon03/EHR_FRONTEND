@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react'
 import './ForgotPasswordForm.css'
 import emailjs from '@emailjs/browser';
 import { NavLink } from 'react-router-dom';
+import { Alert } from '../../Alert';
 
 
 export const ForgotPasswordForm = () => {
@@ -54,10 +55,26 @@ export const ForgotPasswordForm = () => {
         })
     }
 
+
     const enterLogin=(event)=>{
         let charCode = event.keyCode;
         if (charCode===13){
-            verifyEmail()
+            if(event.target.value === ""){
+                Alert("Recuperación inválida","Por favor ingrese un correo.", "error", "Ok", "2000")
+            }
+            else{
+                verifyEmail(event)
+            }
+        }
+    }
+
+    const validateDataInput = (event) => {
+        event.preventDefault();
+        if (event.target.value !== " ") {
+            verifyEmail(event)
+        }
+        else {
+            Alert("Recuperación inválida", "Por favor ingrese un correo.", "error", "Ok", "2000")
         }
     }
 
@@ -71,10 +88,10 @@ export const ForgotPasswordForm = () => {
                 </div>
                 <h2 className='forgot-title'>Recuperacion de Contraseña</h2>
                 <form>
-                    <input className='email-put' type="email" placeholder='Correo electrónico' name="user_name" onChange={captureValue} onKeyUp={e => (enterLogin(e))}></input>
+                    <input className='email-put' required type="email" placeholder='Correo electrónico' name="user_name" onChange={captureValue} onKeyUp={e => (enterLogin(e))}></input>
                     <p className='create-account'>No tienes cuenta...<NavLink to="/register"><p className='send-register'>Cree una</p></NavLink></p>
                     <div className="send-content">
-                        <button onClick={verifyEmail} className='send-email'>Enviar</button>
+                        <button onClick={event => (validateDataInput(event))} className='send-email'>Enviar</button>
                     </div>
                 </form>
             </div>
