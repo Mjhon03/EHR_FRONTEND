@@ -86,7 +86,7 @@ export const PasswordResetForm = () => {
 
     const sendNewPassword = (e) => {
         e.preventDefault();
-        axios.put(`https://localhost:44375/api/Password`, bodyParameters, {headers:{ Authorization: `Bearer ${emailToken}` }})
+        axios.put(`https://easy-house-rent.azurewebsites.net/api/Password`, bodyParameters, {headers:{ Authorization: `Bearer ${emailToken}` }})
         .then(response => {
             alert('Contraseña ha sido actualizada correctamente')
             navigate('/login')

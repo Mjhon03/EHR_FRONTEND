@@ -4,7 +4,7 @@ import { UpdateInfo } from '../../Modal/UpateInfo/UpdateInfo'
 import { Header } from '../../Layout/Header/Header'
 import './Profile.css'
 import { SettingsAcount } from '../../Modal/SettingsAcount/SettingsAcount';
-import { ProfileActions, ProfileInfoContent } from '../../StyledComponents/Overlay/StyledComponents'
+import { ProfileInfoContent } from '../../StyledComponents/Overlay/StyledComponents'
 import { ModalCreateAnouncement } from '../../Modal/ModalCreateAnouncement/ModalCreateAnouncement'
 
 export const Profile = () => {

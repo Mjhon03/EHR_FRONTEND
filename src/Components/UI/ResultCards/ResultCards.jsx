@@ -1,9 +1,9 @@
 import React from 'react'
 import './ResultCards.css'
-import { NavLink, useNavigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 export const ResultCards = ({ data }) => {
-    const { idanuncio, titulo, descripcion, calificacion, zona, direccion, fecha, valor, url1 } = data
+    const { idanuncio, titulo, descripcion, zona, direccion, fecha, valor, url1 } = data
 
     const navigate = useNavigate()
 

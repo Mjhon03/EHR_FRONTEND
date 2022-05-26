@@ -7,7 +7,7 @@ import { CardMostRecent } from './CardMostRecent/CardMostRecent'
 export const MostRecent = () => {
 
   const [cardMostRecent, setCardMostRecent] = useState([])
-  const URLCMR = `https://localhost:44375/api/Home/MostRecent`
+  const URLCMR = `https://easy-house-rent.azurewebsites.net/api/Home/MostRecent`
 
   const GetMostRecent = (event) => {
       axios.get(URLCMR)
