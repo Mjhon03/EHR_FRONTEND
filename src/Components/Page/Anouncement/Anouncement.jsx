@@ -12,25 +12,25 @@ export const Anouncement = () => {
 
   const [anouncementData, setAnoucementData] = useState([])
 
-  const getDataAnouncement = () => {
+  const getDataAnouncement  = () => {
     axios.get(`${urlAdversitement}${idAnouncement}`)
       .then(response => {
         setAnoucementData(response.data)
+        console.log(response.data);
       })
       .catch(err => {
         console.log(err);
       })
   }
 
-  useEffect(() => {
+  useEffect(()=>{
     getDataAnouncement()
   },[])
 
-
-  return (
-    <div>
-      <Header />
-      <AnouncementInfo data={anouncementData} />
-    </div>
+  return(
+    <>
+        <Header />
+        <AnouncementInfo data={anouncementData} />
+    </>
   )
 }

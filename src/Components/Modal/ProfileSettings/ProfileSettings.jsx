@@ -23,7 +23,6 @@ export const ProfileSettings = ({ userData }) => {
     }
   }
 
-
   const deleteSesion = () =>{
     localStorage.removeItem("userInfo")
     localStorage.setItem("userInfo", null)

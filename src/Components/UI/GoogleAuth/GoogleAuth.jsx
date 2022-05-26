@@ -23,7 +23,7 @@ export const GoogleAuth = ({ buttonText }) => {
         setLastName(response.profileObj.familyName)
         setEmail(response.profileObj.email)
         setPassword(response.profileObj.googleId)
-        
+
         userGoogleValidate()
     })
 

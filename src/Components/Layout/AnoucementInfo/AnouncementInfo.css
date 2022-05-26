@@ -1,3 +1,28 @@
 .anouncement-info-render{
     outline: solid 1px red;
 }
+
+img{
+    width: 100%;
+}
+
+.anouncement-info-render{
+    display: flex;
+}
+
+.anouncement-images-container{
+    width: 50%;
+    display: flex;
+}
+
+.first-image{
+    outline: solid red 1px;
+    width: 80%;
+}
+
+.other-images-container{
+    width: 20%;
+    outline: solid 1px red;
+    display: flex;
+    flex-direction: column;
+}
