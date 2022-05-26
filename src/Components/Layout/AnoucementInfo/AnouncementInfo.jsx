@@ -13,6 +13,8 @@ export const AnouncementInfo = ({ data }) => {
     const [image3, setImage3] = useState('')
     const [image4, setImage4] = useState('')
 
+    const [ idAnouncement , setIdAnouncement ] = useState('')
+    const [ zone , setZone ] = useState('')
     const [idUser, setIdUser] = useState(0)
     const [title, setTitle] = useState('hola')
     const [ description , setDescription ] = useState('')
@@ -26,6 +28,7 @@ export const AnouncementInfo = ({ data }) => {
 
     const getData = () => {
         if (data.length !== 0) {
+            setIdAnouncement(data[0].idanuncio)
             setIdUser(data[0].idusuario)
             setTitle(data[0].titulo)
             setImage1(data[0].url1)
@@ -39,6 +42,7 @@ export const AnouncementInfo = ({ data }) => {
             setValue(data[0].precio)
             setRooms(data[0].habitaciones)
             setGarage(data[0].garaje)
+            setZone(data[0].zona)
         }
     }
 
@@ -50,38 +54,30 @@ export const AnouncementInfo = ({ data }) => {
         navigate(`/user/profile?idUser=${idUser}`)
     }
 
-   
+  const [ email , setEmail ] = useState('')
 
-    useEffect(()=>{
-        console.log(email);
-    },[email])
-
-  const [email, setEmail] = useState('')
-
-    const getEmailToSend = () => {
+    const getEmailToSend  = async () => {
         axios.get('https://easy-house-rent.azurewebsites.net/api/Users/GetUser', { params : { idusuario : idUser }})
         .then(response => {
-            console.log(response.data);
-            setEmail(response.data.email)
+            setEmail(response.data[0].email)
         }).catch(err => {
             console.log(err);
       })
     }
 
     useEffect(()=>{
-      getEmailToSend()
-    })
-    
-    
+        getEmailToSend()
+    },[ idUser ])
+
     let params = {
-        toUser: email
-    }
+        toUser: email,
+        anouncementTitle : title,
+        post : `https://localhost:3000/anouncement/?idanounce=${idAnouncement}&adzone=${zone}`
+    };
 
     const sendNotification = () => {
-      console.log(email);
         emailjs.send('service_8uodl5r', 'template_i43k2ju', params, 'KYHPZomx00qkEwjDP')
             .then(function (response) {
-                console.log(params);
                 console.log(response);
             }, function (error) {
                 console.log(error);
@@ -90,7 +86,6 @@ export const AnouncementInfo = ({ data }) => {
 
     const changePhoto = (e) => { 
         if(e.target.alt === 'image2'){
-            console.log(e.target.src);
             setImage2(image1)
             setImage1(e.target.src)
         }else if(e.target.alt === 'image3'){
@@ -101,8 +96,6 @@ export const AnouncementInfo = ({ data }) => {
             setImage1(e.target.src)
         }
     }
-
-    
 
     return (
         <>
@@ -136,7 +129,7 @@ export const AnouncementInfo = ({ data }) => {
 
 
 
-                <button onClick={getEmailToSend}>perfil de usuario</button>
+                <button>perfil de usuario</button>
                 <button onClick={sendNotification}>notificacion de interes</button>
             </div>
         </>
