@@ -1,6 +1,6 @@
-export const urlUsers = "https://localhost:44375/api/Users";
-export const urLDepartments = "https://localhost:44375/api/Department";
-export const urlMunicipality = "https://localhost:44375/api/Municipality/0?iddepartamento=";
-export const urlLogin = "https://localhost:44375/api/Login"
-export const urlSearch = "https://localhost:44375/api/home"
-export const urlAdversitement = 'https://localhost:44375/api/Advertisement/'
+export const urlUsers = "https://easy-house-rent.azurewebsites.net/api/api/Users";
+export const urLDepartments = "https://easy-house-rent.azurewebsites.net/api/Department";
+export const urlMunicipality = "https://easy-house-rent.azurewebsites.net/api/Municipality/0?iddepartamento=";
+export const urlLogin = "https://easy-house-rent.azurewebsites.net/api/Login"
+export const urlSearch = "https://easy-house-rent.azurewebsites.net/api/home"
+export const urlAdversitement = 'https://easy-house-rent.azurewebsites.net/api/Advertisement/'

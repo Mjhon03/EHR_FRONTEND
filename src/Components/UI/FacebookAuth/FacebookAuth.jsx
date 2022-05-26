@@ -10,8 +10,6 @@ import axios from 'axios';import { urlUsers } from '../../ApiRoutes';
 export const FacebookAuth = ({ buttonText }) => {
 
     const[name , setName ] = useState();
-    const[yearsOld , setYearsOld ] = useState(0)
-    const[lastName , setLastName ] = useState();
     const[ phoneNumber , setPhoneNumber ] = useState();
     const[ email , setEmail] = useState("")
     const[ password , setPassword ] = useState(" ")
@@ -34,7 +32,7 @@ export const FacebookAuth = ({ buttonText }) => {
         }
         
     const registerUser  = () =>{
-        postUsers(name,lastName,yearsOld,phoneNumber,email,password,'A',100,1121)
+        postUsers(name,'',0,phoneNumber,email,password,'A',100,1121)
     }
 
 

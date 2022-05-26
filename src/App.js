@@ -27,7 +27,6 @@ import { CategoriesResult } from "./Components/Page/CategoriesResult/CategoriesR
 
 
 function App() {
-  const user = false;
   return (
     <UserProvider>
       <BrowserRouter>

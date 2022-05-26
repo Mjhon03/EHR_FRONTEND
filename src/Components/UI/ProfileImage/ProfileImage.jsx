@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useState } from 'react'
 import './ProfileImage.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCamera, faCameraRotate } from '@fortawesome/free-solid-svg-icons'
@@ -35,7 +35,7 @@ export const ProfileImage = () => {
     }
 
     const sendNewInfo = () => {
-        let url =  'https://localhost:44375/api/Users/ProfilePicture'
+        let url =  'https://easy-house-rent.azurewebsites.net/api/Users/ProfilePicture'
         axios.post(url , {
             idusuario : idUser,
             foto : image
@@ -66,6 +66,8 @@ export const ProfileImage = () => {
                     <label className='img-update-label'>ver foto</label>
                 </button>
             </div>
+
+            <button onClick={sendNewInfo}>funcion</button>
         </div>
     )
 }

@@ -13,9 +13,6 @@ import validator from 'validator';
 
 export const FormSingUp = () => {
 
-    const [ imageSelected, setImageSelected] = useState('')
-    const [ photo , setPhoto ] = useState('')
-
     const [emailError, setemailError] = useState("")
     const [passwordError, setpasswordError] = useState("")
 
@@ -116,7 +113,7 @@ export const FormSingUp = () => {
     }
 
     const userRegister = () => {
-        postUsers(name, lastName, parseInt(yearsOld), phoneNumber, email, password, "A", parseInt(iddepartment), parseInt(idmunicipality) , photo);
+        postUsers(name, lastName, parseInt(yearsOld), phoneNumber, email, password, "A", parseInt(iddepartment), parseInt(idmunicipality) , '');
     }
     return (
         <div className="form-register-valid">

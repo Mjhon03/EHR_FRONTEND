@@ -12,7 +12,7 @@ export const CategoriesResult = () => {
     const [data, setData] = useState([])
 
     const getCategories = () => {
-        axios.get('https://localhost:44375/api/home/edification',{ params: { edification: filter }})
+        axios.get('https://easy-house-rent.azurewebsites.net/api/home/edification',{ params: { edification: filter }})
         .then(response => {
             console.log(response.data);
             setData(response.data)
