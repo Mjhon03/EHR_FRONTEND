@@ -3,6 +3,7 @@ import './ResultCards.css'
 import { useNavigate } from 'react-router-dom'
 
 export const ResultCards = ({ data }) => {
+
     const { idanuncio, titulo, descripcion, zona, direccion, fecha, valor, url1 } = data
 
     const navigate = useNavigate()

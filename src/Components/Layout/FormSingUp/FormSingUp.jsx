@@ -113,6 +113,7 @@ export const FormSingUp = () => {
     }
 
     const userRegister = () => {
+
         postUsers(name, lastName, parseInt(yearsOld), phoneNumber, email, password, "A", parseInt(iddepartment), parseInt(idmunicipality) , '');
     }
     return (

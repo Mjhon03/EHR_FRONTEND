@@ -33,7 +33,7 @@ export const ProfileImage = () => {
             console.log(err);
         })
     }
-
+    
     const sendNewInfo = () => {
         let url =  'https://easy-house-rent.azurewebsites.net/api/Users/ProfilePicture'
         axios.post(url , {
@@ -48,8 +48,6 @@ export const ProfileImage = () => {
     }
 
     
-  
-
     return (
         <div className="profile-update">
             <img src={image} className='background-profile' alt="profile"></img>
