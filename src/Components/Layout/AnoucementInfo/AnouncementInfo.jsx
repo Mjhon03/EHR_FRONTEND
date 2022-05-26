@@ -39,7 +39,6 @@ export const AnouncementInfo = ({ data }) => {
             setValue(data[0].precio)
             setRooms(data[0].habitaciones)
             setGarage(data[0].garaje)
-            getEmailToSend()
         }
     }
 
@@ -51,32 +50,59 @@ export const AnouncementInfo = ({ data }) => {
         navigate(`/user/profile?idUser=${idUser}`)
     }
 
-    const [email, setEmail] = useState(0)
+   
+
+    useEffect(()=>{
+        console.log(email);
+    },[email])
+
+  const [email, setEmail] = useState('')
 
     const getEmailToSend = () => {
-        axios.get('https://easy-house-rent.azurewebsites/api/Users/GetUser', {
-            idusuario: idUser
-        })
-            .then(response => {
-                console.log(response);
-                setEmail(response.data.email)
-            }).catch(err => {
-                console.log(err);
-            })
+        axios.get('https://easy-house-rent.azurewebsites.net/api/Users/GetUser', { params : { idusuario : idUser }})
+        .then(response => {
+            console.log(response.data);
+            setEmail(response.data.email)
+        }).catch(err => {
+            console.log(err);
+      })
     }
 
+    useEffect(()=>{
+      getEmailToSend()
+    })
+    
+    
     let params = {
         toUser: email
     }
 
     const sendNotification = () => {
-        emailjs.send('service_8uodl5r', 'template_i43k2jsen', params, 'KYHPZomx00qkEwjDP')
+      console.log(email);
+        emailjs.send('service_8uodl5r', 'template_i43k2ju', params, 'KYHPZomx00qkEwjDP')
             .then(function (response) {
+                console.log(params);
                 console.log(response);
             }, function (error) {
                 console.log(error);
             })
     }
+
+    const changePhoto = (e) => { 
+        if(e.target.alt === 'image2'){
+            console.log(e.target.src);
+            setImage2(image1)
+            setImage1(e.target.src)
+        }else if(e.target.alt === 'image3'){
+            setImage3(image1)
+            setImage1(e.target.src)
+        }else if(e.target.alt === 'image4'){
+            setImage4(image1)
+            setImage1(e.target.src)
+        }
+    }
+
+    
 
     return (
         <>
@@ -84,17 +110,17 @@ export const AnouncementInfo = ({ data }) => {
             <div className="anouncement-info-render">
                 <div className="anouncement-images-container">
                     <div className="first-image">
-                        <img src={image1} alt="anoucement-one" className='anouncement-first-image' />
+                        <img src={image1} alt="image1" className='anouncement-first-image' />
                     </div>
                     <div className="other-images-container">
                         <div className="other-image-container">
-                            <img src={image2} alt="anouncement-two" className='anoucement-other-image' />
+                            <img onMouseEnter={e => {changePhoto(e)}} src={image2} alt="image2" className='anouncement-other-image' />
                         </div>
                         <div className="other-image-container">
-                            <img src={image3} alt="amouncement-three" className='anoucement-other-image' />
+                            <img src={image3} onMouseEnter={e => {changePhoto(e)}} alt="image3" className='anouncement-other-image' />
                         </div>
                         <div className="other-image-container">
-                            <img src={image4} alt="anouncement-four" className='anoucement-other-image' />
+                            <img src={image4} alt="image4" onMouseEnter={e => {changePhoto(e)}} className='anouncement-other-image' />
                         </div>
                     </div>
                 </div>
@@ -110,7 +136,7 @@ export const AnouncementInfo = ({ data }) => {
 
 
 
-                <button onClick={sendOtherProfile}>perfil de usuario</button>
+                <button onClick={getEmailToSend}>perfil de usuario</button>
                 <button onClick={sendNotification}>notificacion de interes</button>
             </div>
         </>
