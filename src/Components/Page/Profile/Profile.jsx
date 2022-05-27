@@ -12,7 +12,6 @@ import { ProfileImage } from '../../UI/ProfileImage/ProfileImage';
 export const Profile = () => {
 
     const userData = useContext(UserContext)
-    console.log(userData);
     return (
         <div className="profile-page">
             <Header />

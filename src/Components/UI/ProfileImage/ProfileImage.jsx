@@ -7,8 +7,8 @@ import { UserContext } from '../../../UserProvider/UserProvider';
 
 export const ProfileImage = () => {
 
-    const userData = useContext(UserContext)
-    let idUser = userData[0].idusuario;
+    const { user , update } = useContext(UserContext)
+    let idUser = user[0].idusuario;
 
     const [image, setImage] = useState('')
 
@@ -47,6 +47,8 @@ export const ProfileImage = () => {
             let uploaded = response.data.url
             setImage(response.data.url)
             sendNewImage( uploaded )
+            update(response.data.url)
+            window.location.reload()
         })
         .catch(err => {
             console.log(err);

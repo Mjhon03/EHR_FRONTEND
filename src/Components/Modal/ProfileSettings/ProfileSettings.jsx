@@ -19,6 +19,7 @@ export const ProfileSettings = ({ userData }) => {
     }
   }
 
+
   const deleteSesion = () =>{
     localStorage.removeItem("userInfo")
     localStorage.setItem("userInfo", null)
@@ -28,13 +29,13 @@ export const ProfileSettings = ({ userData }) => {
 
   return (
     <>
-    <button className='profile-modal-activate' onClick={()=> changeSettings()}><FontAwesomeIcon className='activate-profile-icon' icon={ faCaretDown} /></button>
+    <button className='profile-modal-activate'  onClick={()=> changeSettings()}><FontAwesomeIcon className='activate-profile-icon' icon={ faCaretDown} /></button>
     {settingsVisibility &&
       <ProfileModal>
         <NavLink to='/profile'>
         <div className="settings-basic-info">
           <div className="settings-image-container">
-            <img src="https://cdn.pixabay.com/photo/2017/08/12/18/31/male-2634974_960_720.jpg" alt="settingsImage" className='settings-image' />
+            <img src={ userData[0].foto} alt="settingsImage" className='settings-image' />
           </div>
           
             <div className="settings-profile">

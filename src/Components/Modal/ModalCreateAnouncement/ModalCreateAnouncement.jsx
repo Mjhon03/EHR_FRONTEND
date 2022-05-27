@@ -10,7 +10,7 @@ import { createAnouncement } from '../../../methodAdversitement';
 export const ModalCreateAnouncement = () => {
 
   const userData = useContext(UserContext)
-  console.log(userData);
+
 
   const [visibility, setVisibility] = useState(false)
   const [formSection, setFormSection] = useState(0)
@@ -26,7 +26,6 @@ export const ModalCreateAnouncement = () => {
   const [price, setPrice] = useState(' ')
 
   useEffect(() => {
-    console.log(formSection)
   }, [formSection])
 
   let date = new Date();
@@ -55,7 +54,6 @@ export const ModalCreateAnouncement = () => {
 
   const [images, setimages] = useState([]);
 
-  console.log(images);
 
   const changeInput = (e) => {
     let indexImg;
