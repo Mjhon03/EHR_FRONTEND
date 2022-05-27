@@ -13,17 +13,17 @@ export const AnouncementInfo = ({ data }) => {
     const [image3, setImage3] = useState('')
     const [image4, setImage4] = useState('')
 
-    const [ idAnouncement , setIdAnouncement ] = useState('')
-    const [ zone , setZone ] = useState('')
+    const [idAnouncement, setIdAnouncement] = useState('')
+    const [zone, setZone] = useState('')
     const [idUser, setIdUser] = useState(0)
     const [title, setTitle] = useState('hola')
-    const [ description , setDescription ] = useState('')
-    const [ editicacion , setEedification ] = useState('')
-    const [ adress , setAdress ] = useState('')
-    const [ modality , setModality ] = useState('')
-    const [ value , setValue ] = useState('')
-    const [ rooms , setRooms ] = useState('')
-    const [ garage , setGarage ] = useState('no')
+    const [description, setDescription] = useState('')
+    const [editicacion, setEedification] = useState('')
+    const [adress, setAdress] = useState('')
+    const [modality, setModality] = useState('')
+    const [value, setValue] = useState('')
+    const [rooms, setRooms] = useState('')
+    const [garage, setGarage] = useState('no')
 
 
     const getData = () => {
@@ -54,25 +54,25 @@ export const AnouncementInfo = ({ data }) => {
         navigate(`/user/profile?idUser=${idUser}`)
     }
 
-  const [ email , setEmail ] = useState('')
+    const [email, setEmail] = useState('')
 
-    const getEmailToSend  = async () => {
-        axios.get('https://easy-house-rent.azurewebsites.net/api/Users/GetUser', { params : { idusuario : idUser }})
-        .then(response => {
-            setEmail(response.data[0].email)
-        }).catch(err => {
-            console.log(err);
-      })
+    const getEmailToSend = async () => {
+        axios.get('https://easy-house-rent.azurewebsites.net/api/Users/GetUser', { params: { idusuario: idUser } })
+            .then(response => {
+                setEmail(response.data[0].email)
+            }).catch(err => {
+                console.log(err);
+            })
     }
 
-    useEffect(()=>{
+    useEffect(() => {
         getEmailToSend()
-    },[ idUser ])
+    }, [idUser])
 
     let params = {
         toUser: email,
-        anouncementTitle : title,
-        post : `https://localhost:3000/anouncement/?idanounce=${idAnouncement}&adzone=${zone}`
+        anouncementTitle: title,
+        post: `https://localhost:3000/anouncement/?idanounce=${idAnouncement}&adzone=${zone}`
     };
 
     const sendNotification = () => {
@@ -84,14 +84,14 @@ export const AnouncementInfo = ({ data }) => {
             })
     }
 
-    const changePhoto = (e) => { 
-        if(e.target.alt === 'image2'){
+    const changePhoto = (e) => {
+        if (e.target.alt === 'image2') {
             setImage2(image1)
             setImage1(e.target.src)
-        }else if(e.target.alt === 'image3'){
+        } else if (e.target.alt === 'image3') {
             setImage3(image1)
             setImage1(e.target.src)
-        }else if(e.target.alt === 'image4'){
+        } else if (e.target.alt === 'image4') {
             setImage4(image1)
             setImage1(e.target.src)
         }
@@ -99,7 +99,6 @@ export const AnouncementInfo = ({ data }) => {
 
     return (
         <>
-        <h1>{ title }</h1>
             <div className="anouncement-info-render">
                 <div className="anouncement-images-container">
                     <div className="first-image">
@@ -107,30 +106,35 @@ export const AnouncementInfo = ({ data }) => {
                     </div>
                     <div className="other-images-container">
                         <div className="other-image-container">
-                            <img onMouseEnter={e => {changePhoto(e)}} src={image2} alt="image2" className='anouncement-other-image' />
+                            <img onMouseEnter={e => { changePhoto(e) }} src={image2} alt="image2" className='anouncement-other-image' />
                         </div>
                         <div className="other-image-container">
-                            <img src={image3} onMouseEnter={e => {changePhoto(e)}} alt="image3" className='anouncement-other-image' />
+                            <img src={image3} onMouseEnter={e => { changePhoto(e) }} alt="image3" className='anouncement-other-image' />
                         </div>
                         <div className="other-image-container">
-                            <img src={image4} alt="image4" onMouseEnter={e => {changePhoto(e)}} className='anouncement-other-image' />
+                            <img src={image4} alt="image4" onMouseEnter={e => { changePhoto(e) }} className='anouncement-other-image' />
                         </div>
                     </div>
                 </div>
-                <div className="anoucement-aditional-info">
-                    <p>{ description }</p>
-                    <p>{ adress }</p>
-                    <p>{ editicacion }</p>
-                    <p>{ modality }</p>
-                    <p>{ value }</p>
-                    <p>{ rooms }</p>
-                    <p>{ garage }</p>
+                <div className="anouncement-aditional-info">
+                    <div className="anouncement-extra-information">
+                        <h1 className='anouncement-title'>{title}</h1>
+                        <p className='anouncement-description'>{description}</p>
+                        <p>{adress}</p>
+                        <p>{editicacion}</p>
+                        <p>{modality}</p>
+                        <p>{value}</p>
+                        <p>{rooms}</p>
+                        <p>{garage}</p>
+                    </div>
+                    <div className="anouncement-actions">
+                        <button className='anouncement-action-redirect' onClick={sendNotification}>notificacion de interes</button>
+                        <button className='anouncement-action-redirect'>chat con el propietario</button>
+                    </div>
                 </div>
-
-
-
-                <button onClick={sendOtherProfile}>perfil de usuario</button>
-                <button onClick={sendNotification}>notificacion de interes</button>
+                <div className="actions-user-anouncement">
+                    <button onClick={sendOtherProfile}>perfil de usuario</button>
+                </div>
             </div>
         </>
     )

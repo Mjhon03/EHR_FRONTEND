@@ -17,7 +17,6 @@ export const Anouncement = () => {
     axios.get(`${urlAdversitement}${idAnouncement}`)
       .then(response => {
         setAnoucementData(response.data)
-        console.log(response.data);
       })
       .catch(err => {
         console.log(err);

@@ -1,8 +1,15 @@
 import React from "react"
+import { useNavigate } from "react-router"
 import './CardMostRecent.css'
 
 export const CardMostRecent = ({data}) => {
-    const {titulo,zona,precio,url1} = data
+    const { idanuncio,titulo,zona,precio,url1} = data
+
+    const navigate = useNavigate()
+
+    const sendAnouncement = () => {
+        navigate(`/anouncement/?idanounce=${idanuncio}&adzone=${zona}`)
+    }
 
     return (
         <div className="divCardMostRecent">
@@ -12,7 +19,7 @@ export const CardMostRecent = ({data}) => {
             </div>
             <p><b>Zona: </b>{zona}</p>
             <p><b>Precio: </b>{precio}</p>
-            <button className="btnCardMostRecent">Ver</button>
+            <button onClick={sendAnouncement} className="btnCardMostRecent">Ver</button>
         </div>
     )
 }

@@ -1,7 +1,7 @@
 import { faRocketchat } from '@fortawesome/free-brands-svg-icons'
 import { faCaretDown, faCircleInfo, faGears, faIdCardClip } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import React,{ useEffect, useState} from 'react'
+import React,{useState} from 'react'
 import { NavLink } from 'react-router-dom'
 import { ProfileAction, ProfileActionText, ProfileModal, SettingsSpace } from '../../StyledComponents/Overlay/StyledComponents'
 import './ProfileSettings.css'
@@ -10,10 +10,6 @@ import './ProfileSettings.css'
 export const ProfileSettings = ({ userData }) => {
 
   const [ settingsVisibility , setSettingsVisibility ] = useState(false)
-
-  useEffect(()=>{
-    console.log(settingsVisibility);
-  },[])
 
   const changeSettings = () =>{
     if(settingsVisibility === false){
