@@ -120,13 +120,13 @@ export const ModalCreateAnouncement = () => {
 
 
 
-  const createUser = () => {
+  const awaitAnouncement = () => {
     createAnouncement(userData[0].idusuario, title, address, description, modality, zone, edification, rooms, garage, price, newDate , arrayImages)
   }
 
   const sendProfile = async () => {
     await sendPhotos() 
-    createUser()
+    awaitAnouncement()
   }
 
   return (

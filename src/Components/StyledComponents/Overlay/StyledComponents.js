@@ -92,7 +92,7 @@ export const ProfileCardButton = styled.button`
 
 export const ProfileInfoContent = styled.div`
   width: 100%;
-  height: 40vh;
+  height: 35vh;
   border-radius: 5px;
   background: rgb(255,255,255);
   box-shadow: -1px 5px 7px -2px #919191;

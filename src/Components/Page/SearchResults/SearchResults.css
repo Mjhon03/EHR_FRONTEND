@@ -1,14 +1,9 @@
 .result-view{
     width: 100%;
-    display: flex;
-}
-
-.results-menu{
-    width: 20%;
 }
 
 .cards-content{
-    outline: solid 1px red;
+    margin: auto;
     width: 80%;
     display: flex;
     flex-direction: column;

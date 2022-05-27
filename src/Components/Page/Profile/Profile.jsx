@@ -6,6 +6,8 @@ import './Profile.css'
 import { SettingsAcount } from '../../Modal/SettingsAcount/SettingsAcount';
 import { ProfileInfoContent } from '../../StyledComponents/Overlay/StyledComponents'
 import { ModalCreateAnouncement } from '../../Modal/ModalCreateAnouncement/ModalCreateAnouncement'
+import { RegisterFooter } from '../../Layout/RegisterFooter/RegisterFooter';
+import { ProfileImage } from '../../UI/ProfileImage/ProfileImage';
 
 export const Profile = () => {
 
@@ -16,7 +18,7 @@ export const Profile = () => {
             <Header />
             <div className="user-info-tools">
                 <div className="profile-data-received">
-
+                    <ProfileImage />
                 </div>
                 <div className="line-profile-separator" />
                 <div className="add-settings-account">
@@ -31,6 +33,7 @@ export const Profile = () => {
                     <ProfileInfoContent />
                 </div>
             </div>
+            <RegisterFooter />
         </div>
     )
 }

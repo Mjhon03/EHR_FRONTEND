@@ -1,6 +1,6 @@
 .anouncement-info-render{
     display: flex;
-    padding: 1em;
+    padding: 1em 10em;
     gap: 1em;
 }
 
@@ -113,4 +113,10 @@
     outline: solid 1px red;
     font-size: 1.1em;
     line-height: 1.5em;
+}
+
+@media screen and (max-width: 1600px){
+    .anouncement-info-render{
+        padding: 1em;
+    }
 }

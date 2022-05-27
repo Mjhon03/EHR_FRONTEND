@@ -13,15 +13,39 @@ export const Anouncement = () => {
 
   const [anouncementData, setAnoucementData] = useState([])
 
+  const [ zone , setZone ] = useState('')
+  const [ town , setTown ] = useState('')
+
   const getDataAnouncement  = () => {
     axios.get(`${urlAdversitement}${idAnouncement}`)
       .then(response => {
         setAnoucementData(response.data)
+        setTown(response.data[0].municipio)
+        setZone(response.data[0].zona)
       })
       .catch(err => {
         console.log(err);
       })
   }
+
+  const [ recomended , setRecomended ] = useState([])
+
+  console.log(recomended);
+
+  const getRecomended = () => {
+    axios.get('' , { params : { zona : zone , ciudad : town }})
+    .then(response => {
+      console.log(response.data);
+      setRecomended(response.data)
+    })
+    .catch(err => {
+      console.log(err);
+    })
+  }
+
+  useEffect(()=>{
+    getRecomended()
+  },[ anouncementData ])
 
   useEffect(()=>{
     getDataAnouncement()
