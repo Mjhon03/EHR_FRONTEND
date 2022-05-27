@@ -30,6 +30,7 @@ export const ForgotPasswordForm = () => {
         event.preventDefault()
         axios.post(EMAILURL, { params: { email: email } })
             .then(response => {
+                console.log(response.data);
                 if (response.data.state === true) {
                     setToken(`https://localhost:3000/passwordReset/?token=${response.data.token}`)
                     localStorage.setItem('email', email)
@@ -50,8 +51,13 @@ export const ForgotPasswordForm = () => {
         emailjs.send('service_8uodl5r', 'template_9ea0axg', params, 'KYHPZomx00qkEwjDP')
         .then(function(response) {
             console.log(response);
+            if (response.status === 200) {
+                Alert("Recuperación válida", "El correo se ha enviado", "success", "Ok", "3000")
+            }
         }, function (error) {
-            console.log(error);
+            if(error.status === 412){
+                Alert("Recuperación inválida", "Por favor ingrese un correo.", "error", "Ok", "2000")
+            }
         })
     }
 
@@ -68,17 +74,6 @@ export const ForgotPasswordForm = () => {
         }
     }
 
-    const validateDataInput = (event) => {
-        event.preventDefault();
-        if (event.target.value !== " ") {
-            verifyEmail(event)
-        }
-        else {
-            Alert("Recuperación inválida", "Por favor ingrese un correo.", "error", "Ok", "2000")
-        }
-    }
-
-
     return (
         <div className="body-container">
             <div className="forgot-password-container">
@@ -91,7 +86,7 @@ export const ForgotPasswordForm = () => {
                     <input className='email-put' required type="email" placeholder='Correo electrónico' name="user_name" onChange={captureValue} onKeyUp={e => (enterLogin(e))}></input>
                     <p className='create-account'>No tienes cuenta...<NavLink to="/register"><p className='send-register'>Cree una</p></NavLink></p>
                     <div className="send-content">
-                        <button onClick={event => (validateDataInput(event))} className='send-email'>Enviar</button>
+                        <button onClick={event => (verifyEmail(event))} className='send-email'>Enviar</button>
                     </div>
                 </form>
             </div>

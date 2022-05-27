@@ -6,11 +6,11 @@ import { faArrowRightFromBracket } from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios';
 import { UserContext } from '../../../UserProvider/UserProvider'
 import { createAnouncement } from '../../../methodAdversitement';
+import { Alert } from '../../Alert';
 
 export const ModalCreateAnouncement = () => {
 
   const userData = useContext(UserContext)
-  console.log(userData);
 
   const [visibility, setVisibility] = useState(false)
   const [formSection, setFormSection] = useState(0)
@@ -40,6 +40,20 @@ export const ModalCreateAnouncement = () => {
     setVisibility(false)
   }
 
+  const validateForm = () => {
+    if (title === '' || description === '' || address === '') {
+      Alert("Error", "Por favor complete todos los campos", "error", "Ok", "2000")
+    } else {
+      changeMoreStatus()
+    }
+  }
+const validateFormDetail = () => {
+    if (zone === '' || edification === '' || rooms === 0 || garage === 0 || modality === '' || price === 0) {
+      Alert("Error", "Por favor complete todos los campos", "error", "Ok", "2000")
+    } else {
+      changeMoreStatus()
+    }
+  }
   const changeMoreStatus = () => {
     setFormSection(formSection + 1)
   }
@@ -55,7 +69,7 @@ export const ModalCreateAnouncement = () => {
 
   const [images, setimages] = useState([]);
 
-  console.log(images);
+
 
   const changeInput = (e) => {
     let indexImg;
@@ -109,7 +123,6 @@ export const ModalCreateAnouncement = () => {
         .then(response => {
           console.log(response.data.url);
           imagesUrl.push(response.data.url)
-
         })
         .catch(err => {
           console.log(err);
@@ -122,6 +135,19 @@ export const ModalCreateAnouncement = () => {
 
   const createUser = () => {
     createAnouncement(userData[0].idusuario, title, address, description, modality, zone, edification, rooms, garage, price, newDate , arrayImages)
+    if (createAnouncement) {
+      Alert('Anuncio creado correctamente', '', 'success', 'OK','2000')
+    } else {
+      Alert('Error al crear el anuncio', ' ' ,'error', 'OK','2000')
+    }
+  }
+
+  const validateFormImage = () => {
+    if (arrayImages.length === 0) {
+      Alert("Error", "Por favor agregue al menos una imagen", "error", "Ok", "2000")
+    } else {
+      sendProfile()
+    }
   }
 
   const sendProfile = async () => {
@@ -174,10 +200,9 @@ export const ModalCreateAnouncement = () => {
                     </div>
                   </div>
                   <div className="first-action-container">
-                    <button className='create-action-button' onClick={changeMoreStatus}>siguente</button>
+                    <button className='create-action-button' onClick={validateForm}>Siguente</button>
                   </div>
                 </div>
-
               }
               {
                 formSection === 1 &&
@@ -239,7 +264,7 @@ export const ModalCreateAnouncement = () => {
                   </div>
                   <div className="create-action-container">
                     <button className='create-action-button' onClick={decreaseStatus}>anterior</button>
-                    <button className='create-action-button' onClick={changeMoreStatus}>siguente</button>
+                    <button className='create-action-button' onClick={validateFormDetail}>siguente</button>
                   </div>
                 </div>
               }
@@ -282,8 +307,8 @@ export const ModalCreateAnouncement = () => {
                     </div>
                   </div>
                   <div className="create-action-container">
-                    <button className='create-action-button' onClick={decreaseStatus}>anterior</button>
-                    <button className='create-action-button' onClick={sendProfile}>publicar</button>
+                    <button className='create-action-button' onClick={decreaseStatus}>Anterior</button>
+                    <button className='create-action-button' onClick={validateFormImage}>Publicar</button>
                   </div>
                 </div>
               }
