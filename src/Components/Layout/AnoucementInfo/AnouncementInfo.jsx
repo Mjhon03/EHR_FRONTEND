@@ -16,7 +16,8 @@ export const AnouncementInfo = ({ data }) => {
     const [idAnouncement, setIdAnouncement] = useState('')
     const [zone, setZone] = useState('')
     const [idUser, setIdUser] = useState(0)
-    const [title, setTitle] = useState('hola')
+    const [title, setTitle] = useState('')
+    const [ city , setCity ] = useState('')
     const [description, setDescription] = useState('')
     const [editicacion, setEedification] = useState('')
     const [adress, setAdress] = useState('')
@@ -43,6 +44,7 @@ export const AnouncementInfo = ({ data }) => {
             setRooms(data[0].habitaciones)
             setGarage(data[0].garaje)
             setZone(data[0].zona)
+            setCity(data[0].ciudad)
         }
     }
 
@@ -126,6 +128,7 @@ export const AnouncementInfo = ({ data }) => {
                         <p>{value}</p>
                         <p>{rooms}</p>
                         <p>{garage}</p>
+                        <p>{ city }</p>
                     </div>
                     <div className="anouncement-actions">
                         <button className='anouncement-action-redirect' onClick={sendNotification}>notificacion de interes</button>

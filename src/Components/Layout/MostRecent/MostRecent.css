@@ -1,7 +1,7 @@
 .mostRecentContainer{
     outline: solid 0.1px rgba(188,188,188,0.70);
-    width: 80%;
-    margin: 3% auto;
+    width: 90%;
+    margin: 1em auto;
     overflow-x:auto;
 }
 .mostRecentContainer::-webkit-scrollbar {

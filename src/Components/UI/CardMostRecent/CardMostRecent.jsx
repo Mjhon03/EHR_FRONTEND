@@ -3,8 +3,8 @@ import { useNavigate } from "react-router"
 import './CardMostRecent.css'
 
 export const CardMostRecent = ({data}) => {
-    const { idanuncio,titulo,zona,precio,url1} = data
-
+    const { idanuncio, direccion,ciudad ,titulo,zona,precio,url1} = data
+    console.log(data);
     const navigate = useNavigate()
 
     const sendAnouncement = () => {
@@ -17,7 +17,8 @@ export const CardMostRecent = ({data}) => {
             <div className="divImageCardMostRecent">
                 <img className="imageCardMostCecent" src={url1} alt={titulo} />
             </div>
-            <p><b>Zona: </b>{zona}</p>
+            <p><b>direccion: </b>{ direccion }</p>
+            <p><b>ciudad: </b>{ ciudad }</p>
             <p><b>Precio: </b>{precio}</p>
             <button onClick={sendAnouncement} className="btnCardMostRecent">Ver</button>
         </div>

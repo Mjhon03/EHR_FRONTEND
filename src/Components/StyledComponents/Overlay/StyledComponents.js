@@ -13,6 +13,7 @@ export const Overlay = styled.div`
 `;
 
 export const Modal = styled.div`
+  margin: 4em 0 0 0;
   width: 45%;
   height: 90vh;
   outline: solid 1px black;
