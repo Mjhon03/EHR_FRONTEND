@@ -8,7 +8,7 @@ import { ModalCreateAnouncement } from '../../Modal/ModalCreateAnouncement/Modal
 import { RegisterFooter } from '../../Layout/RegisterFooter/RegisterFooter';
 import { ProfileImage } from '../../UI/ProfileImage/ProfileImage';
 import axios from 'axios';
-
+import { MyAnouncementCard } from '../../UI/MyAnouncementCard/MyAnouncementCard'
 
 export const Profile = () => {
     const { user } = useContext(UserContext)
@@ -48,10 +48,19 @@ export const Profile = () => {
                     <SettingsAcount />
                     <ModalCreateAnouncement />
                 </div>
+
+            </div>
+            <div className="most-recent-container">
+                {userAnouncement.map(
+                    userAnouncement => (
+                        <MyAnouncementCard data={userAnouncement} />
+                        )
+                    )
+                }
             </div>
             <div className="profile-user-container">
-                <RegisterFooter />
-            </div >
+
+            </div ><RegisterFooter />
         </div>
     )
 }
