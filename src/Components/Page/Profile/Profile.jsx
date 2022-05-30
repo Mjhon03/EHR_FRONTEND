@@ -1,33 +1,35 @@
-import React, { useContext, useEffect } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { UserContext } from '../../../UserProvider/UserProvider';
 import { UpdateInfo } from '../../Modal/UpateInfo/UpdateInfo'
 import { Header } from '../../Layout/Header/Header'
 import './Profile.css'
 import { SettingsAcount } from '../../Modal/SettingsAcount/SettingsAcount';
-import { ProfileInfoContent } from '../../StyledComponents/Overlay/StyledComponents'
 import { ModalCreateAnouncement } from '../../Modal/ModalCreateAnouncement/ModalCreateAnouncement'
 import { RegisterFooter } from '../../Layout/RegisterFooter/RegisterFooter';
 import { ProfileImage } from '../../UI/ProfileImage/ProfileImage';
 import axios from 'axios';
 
-export const Profile = () => {
 
+export const Profile = () => {
     const { user } = useContext(UserContext)
     console.log(user);
 
+    const [userAnouncement, setUserAnouncement] = useState([])
+
     const getAdversitement = () => {
-        axios.get('https://easy-house-rent.azurewebsites.net/api/Advertisement/AdUser', { params: { idusuario: user[0].idusuario }})
-        .then(response => {
-            console.log(response.data);
-        })
-        .catch(err => {
-            console.log(err);
-        })
+        axios.get('https://easy-house-rent.azurewebsites.net/api/Advertisement/AdUser', { params: { idusuario: user[0].idusuario } })
+            .then(response => {
+                console.log(response.data);
+                setUserAnouncement(response.data)
+            })
+            .catch(err => {
+                console.log(err);
+            })
     }
 
-    useEffect(()=>{
+    useEffect(() => {
         getAdversitement()
-    },[])
+    }, [])
 
     return (
         <div className="profile-page">
@@ -48,12 +50,8 @@ export const Profile = () => {
                 </div>
             </div>
             <div className="profile-user-container">
-                <div className="anouncement-user-container">
-                    <ProfileInfoContent />
-                    <ProfileInfoContent />
-                </div>
-            </div>
-            <RegisterFooter />
+                <RegisterFooter />
+            </div >
         </div>
     )
 }

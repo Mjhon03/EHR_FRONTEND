@@ -1,0 +1,107 @@
+.card{
+    background: #FFFF;
+    position: relative;
+    border-radius: 20px;
+    margin: 20px auto;
+    width: 280px;
+    outline: solid 1px black;
+}
+
+.card::before{
+    content: "";
+    position: absolute;
+    height: 45%;
+    width: 100%;
+    background: #7d2ae8;
+    border-radius: 20px 20px 0 0;
+}
+
+.card-content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px;
+    position: relative;
+    z-index: 100;
+}
+
+.card .media-icons{
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.card .media-icons .card-action{
+    color: #FFFFFF;
+    opacity: 0.6;
+    margin-top: 10px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.card .media-icons .card-action:hover{
+   opacity: 1; 
+}
+
+
+.card-image-container{
+    height: 140px;
+    width: 140px;
+    padding: 3px;
+    border-radius: 50%;
+    background: #7d2ae8;
+}
+
+.card-image{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid #FFFFFF;
+    
+}
+
+.card .name-atributes{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+    color: #333;
+}
+
+.name-atributes .title{
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.name-atributes .adress {
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.card .button-visualizer{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.card .button-visualizer .action-visualizer{
+    background: #7d2ae8;
+    outline: none;
+    border: none;
+    color: #FFFFFF;
+    padding: 8px 22px;
+    border-radius: 20px;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.button-visualizer .action-visualizer:hover{
+    background-color: #6616d0;
+
+}

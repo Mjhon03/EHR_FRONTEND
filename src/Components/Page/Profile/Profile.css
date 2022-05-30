@@ -6,7 +6,8 @@
 }
 
 .profile-user-container{
-    margin: 1em 0 2em 0;
+    margin: 1em auto 2em auto;
+    width: 90%;
     display: flex;
     gap: 2em;
     
@@ -91,3 +92,7 @@
     box-shadow: -1px 5px 7px -2px #919191;
     height: 45vh;  
 }
+
+
+
+
