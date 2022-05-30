@@ -1,12 +1,13 @@
 .profile-page{
-    background: rgb(229,229,229);
+    background: url(https://res.cloudinary.com/easyhouserent/image/upload/v1653748585/EHR/profiles/hfyawuczou3oyazxnpsz.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
     padding: 0 0 1em 0;
 }
 
 .profile-user-container{
+    margin: 1em 0 2em 0;
     display: flex;
-    height: 100vh;
-    padding: 1.5em 2em;
     gap: 2em;
     
 }
@@ -14,18 +15,20 @@
 /* profile data */
 
 .user-info-tools{
-    width: 100%;
+    width: 90%;
+    margin: 1em auto;
     background-color: rgb(255,255,255);
     display: flex;
     flex-direction: column;
     gap: 0.5em;
     padding: 0.5em 2em;
+    border-radius: 5px;
+    box-shadow: -1px 5px 7px -2px #919191;
 }
 
 .profile-data-received{
     width: 100%;
     outline: solid 1px red;
-    height: 13em;
 }
 .line-profile-separator{
     border: .1px solid rgb(0,0,0,0.3);
@@ -52,7 +55,6 @@
 .user-image-container{
     width: 175px;
     outline: solid 1px red;
-    height: 11em;
     margin: 0 auto;
     border-radius: 255px;
 }
@@ -74,7 +76,7 @@
 /* anoucement profile */
 
 .anouncement-user-container{
-    width: 90em;
+    width: 90%;
     margin: 0 auto;
     border-radius: 5px;
     display: flex;

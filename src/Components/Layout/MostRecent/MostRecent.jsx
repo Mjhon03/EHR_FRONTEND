@@ -2,18 +2,17 @@ import React from 'react'
 import axios from 'axios'
 import './MostRecent.css'
 import { useState, useEffect } from 'react'
-import { CardMostRecent } from './CardMostRecent/CardMostRecent'
+import { CardMostRecent } from '../../UI/CardMostRecent/CardMostRecent'
 
 export const MostRecent = () => {
 
   const [cardMostRecent, setCardMostRecent] = useState([])
   const URLCMR = `https://easy-house-rent.azurewebsites.net/api/Home/MostRecent`
 
-  const GetMostRecent = (event) => {
+  const GetMostRecent = () => {
       axios.get(URLCMR)
       .then(response => {
           setCardMostRecent(response.data)
-          console.log(response.data);
       })
       .catch(error => {
           console.log(error)

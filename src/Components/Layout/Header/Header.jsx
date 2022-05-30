@@ -12,11 +12,10 @@ export const Header = () => {
 
     const [userSession, setUserSession] = useState(0)
 
-    const userData = useContext(UserContext)
-
+    const { user } = useContext(UserContext)
 
     const SetUserData = () => {
-        if (userData != null) {
+        if (user!= null) {
             setUserSession(1)
         }else{
             setUserSession(0)
@@ -71,13 +70,13 @@ export const Header = () => {
                 }
                 {userSession === 1 &&
                     <div className="header-nouser-actions">
-                        <NavLink to="/Profile">
+                        <NavLink  to="/Profile">
                             <div className="header-user-settings">
-                                <img src="https://cdn.pixabay.com/photo/2017/08/12/18/31/male-2634974_960_720.jpg" className='header-profile' alt="header-profile" />
-                                <p className='text-header-profile'>{userData[0].nombre}</p>
+                                <img src={user[0].foto} className='header-profile' alt="header-profile" />
+                                <p className='text-header-profile'>{user[0].nombre}</p>
                             </div>
                         </NavLink>
-                        <ProfileSettings userData={userData} />
+                        <ProfileSettings userData={user} />
                     </div>
                 }
             </div>

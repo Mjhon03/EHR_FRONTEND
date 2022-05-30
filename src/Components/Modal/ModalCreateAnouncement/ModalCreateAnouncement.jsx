@@ -9,12 +9,12 @@ import { createAnouncement } from '../../../methodAdversitement';
 
 export const ModalCreateAnouncement = () => {
 
-  const userData = useContext(UserContext)
-  console.log(userData);
+  const { user } = useContext(UserContext)
 
   const [visibility, setVisibility] = useState(false)
   const [formSection, setFormSection] = useState(0)
 
+  const [ city , setCity ] = useState('')
   const [title, setTitle] = useState('')
   const [description, setDescription] = useState('')
   const [address, setAddress] = useState(' ')
@@ -26,7 +26,6 @@ export const ModalCreateAnouncement = () => {
   const [price, setPrice] = useState(' ')
 
   useEffect(() => {
-    console.log(formSection)
   }, [formSection])
 
   let date = new Date();
@@ -52,10 +51,7 @@ export const ModalCreateAnouncement = () => {
     }
   }
 
-
   const [images, setimages] = useState([]);
-
-  console.log(images);
 
   const changeInput = (e) => {
     let indexImg;
@@ -120,13 +116,13 @@ export const ModalCreateAnouncement = () => {
 
 
 
-  const createUser = () => {
-    createAnouncement(userData[0].idusuario, title, address, description, modality, zone, edification, rooms, garage, price, newDate , arrayImages)
+  const awaitAnouncement = async () => {
+    createAnouncement(user[0].idusuario, title, address, city ,description, modality, zone, edification, rooms, garage, price, newDate , arrayImages)
   }
 
   const sendProfile = async () => {
     await sendPhotos() 
-    createUser()
+    awaitAnouncement()
   }
 
   return (
@@ -164,6 +160,10 @@ export const ModalCreateAnouncement = () => {
                       }} />
                       <input className='create-input-add' type='text' placeholder='direccion' onChange={(e) => {
                         setAddress(e.target.value)
+                        console.log(e.target.value)
+                      }} />
+                      <input className='create-input-add' type='text' placeholder='ciudad' onChange={(e) => {
+                        setCity(e.target.value)
                         console.log(e.target.value)
                       }} />
                       <textarea className='create-description' placeholder='descripcion de la vivienda ( detalles de la vivienda , consideraciones , aportes importantes a tener en cuenta )'
@@ -226,7 +226,7 @@ export const ModalCreateAnouncement = () => {
                         setRooms(e.target.value)
                         console.log(e.target.value)
                       }} />
-                      <input type='number' placeholder='garaje' className='create-input-add' onChange={(e) => {
+                      <input type='text' placeholder='garaje' className='create-input-add' onChange={(e) => {
                         setGarage(e.target.value)
                         console.log(e.target.value)
                       }} />
