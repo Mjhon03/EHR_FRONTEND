@@ -44,7 +44,7 @@
     border-radius: 30px;
     border: none;
     transition: 0.2s ease;
-    text-align: center;
+    text-align: start;
 }
 
 .search-box-home:focus{
@@ -73,7 +73,8 @@
 
 .content-page-info{
     display: flex;
-    width: 100%;
+    margin: 1.5em auto 0 auto;
+    width: 90%;
     justify-content: space-around;
 }
 

@@ -24,6 +24,7 @@ import { SearchResults } from "./Components/Page/SearchResults/SearchResults";
 import { OtherUser } from "./Components/Page/OtherUser/OtherUser";
 import { SuportP } from "./Components/Page/Support/Suports";
 import { CategoriesResult } from "./Components/Page/CategoriesResult/CategoriesResult";
+import Carousel from 'react-elastic-carousel';
 
 
 function App() {

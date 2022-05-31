@@ -11,10 +11,12 @@ import { Alert } from '../../Alert';
 export const ModalCreateAnouncement = () => {
 
   const userData = useContext(UserContext)
+  const { user } = useContext(UserContext)
 
   const [visibility, setVisibility] = useState(false)
   const [formSection, setFormSection] = useState(0)
 
+  const [city, setCity] = useState('')
   const [title, setTitle] = useState('')
   const [description, setDescription] = useState('')
   const [address, setAddress] = useState(' ')
@@ -26,7 +28,6 @@ export const ModalCreateAnouncement = () => {
   const [price, setPrice] = useState(' ')
 
   useEffect(() => {
-    console.log(formSection)
   }, [formSection])
 
   let date = new Date();
@@ -47,7 +48,7 @@ export const ModalCreateAnouncement = () => {
       changeMoreStatus()
     }
   }
-const validateFormDetail = () => {
+  const validateFormDetail = () => {
     if (zone === '' || edification === '' || rooms === 0 || garage === 0 || modality === '' || price === 0) {
       Alert("Error", "Por favor complete todos los campos", "error", "Ok", "2000")
     } else {
@@ -65,7 +66,6 @@ const validateFormDetail = () => {
       setFormSection(0)
     }
   }
-
 
   const [images, setimages] = useState([]);
 
@@ -110,8 +110,8 @@ const validateFormDetail = () => {
     console.log(newImgs);
     setimages(newImgs);
   }
-  
-  const [ arrayImages , setArraytImages ] = useState([])
+
+  const [arrayImages, setArraytImages] = useState([])
 
   const sendPhotos = async () => {
     let imagesUrl = []
@@ -149,10 +149,13 @@ const validateFormDetail = () => {
       sendProfile()
     }
   }
+  const awaitAnouncement = async () => {
+    createAnouncement(user[0].idusuario, title, address, city, description, modality, zone, edification, rooms, garage, price, newDate, arrayImages)
+  }
 
   const sendProfile = async () => {
-    await sendPhotos() 
-    createUser()
+    await sendPhotos()
+    awaitAnouncement()
   }
 
   return (
@@ -188,10 +191,16 @@ const validateFormDetail = () => {
                         setTitle(e.target.value)
                         console.log(e.target.value)
                       }} />
-                      <input className='create-input-add' type='text' placeholder='direccion' onChange={(e) => {
-                        setAddress(e.target.value)
-                        console.log(e.target.value)
-                      }} />
+                      <div className="modality-medium">
+                        <input className='create-input-add' type='text' placeholder='direccion' onChange={(e) => {
+                          setAddress(e.target.value)
+                          console.log(e.target.value)
+                        }} />
+                        <input className='create-input-add' type='text' placeholder='ciudad' onChange={(e) => {
+                          setCity(e.target.value)
+                          console.log(e.target.value)
+                        }} />
+                      </div>
                       <textarea className='create-description' placeholder='descripcion de la vivienda ( detalles de la vivienda , consideraciones , aportes importantes a tener en cuenta )'
                         onChange={(e) => {
                           setDescription(e.target.value)
@@ -224,7 +233,6 @@ const validateFormDetail = () => {
                           <option value="venta">venta</option>
                           <option value="arrendo">arrendo</option>
                         </select>
-                        <div className="medium-inputs"></div>
                         <select className='create-input-add' onChange={(e) => {
                           setZone(e.target.value)
                           console.log(e.target.value);
@@ -236,22 +244,24 @@ const validateFormDetail = () => {
                           <option value="centro">centro</option>
                         </select>
                       </div>
-                      <select className='create-input-add' onChange={(e) => {
-                        setEdification(e.target.value)
-                        console.log(e.target.value);
-                      }}>
-                        <option value="">tipo de edificacion</option>
-                        <option value="finca">finca</option>
-                        <option value="apartamento">apartamento</option>
-                        <option value="terreno">terreno</option>
-                        <option value="local">local</option>
-                        <option value="hogar">hogar</option>
-                      </select>
-                      <input type='number' placeholder='habitaciones' className='create-input-add' onChange={(e) => {
-                        setRooms(e.target.value)
-                        console.log(e.target.value)
-                      }} />
-                      <input type='number' placeholder='garaje' className='create-input-add' onChange={(e) => {
+                      <div className="modality-medium">
+                        <select className='create-input-add' onChange={(e) => {
+                          setEdification(e.target.value)
+                          console.log(e.target.value);
+                        }}>
+                          <option value="">tipo de edificacion</option>
+                          <option value="finca">finca</option>
+                          <option value="apartamento">apartamento</option>
+                          <option value="terreno">terreno</option>
+                          <option value="local">local</option>
+                          <option value="hogar">hogar</option>
+                        </select>
+                        <input type='number' placeholder='habitaciones' className='create-input-add' onChange={(e) => {
+                          setRooms(e.target.value)
+                          console.log(e.target.value)
+                        }} />
+                      </div>
+                      <input type='text' placeholder='garaje' className='create-input-add' onChange={(e) => {
                         setGarage(e.target.value)
                         console.log(e.target.value)
                       }} />
@@ -260,7 +270,6 @@ const validateFormDetail = () => {
                         console.log(e.target.value)
                       }} />
                     </div>
-
                   </div>
                   <div className="create-action-container">
                     <button className='create-action-button' onClick={decreaseStatus}>anterior</button>
@@ -319,3 +328,4 @@ const validateFormDetail = () => {
     </>
   )
 }
+

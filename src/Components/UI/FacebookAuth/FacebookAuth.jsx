@@ -21,6 +21,7 @@ export const FacebookAuth = ({ buttonText }) => {
         const provider = new FacebookAuthProvider();
         await signInWithPopup(authFacebook, provider)
             .then((res) => {
+                console.log(res);
                 setFaEmail(res.user.email)
                 setFaPassword(res.user.uid)
                 setEmail(res.user.email)
