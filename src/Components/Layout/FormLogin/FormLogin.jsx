@@ -7,6 +7,7 @@ import { FacebookAuth } from '../../UI/FacebookAuth/FacebookAuth';
 import { urlLogin } from '../../ApiRoutes';
 import { useNavigate } from 'react-router-dom'
 import validator from 'validator';
+import { Alert } from '../../Alert';
 
 
 export const FormLogin = () => {
@@ -54,7 +55,7 @@ export const FormLogin = () => {
     const validateDataInput = ((e ) => {
         e.preventDefault();
         if(email === "" || password === ""){
-            alert("Please fill all the fields")
+            Alert("Inicio de sesión", "Por favor ingrese todos los campos.", "error", "Ok", "2000")
         }
         else{
             login(e)
@@ -73,7 +74,7 @@ export const FormLogin = () => {
         <div className="login-form">
             <form className="login-valid-info">
                 <div className="auth-services">
-                    <GoogleAuth buttonText={"Iniciar sesion con Google"} /><br></br><br></br>
+                    <GoogleAuth buttonText={"Iniciar sesión con Google"} /><br></br><br></br>
                     <FacebookAuth buttonText={"Ingresar por facebook"} />
                 </div>
                 <div className="separator-container">
@@ -82,7 +83,7 @@ export const FormLogin = () => {
                     <div className="line-separator" />
                 </div>
                 <div className="info">
-                    <input type="email" max="80" required className='info-input-register' placeholder="Correo electronico" onChange={setEventToEmail}></input><br></br>
+                    <input type="email" max="80" required className='info-input-register' placeholder="Correo electrónico" onChange={setEventToEmail}></input><br></br>
                     <span style={{
                         color: "red",
                     }}>{emailError}</span>
@@ -91,7 +92,7 @@ export const FormLogin = () => {
                 </div>
                 <div className="remember-password">
                     <input className='remember-check' type='checkbox'></input>
-                    <p>Recuerdame</p>
+                    <p>Recuérdame</p>
                 </div>
                 <div className="forgot-password">
                     <button className="register-submit" onClick={(e) => validateDataInput(e)}>Entrar</button>
