@@ -24,10 +24,27 @@ export const MostRecent = () => {
     GetMostRecent()
   })
 
+  const breakproint = [ 
+    
+    {
+      width: 500,
+      itemsToShow : 2
+    },
+    {
+      width: 880,
+      itemsToShow: 3
+
+    },
+    { 
+      width: 1280,
+      itemsToShow: 4,
+    },
+   ]
+
   return (
     <div className='most-recent-container-home'>
       <h2 className='most-recent-title'>Mira las publicaciones mas recientes</h2>
-      <Carousel itemsToShow={3} pagination={false}>
+      <Carousel  itemsToShow={4} pagination={false} breakPoints={breakproint} >
         {cardMostRecent.map(
           cardMostRecent => (
             <MyAnouncementCard  key={cardMostRecent.idanuncio} data={cardMostRecent} />
