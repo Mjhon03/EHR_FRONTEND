@@ -69,8 +69,6 @@ export const ModalCreateAnouncement = () => {
 
   const [images, setimages] = useState([]);
 
-
-
   const changeInput = (e) => {
     let indexImg;
     if (images.length > 0) {
@@ -129,21 +127,20 @@ export const ModalCreateAnouncement = () => {
         })
     });
     setArraytImages(imagesUrl)
+    return true;
   }
 
-
-
-  const createUser = () => {
-    createAnouncement(userData[0].idusuario, title, address, description, modality, zone, edification, rooms, garage, price, newDate , arrayImages)
-    if (createAnouncement) {
-      Alert('Anuncio creado correctamente', '', 'success', 'OK','2000')
-    } else {
-      Alert('Error al crear el anuncio', ' ' ,'error', 'OK','2000')
-    }
-  }
+  // const createUser = () => {
+  //   createAnouncement(userData[0].idusuario, title, address, description, modality, zone, edification, rooms, garage, price, newDate , arrayImages)
+  //   if (createAnouncement) {
+  //     Alert('Anuncio creado correctamente', '', 'success', 'OK','2000')
+  //   } else {
+  //     Alert('Error al crear el anuncio', ' ' ,'error', 'OK','2000')
+  //   }
+  // }
 
   const validateFormImage = () => {
-    if (arrayImages.length === 0) {
+    if (images.length === 0) {
       Alert("Error", "Por favor agregue al menos una imagen", "error", "Ok", "2000")
     } else {
       sendProfile()
@@ -154,8 +151,14 @@ export const ModalCreateAnouncement = () => {
   }
 
   const sendProfile = async () => {
+    awaitAnouncement() 
     await sendPhotos()
-    awaitAnouncement()
+    if (awaitAnouncement) {
+      Alert('El anuncio se ha creado correctamente', '', 'success', 'OK','2000')
+    }
+    closeModal()
+    setimages([])
+    setFormSection(0)
   }
 
   return (
