@@ -19,7 +19,6 @@ export const Profile = () => {
     const getAdversitement = () => {
         axios.get('https://easy-house-rent.azurewebsites.net/api/Advertisement/AdUser', { params: { idusuario: user[0].idusuario } })
             .then(response => {
-                console.log(response.data);
                 setUserAnouncement(response.data)
             })
             .catch(err => {
@@ -38,7 +37,6 @@ export const Profile = () => {
         if (userAnouncement.length !== 0) {
             setViewAnouncement(1)
         }else{
-            console.log('no hay nada');
             setViewAnouncement(0)
         }
     }
@@ -51,7 +49,6 @@ export const Profile = () => {
                     <ProfileImage />
                     <div className="profile-data">
                         <h1>{user[0].nombre} {user[0].apellidos}</h1>
-
                     </div>
                 </div>
                 <div className="line-profile-separator" />
@@ -60,7 +57,6 @@ export const Profile = () => {
                     <SettingsAcount />
                     <ModalCreateAnouncement />
                 </div>
-
             </div>
             <div className="most-recent-container">
                 <h2 className='most-recent-title'>mis publicaciones</h2>
@@ -76,7 +72,6 @@ export const Profile = () => {
                 }
             </div>
             <div className="profile-user-container">
-
             </div >
             <RegisterFooter />
         </div>

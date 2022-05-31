@@ -5,6 +5,7 @@ import { faPen, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from 'react-router';
 import { UserContext } from '../../../UserProvider/UserProvider';
 import axios from 'axios';
+import swal from 'sweetalert';
 
 export const MyAnouncementCard = ({ data }) => {
     const { idusuario , idanuncio, titulo, direccion, zona ,ciudad, precio, url1 } = data
@@ -19,6 +20,24 @@ export const MyAnouncementCard = ({ data }) => {
         .then(err => {
             console.log(err);
         })
+    }
+
+    const confirmDelete = () => {
+        swal({
+            title: `¿Esta seguro de eliminar el anuncio?`,
+            text: `Una vez que lo elimine no lo podra recuperar`,
+            icon: `warning`,
+            buttons: true,
+            dangerMode: true,
+        })
+        .then((willDelete) => {
+            if (willDelete) {
+                deleteUserAnouncement()
+                swal("El anuncio se ha eliminado correctamente", {
+                    icon: "success",
+            });
+        }
+    });
     }
 
     
@@ -52,7 +71,7 @@ export const MyAnouncementCard = ({ data }) => {
                     </div>
                     {displayOptions &&
                         <div className="media-icons">
-                            <FontAwesomeIcon onClick={deleteUserAnouncement} icon={faTrash} className="card-action" />
+                            <FontAwesomeIcon onClick={confirmDelete} icon={faTrash} className="card-action" />
                             <FontAwesomeIcon icon={faPen} className='card-action' ></FontAwesomeIcon>
                         </div>
                     }
