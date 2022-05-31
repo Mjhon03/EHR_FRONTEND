@@ -33,36 +33,35 @@ export const Profile = () => {
         displayMyAnouncement()
     })
 
-    const breakproint = [ 
-    
+    const breakproint = [
+
         {
-          width: 500,
-          itemsToShow : 2
+            width: 500,
+            itemsToShow: 2
         },
         {
-          width: 880,
-          itemsToShow: 3
-    
+            width: 880,
+            itemsToShow: 3
+
         },
-        { 
-          width: 1260,
-          itemsToShow: 4,
+        {
+            width: 1260,
+            itemsToShow: 4,
         },
-       ]
+    ]
 
     const [viewAnouncement, setViewAnouncement] = useState(0)
 
     const displayMyAnouncement = () => {
         if (userAnouncement.length !== 0) {
             setViewAnouncement(1)
- 
-        }else{
+
+        } else {
             setViewAnouncement(0)
         }
     }
 
     return (
-
         <>
             <div className="profile-page">
                 <Header />
@@ -95,8 +94,8 @@ export const Profile = () => {
 
                     }
                     {viewAnouncement === 1 &&
-                        <Carousel  itemsToShow={4} pagination={false}
-                        breakPoints={breakproint}>
+                        <Carousel itemsToShow={4} pagination={false}
+                            breakPoints={breakproint}>
                             {userAnouncement.map(
                                 userAnouncement => (
                                     <MyAnouncementCard key={userAnouncement.idanuncio} data={userAnouncement} />
@@ -106,6 +105,7 @@ export const Profile = () => {
                         </Carousel>
                     }
                 </div>
+            </div>
             <RegisterFooter />
         </>
     )
