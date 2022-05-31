@@ -1,12 +1,13 @@
 import axios from 'axios'
 
-export const createAnouncement = (iduser , title , adress , description ,
-   modality , zone , edification , rooms , garage , price , date , images ) =>{
+export const createAnouncement = (iduser , title , adress , city ,description ,
+modality , zone , edification , rooms , garage , price , date , images ) =>{
 
     axios.post('https://easy-house-rent.azurewebsites.net/api/Advertisement' ,{
         idusuario : iduser,
         titulo : title,
         direccion : adress,
+        ciudad : city,
         descripcion : description,
         modalidad : modality,
         zona : zone,

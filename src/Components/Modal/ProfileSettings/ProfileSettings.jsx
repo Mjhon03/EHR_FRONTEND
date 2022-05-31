@@ -1,7 +1,7 @@
 import { faRocketchat } from '@fortawesome/free-brands-svg-icons'
 import { faCaretDown, faCircleInfo, faGears, faIdCardClip } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import React,{ useEffect, useState} from 'react'
+import React,{useState} from 'react'
 import { NavLink } from 'react-router-dom'
 import { ProfileAction, ProfileActionText, ProfileModal, SettingsSpace } from '../../StyledComponents/Overlay/StyledComponents'
 import './ProfileSettings.css'
@@ -11,10 +11,6 @@ export const ProfileSettings = ({ userData }) => {
 
   const [ settingsVisibility , setSettingsVisibility ] = useState(false)
 
-  useEffect(()=>{
-    console.log(settingsVisibility);
-  },[])
-
   const changeSettings = () =>{
     if(settingsVisibility === false){
       setSettingsVisibility(true)
@@ -22,6 +18,7 @@ export const ProfileSettings = ({ userData }) => {
       setSettingsVisibility(false)
     }
   }
+
 
   const deleteSesion = () =>{
     localStorage.removeItem("userInfo")
@@ -32,13 +29,13 @@ export const ProfileSettings = ({ userData }) => {
 
   return (
     <>
-    <button className='profile-modal-activate' onClick={()=> changeSettings()}><FontAwesomeIcon className='activate-profile-icon' icon={ faCaretDown} /></button>
+    <button className='profile-modal-activate'  onClick={()=> changeSettings()}><FontAwesomeIcon className='activate-profile-icon' icon={ faCaretDown} /></button>
     {settingsVisibility &&
       <ProfileModal>
         <NavLink to='/profile'>
         <div className="settings-basic-info">
           <div className="settings-image-container">
-            <img src="https://cdn.pixabay.com/photo/2017/08/12/18/31/male-2634974_960_720.jpg" alt="settingsImage" className='settings-image' />
+            <img src={ userData[0].foto} alt="settingsImage" className='settings-image' />
           </div>
           
             <div className="settings-profile">

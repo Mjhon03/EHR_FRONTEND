@@ -38,6 +38,11 @@
 
 .categories-bar-container:hover  .category-icon{
     color: rgba(0,0,0,0.6);
+}
 
+@media screen and (max-width: 1600px){
+    .categories-bar{
+        width: 90%;
+    }
 }
 

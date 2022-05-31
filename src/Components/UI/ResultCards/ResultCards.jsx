@@ -3,10 +3,11 @@ import './ResultCards.css'
 import { useNavigate } from 'react-router-dom'
 
 export const ResultCards = ({ data }) => {
+    const { idanuncio, titulo, ciudad ,descripcion, zona, cuidad ,direccion, fecha, valor, url1 } = data
 
-    const { idanuncio, titulo, descripcion, zona, direccion, fecha, valor, url1 } = data
-
+    console.log(cuidad);
     const navigate = useNavigate()
+ 
 
     const sendToSelect = () => {
         navigate(`/anouncement/?idanounce=${idanuncio}&adzone=${zona}`)
@@ -24,6 +25,7 @@ export const ResultCards = ({ data }) => {
                 <div className="card-render-add-data">
                     <p>{ descripcion }</p>
                     <p>${valor}</p>
+                    <p>{ ciudad }</p>
                     <p>ubicacion : {zona} - {direccion}</p>
                     <p>fecha de publicacion : {fecha}</p>
                 </div>

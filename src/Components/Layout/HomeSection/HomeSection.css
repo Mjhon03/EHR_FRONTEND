@@ -44,7 +44,7 @@
     border-radius: 30px;
     border: none;
     transition: 0.2s ease;
-    text-align: center;
+    text-align: start;
 }
 
 .search-box-home:focus{
@@ -73,7 +73,8 @@
 
 .content-page-info{
     display: flex;
-    width: 100%;
+    margin: 1.5em auto 0 auto;
+    width: 80%;
     justify-content: space-around;
 }
 
@@ -96,6 +97,12 @@
     text-align: center;
     width: 100%;
     margin: 2% auto;
+}
+
+@media screen and (max-width: 1600px){
+    .content-page-info{
+        width: 90%;
+    }
 }
 
 @media screen and (max-width:900px){
