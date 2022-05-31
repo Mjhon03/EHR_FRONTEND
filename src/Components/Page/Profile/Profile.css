@@ -2,7 +2,6 @@
     background: url(https://res.cloudinary.com/easyhouserent/image/upload/v1653748585/EHR/profiles/hfyawuczou3oyazxnpsz.svg);
     background-repeat: no-repeat;
     background-size: cover;
-    padding: 0 0 1em 0;
 }
 
 .profile-user-container{
@@ -69,9 +68,7 @@
 }
 
 .most-recent-container{
-    display: flex;
-    justify-content: start;
-    overflow-x: scroll;
+    padding: 0 1em;
     border-radius: 5px;
     width: 90%;
     margin: auto;
@@ -89,10 +86,6 @@
     flex-direction: column;
     gap: 1em;
 }
-.anouncement-user-container::-webkit-scrollbar {
-    display: none;
-    }
-
 
 .anouncement-profile-submit{
     width: 100%;

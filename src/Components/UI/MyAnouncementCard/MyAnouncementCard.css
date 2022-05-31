@@ -5,7 +5,7 @@
     margin: 20px 8px;
     width: 280px;
     border-radius: 5px;
-    transition: 80ms all ease;
+    transition: 0.25s all ease;
     box-shadow: 1px 5px 11px -2px #919191;
 }
 
@@ -19,7 +19,7 @@
 }
 
 .card:hover{
-    margin: 10px 0 0 0 ;
+    transform: translateY(-2%);
 }
 
 .card-content{

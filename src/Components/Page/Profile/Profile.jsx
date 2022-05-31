@@ -9,10 +9,13 @@ import { RegisterFooter } from '../../Layout/RegisterFooter/RegisterFooter';
 import { ProfileImage } from '../../UI/ProfileImage/ProfileImage';
 import axios from 'axios';
 import { MyAnouncementCard } from '../../UI/MyAnouncementCard/MyAnouncementCard'
+import Carousel from 'react-elastic-carousel';
 
 export const Profile = () => {
     const { user } = useContext(UserContext)
     console.log(user);
+
+
 
     const [userAnouncement, setUserAnouncement] = useState([])
 
@@ -29,7 +32,8 @@ export const Profile = () => {
 
     useEffect(() => {
         getAdversitement()
-    }, [])
+    })
+
 
     return (
         <div className="profile-page">
@@ -51,16 +55,19 @@ export const Profile = () => {
 
             </div>
             <div className="most-recent-container">
-                {userAnouncement.map(
-                    userAnouncement => (
-                        <MyAnouncementCard data={userAnouncement} />
+                <Carousel itemsToShow={3} pagination={0}>
+                    {userAnouncement.map(
+                        userAnouncement => (
+                            <MyAnouncementCard data={userAnouncement} />
                         )
                     )
-                }
+                    }
+                </Carousel>
             </div>
             <div className="profile-user-container">
 
-            </div ><RegisterFooter />
+            </div >
+            <RegisterFooter />
         </div>
     )
 }
