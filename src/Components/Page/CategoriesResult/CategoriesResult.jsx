@@ -27,7 +27,7 @@ export const CategoriesResult = () => {
 
     useEffect(() => {
         getCategories()
-    }, [])
+    })
 
     return (
         <>
