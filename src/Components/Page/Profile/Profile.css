@@ -2,11 +2,11 @@
     background: url(https://res.cloudinary.com/easyhouserent/image/upload/v1653748585/EHR/profiles/hfyawuczou3oyazxnpsz.svg);
     background-repeat: no-repeat;
     background-size: cover;
-    padding: 0 0 1em 0;
 }
 
 .profile-user-container{
-    margin: 1em 0 2em 0;
+    margin: 1em auto 2em auto;
+    width: 90%;
     display: flex;
     gap: 2em;
     
@@ -67,12 +67,15 @@
     border-radius: 255px;
 }
 
-
+.most-recent-container{
+    padding: 1.5em 0 1em 0;
+    border-radius: 5px;
+    width: 90%;
+    margin: auto;
+    background: #FFFFFF;
+    box-shadow: -1px 5px 7px -2px #919191;
+}
     
-
-
-
-
 /* anoucement profile */
 
 .anouncement-user-container{
@@ -84,10 +87,13 @@
     gap: 1em;
 }
 
-
 .anouncement-profile-submit{
     width: 100%;
     background-color: rgb(255,255,255);
     box-shadow: -1px 5px 7px -2px #919191;
     height: 45vh;  
 }
+
+
+
+

@@ -10,20 +10,18 @@ export const Overlay = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 1;
 `;
 
 export const Modal = styled.div`
-  margin: 4em 0 0 0;
+  top: 12%;
+  position: fixed;
   width: 45%;
-  height: 90vh;
+  height: 550px;
   outline: solid 1px black;
-
   text-align: center;
   border-radius: 5px;
   background-color: #fff;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
 `
 
 export const ProfileModal = styled.div`

@@ -1,0 +1,125 @@
+.card {
+    background: #FFFF;
+    position: relative;
+    border-radius: 5px;
+    margin: 20px 8px;
+    width: 280px;
+    height: 24em;
+    border-radius: 5px;
+    transition: 0.25s all ease;
+    box-shadow: 1px 5px 11px -2px #919191;
+}
+
+.card::before {
+    border-radius: 5px 5px 0 0;
+    content: "";
+    position: absolute;
+    height: 35%;
+    width: 100%;
+    background: rgba(35, 35, 35, 0.95);
+
+}
+
+.card:hover {
+    transform: translateY(-2%);
+}
+
+.card-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 15px 0 15px;
+    position: relative;
+}
+
+.card .media-icons {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.card .media-icons .card-action {
+    color: #FFFFFF;
+    opacity: 0.6;
+    margin-top: 10px;
+    transition: all 0.3s ease;
+}
+
+.card:hover .media-icons .card-action {
+    opacity: 1;
+    cursor: pointer;
+    font-size: 1.1em;
+}
+
+.card-action {
+    transition: 0.3s all ease;
+}
+
+
+.card-image-container {
+    height: 140px;
+    width: 140px;
+    padding: 3px;
+    border-radius: 50%;
+    background: #919191; 
+}
+
+.card-image {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid #FFFFFF;
+}
+
+.aling-info {
+    width: 100%;
+    height: 12.8em;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.card .name-atributes {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+    color: #333;
+}
+
+.name-atributes .title {
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.name-atributes .adress {
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.card .button-visualizer {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.card .button-visualizer .action-visualizer {
+    background: rgba(35, 35, 35, 0.95);
+    outline: none;
+    border: none;
+    color: #FFFFFF;
+    width: 100%;
+    padding: 1em;
+    border-radius: 5px;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.button-visualizer .action-visualizer:hover {
+    background: rgba(35, 35, 35, 0.65);
+}
