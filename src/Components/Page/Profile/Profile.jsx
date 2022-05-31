@@ -13,10 +13,7 @@ import Carousel from 'react-elastic-carousel';
 
 export const Profile = () => {
     const { user } = useContext(UserContext)
-    console.log(user);
-
-
-
+    
     const [userAnouncement, setUserAnouncement] = useState([])
 
     const getAdversitement = () => {
@@ -32,8 +29,19 @@ export const Profile = () => {
 
     useEffect(() => {
         getAdversitement()
-    })
+        displayMyAnouncement()
+    },)
 
+    const [viewAnouncement, setViewAnouncement] = useState(0)
+
+    const displayMyAnouncement = () => {
+        if (userAnouncement.length !== 0) {
+            setViewAnouncement(1)
+        }else{
+            console.log('no hay nada');
+            setViewAnouncement(0)
+        }
+    }
 
     return (
         <div className="profile-page">
@@ -55,14 +63,17 @@ export const Profile = () => {
 
             </div>
             <div className="most-recent-container">
-                <Carousel itemsToShow={3} pagination={0}>
-                    {userAnouncement.map(
-                        userAnouncement => (
-                            <MyAnouncementCard data={userAnouncement} />
+                <h2 className='most-recent-title'>mis publicaciones</h2>
+                {viewAnouncement === 1 &&
+                    <Carousel itemsToShow={3} pagination={false}>
+                        {userAnouncement.map(
+                            userAnouncement => (
+                                <MyAnouncementCard key={userAnouncement.idanuncio} data={userAnouncement} />
+                            )
                         )
-                    )
-                    }
-                </Carousel>
+                        }
+                    </Carousel>
+                }
             </div>
             <div className="profile-user-container">
 

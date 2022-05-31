@@ -14,7 +14,7 @@ export const ModalCreateAnouncement = () => {
   const [visibility, setVisibility] = useState(false)
   const [formSection, setFormSection] = useState(0)
 
-  const [ city , setCity ] = useState('')
+  const [city, setCity] = useState('')
   const [title, setTitle] = useState('')
   const [description, setDescription] = useState('')
   const [address, setAddress] = useState(' ')
@@ -92,8 +92,8 @@ export const ModalCreateAnouncement = () => {
     console.log(newImgs);
     setimages(newImgs);
   }
-  
-  const [ arrayImages , setArraytImages ] = useState([])
+
+  const [arrayImages, setArraytImages] = useState([])
 
   const sendPhotos = async () => {
     let imagesUrl = []
@@ -117,11 +117,11 @@ export const ModalCreateAnouncement = () => {
 
 
   const awaitAnouncement = async () => {
-    createAnouncement(user[0].idusuario, title, address, city ,description, modality, zone, edification, rooms, garage, price, newDate , arrayImages)
+    createAnouncement(user[0].idusuario, title, address, city, description, modality, zone, edification, rooms, garage, price, newDate, arrayImages)
   }
 
   const sendProfile = async () => {
-    await sendPhotos() 
+    await sendPhotos()
     awaitAnouncement()
   }
 
@@ -158,14 +158,16 @@ export const ModalCreateAnouncement = () => {
                         setTitle(e.target.value)
                         console.log(e.target.value)
                       }} />
-                      <input className='create-input-add' type='text' placeholder='direccion' onChange={(e) => {
-                        setAddress(e.target.value)
-                        console.log(e.target.value)
-                      }} />
-                      <input className='create-input-add' type='text' placeholder='ciudad' onChange={(e) => {
-                        setCity(e.target.value)
-                        console.log(e.target.value)
-                      }} />
+                      <div className="modality-medium">
+                        <input className='create-input-add' type='text' placeholder='direccion' onChange={(e) => {
+                          setAddress(e.target.value)
+                          console.log(e.target.value)
+                        }} />
+                        <input className='create-input-add' type='text' placeholder='ciudad' onChange={(e) => {
+                          setCity(e.target.value)
+                          console.log(e.target.value)
+                        }} />
+                      </div>
                       <textarea className='create-description' placeholder='descripcion de la vivienda ( detalles de la vivienda , consideraciones , aportes importantes a tener en cuenta )'
                         onChange={(e) => {
                           setDescription(e.target.value)
@@ -199,7 +201,7 @@ export const ModalCreateAnouncement = () => {
                           <option value="venta">venta</option>
                           <option value="arrendo">arrendo</option>
                         </select>
-                        <div className="medium-inputs"></div>
+
                         <select className='create-input-add' onChange={(e) => {
                           setZone(e.target.value)
                           console.log(e.target.value);
@@ -211,21 +213,23 @@ export const ModalCreateAnouncement = () => {
                           <option value="centro">centro</option>
                         </select>
                       </div>
-                      <select className='create-input-add' onChange={(e) => {
-                        setEdification(e.target.value)
-                        console.log(e.target.value);
-                      }}>
-                        <option value="">tipo de edificacion</option>
-                        <option value="finca">finca</option>
-                        <option value="apartamento">apartamento</option>
-                        <option value="terreno">terreno</option>
-                        <option value="local">local</option>
-                        <option value="hogar">hogar</option>
-                      </select>
-                      <input type='number' placeholder='habitaciones' className='create-input-add' onChange={(e) => {
-                        setRooms(e.target.value)
-                        console.log(e.target.value)
-                      }} />
+                      <div className="modality-medium">
+                        <select className='create-input-add' onChange={(e) => {
+                          setEdification(e.target.value)
+                          console.log(e.target.value);
+                        }}>
+                          <option value="">tipo de edificacion</option>
+                          <option value="finca">finca</option>
+                          <option value="apartamento">apartamento</option>
+                          <option value="terreno">terreno</option>
+                          <option value="local">local</option>
+                          <option value="hogar">hogar</option>
+                        </select>
+                        <input type='number' placeholder='habitaciones' className='create-input-add' onChange={(e) => {
+                          setRooms(e.target.value)
+                          console.log(e.target.value)
+                        }} />
+                      </div>
                       <input type='text' placeholder='garaje' className='create-input-add' onChange={(e) => {
                         setGarage(e.target.value)
                         console.log(e.target.value)
