@@ -10,14 +10,14 @@ import axios from 'axios';
 import { postUsers } from '../../../methodsUsers';
 import { NavLink } from 'react-router-dom';
 import validator from 'validator';
+import { Alert } from '../../Alert';
+import { useNavigate } from 'react-router-dom'
 
 export const FormSingUp = () => {
 
+    const navigate = useNavigate();
     const [emailError, setemailError] = useState("")
     const [passwordError, setpasswordError] = useState("")
-
-  
-
     const [phoneNumber, setPhoneNumber] = useState("")
     const [name, setName] = useState("")
     const [yearsOld, setYearsOld] = useState(0)
@@ -113,16 +113,29 @@ export const FormSingUp = () => {
     }
 
     const userRegister = () => {
+        postUsers(name, lastName, parseInt(yearsOld), phoneNumber, email, password, parseInt(iddepartment), parseInt(idmunicipality) , ' ');
+        Alert("Registro exitoso", "Bienvenido a la comunidad", "success", "ok", "2000")
+        navigate('/login')
+}
 
-        postUsers(name, lastName, parseInt(yearsOld), phoneNumber, email, password, "A", parseInt(iddepartment), parseInt(idmunicipality) , '');
+
+const validateDataInput = (e) => {
+        e.preventDefault();
+        if(name === "" || lastName === "" || yearsOld === 0 || phoneNumber === "" || email === "" || password === "" || iddepartment === "" || idmunicipality === ""){
+            Alert("Registro inválido", "Todos los campos son obligatorios", "error", "ok", "2000")
+        }
+        else{
+            userRegister()
+        }
     }
+
     return (
         <div className="form-register-valid">
             <form className='register-valid-info'>
                 <FacebookAuth buttonText={"Ingresar con facebook"} />
                 <br></br><br></br>
                 < GoogleAuth
-                    buttonText={"iniciar sesion con Google"}
+                    buttonText={"Iniciar sesión con Google"}
                 />
                 <div className="separator-container">
                     <div className="line-separator" />
@@ -130,17 +143,17 @@ export const FormSingUp = () => {
                     <div className="line-separator" />
                 </div>
                 <div className="info-register">
-                    <input type="text" placeholder='nombre' maxLength="80" required className='info-input-register' onChange={setEventToName}></input><br></br>
+                    <input type="text" placeholder='Nombre' maxLength="80" required className='info-input-register' onChange={setEventToName}></input><br></br>
                     <input type="text" placeholder='Apellidos' maxLength="80" required className='info-input-register' onChange={setEventToLastName}></input>
                     <div className="add-register-info">
                         <input type="number" max="800" placeholder='Edad' required className='info-input-add' onChange={setEventToYearsOld}></input>
-                        <input type="numbers" maxLength="10" placeholder='Telefono' required className='info-input-add' onChange={setEventToPhoneNumber}></input>
+                        <input type="numbers" maxLength="10" placeholder='Teléfono' required className='info-input-add' onChange={setEventToPhoneNumber}></input>
                     </div>
                     <div className="department-info">
                         <SelectDepartment data={datadeparment} name={"Departamento"} event={setNameDepartment} />
                         <SelectMunicipality data={datamunicipality} name={"Municipio"} event={getIdMunicipality} />
                     </div>
-                    <input type="email" placeholder='Correo electronico' maxLength="80" required className='info-input-register' onChange={setEventToEmail} ></input><br></br>
+                    <input type="email" placeholder='Correo electrónico' maxLength="80" required className='info-input-register' onChange={setEventToEmail} ></input><br></br>
                     <span style={{
                         fontSize: "12px",
                         color: "red",
@@ -151,10 +164,10 @@ export const FormSingUp = () => {
                         color: "red"
                     }}>{passwordError}</span>
                 </div>
-                <button className="register-submit" disabled={false} onClick={userRegister}>REGISTRAR</button>
+                <button className="register-submit" disabled={false} onClick={validateDataInput}>REGISTRAR</button>
                 <div className="create-account-login create-account-register">
-                    <p>Ya tienes cuenta... </p>
-                    <NavLink to="/login"><p className='create-account-link'>Iniciar sesion</p></NavLink>
+                    <p>Ya tienes cuenta...</p>
+                    <NavLink to="/login"><p className='create-account-link'>Iniciar sesión</p></NavLink>
                 </div>
             </form>
         </div>

@@ -1,22 +1,22 @@
-import axios from "axios"
-import { urlUsers } from "./Components/ApiRoutes"
+import axios from "axios";
+import { Alert } from "./Components/Alert";
+import { urlUsers } from "./Components/ApiRoutes";
 
-
-export const postUsers = (nombre, apellidos ,edad, telefono ,email ,contraseña , estado , departamento , municipio , foto ) => {
+export const postUsers = (nombre, apellidos ,edad, telefono ,email ,contraseña , departamento , municipio , foto ) => {
     axios.post(urlUsers,{
         "nombre":nombre,
+        "email": email,
+        "contrasenna":contraseña,
         "apellidos":apellidos,
         "edad": edad,
         "telefono" : telefono, 
-        "email": email,
-        "contraseña":contraseña,
         "estado": "A",
         "departamento":departamento,
         "municipio":municipio,
         "foto" : foto
     })
     .then(res =>{
-        console.log(res.status)
+        Alert("Usuario registrado correctamente","Bienvenido a Easy House Rent","success","OK","2000");
     })
 }
 
@@ -26,3 +26,5 @@ export const getUser = (email , password )=>{
         return response.data;
     })
 }
+
+

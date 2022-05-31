@@ -21,7 +21,6 @@ export const Profile = () => {
     const getAdversitement = () => {
         axios.get('https://easy-house-rent.azurewebsites.net/api/Advertisement/AdUser', { params: { idusuario: user[0].idusuario } })
             .then(response => {
-                console.log(response.data);
                 setUserAnouncement(response.data)
             })
             .catch(err => {
@@ -56,13 +55,14 @@ export const Profile = () => {
     const displayMyAnouncement = () => {
         if (userAnouncement.length !== 0) {
             setViewAnouncement(1)
-        } else {
-            console.log('no hay nada');
+ 
+        }else{
             setViewAnouncement(0)
         }
     }
 
     return (
+
         <>
             <div className="profile-page">
                 <Header />
@@ -82,6 +82,7 @@ export const Profile = () => {
                     </div>
 
                 </div>
+
                 <div className="most-recent-container">
                     <h2>mis publicaciones</h2>
                     {viewAnouncement === 0 &&
@@ -105,8 +106,6 @@ export const Profile = () => {
                         </Carousel>
                     }
                 </div>
-
-            </div>
             <RegisterFooter />
         </>
     )
