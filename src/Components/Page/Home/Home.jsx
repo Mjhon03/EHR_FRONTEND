@@ -5,6 +5,7 @@ import { MostRecent } from '../../Layout/MostRecent/MostRecent'
 import { CategoriesBar } from '../../UI/CategoriesBar/CategoriesBar'
 import { RegisterFooter } from '../../Layout/RegisterFooter/RegisterFooter'
 import './Home.css'
+import { RandomBanner } from '../RandomBanner/RandomBanner'
 
 export const Home = () => {
   return (
@@ -13,6 +14,7 @@ export const Home = () => {
         <HomeSection />
         <CategoriesBar />
         <MostRecent />
+        <RandomBanner />
         <RegisterFooter />
     </div>
   )

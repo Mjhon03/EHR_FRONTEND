@@ -1,6 +1,7 @@
 .anouncement-info-render{
     display: flex;
-    padding: 1em 10em;
+    width: 80%;
+    margin: 1em auto;
     gap: 1em;
 }
 
@@ -113,6 +114,14 @@
     outline: solid 1px red;
     font-size: 1.1em;
     line-height: 1.5em;
+}
+
+.carousel-anouncement-container{
+    outline: solid 1px red;
+    width: 80%;
+    border-radius: 5px;
+    margin: 0 auto 1em auto;
+    padding: 0.5em 1em;
 }
 
 @media screen and (max-width: 1600px){

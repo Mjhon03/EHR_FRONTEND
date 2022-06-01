@@ -171,7 +171,7 @@ export const AnouncementInfo = ({ data }) => {
                     <button onClick={sendOtherProfile}>perfil de usuario</button>
                 </div>
             </div>
-            <div className="most-recent-container">
+            <div className="carousel-anouncement-container">
                 <h2>Publicaciones recomendadas</h2>
                 <Carousel itemsToShow={4} pagination={false}
                     breakPoints={breakproint}>

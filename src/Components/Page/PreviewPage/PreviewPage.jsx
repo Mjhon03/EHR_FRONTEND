@@ -1,9 +1,9 @@
-import React from 'react'
-import { MyAnouncementCard } from '../../UI/MyAnouncementCard/MyAnouncementCard'
+import { RandomBanner } from "../RandomBanner/RandomBanner"
+
 export const PreviewPage = () => {
   return (
     <>
-      <MyAnouncementCard />
+      < RandomBanner />
     </>
   )
 }
