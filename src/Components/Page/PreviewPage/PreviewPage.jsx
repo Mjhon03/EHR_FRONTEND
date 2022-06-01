@@ -1,9 +1,11 @@
 import React from 'react'
-import { MyAnouncementCard } from '../../UI/MyAnouncementCard/MyAnouncementCard'
+import { PhotosSLider } from '../../UI/PhotosSlider/PhotosSLider'
+
+
 export const PreviewPage = () => {
   return (
     <>
-      <MyAnouncementCard />
+      < PhotosSLider />
     </>
   )
 }

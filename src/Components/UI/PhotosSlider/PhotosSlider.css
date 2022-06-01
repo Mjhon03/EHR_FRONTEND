@@ -1,0 +1,11 @@
+.flex-carousel{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.carousel-title{
+    position: absolute;
+    font-size: 5em;
+    border: solid 5px white;
+}
