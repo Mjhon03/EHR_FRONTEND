@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router';
 import './AnouncementInfo.css'
 import emailjs from '@emailjs/browser';
 import axios from 'axios';
+import Carousel from 'react-elastic-carousel';
+import { MyAnouncementCard } from '../../UI/MyAnouncementCard/MyAnouncementCard';
 
 export const AnouncementInfo = ({ data }) => {
 
@@ -17,7 +19,7 @@ export const AnouncementInfo = ({ data }) => {
     const [zone, setZone] = useState('')
     const [idUser, setIdUser] = useState(0)
     const [title, setTitle] = useState('')
-    const [ city , setCity ] = useState('')
+    const [city, setCity] = useState('')
     const [description, setDescription] = useState('')
     const [editicacion, setEedification] = useState('')
     const [adress, setAdress] = useState('')
@@ -69,6 +71,7 @@ export const AnouncementInfo = ({ data }) => {
 
     useEffect(() => {
         getEmailToSend()
+        getRecomended()
     }, [idUser])
 
     let params = {
@@ -97,6 +100,35 @@ export const AnouncementInfo = ({ data }) => {
             setImage4(image1)
             setImage1(e.target.src)
         }
+    }
+
+    const breakproint = [
+        {
+            width: 500,
+            itemsToShow: 2
+        },
+        {
+            width: 880,
+            itemsToShow: 3
+
+        },
+        {
+            width: 1260,
+            itemsToShow: 4,
+        },
+    ]
+
+    const [recomended, setRecomended] = useState([])
+
+    const getRecomended = () => {
+        axios.get('https://easy-house-rent.azurewebsites.net/api/home/recommended', { params: { ciudad: city } })
+            .then(response => {
+                console.log(response.data);
+                setRecomended(response.data)
+            })
+            .catch(err => {
+                console.log(err);
+            })
     }
 
     return (
@@ -128,7 +160,7 @@ export const AnouncementInfo = ({ data }) => {
                         <p>{value}</p>
                         <p>{rooms}</p>
                         <p>{garage}</p>
-                        <p>{ city }</p>
+                        <p>{city}</p>
                     </div>
                     <div className="anouncement-actions">
                         <button className='anouncement-action-redirect' onClick={sendNotification}>notificacion de interes</button>
@@ -138,6 +170,18 @@ export const AnouncementInfo = ({ data }) => {
                 <div className="actions-user-anouncement">
                     <button onClick={sendOtherProfile}>perfil de usuario</button>
                 </div>
+            </div>
+            <div className="most-recent-container">
+                <h2>Publicaciones recomendadas</h2>
+                <Carousel itemsToShow={4} pagination={false}
+                    breakPoints={breakproint}>
+                    {recomended.map(
+                        recomended => (
+                            <MyAnouncementCard key={recomended.idanuncio} data={recomended} />
+                        )
+                    )
+                    }
+                </Carousel>
             </div>
         </>
     )
