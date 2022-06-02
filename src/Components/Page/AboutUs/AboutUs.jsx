@@ -1,6 +1,8 @@
 import React from 'react'
 import './AboutUs.css'
+import '../../UI/PhotosSlider/PhotosSLider'
 import { Header } from '../../Layout/Header/Header'
+import { PhotosSLider } from '../../UI/PhotosSlider/PhotosSLider'
 
 export const AboutUs = () => {
   return (
@@ -9,6 +11,8 @@ export const AboutUs = () => {
       <div className='title-content' id='filter'>
         <h1 className='textTitle-nosotros'>Nosotros</h1><br></br>
       </div>
+
+      <PhotosSLider/>
       <div className='allcontainers'>
         <div className='grid-div'>
           <p>Ubicados en el Quindío somos un equipo de jóvenes  desarrolladores  web con altas expectativas en lo que podemos  lograr,
