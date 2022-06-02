@@ -36,24 +36,28 @@ export const PhotosSLider = () => {
     }, [images])
 
     return (
-        <div className='flex-carousel' id='filter'>
+        <>
+        <div className='flex-carousel' >
             <SimpleImageSlider
                 autoPlay={true}
                 autoPlayDelay={2}
                 loop={true}
-                width={1550}
+                width={1530}
                 height={700}
                 images={render}
                 useGPURender={true}
                 showBullets={true}
             ></SimpleImageSlider>
+        </div>
             <h1 className='carousel-title'>Nosotros</h1>
             <div className='first-description'>
-                <p>La plataforma que te brinda soluciones óptimas en búsqueda de inmuebles,<br></br>
+                <p className='text'>La plataforma que te brinda soluciones óptimas en búsqueda de inmuebles,<br></br>
                 cada vez más cerca a ti. Quédate y descubre lo que tenemos para ofrecerte.
             </p>
             </div>
+        
+        </>
 
-        </div>
+        
     )
 }
