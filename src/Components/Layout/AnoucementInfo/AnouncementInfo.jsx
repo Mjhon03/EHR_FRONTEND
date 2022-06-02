@@ -1,12 +1,15 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router';
 import './AnouncementInfo.css'
 import emailjs from '@emailjs/browser';
 import axios from 'axios';
 import Carousel from 'react-elastic-carousel';
 import { MyAnouncementCard } from '../../UI/MyAnouncementCard/MyAnouncementCard';
+import { UserContext } from '../../../UserProvider/UserProvider';
 
 export const AnouncementInfo = ({ data }) => {
+
+    const { user } = useContext(UserContext)
 
     const navigate = useNavigate()
 
@@ -75,6 +78,7 @@ export const AnouncementInfo = ({ data }) => {
     }, [idUser])
 
     let params = {
+        userEmail : user.email,
         toUser: email,
         anouncementTitle: title,
         post: `https://localhost:3000/anouncement/?idanounce=${idAnouncement}&adzone=${zone}`
