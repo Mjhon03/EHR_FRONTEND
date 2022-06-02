@@ -5,6 +5,8 @@ import { Header } from '../../Layout/Header/Header'
 import { useSearchParams } from 'react-router-dom';
 import { urlAdversitement } from '../../ApiRoutes.js';
 import { RegisterFooter } from '../../Layout/RegisterFooter/RegisterFooter'
+import './Anouncement.css'
+import { UserContext } from '../../../UserProvider/UserProvider.jsx';
 
 export const Anouncement = () => {
 
@@ -13,9 +15,9 @@ export const Anouncement = () => {
 
   const [anouncementData, setAnoucementData] = useState([])
 
-  const [ town , setTown ] = useState('')
+  const [town, setTown] = useState('')
 
-  const getDataAnouncement  = () => {
+  const getDataAnouncement = () => {
     axios.get(`${urlAdversitement}${idAnouncement}`)
       .then(response => {
         setAnoucementData(response.data)
@@ -26,15 +28,24 @@ export const Anouncement = () => {
       })
   }
 
-  useEffect(()=>{
+  let route = window.location.href
+
+  useEffect(() => {
     getDataAnouncement()
   },[])
 
-  return(
+  useEffect(()=>{
+    getDataAnouncement()
+  },[ route])
+
+
+  return (
     <>
+      <div className='anouncement-page'>
         <Header />
         <AnouncementInfo data={anouncementData} />
         <RegisterFooter />
+      </div>
     </>
   )
 }

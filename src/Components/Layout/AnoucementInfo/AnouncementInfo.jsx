@@ -6,10 +6,24 @@ import axios from 'axios';
 import Carousel from 'react-elastic-carousel';
 import { MyAnouncementCard } from '../../UI/MyAnouncementCard/MyAnouncementCard';
 import { UserContext } from '../../../UserProvider/UserProvider';
+import 'react-inner-image-zoom/lib/InnerImageZoom/styles.min.css';
+import InnerImageZoom from 'react-inner-image-zoom';
 
 export const AnouncementInfo = ({ data }) => {
 
     const { user } = useContext(UserContext)
+    console.log(user);
+
+    const [ userState , setUserState ] = useState(false)
+
+    const getUserState = () => {
+        if(user == null){
+            userState(false)
+        }
+        else{
+            setUserState(true)
+        }
+    }
 
     const navigate = useNavigate()
 
@@ -78,7 +92,7 @@ export const AnouncementInfo = ({ data }) => {
     }, [idUser])
 
     let params = {
-        userEmail : user.email,
+        
         toUser: email,
         anouncementTitle: title,
         post: `https://localhost:3000/anouncement/?idanounce=${idAnouncement}&adzone=${zone}`
@@ -135,12 +149,17 @@ export const AnouncementInfo = ({ data }) => {
             })
     }
 
+    const sendAlert = () => {
+        console.log('necesita autorizacion');
+    }
+
+
     return (
         <>
             <div className="anouncement-info-render">
                 <div className="anouncement-images-container">
                     <div className="first-image">
-                        <img src={image1} alt="image1" className='anouncement-first-image' />
+                        <InnerImageZoom zoomSrc={image1} zoomPreload={ true} zoomType='hover' src={image1} alt="image1" className='anouncement-first-image' />
                     </div>
                     <div className="other-images-container">
                         <div className="other-image-container">
@@ -161,18 +180,22 @@ export const AnouncementInfo = ({ data }) => {
                         <p>{adress}</p>
                         <p>{editicacion}</p>
                         <p>{modality}</p>
-                        <p>{value}</p>
+                        <p className='anuncement-value'><p>CO : </p>{value}</p>
                         <p>{rooms}</p>
                         <p>{garage}</p>
                         <p>{city}</p>
                     </div>
                     <div className="anouncement-actions">
-                        <button className='anouncement-action-redirect' onClick={sendNotification}>notificacion de interes</button>
+                        {
+                            userState &&
+                            <button className='anouncement-action-redirect' onClick={sendNotification}>notificacion de interes</button>
+                        }
+                        <button className='anouncement-action-redirect' onClick={ sendAlert }>notificacion de interes</button>
                         <button className='anouncement-action-redirect'>chat con el propietario</button>
                     </div>
                 </div>
                 <div className="actions-user-anouncement">
-                    <button onClick={sendOtherProfile}>perfil de usuario</button>
+                    <button className='anouncement-action-redirect' onClick={sendOtherProfile}>perfil de usuario</button>
                 </div>
             </div>
             <div className="carousel-anouncement-container">
