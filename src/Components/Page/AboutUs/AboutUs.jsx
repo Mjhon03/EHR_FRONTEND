@@ -9,10 +9,9 @@ export const AboutUs = () => {
     <>
       < Header />
       <div className='title-content' id='filter'>
-        <h1 className='textTitle-nosotros'>Nosotros</h1><br></br>
+        <PhotosSLider/>
       </div>
 
-      <PhotosSLider/>
       <div className='allcontainers'>
         <div className='grid-div'>
           <p>Ubicados en el Quindío somos un equipo de jóvenes  desarrolladores  web con altas expectativas en lo que podemos  lograr,
