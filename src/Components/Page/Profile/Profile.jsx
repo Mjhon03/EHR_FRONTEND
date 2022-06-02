@@ -83,7 +83,7 @@ export const Profile = () => {
                 </div>
 
                 <div className="most-recent-container">
-                    <h2>mis publicaciones</h2>
+                    <h2>Mis publicaciones</h2>
                     {viewAnouncement === 0 &&
                         <div className="not-anouncement">
                             <div className="not-anouncement-profile">

@@ -1,8 +1,13 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { GoogleLogin } from 'react-google-login';
-import { postUsers } from '../../../methodsUsers';
+import { getlogin, postUsers } from '../../../methodsUsers';
 import axios from 'axios';
-import { urlUsers } from '../../ApiRoutes';
+import { urlLogin, urlUsers } from '../../ApiRoutes';
+import { UserContext } from '../../../UserProvider/UserProvider';
+import { parseActionCodeURL } from 'firebase/auth';
+import { useNavigate } from 'react-router';
+import { Alert } from '../../Alert';
+
 
 export const GoogleAuth = ({ buttonText }) => {
 
@@ -13,39 +18,81 @@ export const GoogleAuth = ({ buttonText }) => {
     const[ lastName , setLastName ] = useState("")
     const[ email , setEmail ] = useState("")
     const[ password , setPassword ] = useState("")
+    const[imageUrl, setimageUrl] = useState("")
 
-    const responseGoogle =  (response => {
+    const responseGoogle = (response => {
         console.log(response)
-
         setGoEmail(response.profileObj.email)
         setGoPassword(response.profileObj.googleId)
         setName(response.profileObj.givenName)
         setLastName(response.profileObj.familyName)
         setEmail(response.profileObj.email)
         setPassword(response.profileObj.googleId)
+        setimageUrl(response.profileObj.imageUrl)
+    })
 
-        userGoogleValidate()
+    const validState = () => {
+        if (name === "" || lastName === "" ||  email === "" || password === "" || imageUrl === ""){
+            console.log("campo vacio");
+        }
+        else{
+            registerGoogleUser()
+        }
+    }
+
+    useEffect(() =>{
+        validState()
     })
 
 
-    const userGoogleValidate =(()=>{
-        axios.get(urlUsers, {params:{email: goEmail, contraseña: goPassword}})
-        .then(response=>{
-            console.log(response.data)
-            if(response.data.length === 1){
-                console.log("usuario registrado anteriormente")
-            }else{
-                console.log("usuario registrado")
-                registerGoogleUser()
-            }
-        })
-        .catch(ex=>{
-            console.log(ex);    
-        })
-    })
+    const EMAILURL = 'https://easy-house-rent.azurewebsites.net/api/password'
+    const navigate = useNavigate()
 
-    const registerGoogleUser  =() =>{
-        postUsers(name, lastName,0 ,"" , email , password , "A", 100 , 1121)
+
+    const registerGoogleUser  = () =>{
+        axios.post(EMAILURL, { params: { email: email } })
+            .then(response => {
+                if (response.data.state===false) {
+                    // getlogin(goEmail,goPassword)
+                    console.log(response.data.state);
+                    console.log(email);
+                    console.log(password);
+                        axios.post(urlLogin, {
+                            "email":email,
+                            "password":password
+                        })
+                            .then(res => {
+                                console.log(res);
+                                localStorage.setItem("userInfo", JSON.stringify(response.data))
+                                navigate('/')
+                                window.location.reload()
+                            })
+                            .catch(ex => {
+                                console.log(ex);
+                            })
+                }
+                else{
+                    postUsers(name, lastName, 0, "", email, password, 100, 1121, imageUrl)
+                    console.log(email);
+                    console.log(password);
+                    axios.post(urlLogin, {
+                            "email":email,
+                            "password":password
+                        })
+                            .then(res => {
+                                console.log(res);
+                                localStorage.setItem("userInfo", JSON.stringify(response.data))
+                                navigate('/')
+                                window.location.reload()
+                            })
+                            .catch(ex => {
+                                console.log(ex);
+                            })
+                }
+            })
+            .catch(error => {
+                console.log(error);
+            })
     }
 
 

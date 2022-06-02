@@ -1,6 +1,6 @@
 import axios from "axios";
 import { Alert } from "./Components/Alert";
-import { urlUsers } from "./Components/ApiRoutes";
+import { urlUsers, urlLogin } from "./Components/ApiRoutes";
 
 export const postUsers = (nombre, apellidos ,edad, telefono ,email ,contraseña , departamento , municipio , foto ) => {
     axios.post(urlUsers,{
@@ -27,4 +27,13 @@ export const getUser = (email , password )=>{
     })
 }
 
-
+export const getlogin = (email, password) => {
+    axios.post(urlLogin, {
+            "email":email,
+            "password":password
+        })
+        .then(response => {
+            console.log(response);
+            localStorage.setItem("userInfo", JSON.stringify(response.data))
+        })
+}
