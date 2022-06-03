@@ -52,42 +52,22 @@ export const GoogleAuth = ({ buttonText }) => {
     const registerGoogleUser  = () =>{
         axios.post(EMAILURL, { params: { email: email } })
             .then(response => {
-                if (response.data.state===false) {
+                if (response.data.state===true) {
                     // getlogin(goEmail,goPassword)
-                    console.log(response.data.state);
+                    console.log(response.data);
                     console.log(email);
                     console.log(password);
-                        axios.post(urlLogin, {
-                            "email":email,
-                            "password":password
-                        })
-                            .then(res => {
-                                console.log(res);
-                                localStorage.setItem("userInfo", JSON.stringify(response.data))
-                                navigate('/')
-                                window.location.reload()
-                            })
-                            .catch(ex => {
-                                console.log(ex);
-                            })
+                    getlogin(email, password)
+                    navigate('/')
+                    window.location.reload()
                 }
                 else{
                     postUsers(name, lastName, 0, "", email, password, 100, 1121, imageUrl)
                     console.log(email);
                     console.log(password);
-                    axios.post(urlLogin, {
-                            "email":email,
-                            "password":password
-                        })
-                            .then(res => {
-                                console.log(res);
-                                localStorage.setItem("userInfo", JSON.stringify(response.data))
-                                navigate('/')
-                                window.location.reload()
-                            })
-                            .catch(ex => {
-                                console.log(ex);
-                            })
+                    getlogin(email, password)
+                    navigate('/')
+                    window.location.reload()
                 }
             })
             .catch(error => {

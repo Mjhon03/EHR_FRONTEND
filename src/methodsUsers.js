@@ -16,7 +16,8 @@ export const postUsers = (nombre, apellidos ,edad, telefono ,email ,contraseña 
         "foto" : foto
     })
     .then(res =>{
-        Alert("Usuario registrado correctamente","Bienvenido a Easy House Rent","success","OK","2000");
+        console.log(res);
+        
     })
 }
 
@@ -35,5 +36,8 @@ export const getlogin = (email, password) => {
         .then(response => {
             console.log(response);
             localStorage.setItem("userInfo", JSON.stringify(response.data))
+        })
+        .catch(error => {
+            console.log();
         })
 }
