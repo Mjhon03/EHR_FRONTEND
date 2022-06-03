@@ -8,19 +8,21 @@ import { MyAnouncementCard } from '../../UI/MyAnouncementCard/MyAnouncementCard'
 import { UserContext } from '../../../UserProvider/UserProvider';
 import 'react-inner-image-zoom/lib/InnerImageZoom/styles.min.css';
 import InnerImageZoom from 'react-inner-image-zoom';
+import { UserImage } from '../../UI/UserImage/UserImage';
 
-export const AnouncementInfo = ({ data }) => {
+
+
+export const AnouncementInfo = ({ data , userData  }) => {
 
     const { user } = useContext(UserContext)
-    console.log(user);
 
-    const [ userState , setUserState ] = useState(false)
+    const [userState, setUserState] = useState(false)
 
     const getUserState = () => {
-        if(user == null){
+        if (user == null) {
             userState(false)
         }
-        else{
+        else {
             setUserState(true)
         }
     }
@@ -44,7 +46,6 @@ export const AnouncementInfo = ({ data }) => {
     const [value, setValue] = useState('')
     const [rooms, setRooms] = useState('')
     const [garage, setGarage] = useState('no')
-
 
     const getData = () => {
         if (data.length !== 0) {
@@ -92,7 +93,7 @@ export const AnouncementInfo = ({ data }) => {
     }, [idUser])
 
     let params = {
-        
+
         toUser: email,
         anouncementTitle: title,
         post: `https://localhost:3000/anouncement/?idanounce=${idAnouncement}&adzone=${zone}`
@@ -141,7 +142,6 @@ export const AnouncementInfo = ({ data }) => {
     const getRecomended = () => {
         axios.get('https://easy-house-rent.azurewebsites.net/api/home/recommended', { params: { ciudad: city } })
             .then(response => {
-                console.log(response.data);
                 setRecomended(response.data)
             })
             .catch(err => {
@@ -159,7 +159,7 @@ export const AnouncementInfo = ({ data }) => {
             <div className="anouncement-info-render">
                 <div className="anouncement-images-container">
                     <div className="first-image">
-                        <InnerImageZoom zoomSrc={image1} zoomPreload={ true} zoomType='hover' src={image1} alt="image1" className='anouncement-first-image' />
+                        <InnerImageZoom zoomSrc={image1} zoomPreload={true} zoomType='hover' src={image1} alt="image1" className='anouncement-first-image' />
                     </div>
                     <div className="other-images-container">
                         <div className="other-image-container">
@@ -176,25 +176,42 @@ export const AnouncementInfo = ({ data }) => {
                 <div className="anouncement-aditional-info">
                     <div className="anouncement-extra-information">
                         <h1 className='anouncement-title'>{title}</h1>
-                        <p className='anouncement-description'>{description}</p>
-                        <p>{adress}</p>
-                        <p>{editicacion}</p>
-                        <p>{modality}</p>
-                        <p className='anuncement-value'><p>CO : </p>{value}</p>
-                        <p>{rooms}</p>
-                        <p>{garage}</p>
-                        <p>{city}</p>
+                        <div className='anouncement-complement'>
+
+                            <p>Descripcion : {description}</p>
+                            <p>Ciudad :{city}</p>
+                            <p>Direccion :{adress}</p>
+                            <p>Edificacion :{editicacion}</p>
+                            <p>Modalidad : {modality}</p>
+                        </div>
+                        <div className='anounce-value-container'>
+                            <p className='value-initial'>CO</p>
+                            <p className='value-center'>{value}</p>
+                            <p className='value-end'> $</p>
+                        </div>
+
+                        <div className='anouncement-information-complete'>
+                            <div className='anounce-characteristics'>
+                                <p>Habitaciones</p>
+                                <p>{rooms}</p>
+                            </div>
+                            <div className='anounce-characteristics'>
+                                <p>Garaje</p>
+                                <p>{garage}</p>
+                            </div>
+                        </div>
                     </div>
                     <div className="anouncement-actions">
                         {
                             userState &&
                             <button className='anouncement-action-redirect' onClick={sendNotification}>notificacion de interes</button>
                         }
-                        <button className='anouncement-action-redirect' onClick={ sendAlert }>notificacion de interes</button>
+                        <button className='anouncement-action-redirect' onClick={sendAlert}>notificacion de interes</button>
                         <button className='anouncement-action-redirect'>chat con el propietario</button>
                     </div>
                 </div>
                 <div className="actions-user-anouncement">
+                    <UserImage userdata={userData} />
                     <button className='anouncement-action-redirect' onClick={sendOtherProfile}>perfil de usuario</button>
                 </div>
             </div>

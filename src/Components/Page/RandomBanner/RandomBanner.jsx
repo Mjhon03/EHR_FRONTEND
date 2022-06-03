@@ -28,7 +28,7 @@ export const RandomBanner = () => {
     return (
         <div className="random-banner">
             <h1 className='banner-title'>publicaciones que te pueden interesar</h1>
-            <Carousel enableMouseSwipe={true} enableAutoPlay={true} autoPlaySpeed={4000} itemsToShow={1} pagination={true} showArrows={false}>
+            <Carousel enableMouseSwipe={true} enableAutoPlay={true} autoPlaySpeed={4000} itemsToShow={1 } pagination={true} showArrows={false}>
                 {
                     randomData.map(randomData => (
                         <RandomCard data={randomData} key={randomData.idanuncio} />
