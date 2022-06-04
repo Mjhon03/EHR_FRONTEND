@@ -3,11 +3,14 @@ import './UserImage.css'
 
 export const UserImage = ({ userdata }) => {
 
-  const [userProfile, setUserProfile] = useState('https://cdn.pixabay.com/photo/2016/09/28/02/14/user-1699635_1280.png')
+  const [userProfile, setUserProfile] = useState('https://cdn.pixabay.com/photo/2018/04/18/18/56/user-3331256_960_720.png')
 
   const getImageUser = () => {
-    if (userdata.length != 0) {
+    if (userdata.length !== 0) {
       setUserProfile(userdata[0].foto);
+    }
+    else{
+      setUserProfile()
     }
   }
 

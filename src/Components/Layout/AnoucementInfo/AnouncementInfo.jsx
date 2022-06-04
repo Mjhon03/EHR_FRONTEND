@@ -12,7 +12,7 @@ import { UserImage } from '../../UI/UserImage/UserImage';
 
 
 
-export const AnouncementInfo = ({ data , userData  }) => {
+export const AnouncementInfo = ({ data, userData }) => {
 
     const { user } = useContext(UserContext)
 
@@ -72,6 +72,9 @@ export const AnouncementInfo = ({ data , userData  }) => {
         getData()
     }, [data])
 
+    useEffect(() => {
+        getUserInformation()
+    })
     const sendOtherProfile = () => {
         navigate(`/user/profile?idUser=${idUser}`)
     }
@@ -153,6 +156,18 @@ export const AnouncementInfo = ({ data , userData  }) => {
         console.log('necesita autorizacion');
     }
 
+    const [userEmail, setUserEmail] = useState('')
+    const [userName, setUserName] = useState(' ')
+    const [userLastName, setUserLastName] = useState('')
+
+    const getUserInformation = () => {
+        if (userData.length !== 0) {
+            setUserEmail(userData[0].email);
+            setUserName(userData[0].nombre)
+            setUserLastName(userData[0].apellidos)
+        }
+    }
+
 
     return (
         <>
@@ -177,12 +192,19 @@ export const AnouncementInfo = ({ data , userData  }) => {
                     <div className="anouncement-extra-information">
                         <h1 className='anouncement-title'>{title}</h1>
                         <div className='anouncement-complement'>
+                            <div className="description-content">
+                                <p className='description-bolder' >Ciudad : </p>
+                                <p>{city}</p>
+                            </div>
+                            <div className="description-content">
+                                <p className='description-bolder' >Direccion : </p>
+                                <p>{adress}</p>
+                            </div>
+                            <div className="description-content">
+                                <p className='description-bolder' >Edificacion : </p>
+                                <p>{editicacion}</p>
+                            </div>
 
-                            <p>Descripcion : {description}</p>
-                            <p>Ciudad :{city}</p>
-                            <p>Direccion :{adress}</p>
-                            <p>Edificacion :{editicacion}</p>
-                            <p>Modalidad : {modality}</p>
                         </div>
                         <div className='anounce-value-container'>
                             <p className='value-initial'>CO</p>
@@ -190,16 +212,7 @@ export const AnouncementInfo = ({ data , userData  }) => {
                             <p className='value-end'> $</p>
                         </div>
 
-                        <div className='anouncement-information-complete'>
-                            <div className='anounce-characteristics'>
-                                <p>Habitaciones</p>
-                                <p>{rooms}</p>
-                            </div>
-                            <div className='anounce-characteristics'>
-                                <p>Garaje</p>
-                                <p>{garage}</p>
-                            </div>
-                        </div>
+
                     </div>
                     <div className="anouncement-actions">
                         {
@@ -211,8 +224,32 @@ export const AnouncementInfo = ({ data , userData  }) => {
                     </div>
                 </div>
                 <div className="actions-user-anouncement">
+                    <h3>Propietario</h3>
                     <UserImage userdata={userData} />
+                    <div className="props-user">
+                        <p>{userName} {userLastName}</p>
+                        <p className='prop-email'>{userEmail}</p>
+                    </div>
                     <button className='anouncement-action-redirect' onClick={sendOtherProfile}>perfil de usuario</button>
+                    <button className='anouncement-action-redirect' onClick={sendOtherProfile}>Reportar anuncio</button>
+                    <button className='anouncement-action-redirect' onClick={sendOtherProfile}>Reportar Usuario</button>
+                </div>
+            </div>
+            <div className="anouncement-complement-information">
+                <h2 className='anounce-text-description'>descripcion : {description}</h2>
+                <div className='anouncement-information-complete'>
+                    <div className='anounce-characteristics'>
+                        <p>Habitaciones</p>
+                        <p>{rooms}</p>
+                    </div>
+                    <div className='anounce-characteristics'>
+                        <p>Garaje</p>
+                        <p>{garage}</p>
+                    </div>
+                    <div className='anounce-characteristics'>
+                        <p>Modalidad</p>
+                        <p>{modality}</p>
+                    </div>
                 </div>
             </div>
             <div className="carousel-anouncement-container">
