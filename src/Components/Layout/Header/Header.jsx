@@ -41,26 +41,51 @@ export const Header = () => {
                     <p onClick={sendHome} className='header-logo'>EHR</p>
                 </div>
                 <div className="header-actions">
-                    <NavLink to='/'>
-                        <button className='header-action-button'><FontAwesomeIcon className='header-action-icon' icon={faHouseChimneyUser} /></button>
-                    </NavLink>
-                    <NavLink to='/'>
-                        <button className='header-action-button'><FontAwesomeIcon className='header-action-icon' icon={faFilterCircleDollar} /></button>
-                    </NavLink>
-                    <NavLink to='/AboutUs'>
-                        <button className='header-action-button'><FontAwesomeIcon className='header-action-icon' icon={faCircleInfo} /></button>
-                    </NavLink>
-                    <NavLink to='/'>
-                        <button className='header-action-button'><FontAwesomeIcon className='header-action-icon' icon={faCommentDots} /></button>
-                    </NavLink>
-                    <NavLink to='/support'>
-                        <button className='header-action-button'><FontAwesomeIcon className='header-action-icon' icon={faNewspaper} /></button>
-                    </NavLink>
-                    <NavLink to='/'>
-                        <button className='header-action-button'><FontAwesomeIcon className='header-action-icon' icon={faHeadset} /></button>
-                    </NavLink>
+
+                    <div className='iconHeader'>
+                        <NavLink to='/'>
+                            <button className='header-action-button '><FontAwesomeIcon className='header-action-icon' icon={faHouseChimneyUser} /></button> 
+                            <div className='viewTextIcon'><p>Inicio</p></div>
+                        </NavLink>
+                    </div>
+
+                    <div className='iconHeader'>
+                        <NavLink to='/'>            
+                            <button className='header-action-button'><FontAwesomeIcon className='header-action-icon' icon={faFilterCircleDollar} /></button>
+                            <div className='viewTextIcon'><p>Recientes</p></div>
+                        </NavLink>
+                    </div>
+
+                    <div className='iconHeader'>
+                        <NavLink to='/AboutUs'>
+                            <button className='header-action-button'><FontAwesomeIcon className='header-action-icon' icon={faCircleInfo} /></button>
+                            <div className='viewTextIcon'><p>Nosotros</p></div>
+                        </NavLink>
+                    </div>
+
+                    <div className='iconHeader'>
+                        <NavLink to='/'>
+                            <button className='header-action-button'><FontAwesomeIcon className='header-action-icon' icon={faCommentDots} /></button>
+                            <div className='viewTextIcon'><p>Chat</p></div>
+                        </NavLink>
+                    </div>
+
+                    <div className='iconHeader'>
+                        <NavLink to='/support'>
+                            <button className='header-action-button'><FontAwesomeIcon className='header-action-icon' icon={faNewspaper} /></button>
+                            <div className='viewTextIcon'><p>Soporte</p></div>
+                        </NavLink>
+                    </div>
+
+                    <div className='iconHeader'>
+                        <NavLink to='/'>
+                            <button className='header-action-button'><FontAwesomeIcon className='header-action-icon' icon={faHeadset} /></button>
+                            <div className='viewTextIcon'><p>Contacto</p></div>
+                        </NavLink>
+                    </div>
                     
                 </div>
+
                 {userSession === 0 &&
                     <div className="header-nouser-actions">
                         <NavLink to='/login'><button className='nouser-action'>Ingresar</button></NavLink>
