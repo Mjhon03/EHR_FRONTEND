@@ -70,7 +70,6 @@ export const Profile = () => {
                         <ProfileImage />
                         <div className="profile-data">
                             <h1>{user[0].nombre} {user[0].apellidos}</h1>
-
                         </div>
                     </div>
                     <div className="line-profile-separator" />
@@ -79,9 +78,7 @@ export const Profile = () => {
                         <SettingsAcount />
                         <ModalCreateAnouncement />
                     </div>
-
                 </div>
-
                 <div className="most-recent-container">
                     <h2>Mis publicaciones</h2>
                     {viewAnouncement === 0 &&

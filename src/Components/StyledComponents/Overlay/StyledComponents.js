@@ -17,7 +17,7 @@ export const Modal = styled.div`
   top: 12%;
   position: fixed;
   width: 45%;
-  height: 550px;
+  height: 590px;
   outline: solid 1px black;
   text-align: center;
   border-radius: 5px;
