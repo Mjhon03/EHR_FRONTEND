@@ -1,5 +1,4 @@
 import axios from "axios";
-import { Alert } from "./Components/Alert";
 import { urlUsers, urlLogin } from "./Components/ApiRoutes";
 
 export const postUsers = (nombre, apellidos ,edad, telefono ,email ,contraseña , departamento , municipio , foto ) => {
@@ -17,7 +16,6 @@ export const postUsers = (nombre, apellidos ,edad, telefono ,email ,contraseña 
     })
     .then(res =>{
         console.log(res);
-        
     })
 }
 
@@ -28,10 +26,10 @@ export const getUser = (email , password )=>{
     })
 }
 
-export const getlogin = (email, password) => {
+export const getlogin = (Goemail, Gopassword) => {
     axios.post(urlLogin, {
-            "email":email,
-            "password":password
+            "email" : Goemail,
+            "password" : Gopassword
         })
         .then(response => {
             console.log(response);
@@ -40,4 +38,4 @@ export const getlogin = (email, password) => {
         .catch(error => {
             console.log();
         })
-}
+    }
