@@ -8,7 +8,7 @@
 }
 
 .footer-icons{
-    width: 15%;
+    width: 25%;
     margin: .9% auto;
     display: flex;
     justify-content: space-around;
@@ -16,25 +16,30 @@
 
 .footer-icon{
     background: rgba(15,15,15,0.70);
-    font-size: 170%;
+    font-size: 130%;
     border-radius: 250px;
     padding: 10px;
-    color: #FFFFFF;
+    color:rgb(89,228,168);
+    cursor: pointer;
+    transition: 0.4s ease;
+}
+.footer-icon:hover {
+    background-color:rgba(165, 164, 164, 0.7);
 }
 
 .footer-title{
     letter-spacing: 3px;
-    font-family: 'Pacifico', cursive;
+    font-family:'Poppins', sans-serif;
     color: #FFFFFF;
     font-size: 1.5em;
 }
 
 .footer-relinks{
     display: flex;
-    width: 17%;
+    width: 60%;
     justify-content: space-around;
     margin: auto;
-    font-size: 90%;
+    font-size: 70%;
     color: rgba(154,204,207,1);
 }
 .footer-textInfo{
