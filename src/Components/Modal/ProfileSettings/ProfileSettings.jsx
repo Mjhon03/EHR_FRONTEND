@@ -2,7 +2,7 @@ import { faRocketchat } from '@fortawesome/free-brands-svg-icons'
 import { faCaretDown, faCircleInfo, faGears, faIdCardClip } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React,{useState} from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useNavigate } from 'react-router-dom'
 import { ProfileAction, ProfileActionText, ProfileModal, SettingsSpace } from '../../StyledComponents/Overlay/StyledComponents'
 import './ProfileSettings.css'
 
@@ -10,6 +10,8 @@ import './ProfileSettings.css'
 export const ProfileSettings = ({ userData }) => {
 
   const [ settingsVisibility , setSettingsVisibility ] = useState(false)
+
+  const navigate = useNavigate()
 
   const changeSettings = () =>{
     if(settingsVisibility === false){
@@ -23,6 +25,7 @@ export const ProfileSettings = ({ userData }) => {
   const deleteSesion = () =>{
     localStorage.removeItem("userInfo")
     localStorage.setItem("userInfo", null)
+    navigate('/')
     window.location.reload()
   }
 
