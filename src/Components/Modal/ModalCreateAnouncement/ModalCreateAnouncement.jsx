@@ -130,14 +130,6 @@ export const ModalCreateAnouncement = () => {
     return true;
   }
 
-  // const createUser = () => {
-  //   createAnouncement(userData[0].idusuario, title, address, description, modality, zone, edification, rooms, garage, price, newDate , arrayImages)
-  //   if (createAnouncement) {
-  //     Alert('Anuncio creado correctamente', '', 'success', 'OK','2000')
-  //   } else {
-  //     Alert('Error al crear el anuncio', ' ' ,'error', 'OK','2000')
-  //   }
-  // }
 
   const validateFormImage = () => {
     if (images.length === 0) {

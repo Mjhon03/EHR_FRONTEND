@@ -7,7 +7,6 @@ export const ResultCards = ({ data }) => {
 
     console.log(cuidad);
     const navigate = useNavigate()
- 
 
     const sendToSelect = () => {
         navigate(`/anouncement/?idanounce=${idanuncio}&adzone=${zona}`)
@@ -16,7 +15,6 @@ export const ResultCards = ({ data }) => {
         <div key={idanuncio} className="card-render-container">
             <div className="image-url-container">
                 <img src={url1} alt='url' className='image-url-render' />
-
             </div>
             <div className="card-info-render">
                 <div className="principal-render-card">
@@ -33,7 +31,6 @@ export const ResultCards = ({ data }) => {
                     <button onClick={ sendToSelect} className='open-anouncement'>Ver publicacion</button>
                 </div>
             </div>
-
         </div>
     )
 }

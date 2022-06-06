@@ -75,7 +75,7 @@
 }
 
 .modal-content-item{
-    height: 80vh;
+    height: 40vh;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -91,12 +91,11 @@
     display: flex;
     width: 60%;
     justify-content: space-between;
-    outline: solid 1px purple;
     margin: 1em auto;
 }
 
 .secondary-create-form{
-    height: 100%;
+    height: 50%;
 }
  
 .modality-medium{
@@ -105,7 +104,7 @@
     gap: 0.5em;
 }
 .create-title {
-    outline: solid 1px red;
+    outline: solid 1px black;
 }
 
 .close-svg {
@@ -131,7 +130,7 @@
 }
 
 .create-subtitle {
-    outline: solid 1px red;
+    outline: solid 1px black;
     width: 100%;
 }
 
@@ -140,8 +139,8 @@
     flex-direction: column;
     width: 100%;
     padding: 2%;
-    height: 300px;
-    outline: solid 1px red;
+    height: 335px;
+    outline: solid 1px black;
 }
 
 .create-action-button {
@@ -199,7 +198,7 @@
     border: solid .1px rgba(136, 136, 136, 0.60);
 }
 .row{
-    outline: solid 1px red;
+    outline: solid 1px black;
     width: 100%;
      height:20em;
      display: grid;
@@ -208,7 +207,7 @@
 }
 
 .content_img{
-     outline: solid 1px red;
+     outline: solid 1px black;
      width: 100%;
      height: 10em;
      position: relative;
