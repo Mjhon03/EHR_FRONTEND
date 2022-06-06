@@ -1,51 +1,79 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { GoogleLogin } from 'react-google-login';
-import { postUsers } from '../../../methodsUsers';
+import { getlogin, postUsers } from '../../../methodsUsers';
 import axios from 'axios';
-import { urlUsers } from '../../ApiRoutes';
+import { urlLogin} from '../../ApiRoutes';
+import { useNavigate } from 'react-router';
+
+
 
 export const GoogleAuth = ({ buttonText }) => {
 
-    const[goEmail, setGoEmail] = useState({email: "email"})
-    const[goPassword, setGoPassword] = useState({password: "password"})
 
     const[ name , setName ] = useState("")
     const[ lastName , setLastName ] = useState("")
     const[ email , setEmail ] = useState("")
     const[ password , setPassword ] = useState("")
+    const[imageUrl, setimageUrl] = useState("")
 
-    const responseGoogle =  (response => {
+    const responseGoogle = (response => {
         console.log(response)
-
-        setGoEmail(response.profileObj.email)
-        setGoPassword(response.profileObj.googleId)
         setName(response.profileObj.givenName)
         setLastName(response.profileObj.familyName)
         setEmail(response.profileObj.email)
         setPassword(response.profileObj.googleId)
-
-        userGoogleValidate()
+        setimageUrl(response.profileObj.imageUrl)
     })
 
+    const validState = () => {
+        if (name === "" || lastName === "" ||  email === "" || password === "" || imageUrl === ""){
+            console.log("campo vacio");
+        }
+        else{
+            registerGoogleUser()
+        }
+    }
 
-    const userGoogleValidate =(()=>{
-        axios.get(urlUsers, {params:{email: goEmail, contraseña: goPassword}})
-        .then(response=>{
-            console.log(response.data)
-            if(response.data.length === 1){
-                console.log("usuario registrado anteriormente")
-            }else{
-                console.log("usuario registrado")
-                registerGoogleUser()
-            }
-        })
-        .catch(ex=>{
-            console.log(ex);    
-        })
+    useEffect(() =>{
+        validState()
     })
 
-    const registerGoogleUser  =() =>{
-        postUsers(name, lastName,0 ,"" , email , password , "A", 100 , 1121)
+    const navigate = useNavigate()
+
+    const registerGoogleUser  = () =>{
+        axios.post(`https://easy-house-rent.azurewebsites.net/verifyEmail?email=${email}`)
+            .then(response => {
+                console.log(response); 
+                if (response.data === true) {
+                    console.log(response.data);
+                    console.log(email);
+                    console.log(password);
+                    axios.post(urlLogin, {
+                        "email" : email,
+                        "password" : password
+                    })
+                    .then(response => {
+                        console.log(response);
+                        localStorage.setItem("userInfo", JSON.stringify(response.data))
+                        navigate('/')
+                        window.location.reload()
+                    })
+                    .catch(error => {
+                        console.log();
+                    })
+                }
+                else{
+                    postUsers(name, lastName, 0, "", email, password, 100, 1121, imageUrl)
+                    console.log(email);
+                    console.log(password);
+                    getlogin(email, password)
+                    navigate('/')
+                    window.location.reload()
+                }
+            })
+            .catch(error => {
+                console.log(error);
+            })
     }
 
 
