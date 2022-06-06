@@ -1,12 +1,9 @@
-.result-view{
-    width: 100%;
-}
-
 .cards-content{
     margin: auto;
-    width: 80%;
+    width: 100%;
     display: flex;
     flex-direction: column;
-    padding: 1em 2em;
+    padding: 1em 10%;
     gap: 1em;
+    background: rgba(0,0,0,0.10);
 }

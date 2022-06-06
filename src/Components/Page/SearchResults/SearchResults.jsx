@@ -30,24 +30,19 @@ export const SearchResults = () => {
 
   return (
     <>
-      <div className="search-results-container">
-        < Header />
-        <div className="result-view">
-          <div className="results-menu">
-            
-          </div>
-          <div className="cards-content">
-            {
-              resultData.map(
-                resultData => (
-                  <ResultCards key={resultData.idanuncio} data={resultData} />
-                )
-              )
-            }
-          </div>
-        </div>
-        <RegisterFooter />
+      < Header />
+
+      <div className="cards-content">
+        {
+          resultData.map(
+            resultData => (
+              <ResultCards key={resultData.idanuncio} data={resultData} />
+            )
+          )
+        }
       </div>
+
+      <RegisterFooter />
     </>
   )
 }

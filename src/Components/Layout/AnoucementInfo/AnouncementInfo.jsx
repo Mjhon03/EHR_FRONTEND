@@ -1,10 +1,31 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router';
 import './AnouncementInfo.css'
 import emailjs from '@emailjs/browser';
 import axios from 'axios';
+import Carousel from 'react-elastic-carousel';
+import { MyAnouncementCard } from '../../UI/MyAnouncementCard/MyAnouncementCard';
+import { UserContext } from '../../../UserProvider/UserProvider';
+import 'react-inner-image-zoom/lib/InnerImageZoom/styles.min.css';
+import InnerImageZoom from 'react-inner-image-zoom';
+import { UserImage } from '../../UI/UserImage/UserImage';
 
-export const AnouncementInfo = ({ data }) => {
+
+
+export const AnouncementInfo = ({ data, userData }) => {
+
+    const { user } = useContext(UserContext)
+
+    const [userState, setUserState] = useState(false)
+
+    const getUserState = () => {
+        if (user == null) {
+            userState(false)
+        }
+        else {
+            setUserState(true)
+        }
+    }
 
     const navigate = useNavigate()
 
@@ -17,7 +38,7 @@ export const AnouncementInfo = ({ data }) => {
     const [zone, setZone] = useState('')
     const [idUser, setIdUser] = useState(0)
     const [title, setTitle] = useState('')
-    const [ city , setCity ] = useState('')
+    const [city, setCity] = useState('')
     const [description, setDescription] = useState('')
     const [editicacion, setEedification] = useState('')
     const [adress, setAdress] = useState('')
@@ -25,7 +46,6 @@ export const AnouncementInfo = ({ data }) => {
     const [value, setValue] = useState('')
     const [rooms, setRooms] = useState('')
     const [garage, setGarage] = useState('no')
-
 
     const getData = () => {
         if (data.length !== 0) {
@@ -52,6 +72,9 @@ export const AnouncementInfo = ({ data }) => {
         getData()
     }, [data])
 
+    useEffect(() => {
+        getUserInformation()
+    })
     const sendOtherProfile = () => {
         navigate(`/user/profile?idUser=${idUser}`)
     }
@@ -69,9 +92,11 @@ export const AnouncementInfo = ({ data }) => {
 
     useEffect(() => {
         getEmailToSend()
+        getRecomended()
     }, [idUser])
 
     let params = {
+
         toUser: email,
         anouncementTitle: title,
         post: `https://localhost:3000/anouncement/?idanounce=${idAnouncement}&adzone=${zone}`
@@ -99,12 +124,57 @@ export const AnouncementInfo = ({ data }) => {
         }
     }
 
+    const breakproint = [
+        {
+            width: 500,
+            itemsToShow: 2
+        },
+        {
+            width: 880,
+            itemsToShow: 3
+
+        },
+        {
+            width: 1260,
+            itemsToShow: 4,
+        },
+    ]
+
+    const [recomended, setRecomended] = useState([])
+
+    const getRecomended = () => {
+        axios.get('https://easy-house-rent.azurewebsites.net/api/home/recommended', { params: { ciudad: city } })
+            .then(response => {
+                setRecomended(response.data)
+            })
+            .catch(err => {
+                console.log(err);
+            })
+    }
+
+    const sendAlert = () => {
+        console.log('necesita autorizacion');
+    }
+
+    const [userEmail, setUserEmail] = useState('')
+    const [userName, setUserName] = useState(' ')
+    const [userLastName, setUserLastName] = useState('')
+
+    const getUserInformation = () => {
+        if (userData.length !== 0) {
+            setUserEmail(userData[0].email);
+            setUserName(userData[0].nombre)
+            setUserLastName(userData[0].apellidos)
+        }
+    }
+
+
     return (
         <>
             <div className="anouncement-info-render">
                 <div className="anouncement-images-container">
                     <div className="first-image">
-                        <img src={image1} alt="image1" className='anouncement-first-image' />
+                        <InnerImageZoom zoomSrc={image1} zoomPreload={true} zoomType='hover' src={image1} alt="image1" className='anouncement-first-image' />
                     </div>
                     <div className="other-images-container">
                         <div className="other-image-container">
@@ -121,23 +191,78 @@ export const AnouncementInfo = ({ data }) => {
                 <div className="anouncement-aditional-info">
                     <div className="anouncement-extra-information">
                         <h1 className='anouncement-title'>{title}</h1>
-                        <p className='anouncement-description'>{description}</p>
-                        <p>{adress}</p>
-                        <p>{editicacion}</p>
-                        <p>{modality}</p>
-                        <p>{value}</p>
-                        <p>{rooms}</p>
-                        <p>{garage}</p>
-                        <p>{ city }</p>
+                        <div className='anouncement-complement'>
+                            <div className="description-content">
+                                <p className='description-bolder' >Ciudad : </p>
+                                <p>{city}</p>
+                            </div>
+                            <div className="description-content">
+                                <p className='description-bolder' >Direccion : </p>
+                                <p>{adress}</p>
+                            </div>
+                            <div className="description-content">
+                                <p className='description-bolder' >Edificacion : </p>
+                                <p>{editicacion}</p>
+                            </div>
+
+                        </div>
+                        <div className='anounce-value-container'>
+                            <p className='value-initial'>CO</p>
+                            <p className='value-center'>{value}</p>
+                            <p className='value-end'> $</p>
+                        </div>
+
+
                     </div>
                     <div className="anouncement-actions">
-                        <button className='anouncement-action-redirect' onClick={sendNotification}>notificacion de interes</button>
+                        {
+                            userState &&
+                            <button className='anouncement-action-redirect' onClick={sendNotification}>notificacion de interes</button>
+                        }
+                        <button className='anouncement-action-redirect' onClick={sendAlert}>notificacion de interes</button>
                         <button className='anouncement-action-redirect'>chat con el propietario</button>
                     </div>
                 </div>
                 <div className="actions-user-anouncement">
-                    <button onClick={sendOtherProfile}>perfil de usuario</button>
+                    <h3>Propietario</h3>
+                    <UserImage userdata={userData} />
+                    <div className="props-user">
+                        <p>{userName} {userLastName}</p>
+                        <p className='prop-email'>{userEmail}</p>
+                    </div>
+                    <button className='anouncement-action-redirect' onClick={sendOtherProfile}>perfil de usuario</button>
+                    <button className='anouncement-action-redirect' onClick={sendOtherProfile}>Reportar anuncio</button>
+                    <button className='anouncement-action-redirect' onClick={sendOtherProfile}>Reportar Usuario</button>
                 </div>
+            </div>
+            <div className="anouncement-complement-information">
+                <h2 className='anounce-text-description'>descripcion : {description}</h2>
+                <div className='anouncement-information-complete'>
+                    <div className='anounce-characteristics'>
+                        <p>Habitaciones</p>
+                        <p>{rooms}</p>
+                    </div>
+                    <div className='anounce-characteristics'>
+                        <p>Garaje</p>
+                        <p>{garage}</p>
+                    </div>
+                    <div className='anounce-characteristics'>
+                        <p>Modalidad</p>
+                        <p>{modality}</p>
+                    </div>
+                </div>
+            </div>
+            <div className="carousel-anouncement-container">
+                <h2>Publicaciones recomendadas</h2>
+                <Carousel itemsToShow={4} pagination={false}
+                    breakPoints={breakproint}>
+                    {recomended.map(
+                        recomended => (
+                            <MyAnouncementCard key={recomended.idanuncio} data={recomended} />
+                        )
+                    )
+                    }
+                </Carousel>
             </div>
         </>
     )

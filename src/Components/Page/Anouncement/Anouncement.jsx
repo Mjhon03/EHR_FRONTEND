@@ -5,57 +5,60 @@ import { Header } from '../../Layout/Header/Header'
 import { useSearchParams } from 'react-router-dom';
 import { urlAdversitement } from '../../ApiRoutes.js';
 import { RegisterFooter } from '../../Layout/RegisterFooter/RegisterFooter'
-
+import './Anouncement.css'
+import { urlUsers } from '../../ApiRoutes';
 export const Anouncement = () => {
 
   const [searchParams] = useSearchParams();
   let idAnouncement = searchParams.get('idanounce');
 
+
+
   const [anouncementData, setAnoucementData] = useState([])
 
-  const [ zone , setZone ] = useState('')
-  const [ town , setTown ] = useState('')
-
-  const getDataAnouncement  = () => {
+  const getDataAnouncement = () => {
     axios.get(`${urlAdversitement}${idAnouncement}`)
       .then(response => {
         setAnoucementData(response.data)
-        setTown(response.data[0].municipio)
-        setZone(response.data[0].zona)
+        userByAnouncement(response.data[0].idusuario)
+      })
+      .catch(err => {
+        console.log(err);
+      })
+  }
+  
+  const [ userData , setUserData ] = useState([])
+
+  const userByAnouncement = ( idusuario ) => {
+    axios.get(`${urlUsers}/getUser`, { params: { idusuario: idusuario  } })
+      .then(response => {
+        setUserData(response.data)  
       })
       .catch(err => {
         console.log(err);
       })
   }
 
-  const [ recomended , setRecomended ] = useState([])
+  
 
-  console.log(recomended);
+  let route = window.location.href
 
-  const getRecomended = () => {
-    axios.get('' , { params : { zona : zone , ciudad : town }})
-    .then(response => {
-      console.log(response.data);
-      setRecomended(response.data)
-    })
-    .catch(err => {
-      console.log(err);
-    })
-  }
-
-  useEffect(()=>{
-    getRecomended()
-  },[ anouncementData ])
-
-  useEffect(()=>{
+  useEffect(() => {
     getDataAnouncement()
-  },[])
+  }, [])
 
-  return(
+  useEffect(() => {
+    getDataAnouncement()
+  }, [route])
+
+
+  return (
     <>
+      <div className='anouncement-page'>
         <Header />
-        <AnouncementInfo data={anouncementData} />
+        <AnouncementInfo data={anouncementData} userData={ userData} />
         <RegisterFooter />
+      </div>
     </>
   )
 }
