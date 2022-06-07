@@ -10,13 +10,16 @@ import { useNavigate } from 'react-router'
 
 export const Header = () => {
 
+  const [ userActivate , setUserActivate] = useState('default')
   const [userSession, setUserSession] = useState(0)
 
   const { user } = useContext(UserContext)
+  console.log(user);
 
   const SetUserData = () => {
     if (user != null) {
       setUserSession(1)
+      setUserActivate('user-activate')
     } else {
       setUserSession(0)
     }
@@ -35,8 +38,8 @@ export const Header = () => {
 
   return (
     <div className="header-container">
-      <div className="header-logo-container">
-        <div className="logo-content">
+      <div className={`header-logo-container ${userActivate}`}>
+        <div className="logo-content"> 
           <img src="https://i.ibb.co/zQHyDyt/logo.png" alt="logoEhr" className='logo-header' />
         </div>
         <p className='header-logo'>EHR</p>
@@ -77,9 +80,24 @@ export const Header = () => {
       </div>
       {userSession === 0 &&
         <div className="nouser-actions">
-          <NavLink to='/login'className='nouser-action'><button >Ingresar</button></NavLink>
-          <NavLink to='/register'className='nouser-action'><button >Registrarme</button></NavLink>
-          <FontAwesomeIcon className='icon-none header-action-button' icon={faAngleDown} />       
+          <NavLink to='/login' className='nouser-action'><button >Ingresar</button></NavLink>
+          <NavLink to='/register' className='nouser-action'><button >Registrarme</button></NavLink>
+          <FontAwesomeIcon className='icon-none header-action-button' icon={faAngleDown} />
+        </div>
+      }
+      {userSession === 1 &&
+        <div className="nouser-actions actions-profile">
+            
+                <div className="miniature-container">
+                    <div className="miniature-photo-container">
+                      <img src={user[0].foto} className='miniature-image' alt="miniature " />
+                    </div>
+                    <div className="profile-header">
+                      <h3 className='miniature-name'>{user[0].nombre} {user[0].apellidos}</h3>
+                      < ProfileSettings userData={user} />
+                    </div>
+                </div>
+            
         </div>
       }
     </div>
