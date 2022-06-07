@@ -96,10 +96,10 @@ export const Header = () => {
                       <h3 className='miniature-name'>{user[0].nombre} {user[0].apellidos}</h3>
                       < ProfileSettings userData={user} />
                     </div>
-                </div>
-            
+                </div>        
         </div>
       }
     </div>
   )
 }
+
