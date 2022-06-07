@@ -105,10 +105,30 @@
     }
 }
 
+@media screen and (max-width:1200px){
+    .search-home-container{
+        width: 90%;
+    }
+}
+
 @media screen and (max-width:900px){
     .search-home-submit{
         font-size: 90%;
         width: 20%;
+    }
+
+    .section-container-title{
+        margin-top: 0.1em;
+        line-height: 1.2em;
+    }
+
+    .search-home-container{
+        width: 100%;
+    }
+
+    .search-box-home{
+        height: 3em;
+        width: 100%;
     }
 
     .rent-info{
@@ -136,11 +156,11 @@
     }
 
     .rent-text-title{
-        font-size: 150%;
+        font-size: 1.4em;
     }
 
     .rent-info-text{
-        font-size: 110%;
+        font-size: 1em;
         width: 75%;
         margin: 2% auto;
     }
@@ -159,8 +179,12 @@
          
     }
 
+    .search-home-container{
+        width: 80%;
+    }
+
     .search-box-home{
-        width: 120%;
+        width: 100%;
         padding: 2% 5%;
     }
 
@@ -197,5 +221,13 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+    }
+
+    .rent-text-title{
+        font-size: 1em;
+    }
+
+    .rent-info-text{
+        font-size: 0.8em;
     }
 }

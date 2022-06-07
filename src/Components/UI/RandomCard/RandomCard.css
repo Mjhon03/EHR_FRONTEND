@@ -2,13 +2,11 @@
     width: 100%;
     margin: 1em;
     padding: 1em;
-    height: 35em;
     background: rgba(35,35,35,.95);
     box-shadow: 1px 5px 14px -4px rgba(0,0,0,1);
     border-radius: 5px;
     color: rgb(210,210,210)
 }
-
 
 .other-random-info {
     width: 60%;
@@ -24,12 +22,11 @@
     justify-content: center;
 }
 
-.card-random-title {
-    font-size: 2.3em;
-    font-weight: bolder;
-    letter-spacing: 1.5px;
-    text-align: center;
-    text-shadow: #e0e0e0 1px 1px 0;
+.city-random{
+    width: 40%;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
 }
 
 .card-images-random{
@@ -67,14 +64,15 @@
 .description-other-random{
     width: 100%;
     display: flex;
-    justify-content: center;
-    gap: 2em;
-    padding: 0.5em;
+    justify-content: space-around;
+    padding: 0.5em 1em;
     font-size: 0.95em;
 }
 
 .button-random-redirect{
-    padding: 0.8em 9em;
+    text-align: center;
+    width: 80%;
+    padding: 0.8em ;
     margin: 0.5em 0 0 0;
     border-radius: 5px;
     border: none;
@@ -91,4 +89,51 @@
     color: #000;
     padding: 0.85em 11em;
     font-weight: bolder;
+}
+
+@media screen and (max-width: 1100px ){
+    .primary-images-random{
+        height: 13em;
+    }
+
+    .secondary-image-random{
+        height: 9em;
+    }
+}
+
+@media screen and (max-width: 700px ){
+
+    .button-random-redirect{
+        padding: 0.60em;
+    }
+
+    .description-other-random{
+        gap: 0.5em;
+    }
+
+    .card-random-container{
+        padding: 1em 0;
+    }
+
+    .primary-images-random{
+        height: 9em;
+    }
+
+    .secondary-image-random{
+        height: 5em;
+    }
+
+    .city-random{
+        font-size: 0.8em;
+    }
+}
+
+@media screen and (max-width: 500px){
+    .primary-images-random{
+        height: 6em;
+    }
+
+    .secondary-image-random{
+        height: 3.5em;
+    }
 }

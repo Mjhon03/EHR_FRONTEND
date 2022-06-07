@@ -1,10 +1,9 @@
-import { UserImage } from "../../UI/UserImage/UserImage"
-
+import { RandomBanner } from '../RandomBanner/RandomBanner'
 
 export const PreviewPage = () => {
   return (
     <>
-      <UserImage />
+      <RandomBanner />
     </>
   )
 }
