@@ -129,6 +129,10 @@
 }
 
 @media screen and (max-width: 500px){
+
+    .card-random-title{
+        font-size: 1.35em;
+    }
     .primary-images-random{
         height: 6em;
     }
