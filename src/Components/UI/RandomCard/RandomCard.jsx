@@ -33,9 +33,9 @@ export const RandomCard = ({ data }) => {
          <h2>Caracteristicas</h2> 
         </div>
         <div className="description-other-random">
-          <h3>Ciudad : {ciudad}</h3>
-          <h3>Zona : {zona}</h3>
-          <h3>Direccion : {direccion}</h3>
+          <h3 className='city-random'>Ciudad : {ciudad}</h3>
+          <h3 className='city-random' >Zona : {zona}</h3>
+          <h3 className='city-random'>Direccion : {direccion}</h3>
         </div>
         <button onClick={sendAnouncement} className='button-random-redirect'>ver publicacion</button>
       </div>

@@ -9,3 +9,26 @@
     margin-bottom: 0.5em;
 }
 
+@media screen and (max-width: 860px){
+    .most-recent-container-home{
+        width: 90%;
+    }
+
+}
+
+@media screen and ( max-width: 670px ){
+    .most-recent-container-home{
+        padding: 1.5em 0.5em 1em 0.5em;
+    }
+}
+
+@media screen and (max-width: 550px){
+    .most-recent-container-home{
+        width: 100%;
+        padding: 1.5em 1em 1em 1em ;
+    }
+
+    .most-recent-title{
+        font-size: 1.2em;
+    }
+}

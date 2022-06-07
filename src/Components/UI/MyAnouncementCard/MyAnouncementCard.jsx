@@ -77,9 +77,9 @@ export const MyAnouncementCard = ({ data }) => {
                     }
                     <div className="aling-info">
                         <div className="name-atributes">
-                            <span className='title'>{titulo}</span>
-                            <span className='adress'>{direccion}-{ciudad}</span>
-                            <span className='adress'>{precio}</span>
+                            <p className='title-card'>{titulo}</p>
+                            <p className='adress-city'>{direccion}-{ciudad}</p>
+                            <p>{precio}</p>
                         </div>
                         <div className="button-visualizer">
                             <button onClick={SendAnouncement} className='action-visualizer'>ver publicacion</button>
