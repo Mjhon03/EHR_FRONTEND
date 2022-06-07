@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { GoogleLogin } from 'react-google-login';
-import { getlogin, postUsers } from '../../../methodsUsers';
 import axios from 'axios';
-import { urlLogin} from '../../ApiRoutes';
+import { urlLogin, urlUsers} from '../../ApiRoutes';
 import { useNavigate } from 'react-router';
-
 
 
 export const GoogleAuth = ({ buttonText }) => {
@@ -45,30 +43,50 @@ export const GoogleAuth = ({ buttonText }) => {
             .then(response => {
                 console.log(response); 
                 if (response.data === true) {
-                    console.log(response.data);
-                    console.log(email);
-                    console.log(password);
                     axios.post(urlLogin, {
                         "email" : email,
                         "password" : password
                     })
-                    .then(response => {
-                        console.log(response);
-                        localStorage.setItem("userInfo", JSON.stringify(response.data))
+                    .then(res => {
+                        console.log(res);
+                        localStorage.setItem("userInfo", JSON.stringify(res.data))
+                        console.log(res);
                         navigate('/')
                         window.location.reload()
                     })
                     .catch(error => {
-                        console.log();
+                        console.log(error);
                     })
                 }
                 else{
-                    postUsers(name, lastName, 0, "", email, password, 100, 1121, imageUrl)
-                    console.log(email);
-                    console.log(password);
-                    getlogin(email, password)
-                    navigate('/')
-                    window.location.reload()
+                    axios.post(urlUsers, {
+                        "nombre" : name,
+                        "email" : email,
+                        "contrasenna" : password,
+                        "apellido" : lastName,
+                        "edad": 0,
+                        "telefono": "",
+                        "esatdo" : "A",
+                        "departamento": 100,
+                        "municipio": 1121,
+                        "foto": imageUrl
+                    })
+                    .then(resposenDataRegister =>{
+                        console.log(resposenDataRegister);
+                        axios.post(urlLogin, {
+                            "email" : email,
+                            "password" : password
+                        })
+                        .then(respo => {
+                            console.log(respo);
+                            localStorage.setItem("userInfo", JSON.stringify(respo.data))
+                            navigate('/')
+                            window.location.reload()
+                        })
+                        .catch(error => {
+                            console.log(error);
+                        })
+                    })
                 }
             })
             .catch(error => {

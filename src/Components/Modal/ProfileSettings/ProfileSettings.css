@@ -1,11 +1,9 @@
 
 .profile-modal-activate{
-    padding: 1.05em 1.6em;
-    border-radius: 5px;
     border: none;
-    transition: 0.3s ease;
-    cursor: pointer;
-    background: rgb(255,255,255);
+    background: none;
+    padding: 0.5em;
+    border-radius: 5px;
 }
 
 .profile-modal-activate:hover{
@@ -17,6 +15,7 @@
 }
 
 .settings-basic-info{
+    position: relative;
     width: 90%;
     margin: 0 auto;
     border-radius: 5px;
@@ -60,6 +59,14 @@
     height: 4.5em;
     width: 25%;
 }
+
+.status{
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+  }  
 
 .settings-image{
     width: 100%;

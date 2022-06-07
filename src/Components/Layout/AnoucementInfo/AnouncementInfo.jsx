@@ -143,7 +143,7 @@ export const AnouncementInfo = ({ data, userData }) => {
     const [recomended, setRecomended] = useState([])
 
     const getRecomended = () => {
-        axios.get('https://easy-house-rent.azurewebsites.net/api/home/recommended', { params: { ciudad: city } })
+        axios.get('https://easy-house-rent.azurewebsites.net/api/home/recommended', { params: { ciudad: city  } })
             .then(response => {
                 setRecomended(response.data)
             })
@@ -227,7 +227,7 @@ export const AnouncementInfo = ({ data, userData }) => {
                     <h3>Propietario</h3>
                     <UserImage userdata={userData} />
                     <div className="props-user">
-                        <p>{userName} {userLastName}</p>
+                        <p >{userName} {userLastName}</p>
                         <p className='prop-email'>{userEmail}</p>
                     </div>
                     <button className='anouncement-action-redirect' onClick={sendOtherProfile}>perfil de usuario</button>
