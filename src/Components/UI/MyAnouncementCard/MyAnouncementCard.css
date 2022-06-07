@@ -125,3 +125,43 @@
 .button-visualizer .action-visualizer:hover {
     background: rgba(35, 35, 35, 0.65);
 }
+
+@media screen and ( max-width: 830px ){
+    .card{
+        width: 200px;
+        height: 19.5em;
+    }
+
+    .title-card{
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        width: 100%;
+        text-align: center;
+    }
+
+    .adress-city{
+        width: 100%;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+       }
+    
+
+    .aling-info{
+        height: 10em;
+    }
+}
+
+@media screen and (max-width : 530px){
+    .card{
+        width: 180px;
+        height: 18em;
+    }
+
+    .aling-info{
+        height: 8em;
+    }
+
+}
+
