@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHouseChimneyUser, faFilterCircleDollar, faCircleInfo, faNewspaper, faHeadset, faCommentDots } from '@fortawesome/free-solid-svg-icons'
+import { faHouseChimneyUser, faFilterCircleDollar, faCircleInfo, faNewspaper, faHeadset, faCommentDots, faAngleDown } from '@fortawesome/free-solid-svg-icons'
 import './Header.css'
 import { NavLink } from 'react-router-dom'
 import { ProfileSettings } from '../../Modal/ProfileSettings/ProfileSettings'
@@ -72,14 +72,14 @@ export const Header = () => {
 
                     <div className='iconHeader'>
                         <NavLink to='/support'>
-                            <button className='header-action-button'><FontAwesomeIcon className='header-action-icon' icon={faNewspaper} /></button>
+                            <button className='header-action-button action-responsive'><FontAwesomeIcon className='header-action-icon' icon={faNewspaper} /></button>
                             <div className='viewTextIcon'><p>Soporte</p></div>
                         </NavLink>
                     </div>
 
                     <div className='iconHeader'>
                         <NavLink to='/'>
-                            <button className='header-action-button'><FontAwesomeIcon className='header-action-icon' icon={faHeadset} /></button>
+                            <button className='header-action-button action-responsive'><FontAwesomeIcon className='header-action-icon' icon={faHeadset} /></button>
                             <div className='viewTextIcon'><p>Contacto</p></div>
                         </NavLink>
                     </div>
@@ -90,7 +90,9 @@ export const Header = () => {
                     <div className="header-nouser-actions">
                         <NavLink to='/login'><button className='nouser-action'>Ingresar</button></NavLink>
                         <NavLink to='/register'><button className='nouser-action'>Registrarme</button></NavLink>
-
+                        <div className="header-action-button header-responsive">
+                            <FontAwesomeIcon className='header-action-icon' icon={faAngleDown} />
+                        </div>
                     </div>
                 }
                 {userSession === 1 &&
