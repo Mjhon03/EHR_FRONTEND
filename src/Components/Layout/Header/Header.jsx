@@ -40,41 +40,47 @@ export const Header = () => {
     <div className="header-container">
       <div className={`header-logo-container ${userActivate}`}>
         <div className="logo-content"> 
-          <img src="https://i.ibb.co/zQHyDyt/logo.png" alt="logoEhr" className='logo-header' />
+          <img onClick={sendHome}  src="https://i.ibb.co/zQHyDyt/logo.png" alt="logoEhr" className='logo-header' />
         </div>
-        <p className='header-logo'>EHR</p>
+        <p onClick={sendHome}  className='header-logo'>EHR</p>
       </div>
       <div className="header-actions">
 
         <div className='iconHeader'>
           <NavLink to='/'>
             <button className='header-action-button '><FontAwesomeIcon className='header-action-icon' icon={faHouseChimneyUser} /></button>
+            <div className='viewTextIcon'><b><p>Inicio</p></b></div>
           </NavLink>
         </div>
 
         <div className='iconHeader'>
           <NavLink to='/'>
             <button className='header-action-button'><FontAwesomeIcon className='header-action-icon' icon={faFilterCircleDollar} /></button>
+            <div className='viewTextIcon'><b><p>Recientes</p></b></div>          
           </NavLink>
         </div>
         <div className='iconHeader'>
           <NavLink to='/AboutUs'>
             <button className='header-action-button'><FontAwesomeIcon className='header-action-icon' icon={faCircleInfo} /></button>
+            <div className='viewTextIcon'><b><p>Nosotros</p></b></div>
           </NavLink>
         </div>
         <div className='iconHeader'>
           <NavLink to='/'>
             <button className='header-action-button'><FontAwesomeIcon className='header-action-icon' icon={faCommentDots} /></button>
+            <div className='viewTextIcon'><b><p>Chat</p></b></div>
           </NavLink>
         </div>
         <div className='iconHeader'>
           <NavLink to='/support'>
             <button className='header-action-button action-responsive'><FontAwesomeIcon className='header-action-icon' icon={faNewspaper} /></button>
+            <div className='viewTextIcon'><b><p>Soporte</p></b></div>
           </NavLink>
         </div>
         <div className='iconHeader'>
           <NavLink to='/'>
             <button className='header-action-button action-responsive'><FontAwesomeIcon className='header-action-icon' icon={faHeadset} /></button>
+            <div className='viewTextIcon'><b><p>Contacto</p></b></div>
           </NavLink>
         </div>
       </div>

@@ -38,6 +38,9 @@
 
 a {
     font-size: 1.2em;
+    position: relative;
+    display:flex;
+    justify-content:center;
 }
 
 .Button-share-container {
