@@ -19,7 +19,6 @@ export const RegisterFooter = () => {
         <div className="footer-relinks">
             <NavLink to="/aboutUs" className="footer-textInfo"><p>POLÍTICA DE PRIVACIDAD</p></NavLink>
             <NavLink to="/aboutUs" className="footer-textInfo"><p>SOBRE NOSOTROS</p></NavLink>
-            <a href='https://docs.google.com/document/d/1DrMiacSmUaDV-KP539nJ3Ih5Rh1ChZUK/edit?usp=sharing&ouid=115216110876459361859&rtpof=true&sd=true' target='_blank' className='footer-textInfo'><p>MANUAL</p></a>
             <NavLink to='/contact' className='footer-textInfo'><p>CONTÁCTENOS</p></NavLink>
             <a href='https://drive.google.com/drive/folders/1obo9D2blXSvf-dtLHS9bJo8NKRASVAKR?usp=sharing' target='_blank' className='footer-textInfo'><p>DOCUMENTACIÓN</p></a>
         </div>
