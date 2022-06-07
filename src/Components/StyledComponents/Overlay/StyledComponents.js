@@ -26,15 +26,22 @@ export const Modal = styled.div`
 
 export const ProfileModal = styled.div`
   padding: 1em;
-  width:30vw;
+  max-width: 350px;
+  width: 350px;
   text-align: center;
   border-radius: 10px;
   -webkit-box-shadow: 1px 5px 11px -2px #919191; 
   box-shadow: 1px 5px 11px -2px #919191;
   position: fixed;
-  top: 1.2%;
-  right: 1.5%;
+  top: 0.6%;
+  right: 0.7%;
   background: #FFFFFF;
+
+  @media screen and (max-width : 720px){
+    top: 8.5%;
+    width: 350px;
+    right: 3.8%;
+  }
 `;
 
 
