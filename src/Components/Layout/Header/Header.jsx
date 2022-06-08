@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHouseChimneyUser, faFilterCircleDollar, faCircleInfo, faNewspaper, faHeadset, faCommentDots, faAngleDown } from '@fortawesome/free-solid-svg-icons'
+import { faHouseChimneyUser, faFilterCircleDollar, faCircleInfo, faNewspaper, faHeadset, faCommentDots } from '@fortawesome/free-solid-svg-icons'
 import './Header.css'
 import { NavLink } from 'react-router-dom'
 import { ProfileSettings } from '../../Modal/ProfileSettings/ProfileSettings'
