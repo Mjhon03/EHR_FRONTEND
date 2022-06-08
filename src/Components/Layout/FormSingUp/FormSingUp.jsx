@@ -139,7 +139,7 @@ const validateDataInput = (e) => {
                 />
                 <div className="separator-container">
                     <div className="line-separator" />
-                    <p className='separator-info'>OR</p>
+                    <p className='separator-info'>O</p>
                     <div className="line-separator" />
                 </div>
                 <div className="info-register">

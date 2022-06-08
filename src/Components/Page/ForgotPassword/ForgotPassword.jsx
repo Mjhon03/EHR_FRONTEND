@@ -4,5 +4,6 @@ import { ForgotPasswordForm } from '../../Layout/ForgotPasswordForm/ForgotPasswo
 export const ForgotPassword = () => {
   return (
     <ForgotPasswordForm />
+    
   )
 }

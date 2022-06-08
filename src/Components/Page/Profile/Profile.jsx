@@ -5,7 +5,7 @@ import { Header } from '../../Layout/Header/Header'
 import './Profile.css'
 import { SettingsAcount } from '../../Modal/SettingsAcount/SettingsAcount';
 import { ModalCreateAnouncement } from '../../Modal/ModalCreateAnouncement/ModalCreateAnouncement'
-import { RegisterFooter } from '../../Layout/RegisterFooter/RegisterFooter';
+import { Footer } from '../../Layout/Footer/Footer';
 import { ProfileImage } from '../../UI/ProfileImage/ProfileImage';
 import axios from 'axios';
 import { MyAnouncementCard } from '../../UI/MyAnouncementCard/MyAnouncementCard'
@@ -103,7 +103,7 @@ export const Profile = () => {
                     }
                 </div>
             </div>
-            <RegisterFooter />
+            <Footer />
         </>
     )
 }

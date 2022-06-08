@@ -6,7 +6,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background:  linear-gradient(90deg, rgba(154,204,207,0.75718837535014) 50%, rgba(17,50,136,0.65) 100%),url("https://cdn.pixabay.com/photo/2018/03/19/18/46/driveway-3240834_960_720.jpg");
+    background:  linear-gradient(90deg, rgba(34, 58, 52, 0.757) 50%, rgba(25, 30, 21, 0.65) 100%),url("https://cdn.pixabay.com/photo/2018/03/19/18/46/driveway-3240834_960_720.jpg"); 
     background-repeat: no-repeat;
     background-size: cover;
 
@@ -53,20 +53,22 @@
     margin: 2%;
     text-decoration: underline;
     font-size: 80%;
+    color: #3b5998;
 }
 
 .create-account-login{
     width: 100%;
     display: flex;
     margin: 0 auto;
+    gap: 0.5em;
     justify-content: center;
 }
 
 .create-account-link{
-    margin: 0 10%;
     font-size: 85%;
     width: 100%;
     text-decoration: underline;
+    color: #3b5998;
 }
 
 @media screen and (max-width: 900px){

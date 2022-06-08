@@ -2,7 +2,7 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import { Header } from '../../Layout/Header/Header'
-import { RegisterFooter } from '../../Layout/RegisterFooter/RegisterFooter'
+import { Footer } from '../../Layout/Footer/Footer'
 import { ResultCards } from '../../UI/ResultCards/ResultCards'
 import './CategoriesResult.css'
 
@@ -41,7 +41,7 @@ export const CategoriesResult = () => {
                     )
                 }
             </div>
-            <RegisterFooter />
+            <Footer />
         </>
     )
 }

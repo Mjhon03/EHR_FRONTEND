@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHouseChimneyUser, faFilterCircleDollar, faCircleInfo, faNewspaper, faHeadset, faCommentDots, faAngleDown } from '@fortawesome/free-solid-svg-icons'
+import { faHouseChimneyUser, faFilterCircleDollar, faCircleInfo, faNewspaper, faHeadset, faCommentDots } from '@fortawesome/free-solid-svg-icons'
 import './Header.css'
 import { NavLink } from 'react-router-dom'
 import { ProfileSettings } from '../../Modal/ProfileSettings/ProfileSettings'
@@ -100,7 +100,7 @@ export const Header = () => {
                       <img src={user[0].foto} className='miniature-image' alt="miniature " />
                     </div>
                     <div className="profile-header">
-                      <h3 className='miniature-name'>{user[0].nombre} {user[0].apellidos}</h3>
+                      <h3 className='miniature-name'>{user[0].nombre}</h3>
                       < ProfileSettings userData={user} />
                     </div>
                 </div>        
