@@ -10,7 +10,6 @@ import { Alert } from '../../Alert';
 
 export const ModalCreateAnouncement = () => {
 
-  const userData = useContext(UserContext)
   const { user } = useContext(UserContext)
 
   const [visibility, setVisibility] = useState(false)
@@ -176,27 +175,27 @@ export const ModalCreateAnouncement = () => {
                 <div className="secondary-create-form">
                   <div className="create-progress">
                     <p className='form-stage'>1</p>
-                    <p>2</p>
-                    <p>3</p>
+                    <p className='form-stage-none'>2</p>
+                    <p className='form-stage-none'>3</p>
                   </div>
                   <div className="create-info">
                     <h2 className='create-subtitle'>Informacion Basica</h2>
                     <div className="required-info">
-                      <input type='text' placeholder='Titulo de la publicacion' className='create-input-add' onChange={(e) => {
+                      <input type='text' placeholder='Titulo de la publicacion' className='email-put' onChange={(e) => {
                         setTitle(e.target.value)
                         console.log(e.target.value)
                       }} />
                       <div className="modality-medium">
-                        <input className='create-input-add' type='text' placeholder='direccion' onChange={(e) => {
+                        <input className='email-put' type='text' placeholder='direccion' onChange={(e) => {
                           setAddress(e.target.value)
                           console.log(e.target.value)
                         }} />
-                        <input className='create-input-add' type='text' placeholder='ciudad' onChange={(e) => {
+                        <input className='email-put' type='text' placeholder='ciudad' onChange={(e) => {
                           setCity(e.target.value)
                           console.log(e.target.value)
                         }} />
                       </div>
-                      <textarea className='create-description' placeholder='descripcion de la vivienda ( detalles de la vivienda , consideraciones , aportes importantes a tener en cuenta )'
+                      <textarea className='email-put create-description' placeholder='descripcion de la vivienda ( detalles de la vivienda , consideraciones , aportes importantes a tener en cuenta )'
                         onChange={(e) => {
                           setDescription(e.target.value)
                           console.log(e.target.value);
@@ -204,7 +203,7 @@ export const ModalCreateAnouncement = () => {
                     </div>
                   </div>
                   <div className="first-action-container">
-                    <button className='create-action-button' onClick={validateForm}>Siguente</button>
+                    <button className='send-email create-action-button' onClick={validateForm}>Siguente</button>
                   </div>
                 </div>
               }
@@ -212,15 +211,15 @@ export const ModalCreateAnouncement = () => {
                 formSection === 1 &&
                 <div className="secondary-create-form">
                   <div className="create-progress">
-                    <p>1</p>
+                    <p className='form-stage-none'>1</p>
                     <p className='form-stage'>2</p>
-                    <p>3</p>
+                    <p className='form-stage-none'>3</p>
                   </div>
                   <div className="create-info">
                     <h2 className='create-subtitle'>Informacion detallada</h2>
                     <div className="required-info">
                       <div className="modality-medium">
-                        <select className='create-input-add' onChange={(e) => {
+                        <select className='email-put' onChange={(e) => {
                           setModality(e.target.value)
                           console.log(e.target.value)
                         }}>
@@ -228,7 +227,7 @@ export const ModalCreateAnouncement = () => {
                           <option value="venta">venta</option>
                           <option value="arrendo">arrendo</option>
                         </select>
-                        <select className='create-input-add' onChange={(e) => {
+                        <select className='email-put' onChange={(e) => {
                           setZone(e.target.value)
                           console.log(e.target.value);
                         }}>
@@ -240,7 +239,7 @@ export const ModalCreateAnouncement = () => {
                         </select>
                       </div>
                       <div className="modality-medium">
-                        <select className='create-input-add' onChange={(e) => {
+                        <select className='email-put' onChange={(e) => {
                           setEdification(e.target.value)
                           console.log(e.target.value);
                         }}>
@@ -251,24 +250,24 @@ export const ModalCreateAnouncement = () => {
                           <option value="local">local</option>
                           <option value="hogar">hogar</option>
                         </select>
-                        <input type='number' placeholder='habitaciones' className='create-input-add' onChange={(e) => {
+                        <input type='number' placeholder='habitaciones' className='email-put' onChange={(e) => {
                           setRooms(e.target.value)
                           console.log(e.target.value)
                         }} />
                       </div>
-                      <input type='text' placeholder='garaje' className='create-input-add' onChange={(e) => {
+                      <input type='text' placeholder='garaje' className='email-put' onChange={(e) => {
                         setGarage(e.target.value)
                         console.log(e.target.value)
                       }} />
-                      <input type='number' placeholder='precio' className='create-input-add' onChange={(e) => {
+                      <input type='number' placeholder='precio' className='email-put' onChange={(e) => {
                         setPrice(e.target.value)
                         console.log(e.target.value)
                       }} />
                     </div>
                   </div>
-                  <div className="create-action-container">
-                    <button className='create-action-button' onClick={decreaseStatus}>anterior</button>
-                    <button className='create-action-button' onClick={validateFormDetail}>siguente</button>
+                  <div className="first-action-container create-action-container">
+                    <button className='send-email create-action-button' onClick={decreaseStatus}>anterior</button>
+                    <button className='send-email create-action-button' onClick={validateFormDetail}>siguente</button>
                   </div>
                 </div>
               }
@@ -276,15 +275,15 @@ export const ModalCreateAnouncement = () => {
                 formSection === 2 &&
                 <div className="secondary-create-form">
                   <div className="create-progress">
-                    <p>1</p>
-                    <p>2</p>
+                    <p className='form-stage-none'>1</p>
+                    <p className='form-stage-none'>2</p>
                     <p className='form-stage'>3</p>
                   </div>
                   <div className="create-info">
                     <h2 className='create-subtitle'>Verificacion de datos</h2>
                     <div className="required-info">
-                      <br></br>
-                      <label className="btn btn-warning">
+                    
+                      <label className="btn btn-warning select-files">
                         <span>Seleccionar archivos </span>
                         <input hidden type="file" multiple onChange={(e) => { changeInput(e) }}></input>
                       </label>
@@ -310,9 +309,9 @@ export const ModalCreateAnouncement = () => {
                       </div>
                     </div>
                   </div>
-                  <div className="create-action-container">
-                    <button className='create-action-button' onClick={decreaseStatus}>Anterior</button>
-                    <button className='create-action-button' onClick={validateFormImage}>Publicar</button>
+                  <div className="first-action-container create-action-container">
+                    <button className='send-email create-action-button' onClick={decreaseStatus}>Anterior</button>
+                    <button className='send-email create-action-button' onClick={validateFormImage}>Publicar</button>
                   </div>
                 </div>
               }

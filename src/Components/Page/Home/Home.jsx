@@ -3,7 +3,7 @@ import { Header } from '../../Layout/Header/Header'
 import { HomeSection } from '../../Layout/HomeSection/HomeSection'
 import { MostRecent } from '../../Layout/MostRecent/MostRecent'
 import { CategoriesBar } from '../../UI/CategoriesBar/CategoriesBar'
-import { RegisterFooter } from '../../Layout/RegisterFooter/RegisterFooter'
+import { Footer } from '../../Layout/Footer/Footer'
 import { RandomBanner } from '../RandomBanner/RandomBanner'
 
 export const Home = () => {
@@ -14,7 +14,7 @@ export const Home = () => {
         <CategoriesBar />
         <MostRecent />
         <RandomBanner />
-        <RegisterFooter />
+        <Footer />
     </div>
   )
 }

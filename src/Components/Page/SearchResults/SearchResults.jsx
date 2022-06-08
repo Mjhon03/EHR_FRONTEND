@@ -5,7 +5,7 @@ import { urlSearch } from '../../ApiRoutes'
 import axios from 'axios'
 import { Header } from '../../Layout/Header/Header';
 import './SearchResults.css'
-import { RegisterFooter } from '../../Layout/RegisterFooter/RegisterFooter'
+import { Footer } from '../../Layout/Footer/Footer'
 
 export const SearchResults = () => {
 
@@ -42,7 +42,7 @@ export const SearchResults = () => {
         }
       </div>
 
-      <RegisterFooter />
+      <Footer />
     </>
   )
 }

@@ -32,7 +32,7 @@ export const ForgotPasswordForm = () => {
             .then(response => {
                 console.log(response.data);
                 if (response.data.state === true) {
-                    setToken(`https://localhost:3000/passwordReset/?token=${response.data.token}`)
+                    setToken(`https://easyhouserent.azurewebsites.net/#/passwordReset/?token=${response.data.token}`)
                     localStorage.setItem('email', email)
                     sendEmail()
                 } else {

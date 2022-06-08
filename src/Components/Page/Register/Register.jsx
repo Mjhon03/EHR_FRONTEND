@@ -1,7 +1,7 @@
 import React from 'react'
 import { FormSingUp } from '../../Layout/FormSingUp/FormSingUp'
 import { Header } from '../../Layout/Header/Header'
-import { RegisterFooter } from '../../Layout/RegisterFooter/RegisterFooter'
+import { Footer } from '../../Layout/Footer/Footer'
 
 
 export const Register = () => {
@@ -9,7 +9,7 @@ export const Register = () => {
     <div>
       < Header />
       < FormSingUp />
-      < RegisterFooter /> 
+      < Footer /> 
     </div>
   )
 }
