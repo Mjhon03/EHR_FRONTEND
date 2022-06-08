@@ -6,6 +6,7 @@ import { NavLink } from 'react-router-dom'
 import { ProfileSettings } from '../../Modal/ProfileSettings/ProfileSettings'
 import { UserContext } from '../../../UserProvider/UserProvider'
 import { useNavigate } from 'react-router'
+import { NoUserMenu } from '../../UI/NoUserMenu/NoUserMenu'
 
 
 export const Header = () => {
@@ -88,7 +89,7 @@ export const Header = () => {
         <div className="nouser-actions">
           <NavLink to='/login' className='nouser-action'><button >Ingresar</button></NavLink>
           <NavLink to='/register' className='nouser-action'><button >Registrarme</button></NavLink>
-          <FontAwesomeIcon className='icon-none header-action-button' icon={faAngleDown} />
+          < NoUserMenu />
         </div>
       }
       {userSession === 1 &&
