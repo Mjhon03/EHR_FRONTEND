@@ -1,6 +1,7 @@
 import React from 'react'
 import './AboutUs.css'
 import { Header } from '../../Layout/Header/Header'
+import { Footer } from '../../Layout/Footer/Footer'
 
 export const AboutUs = () => {
   return (
@@ -61,6 +62,7 @@ export const AboutUs = () => {
       <div className='menu-documentation'>
         <a href="https://docs.google.com/document/d/1DrMiacSmUaDV-KP539nJ3Ih5Rh1ChZUK/edit" className='link-documentation'>¿Cómo usarlo?</a>
       </div>
+      <Footer />
     </>
   )
 }

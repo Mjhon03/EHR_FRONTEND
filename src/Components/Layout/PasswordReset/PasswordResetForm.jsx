@@ -1,13 +1,14 @@
 import './PasswordReset.css'
 import { useSearchParams } from 'react-router-dom';
-import React , { useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios';
 import validator from 'validator';
+import { Footer } from '../Footer/Footer';
 
 export const PasswordResetForm = () => {
 
-    const [ tokenState , setTokenState ] = useState(false)
+    const [tokenState, setTokenState] = useState(false)
     const navigate = useNavigate()
 
     const [searchParams] = useSearchParams();
@@ -17,66 +18,66 @@ export const PasswordResetForm = () => {
 
     let emailToken = searchParams.get('token');
     const getToken = () => {
-        if(emailToken != null){
+        if (emailToken != null) {
             setTokenState(true)
         }
     }
 
-    useEffect(()=>{
+    useEffect(() => {
         getToken()
     })
 
-    const [ password , setPassword ] = useState('');
-    const [ verifyPassword , setVerifyPassword ] = useState('')
-    const [ email, setemail] = useState('');
+    const [password, setPassword] = useState('');
+    const [verifyPassword, setVerifyPassword] = useState('')
+    const [email, setemail] = useState('');
     const getemail = () => {
         if (email != null) {
             setemail(localStorage.getItem('email'))
         }
     }
 
-    useEffect(()=>{
+    useEffect(() => {
         getemail()
-    })    
+    })
 
     const getPassword = ((e) => {
         setPassword(e.target.value)
-        if(validator.isLength(e.target.value, {min: 8, max: undefined})){
+        if (validator.isLength(e.target.value, { min: 8, max: undefined })) {
             setpasswordError("")
         }
-        else{
+        else {
             setpasswordError("La contraseña debe tener al menos 8 caracteres.")
         }
         if (e.target.value === "") {
-            setverifyPasswordError("")    
+            setverifyPasswordError("")
         }
     })
 
-    const getVerifyPassword = ((e) =>{
+    const getVerifyPassword = ((e) => {
         setVerifyPassword(e.target.value)
-        if(validator.isLength(e.target.value, {min: 8, max: undefined})){
+        if (validator.isLength(e.target.value, { min: 8, max: undefined })) {
             setverifyPasswordError("")
         }
-        else{
+        else {
             setverifyPasswordError("La contraseña debe tener al menos 8 caracteres.")
         }
-        if(e.target.value === "") {
-            setverifyPasswordError("")    
+        if (e.target.value === "") {
+            setverifyPasswordError("")
         }
     })
 
     const passwordMatch = () => {
-        if(validator.equals(password, verifyPassword)){
+        if (validator.equals(password, verifyPassword)) {
             setpasswordmatch("")
         }
-        else{
+        else {
             setpasswordmatch("Las contraseñas no coinciden")
         }
     }
 
-    useEffect(()=>{
+    useEffect(() => {
         passwordMatch()
-    },[password, verifyPassword])
+    }, [password, verifyPassword])
 
 
     const bodyParameters = {
@@ -86,46 +87,48 @@ export const PasswordResetForm = () => {
 
     const sendNewPassword = (e) => {
         e.preventDefault();
-        axios.put(`https://easy-house-rent.azurewebsites.net/api/Password`, bodyParameters, {headers:{ Authorization: `Bearer ${emailToken}` }})
-        .then(response => {
-            alert('Contraseña ha sido actualizada correctamente')
-            navigate('/login')
-        }).catch(ex => {
-            console.log(ex);
-        })
+        axios.put(`https://easy-house-rent.azurewebsites.net/api/Password`, bodyParameters, { headers: { Authorization: `Bearer ${emailToken}` } })
+            .then(response => {
+                alert('Contraseña ha sido actualizada correctamente')
+                navigate('/login')
+            }).catch(ex => {
+                console.log(ex);
+            })
     }
 
-    const enterLogin=(event)=>{
+    const enterLogin = (event) => {
         let charCode = event.keyCode;
-        if (charCode===13){
+        if (charCode === 13) {
             sendNewPassword()
         }
     }
 
     return (
         <>
-        {tokenState &&
-            <div className="body-container">
-                <div className="reset-password-container">
-                    <div className="logo-container">
-                        <h3>EHR</h3>
-                        <p>Easy House Rent</p>
+            {tokenState &&
+                <div className="body-container">
+                    <div className="forgot-password-container">
+                        <div className="logo-container">
+                            <h3>EHR</h3>
+                            <p>Easy House Rent</p>
+                        </div>
+                        <h2 className='forgot-title'>Cambio de contraseña</h2>
+                        <form>
+                            <input className='email-put' type="password" placeholder='Nueva contraseña' onChange={getPassword} name="user_name"></input><br></br>
+                            <span style={{ color: 'red' }}>{passwordError}</span>
+                            <div className="separator"></div>
+                            <input className='email-put' type="password" placeholder='Confirmacion nueva contraseña' onChange={getVerifyPassword} name="user_name" onKeyUp={e => (enterLogin(e))}></input><br></br>
+                            <span style={{ color: 'red' }}>{verifyPasswordError}</span>
+                            <span style={{ color: 'red' }}>{passwordmatch}</span>
+                            <div className="send-content">
+                                <button className='send-email' onClick={(e) => sendNewPassword(e)}>Restaurar</button>
+                            </div>
+                        </form>
                     </div>
-                    <h2 className='forgot-title'>Cambio de contraseña</h2>
-                    <form>
-                        <input className='password-put' type="password" placeholder='Nueva contraseña' onChange={getPassword}  name="user_name"></input><br></br>
-                        <span style={{color: 'red'}}>{passwordError}</span>
-                        <div className="separator"></div>
-                        <input className='password-put' type="password" placeholder='Confirmacion nueva contraseña' onChange={getVerifyPassword} name="user_name" onKeyUp={e => (enterLogin(e))}></input><br></br>
-                        <span style={{color: 'red'}}>{verifyPasswordError}</span>
-                        <span style={{color: 'red'}}>{passwordmatch}</span>                  
-                        <div className="send-content">
-                        <button className='send-email' onClick={(e) => sendNewPassword(e)}>Restaurar</button>
-                    </div>      
-                    </form>
+                    
                 </div>
-        </div>
-        }
-    </>
+            }
+            < Footer />
+        </>
     )
 }

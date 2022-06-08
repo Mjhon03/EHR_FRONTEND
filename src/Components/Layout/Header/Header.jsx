@@ -100,7 +100,7 @@ export const Header = () => {
                       <img src={user[0].foto} className='miniature-image' alt="miniature " />
                     </div>
                     <div className="profile-header">
-                      <h3 className='miniature-name'>{user[0].nombre} {user[0].apellidos}</h3>
+                      <h3 className='miniature-name'>{user[0].nombre}</h3>
                       < ProfileSettings userData={user} />
                     </div>
                 </div>        
