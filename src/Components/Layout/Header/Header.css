@@ -231,6 +231,10 @@
         width: 50%;
     }
 
+    .viewTextIcon{
+        display: none;
+    }
+
     .miniature-name{
         display: none;
     }

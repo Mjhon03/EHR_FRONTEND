@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngleDown } from '@fortawesome/free-solid-svg-icons'
 import './NoUserMenu.css'
-import { useNavigate } from 'react-router'
 import { NavLink } from 'react-router-dom'
 
 export const NoUserMenu = () => {

@@ -21,18 +21,12 @@ export const ProfileSettings = ({ userData }) => {
     }
   }
 
-  const changeVisbilility = () => {
-
-  }
-
-
   const deleteSesion = () => {
     localStorage.removeItem("userInfo")
     localStorage.setItem("userInfo", null)
     navigate('/')
     window.location.reload()
   }
-
 
   return (
     <>
