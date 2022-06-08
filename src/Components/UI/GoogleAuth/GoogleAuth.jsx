@@ -7,7 +7,6 @@ import { useNavigate } from 'react-router';
 
 export const GoogleAuth = ({ buttonText }) => {
 
-
     const[ name , setName ] = useState("")
     const[ lastName , setLastName ] = useState("")
     const[ email , setEmail ] = useState("")
@@ -25,7 +24,6 @@ export const GoogleAuth = ({ buttonText }) => {
 
     const validState = () => {
         if (name === "" || lastName === "" ||  email === "" || password === "" || imageUrl === ""){
-            console.log("campo vacio");
         }
         else{
             registerGoogleUser()
@@ -41,21 +39,15 @@ export const GoogleAuth = ({ buttonText }) => {
     const registerGoogleUser  = () =>{
         axios.post(`https://easy-house-rent.azurewebsites.net/verifyEmail?email=${email}`)
             .then(response => {
-                console.log(response); 
                 if (response.data === true) {
                     axios.post(urlLogin, {
                         "email" : email,
                         "password" : password
                     })
                     .then(res => {
-                        console.log(res);
                         localStorage.setItem("userInfo", JSON.stringify(res.data))
-                        console.log(res);
                         navigate('/')
                         window.location.reload()
-                    })
-                    .catch(error => {
-                        console.log(error);
                     })
                 }
                 else{
@@ -72,19 +64,14 @@ export const GoogleAuth = ({ buttonText }) => {
                         "foto": imageUrl
                     })
                     .then(resposenDataRegister =>{
-                        console.log(resposenDataRegister);
                         axios.post(urlLogin, {
                             "email" : email,
                             "password" : password
                         })
                         .then(respo => {
-                            console.log(respo);
                             localStorage.setItem("userInfo", JSON.stringify(respo.data))
                             navigate('/')
                             window.location.reload()
-                        })
-                        .catch(error => {
-                            console.log(error);
                         })
                     })
                 }

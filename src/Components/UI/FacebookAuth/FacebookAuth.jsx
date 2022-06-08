@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
+import axios from 'axios';
 import { signInWithPopup, FacebookAuthProvider} from 'firebase/auth'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebook } from '@fortawesome/free-brands-svg-icons';
 import { authFacebook } from '../../../firebase-config';
-import axios from 'axios';
 import { urlUsers, urlLogin } from '../../ApiRoutes';
 import { Navigate, useNavigate } from 'react-router';
 
@@ -37,8 +37,7 @@ export const FacebookAuth = ({ buttonText }) => {
         }
         
         const validState = () => {
-            if (name === "" ||  email === "" || password === ""){
-                console.log("campo vacio");
+            if (name === "" ||  email === "" || password === "" || phoneNumber === "" || faEmail === "" || faPassword === ""){
             }
             else{
                 registerFacebookUser()
@@ -52,21 +51,15 @@ export const FacebookAuth = ({ buttonText }) => {
         const registerFacebookUser = () => {
             axios.post(`https://easy-house-rent.azurewebsites.net/verifyEmail?email=${email}`)
             .then(response => {
-                console.log(response); 
                 if (response.data === true) {
                     axios.post(urlLogin, {
                         "email" : email,
                         "password" : password
                     })
-                    .then(res => {
-                        console.log(res);
+                    .then(res => {                        
                         localStorage.setItem("userInfo", JSON.stringify(res.data))
-                        console.log(res);
-                        // navigate('/')
-                        // window.location.reload()
-                    })
-                    .catch(error => {
-                        console.log(error);
+                        navigate('/')
+                        window.location.reload()
                     })
                 }
                 else{
@@ -83,25 +76,17 @@ export const FacebookAuth = ({ buttonText }) => {
                         "foto": ""
                     })
                     .then(resposenDataRegister =>{
-                        console.log(resposenDataRegister);
                         axios.post(urlLogin, {
                             "email" : email,
                             "password" : password
                         })
                         .then(respo => {
-                            console.log(respo);
                             localStorage.setItem("userInfo", JSON.stringify(respo.data))
-                            // navigate('/')
-                            // window.location.reload()
-                        })
-                        .catch(error => {
-                            console.log(error);
+                            navigate('/')
+                            window.location.reload()
                         })
                     })
                 }
-            })
-            .catch(error => {
-                console.log(error);
             })
         }
 
