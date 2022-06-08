@@ -55,7 +55,7 @@ export const ProfileSettings = ({ userData }) => {
             <div className="settings-container">
               <ProfileAction><FontAwesomeIcon className='settings-action-icon' icon={faRocketchat} /><ProfileActionText>Mensajes</ProfileActionText></ProfileAction>
               <ProfileAction><FontAwesomeIcon className='settings-action-icon' icon={faGears} /><ProfileActionText>Configuracion</ProfileActionText></ProfileAction>
-              <ProfileAction><FontAwesomeIcon className='settings-action-icon' icon={faCircleInfo} /><ProfileActionText>Ayuda y soporte</ProfileActionText></ProfileAction>
+              <ProfileAction><FontAwesomeIcon className='settings-action-icon' icon={faCircleInfo} /><ProfileActionText>soporte</ProfileActionText></ProfileAction>
               <ProfileAction><FontAwesomeIcon className='settings-action-icon' icon={faIdCardClip} /><ProfileActionText>Contacto</ProfileActionText></ProfileAction>
             </div>
             <SettingsSpace />

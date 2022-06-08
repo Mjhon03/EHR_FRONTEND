@@ -3,7 +3,8 @@ import React from "react";
 import {
   BrowserRouter,
   Routes,
-  Route
+  Route,
+  HashRouter
 } from "react-router-dom";
 import { Contact } from "./Components/Page/Contact/Contact";
 import { Home } from "./Components/Page/Home/Home";
@@ -29,7 +30,7 @@ import { CategoriesResult } from "./Components/Page/CategoriesResult/CategoriesR
 function App() {
   return (
     <UserProvider>
-      <BrowserRouter>
+      <HashRouter>
         <Routes>
           <Route exact path="/" element={< Home />} />
           <Route exact path="/Contact" element={<Contact />} />
@@ -51,7 +52,7 @@ function App() {
           <Route exact path='/categories/' element={<CategoriesResult />}/> 
 
         </Routes>
-      </BrowserRouter>
+      </HashRouter>
     </UserProvider>
   );
 }

@@ -10,7 +10,7 @@ export const Overlay = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 1;
+  z-index: 100;
 `;
 
 export const Modal = styled.div`
@@ -36,6 +36,7 @@ export const ProfileModal = styled.div`
   top: 0.6%;
   right: 0.7%;
   background: #FFFFFF;
+  z-index: 1;
 
   @media screen and (max-width : 720px){
     top: 8.5%;
