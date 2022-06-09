@@ -29,6 +29,25 @@
 
 .profile-data-received {
     width: 100%;
+    outline: solid 1px red;
+    padding: 0.5em 1em 0.5em 1em;
+    display: flex;
+}
+
+.profile-data{
+    width: 25%;
+    outline: solid 1px red;
+    padding: 0.5em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-tools{
+    width: 75%;
+    outline: solid 1px red;
+    padding: 1em;
 }
 
 .line-profile-separator {
@@ -39,7 +58,7 @@
 }
 
 .add-settings-account {
-    width: 48em;
+    width: 480px;
     display: flex;
     gap: 2em;
     align-items: center;

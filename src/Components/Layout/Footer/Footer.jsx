@@ -17,7 +17,7 @@ export const Footer = () => {
           <a href='https://www.instagram.com/easyhouserent' target='_blank'><FontAwesomeIcon className='footer-icon' icon={faInstagram}/></a>     
         </div>
         <div className="footer-relinks">
-            <NavLink to="/aboutUs" className="footer-textInfo"><p>POLÍTICA DE PRIVACIDAD</p></NavLink>
+            <NavLink to="/privacy&polity" className="footer-textInfo"><p>POLÍTICA DE PRIVACIDAD</p></NavLink>
             <NavLink to="/aboutUs" className="footer-textInfo"><p>SOBRE NOSOTROS</p></NavLink>
             <NavLink to='/contact' className='footer-textInfo'><p>CONTÁCTENOS</p></NavLink>
             <a href='https://drive.google.com/drive/folders/1obo9D2blXSvf-dtLHS9bJo8NKRASVAKR?usp=sharing' target='_blank' className='footer-textInfo'><p>DOCUMENTACIÓN</p></a>
