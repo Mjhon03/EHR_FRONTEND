@@ -16,6 +16,8 @@ import { faHouseCircleXmark } from '@fortawesome/free-solid-svg-icons';
 export const Profile = () => {
     const { user } = useContext(UserContext)
 
+    console.log(user);
+
     const [userAnouncement, setUserAnouncement] = useState([])
 
     const getAdversitement = () => {
@@ -67,15 +69,25 @@ export const Profile = () => {
                 <Header />
                 <div className="user-info-tools">
                     <div className="profile-data-received">
-                        <ProfileImage />
+                        
                         <div className="profile-data">
-                            <h1>{user[0].nombre} {user[0].apellidos}</h1>
+                            <ProfileImage />
+                            
+                        </div>
+                        <div className="profile-tools">
+                            <h2>Nombre Completo</h2>
+                            <p>{user[0].nombre} {user[0].apellidos}</p>
+                            <h2>Correo electronico</h2>
+                            <p>{ user[0].email}</p>
+                            <h2>localidad</h2>
+                            <p>Quindio - Pijao</p>
+                            <h2>Telefono</h2>
+                            <p>3174583592</p>
                         </div>
                     </div>
                     <div className="line-profile-separator" />
                     <div className="add-settings-account">
                         <UpdateInfo />
-                        <SettingsAcount />
                         <ModalCreateAnouncement />
                     </div>
                 </div>

@@ -8,6 +8,22 @@
     background-size: cover;
 }
 
+.register-polity{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1em;
+    font-size: 0.9em;
+    margin: 0 0 1em 0;
+    color: rgb(37,46,53);
+}
+
+.polity-redirect{
+    color: #1C6EA4;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
 .register-valid-info{
     margin: 5%;
     width: 40%;
@@ -95,6 +111,8 @@
 
 .create-account-register{
     margin: 4% 0 0 0;
+    color: rgb(37,46,53);
+    font-size: 0.9em;
 }
 
 @media screen and (max-width: 900px){
