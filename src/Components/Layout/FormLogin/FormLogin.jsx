@@ -76,7 +76,6 @@ export const FormLogin = () => {
             <form className="login-valid-info">
                 <div className="auth-services">
                     <GoogleAuth buttonText={"Iniciar sesión con Google"} /><br></br><br></br>
-                    <FacebookAuth buttonText={"Ingresar por facebook"} />
                 </div>
                 <div className="separator-container">
                         <div className="line-separator" />

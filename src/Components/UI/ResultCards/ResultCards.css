@@ -1,25 +1,40 @@
 .card-render-container{
     border-radius: 5px;
     display: flex;
-    width: 100%;
-    height: 15em;
+    width: 100%; 
+    max-width: 76em;
+    height: 240px;
     gap: 1em;
     box-shadow: 1px 5px 11px -2px #919191;
     background-color: rgb(255,255,255);
+    cursor: pointer;
+    transition: ease 0.3s all;
 }
+
+.card-render-container:hover{
+    transform: scale(102%);
+}
+
 .image-url-container{
-    width: 25%;
+    width: 350px;
+    padding: 0.5em;
 }
 .image-url-render{
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: 5px 0 0px 5px;
+    border-radius: 5px;
 }
 .card-info-render{
     width: 75%;
     padding: 0.4em;
 }
+
+.card-title-render{
+    font-size: 1.9em;
+    color: rgb(37,46,53);
+}
+
 .open-anouncement{
     padding: 1em 2em;
     background: rgba(15,15,15,0.70);
@@ -39,30 +54,66 @@
 }
 .button-anouncement-redirect{
     display: flex;
+    outline: solid 1px red;
+    align-items: center;
+    height: 50px;
     justify-content: flex-end;   
 }
+.descriptionCardSearch{
+    outline: solid 1px red;
+    width: 100%;
+    height: 1.5em;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
 
-@media screen and (max-width: 900px){
-    .card-render-container{
-        height:16em;
-    }
-    .image-url-container{
-        width: 50%;
-    }
-    .open-anouncement{
-        margin-top:5%;
-    }
+.card-ubication{
+    outline: solid 1px red;
+    width: 100%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    height: 22px;
+}
+
+.button-anouncement{
+    outline: solid 1px red;
+    width: 250px;
+    padding: 0.5em 0;
+}
+
+.data-icon-render{
+    display: flex;
+    gap: 1em;
+    align-items: center;
+    outline: solid 1px red;
+}
+
+.fa-icon-render{
+    width: 32px;
+    display: flex;
+    justify-content: center;
+}
+
+.fa-icon-desing{
+    font-size: 1.5em;
+    color: rgba(15,15,15,0.70);
+}
+
+.card-render-add-data{
+    outline: solid 1px red;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8em;
 }
 
 @media screen and (max-width:616px)
 {
     .card-render-container{
         width:100%;
-        height:10em;
         gap:2%;
+        height: 180px;
     }
     .open-anouncement{
-        margin-top:5%;
         width:100%;
         font-size:13px;
         padding:5px 0px;
@@ -85,9 +136,7 @@
     .card-render-add-data{
         font-size:13px;
     }
-    .infoCardSearch {
-        display:none;
-    }
+
     .descriptionCardSearch {
         display:flex;
     }
@@ -120,9 +169,7 @@
     .open-anouncement {
         margin:8% auto;
     }
-    .infoCardSearch{
-        display:none;
-    }
+
     .open-anouncement{
         width:95%;
         font-size:10px;
@@ -153,9 +200,7 @@
     .open-anouncement {
         margin:3% auto;
     }
-    .infoCardSearch{
-        display:none;
-    }
+
     .textInfoCardSearch{
         display:none;
     }

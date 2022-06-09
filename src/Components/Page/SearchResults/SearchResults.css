@@ -5,5 +5,12 @@
     flex-direction: column;
     padding: 1em 10%;
     gap: 1em;
-    background: rgba(0,0,0,0.10);
+    background: rgba(0,0,0,0.2);
+    align-items: center;
+}
+
+@media screen and ( max-width : 750px ){
+    .cards-content{
+        padding: 1em 0.5em;
+    }
 }

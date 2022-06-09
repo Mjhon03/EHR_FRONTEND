@@ -136,8 +136,7 @@ export const FormSingUp = () => {
     return (
         <div className="form-register-valid">
             <form className='register-valid-info'>
-                <FacebookAuth buttonText={"Ingresar con facebook"} />
-                <br></br><br></br>
+             
                 < GoogleAuth
                     buttonText={"Iniciar sesión con Google"}
                 />
