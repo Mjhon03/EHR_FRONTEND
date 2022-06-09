@@ -49,7 +49,7 @@ export const MostRecent = () => {
 
   return (
     <div className='most-recent-container-home'>
-      <h2 className='most-recent-title'>Mira las publicaciones mas recientes</h2>
+      <h2 className='most-recent-title'>Mira las publicaciones más recientes</h2>
       <Carousel pagination={false} breakPoints={breakproint} >
         {cardMostRecent.map(
           cardMostRecent => (

@@ -3,7 +3,7 @@ import './ResultCards.css'
 import { useNavigate } from 'react-router-dom'
 
 export const ResultCards = ({ data }) => {
-    const { idanuncio, titulo, ciudad ,descripcion, zona, cuidad ,direccion, fecha, valor, url1 } = data
+    const { idanuncio, titulo, ciudad ,descripcion, zona, cuidad ,direccion, fecha, precio, url1 } = data
 
     console.log(cuidad);
     const navigate = useNavigate()
@@ -21,14 +21,15 @@ export const ResultCards = ({ data }) => {
                     <h3>{ titulo }</h3>
                 </div>
                 <div className="card-render-add-data">
-                    <p>{ descripcion }</p>
-                    <p>${valor}</p>
-                    <p>{ ciudad }</p>
-                    <p>ubicacion : {zona} - {direccion}</p>
-                    <p>fecha de publicacion : {fecha}</p>
+                    <p className='infoCardSearch descriptionCardSearch'>{descripcion}</p>
+                    <p><b>$</b>{precio}<b>co</b></p>
+                    <p><b className='textInfoCardSearch'>Ciudad:</b> {ciudad}</p>
+                    <p><b>Zona:</b> {zona}</p>
+                    <p className='infoCardSearch'><b>Ubicación:</b> {direccion}</p>
+                    <p className='infoCardSearch'><b>Fecha de publicación:</b> {fecha}</p>
                 </div>
                 <div className="button-anouncement-redirect">
-                    <button onClick={ sendToSelect} className='open-anouncement'>Ver publicacion</button>
+                    <button onClick={sendToSelect} className='open-anouncement'>Ver publicación</button>
                 </div>
             </div>
         </div>
