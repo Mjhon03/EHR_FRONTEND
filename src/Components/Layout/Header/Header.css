@@ -85,6 +85,9 @@
     width: 100%;
     text-align: center;
 }
+.nouser-action button:hover {
+    background: rgba(0,0,0,0.6);
+}
 
 .nouser-action button{
      cursor: pointer;
