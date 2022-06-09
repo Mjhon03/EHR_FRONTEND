@@ -17,10 +17,10 @@ export const AboutUs = () => {
             Uniendo toda nuestra excepcional  creatividad hemos trabajado juntos  para crear,A
             diseñar y desarrollar Easy House Rent. </p>
         </div>
-        <div className='grid-div' id='grid-item-photo'>
+        <div className='grid-div divImageAboutUs' id='grid-item-photo'>
           <img alt='investigate' src='https://img.freepik.com/free-vector/software-developing-programmers-investigates-code_90220-174.jpg?t=st=1652926756~exp=1652927356~hmac=bebcd8fa111e9bedbaa31d462678bde3d0d5fb12561a8ae27b9f425db0ace298&w=740' className='Descriptive-img' />
         </div>
-        <div className='grid-div' id='grid-item-photo'>
+        <div className='grid-div divImageAboutUs' id='grid-item-photo'>
           <img alt='concept' src='https://img.freepik.com/free-vector/meeting-concept-illustration_114360-895.jpg?t=st=1652767271~exp=1652767871~hmac=b7b3d7b3c91b42cdbfd701f3ab33bc176e248a069cd49ddcfb82425db9a24567&w=740' className='Descriptive-img' />
         </div>
         <div className='grid-div'>
@@ -36,10 +36,10 @@ export const AboutUs = () => {
             encontrar tu destino, contamos con variedad de opciones para  que encuentres lo que se
             ajusta a tus necesidades.</p>
         </div>
-        <div className='grid-div' id='grid-item-photo'>
+        <div className='grid-div divImageAboutUs' id='grid-item-photo'>
           <img alt='making' src='https://cdni.iconscout.com/illustration/premium/thumb/boy-making-decision-with-help-of-discussion-2527773-2114679.png' className='Descriptive-img' />
         </div>
-        <div className='grid-div' id='grid-item-photo'>
+        <div className='grid-div divImageAboutUs' id='grid-item-photo'>
           <img alt='cognitive' src='https://dev.cognitive.la/uploads/covid192_1615227029.jpg' className='Descriptive-img' />
         </div>
         <div className='grid-div' >
@@ -55,7 +55,7 @@ export const AboutUs = () => {
             los usuarios que consideres pertinente y muchas otras opciones más que facilitarán tu búsqueda a la
             hora de querer encontrar  algo en específico.</p>
         </div>
-        <div className='grid-div' id='grid-item-photo'>
+        <div className='grid-div divImageAboutUs' id='grid-item-photo'>
           <img alt='report' src='https://atlantaagentmagazine.com/wp-content/uploads/sites/6/2021/02/2020-Report-scaled.jpg' className='Descriptive-img' />
         </div>
       </div >
