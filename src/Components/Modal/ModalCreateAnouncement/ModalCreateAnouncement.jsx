@@ -59,14 +59,14 @@ export const ModalCreateAnouncement = () => {
 
   const validateForm = () => {
     if (title === '' || description === '' || address === '') {
-      Alert("Error", "Por favor complete todos los campos", "error", "Ok", "2000")
+      Alert("Error", "Por favor complete todos los campos", "error", "Ok")
     } else {
       changeMoreStatus()
     }
   }
   const validateFormDetail = () => {
     if (zone === '' || edification === '' || rooms === 0 || garage === 0 || modality === '' || price === 0) {
-      Alert("Error", "Por favor complete todos los campos", "error", "Ok", "2000")
+      Alert("Error", "Por favor complete todos los campos", "error", "Ok")
     } else {
       changeMoreStatus()
     }
@@ -149,7 +149,7 @@ export const ModalCreateAnouncement = () => {
 
   const validateFormImage = () => {
     if (images.length === 0) {
-      Alert("Error", "Por favor agregue al menos una imagen", "error", "Ok", "2000")
+      Alert("Error", "Por favor agregue al menos una imagen", "error", "Ok")
     } else {
       sendProfile()
     }
@@ -162,7 +162,7 @@ export const ModalCreateAnouncement = () => {
     awaitAnouncement() 
     await sendPhotos()
     if (awaitAnouncement) {
-      Alert('El anuncio se ha creado correctamente', '', 'success', 'OK','2000')
+      Alert('El anuncio se ha creado correctamente', '', 'success', 'OK')
     }
     closeModal()
     setimages([])

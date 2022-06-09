@@ -1,5 +1,4 @@
 import React, { useState } from 'react'
-
 import { NavLink } from 'react-router-dom';
 import './FormLogin.css'
 import axios from 'axios'
@@ -49,14 +48,14 @@ export const FormLogin = () => {
                 window.location.reload()
             })
             .catch(ex => {
-                console.log(ex);
+                Alert("Fallo al iniciar sesión","El correo o la contraseña no son correctos.","error", "Ok")
             })
     })
 
     const validateDataInput = ((e ) => {
         e.preventDefault();
         if(email === "" || password === ""){
-            Alert("Inicio de sesión", "Por favor ingrese todos los campos.", "error", "Ok", "2000")
+            Alert("Inicio de sesión", "Por favor ingrese todos los campos.", "error", "Ok")
         }
         else{
             login(e)
