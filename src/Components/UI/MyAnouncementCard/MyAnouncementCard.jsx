@@ -82,7 +82,7 @@ export const MyAnouncementCard = ({ data }) => {
                             <p>{precio}</p>
                         </div>
                         <div className="button-visualizer">
-                            <button onClick={SendAnouncement} className='action-visualizer'>ver publicacion</button>
+                            <button onClick={SendAnouncement} className='action-visualizer'>Ver publicación</button>
                         </div>
                     </div>
                 </div>

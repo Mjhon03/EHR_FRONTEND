@@ -32,7 +32,7 @@ export const CategoriesBar = () => {
             </div>
             <div onClick={categoriesResultPlain} className="categories-bar-container category-one">
                 <FontAwesomeIcon className='category-icon' icon={faHouseUser}></FontAwesomeIcon>
-                <p className='category-text-font'>terreno</p>
+                <p className='category-text-font'>Terreno</p>
             </div>
             <div onClick={categoriesResultRural} className="categories-bar-container category-one">
                 <FontAwesomeIcon className='category-icon' icon={faTractor}></FontAwesomeIcon>
@@ -40,7 +40,7 @@ export const CategoriesBar = () => {
             </div>
             <div onClick={categoriesResultApartment} className="categories-bar-container category-one">
                 <FontAwesomeIcon className='category-icon' icon={faBuilding}></FontAwesomeIcon>
-                <p className='category-text-font'>Apartamentos</p>
+                <p className='category-text-font'>Apartamento</p>
             </div>
             <div onClick={categoriesResultLocal} className="categories-bar-container  category-one">
                 <FontAwesomeIcon className='category-icon' icon={faShop}></FontAwesomeIcon>
