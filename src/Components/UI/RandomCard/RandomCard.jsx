@@ -30,14 +30,14 @@ export const RandomCard = ({ data }) => {
           </div>
         </div>
         <div className="description-data-random">
-         <h2>Caracteristicas</h2> 
+         <h2>Características</h2> 
         </div>
         <div className="description-other-random">
           <h3 className='city-random'>Ciudad : {ciudad}</h3>
           <h3 className='city-random' >Zona : {zona}</h3>
-          <h3 className='city-random'>Direccion : {direccion}</h3>
+          <h3 className='city-random'>Dirección : {direccion}</h3>
         </div>
-        <button onClick={sendAnouncement} className='button-random-redirect'>ver publicacion</button>
+        <button onClick={sendAnouncement} className='button-random-redirect'>Ver publicación</button>
       </div>
     </div>
   )
