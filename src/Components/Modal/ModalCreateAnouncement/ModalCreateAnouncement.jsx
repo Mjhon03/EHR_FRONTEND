@@ -7,6 +7,7 @@ import axios from 'axios';
 import { UserContext } from '../../../UserProvider/UserProvider'
 import { createAnouncement } from '../../../methodAdversitement';
 import { Alert } from '../../Alert';
+import swal from 'sweetalert';
 
 export const ModalCreateAnouncement = () => {
 
@@ -35,6 +36,22 @@ export const ModalCreateAnouncement = () => {
 
   const changeModal = () => {
     setVisibility(true)
+  }
+
+
+  const validateCloseModal = () => {
+    swal({
+            title: `¿Esta seguro de cerrar la creacion anuncio?`,
+            text: `Una vez que lo cierre no lo podra recuperar la información`,
+            icon: `warning`,
+            buttons: true,
+            dangerMode: true,
+        })
+        .then((willDelete) => {
+            if (willDelete) {
+                setVisibility(false)
+        }
+    });
   }
 
   const closeModal = () => {
@@ -167,7 +184,7 @@ export const ModalCreateAnouncement = () => {
         <Overlay>
           <Modal>
             <div className="header-modal">
-              <FontAwesomeIcon className='header-modal-icon' onClick={closeModal} icon={faArrowRightFromBracket}></FontAwesomeIcon>
+              <FontAwesomeIcon className='header-modal-icon' onClick={validateCloseModal} icon={faArrowRightFromBracket}></FontAwesomeIcon>
             </div>
             <div className="modal-content-item">
               <h1 className='create-title'>Publica tu propiedad</h1>
