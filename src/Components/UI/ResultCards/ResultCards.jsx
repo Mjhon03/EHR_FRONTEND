@@ -2,8 +2,8 @@ import React from 'react'
 import CurrencyFormat from 'react-currency-format';
 import './ResultCards.css'
 import { useNavigate } from 'react-router-dom'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCalendarDays,  faMountainCity } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faCalendarDays, faEye, faLocationDot, faMaximize } from '@fortawesome/free-solid-svg-icons';
 
 export const ResultCards = ({ data }) => {
     const { idanuncio, titulo, ciudad, descripcion, zona, cuidad, direccion, fecha, precio, url1 } = data
@@ -17,32 +17,25 @@ export const ResultCards = ({ data }) => {
         navigate(`/anouncement/?idanounce=${idanuncio}&adzone=${zona}`)
     }
     return (
-        <div onClick={sendToSelect} key={idanuncio} className="card-render-container">
-            <div className="image-url-container">
-                <img src={url1} alt='url' className='image-url-render' />
+        <div onClick={sendToSelect} key={idanuncio} className='card-render-container' >
+            <div className="card-img-render">
+                <img src={url1} alt="cardrender" className='card-img' />
+
             </div>
             <div className="card-info-render">
-                <div className="principal-render-card">
-                    <h3 className='card-title-render'>{titulo}</h3>
+                <div className="card-tools-render">
+                    <p className='text-container-icon'><FontAwesomeIcon icon={faCalendarDays} className='tools-render-action' />{fecha}</p>
+                    <h1 className='card-title-render'>{titulo}</h1>
+                    <div className="text-container-icon-city">
+                        < FontAwesomeIcon icon={faLocationDot} className='tools-render-action' />
+                        <p className='text-container-icon-city'>{ciudad} - {zona} - {direccion}</p>
+                    </div>
                 </div>
-                <div className="card-render-add-data">
-                    <div className="data-icon-render">
-                        <p>{descripcion}</p>
-                    </div>
-                    <div className="data-icon-render">
-                        <p><CurrencyFormat value={precio}displayType={'text'} thousandSeparator={true} prefix={'$'} renderText={value => <p>{value}<b>co</b></p>} /></p>
-                    </div>
-                    <div className="data-icon-render">
-                        <div className="fa-icon-render">
-                            <FontAwesomeIcon className='fa-icon-desing' icon={faMountainCity} />
-                        </div>
-                        <p>{ciudad} - {zona} - {direccion}</p>
-                    </div>                  
-                    <div className="data-icon-render">
-                        <div className="fa-icon-render">
-                            <FontAwesomeIcon className='fa-icon-desing' icon={faCalendarDays} />
-                        </div>
-                        <p>{fecha}</p>
+                <div className="tools-actions">
+                    <CurrencyFormat value={precio} displayType={'text'} thousandSeparator={true} prefix={'$'} renderText={value => <p className='render-value'>{value}<b>co</b></p>} />
+                    <div className="icons-actions">
+                        <FontAwesomeIcon className='tools-render-action' icon={faEye} />
+                        <FontAwesomeIcon className='tools-render-action' icon={faMaximize} />
                     </div>
                 </div>
             </div>
