@@ -8,7 +8,6 @@ import { faCalendarDays, faEye, faLocationDot, faMaximize } from '@fortawesome/f
 export const ResultCards = ({ data }) => {
     const { idanuncio, titulo, ciudad, descripcion, zona, cuidad, direccion, fecha, precio, url1 } = data
 
-    console.log(cuidad);
     const navigate = useNavigate()
 
     const currency = require('react-currency-format')

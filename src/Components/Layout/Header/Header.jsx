@@ -15,7 +15,6 @@ export const Header = () => {
   const [userSession, setUserSession] = useState(0)
 
   const { user } = useContext(UserContext)
-  console.log(user);
 
   const SetUserData = () => {
     if (user != null) {

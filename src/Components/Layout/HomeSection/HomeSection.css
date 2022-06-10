@@ -97,6 +97,8 @@
     text-align: center;
     width: 100%;
     margin: 2% auto;
+    font-family: sans-serif;
+    color: rgb(37,46,53);
 }
 
 @media screen and (max-width: 1600px){

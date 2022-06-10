@@ -105,6 +105,8 @@
 
 .miniature-name{
     width: 80%;
+    font-family: sans-serif;
+    color: rgba(15, 15, 15, 1);
 }
 
 .miniature-container{

@@ -1,9 +1,9 @@
-import { PrivacyPolity } from "../PrivacyPolity/PrivacyPolity"
+import { CategoriesNav } from "../../UI/CategoriesNav/CategoriesNav"
 
 export const PreviewPage = () => {
   return (
     <>
-      <PrivacyPolity />
+      < CategoriesNav />
     </>
   )
 }
