@@ -1,9 +1,10 @@
 .cards-content{
-    margin: auto;
-    width: 100%;
+    background:  linear-gradient(90deg, rgba(34, 58, 52, 0.757) 50%, rgba(25, 30, 21, 0.65) 100%),url("https://cdn.pixabay.com/photo/2016/07/25/17/02/new-home-1540871_960_720.jpg");
+    background-repeat: repeat-y;
+    padding: 1em;
+    background-size: 100%;
     display: flex;
-    flex-direction: column;
-    padding: 1em 10%;
-    gap: 1em;
-    background: rgba(0,0,0,0.10);
+    flex-wrap: wrap;
+    gap: 0.5em;
 }
+

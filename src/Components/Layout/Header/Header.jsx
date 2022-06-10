@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHouseChimneyUser, faFilterCircleDollar, faCircleInfo, faNewspaper, faHeadset, faCommentDots } from '@fortawesome/free-solid-svg-icons'
+import { faHouseChimneyUser, faFilterCircleDollar, faCircleInfo, faNewspaper, faHeadset, faCommentDots, faHouseLaptop } from '@fortawesome/free-solid-svg-icons'
 import './Header.css'
 import { NavLink } from 'react-router-dom'
 import { ProfileSettings } from '../../Modal/ProfileSettings/ProfileSettings'
@@ -15,7 +15,6 @@ export const Header = () => {
   const [userSession, setUserSession] = useState(0)
 
   const { user } = useContext(UserContext)
-  console.log(user);
 
   const SetUserData = () => {
     if (user != null) {
@@ -56,8 +55,8 @@ export const Header = () => {
 
         <div className='iconHeader'>
           <NavLink to='/'>
-            <button className='header-action-button'><FontAwesomeIcon className='header-action-icon' icon={faFilterCircleDollar} /></button>
-            <div className='viewTextIcon'><b><p>Recientes</p></b></div>          
+            <button className='header-action-button'><FontAwesomeIcon className='header-action-icon' icon={faHouseLaptop} /></button>
+            <div className='viewTextIcon'><b><p>Anuncios</p></b></div>          
           </NavLink>
         </div>
         <div className='iconHeader'>
