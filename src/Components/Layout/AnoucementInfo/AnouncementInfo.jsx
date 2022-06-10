@@ -18,15 +18,6 @@ export const AnouncementInfo = ({ data, userData }) => {
 
     const [userState, setUserState] = useState(false)
 
-    const getUserState = () => {
-        if (user == null) {
-            userState(false)
-        }
-        else {
-            setUserState(true)
-        }
-    }
-
     const navigate = useNavigate()
 
     const [image1, setImage1] = useState('')
@@ -47,8 +38,7 @@ export const AnouncementInfo = ({ data, userData }) => {
     const [rooms, setRooms] = useState('')
     const [garage, setGarage] = useState('no')
 
-    useEffect(() => {
-        const getData = () => {
+    const getData = () => {
             if (data.length !== 0) {
                 setIdAnouncement(data[0].idanuncio)
                 setIdUser(data[0].idusuario)
@@ -68,12 +58,12 @@ export const AnouncementInfo = ({ data, userData }) => {
                 setCity(data[0].ciudad)
             }
         }
+    useEffect(() => {    
         getData()
-    }, [])
+    },)
 
     useEffect(() => {
         getUserInformation()
-        getUserState()
     })
     const sendOtherProfile = () => {
         navigate(`/user/profile?idUser=${idUser}`)
@@ -124,21 +114,28 @@ export const AnouncementInfo = ({ data, userData }) => {
         }
     }
 
-    const breakproint = [
+    const breakproint = [ 
+    
         {
-            width: 500,
-            itemsToShow: 2
+          width: 100,
+          itemsToShow : 1
         },
         {
-            width: 880,
-            itemsToShow: 3
-
+          width: 415,
+          itemsToShow : 2
+    
+          
         },
         {
-            width: 1260,
-            itemsToShow: 4,
+          width: 880,
+          itemsToShow: 3
+    
         },
-    ]
+        { 
+          width: 1280,
+          itemsToShow: 4,
+        },
+       ]
 
     const [recomended, setRecomended] = useState([])
 
@@ -168,92 +165,11 @@ export const AnouncementInfo = ({ data, userData }) => {
         }
     }
 
-
     return (
         <>
-            <div className="anouncement-info-render">
-                <div className="anouncement-images-container">
-                    <div className="first-image">
-                        <InnerImageZoom zoomSrc={image1} zoomPreload={true} zoomType='hover' src={image1} alt="image1" className='anouncement-first-image' />
-                    </div>
-                    <div className="other-images-container">
-                        <div className="other-image-container">
-                            <img onMouseEnter={e => { changePhoto(e) }} src={image2} alt="image2" className='anouncement-other-image' />
-                        </div>
-                        <div className="other-image-container">
-                            <img src={image3} onMouseEnter={e => { changePhoto(e) }} alt="image3" className='anouncement-other-image' />
-                        </div>
-                        <div className="other-image-container">
-                            <img src={image4} alt="image4" onMouseEnter={e => { changePhoto(e) }} className='anouncement-other-image' />
-                        </div>
-                    </div>
-                </div>
-                <div className="anouncement-aditional-info">
-                    <div className="anouncement-extra-information">
-                        <h1 className='anouncement-title'>{title}</h1>
-                        <div className='anouncement-complement'>
-                            <div className="description-content">
-                                <p className='description-bolder' >Ciudad : </p>
-                                <p>{city}</p>
-                            </div>
-                            <div className="description-content">
-                                <p className='description-bolder' >Direccion : </p>
-                                <p>{adress}</p>
-                            </div>
-                            <div className="description-content">
-                                <p className='description-bolder' >Edificacion : </p>
-                                <p>{editicacion}</p>
-                            </div>
-
-                        </div>
-                        <div className='anounce-value-container'>
-                            <p className='value-initial'>CO</p>
-                            <p className='value-center'>{value}</p>
-                            <p className='value-end'> $</p>
-                        </div>
-
-
-                    </div>
-                    <div className="anouncement-actions">
-                        {
-                            userState &&
-                            <button className='anouncement-action-redirect' onClick={sendNotification}>notificacion de interes</button>
-                        }
-                        <button className='anouncement-action-redirect' onClick={sendAlert}>notificacion de interes</button>
-                        <button className='anouncement-action-redirect'>chat con el propietario</button>
-                    </div>
-                </div>
-                <div className="actions-user-anouncement">
-                    <h3>Propietario</h3>
-                    <UserImage userdata={userData} />
-                    <div className="props-user">
-                        <p >{userName} {userLastName}</p>
-                        <p className='prop-email'>{userEmail}</p>
-                    </div>
-                    <button className='anouncement-action-redirect' onClick={sendOtherProfile}>perfil de usuario</button>
-                    <button className='anouncement-action-redirect' onClick={sendOtherProfile}>Reportar anuncio</button>
-                    <button className='anouncement-action-redirect' onClick={sendOtherProfile}>Reportar Usuario</button>
-                </div>
-            </div>
-            <div className="anouncement-complement-information">
-                <h2 className='anounce-text-description'>descripcion : {description}</h2>
-                <div className='anouncement-information-complete'>
-                    <div className='anounce-characteristics'>
-                        <p>Habitaciones</p>
-                        <p>{rooms}</p>
-                    </div>
-                    <div className='anounce-characteristics'>
-                        <p>Garaje</p>
-                        <p>{garage}</p>
-                    </div>
-                    <div className='anounce-characteristics'>
-                        <p>Modalidad</p>
-                        <p>{modality}</p>
-                    </div>
-                </div>
-            </div>
-            <div className="carousel-anouncement-container">
-                <h2>Publicaciones recomendadas</h2>
+        
+            <div className="most-recent-container-home">
+                <h2 className='most-recent-title'>Publicaciones recomendadas</h2>
                 <Carousel itemsToShow={4} pagination={false}
                     breakPoints={breakproint}>
                     {recomended.map(
