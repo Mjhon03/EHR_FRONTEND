@@ -1,7 +1,6 @@
 import React from 'react'
 import './FormSingUp.css'
 import { GoogleAuth } from '../../UI/GoogleAuth/GoogleAuth';
-import { FacebookAuth } from '../../UI/FacebookAuth/FacebookAuth';
 import { SelectDepartment } from '../../UI/SelectDepartment/SelectDepartment';
 import { SelectMunicipality } from '../../UI/SelectMunicipality/SelectMunicipality';
 import { urLDepartments, urlMunicipality } from '../../ApiRoutes';

@@ -47,33 +47,33 @@ export const AnouncementInfo = ({ data, userData }) => {
     const [rooms, setRooms] = useState('')
     const [garage, setGarage] = useState('no')
 
-    const getData = () => {
-        if (data.length !== 0) {
-            setIdAnouncement(data[0].idanuncio)
-            setIdUser(data[0].idusuario)
-            setTitle(data[0].titulo)
-            setImage1(data[0].url1)
-            setImage2(data[0].url2)
-            setImage3(data[0].url3)
-            setImage4(data[0].url4)
-            setDescription(data[0].descripcion)
-            setEedification(data[0].edificacion)
-            setAdress(data[0].direccion)
-            setModality(data[0].modalidad)
-            setValue(data[0].precio)
-            setRooms(data[0].habitaciones)
-            setGarage(data[0].garaje)
-            setZone(data[0].zona)
-            setCity(data[0].ciudad)
-        }
-    }
-
     useEffect(() => {
+        const getData = () => {
+            if (data.length !== 0) {
+                setIdAnouncement(data[0].idanuncio)
+                setIdUser(data[0].idusuario)
+                setTitle(data[0].titulo)
+                setImage1(data[0].url1)
+                setImage2(data[0].url2)
+                setImage3(data[0].url3)
+                setImage4(data[0].url4)
+                setDescription(data[0].descripcion)
+                setEedification(data[0].edificacion)
+                setAdress(data[0].direccion)
+                setModality(data[0].modalidad)
+                setValue(data[0].precio)
+                setRooms(data[0].habitaciones)
+                setGarage(data[0].garaje)
+                setZone(data[0].zona)
+                setCity(data[0].ciudad)
+            }
+        }
         getData()
-    }, [data])
+    }, [])
 
     useEffect(() => {
         getUserInformation()
+        getUserState()
     })
     const sendOtherProfile = () => {
         navigate(`/user/profile?idUser=${idUser}`)
@@ -143,7 +143,7 @@ export const AnouncementInfo = ({ data, userData }) => {
     const [recomended, setRecomended] = useState([])
 
     const getRecomended = () => {
-        axios.get('https://easy-house-rent.azurewebsites.net/api/home/recommended', { params: { ciudad: city  } })
+        axios.get('https://easy-house-rent.azurewebsites.net/api/home/recommended', { params: { ciudad: city } })
             .then(response => {
                 setRecomended(response.data)
             })

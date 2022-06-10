@@ -4,7 +4,6 @@ import { NavLink } from 'react-router-dom';
 import './FormLogin.css'
 import axios from 'axios'
 import { GoogleAuth } from '../../UI/GoogleAuth/GoogleAuth';
-import { FacebookAuth } from '../../UI/FacebookAuth/FacebookAuth';
 import { urlLogin } from '../../ApiRoutes';
 import { useNavigate } from 'react-router-dom'
 import validator from 'validator';
