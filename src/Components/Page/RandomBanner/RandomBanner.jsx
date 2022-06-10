@@ -12,7 +12,6 @@ export const RandomBanner = () => {
     const getRandom = () => {
         axios.get(`${urlSearch}/Random`)
             .then(response => {
-                console.log(response.data);
                 setRandomData(response.data)
             })
             .catch(err => {

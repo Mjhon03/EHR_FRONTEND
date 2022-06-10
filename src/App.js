@@ -25,6 +25,7 @@ import { OtherUser } from "./Components/Page/OtherUser/OtherUser";
 import { SuportP } from "./Components/Page/Support/Suports";
 import { CategoriesResult } from "./Components/Page/CategoriesResult/CategoriesResult";
 import { PrivacyPolity } from "./Components/Page/PrivacyPolity/PrivacyPolity";
+import { SeeAds } from "./Components/Page/SeeAdvertisement/SeeAdvertisement";
 
 
 
@@ -52,6 +53,7 @@ function App() {
           <Route exact path="/user/profile" element={<OtherUser />}/>
           <Route exact path='/categories/' element={<CategoriesResult />}/> 
           <Route exact path="/privacy&polity" element={<PrivacyPolity />}/>
+          <Route exact path='/ads' element={<SeeAds/>}/>
         </Routes>
       </HashRouter>
     </UserProvider>

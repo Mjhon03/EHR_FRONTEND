@@ -6,11 +6,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCalendarDays, faEye, faLocationDot, faMaximize } from '@fortawesome/free-solid-svg-icons';
 
 export const ResultCards = ({ data }) => {
-    const { idanuncio, titulo, ciudad, descripcion, zona, cuidad, direccion, fecha, precio, url1 } = data
+    const { idanuncio, titulo, ciudad,  zona, direccion, fecha, precio, url1 } = data
 
     const navigate = useNavigate()
-
-    const currency = require('react-currency-format')
 
     const sendToSelect = () => {
         navigate(`/anouncement/?idanounce=${idanuncio}&adzone=${zona}`)
