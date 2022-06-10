@@ -6,6 +6,8 @@ import axios from 'axios'
 import { Header } from '../../Layout/Header/Header';
 import './SearchResults.css'
 import { Footer } from '../../Layout/Footer/Footer'
+import ReactPaginate from 'react-paginate';
+import { CategoriesNav } from '../../UI/CategoriesNav/CategoriesNav';
 
 export const SearchResults = () => {
 
@@ -28,10 +30,12 @@ export const SearchResults = () => {
     getData()
   }, [])
 
+
+
   return (
     <>
       < Header />
-
+      < CategoriesNav />
       <div className="cards-content">
         {
           resultData.map(
@@ -41,7 +45,6 @@ export const SearchResults = () => {
           )
         }
       </div>
-
       <Footer />
     </>
   )

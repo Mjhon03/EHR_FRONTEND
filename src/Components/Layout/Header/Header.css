@@ -13,7 +13,7 @@
     display: flex;
     justify-content: space-between;
     padding: 0.2em 1em;
-    z-index: 1;
+    z-index: 2;
     position: sticky;
     top: 0;
     background: rgb(229,229,229);
@@ -108,6 +108,8 @@
 
 .miniature-name{
     width: 80%;
+    font-family: sans-serif;
+    color: rgba(15, 15, 15, 1);
 }
 
 .miniature-container{

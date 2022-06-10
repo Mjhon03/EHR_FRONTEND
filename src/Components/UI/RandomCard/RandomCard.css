@@ -67,11 +67,12 @@
     justify-content: space-around;
     padding: 0.5em 1em;
     font-size: 0.95em;
+    font-family: sans-serif;
 }
 
 .button-random-redirect{
     text-align: center;
-    width: 80%;
+    width: 50%;
     padding: 0.8em ;
     margin: 0.5em 0 0 0;
     border-radius: 5px;
@@ -82,6 +83,7 @@
     transition: all 0.3s ease;
     font-size: 101%;
     font-weight: bolder;
+    font-family: sans-serif;
 }
 
 .button-random-redirect:hover{
