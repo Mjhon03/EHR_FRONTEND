@@ -54,7 +54,7 @@ export const Header = () => {
         </div>
 
         <div className='iconHeader'>
-          <NavLink to='/'>
+          <NavLink to='/ads'>
             <button className='header-action-button'><FontAwesomeIcon className='header-action-icon' icon={faHouseLaptop} /></button>
             <div className='viewTextIcon'><b><p>Anuncios</p></b></div>          
           </NavLink>
