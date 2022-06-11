@@ -7,16 +7,14 @@ import Carousel from 'react-elastic-carousel';
 import { MyAnouncementCard } from '../../UI/MyAnouncementCard/MyAnouncementCard';
 import { UserContext } from '../../../UserProvider/UserProvider';
 import 'react-inner-image-zoom/lib/InnerImageZoom/styles.min.css';
-import InnerImageZoom from 'react-inner-image-zoom';
 import { UserImage } from '../../UI/UserImage/UserImage';
+import { AnouncementImages } from '../../UI/AnouncementImages/AnouncementImages';
 
 
 
 export const AnouncementInfo = ({ data, userData }) => {
 
     const { user } = useContext(UserContext)
-
-    const [userState, setUserState] = useState(false)
 
     const navigate = useNavigate()
 
@@ -39,28 +37,28 @@ export const AnouncementInfo = ({ data, userData }) => {
     const [garage, setGarage] = useState('no')
 
     const getData = () => {
-            if (data.length !== 0) {
-                setIdAnouncement(data[0].idanuncio)
-                setIdUser(data[0].idusuario)
-                setTitle(data[0].titulo)
-                setImage1(data[0].url1)
-                setImage2(data[0].url2)
-                setImage3(data[0].url3)
-                setImage4(data[0].url4)
-                setDescription(data[0].descripcion)
-                setEedification(data[0].edificacion)
-                setAdress(data[0].direccion)
-                setModality(data[0].modalidad)
-                setValue(data[0].precio)
-                setRooms(data[0].habitaciones)
-                setGarage(data[0].garaje)
-                setZone(data[0].zona)
-                setCity(data[0].ciudad)
-            }
+        if (data.length !== 0) {
+            setIdAnouncement(data[0].idanuncio)
+            setIdUser(data[0].idusuario)
+            setTitle(data[0].titulo)
+            setImage1(data[0].url1)
+            setImage2(data[0].url2)
+            setImage3(data[0].url3)
+            setImage4(data[0].url4)
+            setDescription(data[0].descripcion)
+            setEedification(data[0].edificacion)
+            setAdress(data[0].direccion)
+            setModality(data[0].modalidad)
+            setValue(data[0].precio)
+            setRooms(data[0].habitaciones)
+            setGarage(data[0].garaje)
+            setZone(data[0].zona)
+            setCity(data[0].ciudad)
         }
-    useEffect(() => {    
+    }
+    useEffect(() => {
         getData()
-    },)
+    })
 
     useEffect(() => {
         getUserInformation()
@@ -114,28 +112,28 @@ export const AnouncementInfo = ({ data, userData }) => {
         }
     }
 
-    const breakproint = [ 
-    
+    const breakproint = [
+
         {
-          width: 100,
-          itemsToShow : 1
-        },
-        {
-          width: 415,
-          itemsToShow : 2
-    
-          
+            width: 100,
+            itemsToShow: 1
         },
         {
-          width: 880,
-          itemsToShow: 3
-    
+            width: 415,
+            itemsToShow: 2
+
+
         },
-        { 
-          width: 1280,
-          itemsToShow: 4,
+        {
+            width: 880,
+            itemsToShow: 3
+
         },
-       ]
+        {
+            width: 1280,
+            itemsToShow: 4,
+        },
+    ]
 
     const [recomended, setRecomended] = useState([])
 
@@ -167,7 +165,15 @@ export const AnouncementInfo = ({ data, userData }) => {
 
     return (
         <>
-        
+            <div className="advertisement-info">
+                <div className="prop-images">
+                    <AnouncementImages url1={image1} url2={image2} url3={image3} url4={image4} />
+                </div>
+                <div className="prop-advertisement">
+
+                </div>
+            </div>
+            <UserImage userdata={userData} />
             <div className="most-recent-container-home">
                 <h2 className='most-recent-title'>Publicaciones recomendadas</h2>
                 <Carousel itemsToShow={4} pagination={false}

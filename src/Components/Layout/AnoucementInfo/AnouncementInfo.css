@@ -1,0 +1,13 @@
+.advertisement-info{
+    width: 100%;
+    outline: solid 1px red;
+    padding: 1em;
+    margin: 1em 0;
+    display: flex;
+    justify-content: space-around;
+}
+
+.prop-advertisement{
+    outline: solid 1px red;
+    width: 400px;
+}
