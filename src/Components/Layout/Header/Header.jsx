@@ -78,7 +78,7 @@ export const Header = () => {
           </NavLink>
         </div>
         <div className='iconHeader'>
-          <NavLink to='/'>
+          <NavLink to='/contact'>
             <button className='header-action-button action-responsive'><FontAwesomeIcon className='header-action-icon' icon={faHeadset} /></button>
             <div className='viewTextIcon'><b><p>Contacto</p></b></div>
           </NavLink>
