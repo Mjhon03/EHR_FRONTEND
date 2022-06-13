@@ -44,7 +44,7 @@ export const HomeSection = () => {
                     <img className="house-icon" src='https://cdn-icons-png.flaticon.com/512/916/916771.png' alt='apartment-icon'></img>
                     <div className="rent-text">
                         <h3 className='rent-text-title'>Diversidad de inmuebles</h3>
-                        <p className='rent-info-text'>no sólo tenemos viviendas, también locales, fincas, apartamentos<br></br> ¡y más!</p>
+                        <p className='rent-info-text'>Entre lo que podemos ofrecerte no sólo tenemos viviendas, también locales, fincas, apartamentos<br></br> ¡y más!</p>
                     </div>
                 </div>
                 <div className="rent-info">
