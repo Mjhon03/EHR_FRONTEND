@@ -1,12 +1,11 @@
 .advertisement-info {
     width: 100%;
-    outline: solid 1px red;
     padding: 2em 3em;
     display: flex;
     flex-direction: row-reverse;
     justify-content:center;
     gap: 1em;
-    background: linear-gradient(100deg, rgba(109, 108, 108, 0.757) 30%, rgba(255, 255, 255, 0.75) 100%), url(https://cdn.pixabay.com/photo/2017/09/08/15/21/house-2729079_960_720.jpg);
+    background: linear-gradient(100deg, rgba(7, 6, 6, 0.757) 30%, rgba(27, 26, 26, 0.75) 100%), url(https://cdn.pixabay.com/photo/2017/09/08/15/21/house-2729079_960_720.jpg);
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -34,6 +33,7 @@
     display: flex;
     justify-content: space-around;
     width: 95%;
+    gap: 0.5em;
     margin: 0 auto;
     padding: 1em 0;
 }
@@ -61,11 +61,32 @@
     border-radius: 5px;
     justify-content: center;
     align-items: flex-start;
+    width: 70%;
+}
 
+.value-email{
+    text-align: start;
+    height: 1.2em;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.description-value{
+    font-family: 'Mulish', sans-serif;  
+    color:  rgba(25, 25, 25, 0.95);
+    font-size: 110%;
+    font-weight: bolder ;
 }
 
 .prop-advertisement-subinfo {
     width: 100%;
+}
+
+.value-anouncement-render{
+    color: rgba(35, 35, 35, 0.95);
+    font-weight: 550;
+    font-size: 35px;
 }
 
 .user-target-actions {
