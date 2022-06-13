@@ -143,7 +143,6 @@ export const ModalCreateAnouncement = () => {
         })
     });
     setArraytImages(imagesUrl)
-    return true;
   }
 
 
@@ -158,11 +157,25 @@ export const ModalCreateAnouncement = () => {
     createAnouncement(user[0].idusuario, title, address, city, description, modality, zone, edification, rooms, garage, price, newDate, arrayImages)
   }
 
+  useEffect (() => {
+    if (arrayImages.length > 0) {
+      awaitAnouncement()
+    }
+  },[arrayImages])
+
+
   const sendProfile = async () => {
-    awaitAnouncement() 
     await sendPhotos()
-    if (awaitAnouncement) {
-      Alert('El anuncio se ha creado correctamente', '', 'success', 'OK')
+    if (sendPhotos) {
+      swal({
+            title: `El anuncio se ha creado correactamente`,
+            text: ``,
+            icon: `success`,
+            buttons: true,
+        })
+        .then((willcreate) => {
+          console.log("willcreate", willcreate);
+    });
     }
     closeModal()
     setimages([])

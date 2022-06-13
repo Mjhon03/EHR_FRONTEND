@@ -13,6 +13,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelopeCircleCheck, faLocationDot, faMessage, faUser } from '@fortawesome/free-solid-svg-icons';
 import CurrencyFormat from 'react-currency-format';
 import { faWhatsapp } from '@fortawesome/free-brands-svg-icons';
+import swal from 'sweetalert';
 
 
 
@@ -171,6 +172,26 @@ export const AnouncementInfo = ({ data, userData }) => {
         }
     }
 
+    const noticeInterest = () => {
+        if (user === null) {
+            swal({
+                title: "Necesitas iniciar sesion",
+                text: "Para ver el perfil de otro usuario",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        navigate('/login')
+                    }
+                });
+        }
+        else {
+            console.log("else");
+        }
+    }
+
     return (
         <>
             <div className="advertisement-info">
@@ -185,7 +206,7 @@ export const AnouncementInfo = ({ data, userData }) => {
                             <FontAwesomeIcon icon={faLocationDot} className='tools-render-action' />
                             <p>{zone} - {city} - {adress}</p>
                         </div>
-                    
+
                         <p><CurrencyFormat value={value} displayType={'text'} thousandSeparator={true} prefix={'$'} renderText={value => <p>{value}<b>co</b></p>} /></p>
                     </div>
                     <div className="user-target-data">
@@ -199,10 +220,10 @@ export const AnouncementInfo = ({ data, userData }) => {
                         </div>
                     </div>
                     <div className="user-target-actions">
-                        <button className='target-profile-actions'><FontAwesomeIcon className='tools-render-action' icon={faUser} />ver perfil</button>
-                        <button className='target-profile-actions'><FontAwesomeIcon className='tools-render-action' icon={faEnvelopeCircleCheck} />notificar interes</button>
-                        <button className='target-profile-actions'><FontAwesomeIcon className='tools-render-action' icon={faMessage} />chat</button>
-                        <button className='target-profile-actions'><FontAwesomeIcon className='tools-render-action' icon={faWhatsapp} />contacto</button>
+                        <button className='target-profile-actions' ><FontAwesomeIcon className='tools-render-action' icon={faUser} />Ver perfil</button>
+                        <button className='target-profile-actions' ><FontAwesomeIcon className='tools-render-action' icon={faEnvelopeCircleCheck} />Notificar interés</button>
+                        <button className='target-profile-actions' ><FontAwesomeIcon className='tools-render-action' icon={faMessage} />Chat</button>
+                        <button className='target-profile-actions' ><FontAwesomeIcon className='tools-render-action' icon={faWhatsapp} />Contacto</button>
                     </div>
                 </div>
             </div>
