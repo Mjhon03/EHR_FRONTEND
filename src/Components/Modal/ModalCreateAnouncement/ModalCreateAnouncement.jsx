@@ -1,6 +1,6 @@
 import React, { useEffect, useContext, useState } from 'react'
 import './ModalCreateAnouncement.css'
-import { Overlay, Modal } from '../../StyledComponents/Overlay/StyledComponents'
+import { Overlay, Modal, ProfileCardButton } from '../../StyledComponents/Overlay/StyledComponents'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRightFromBracket } from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios';
@@ -10,7 +10,6 @@ import { Alert } from '../../Alert';
 
 export const ModalCreateAnouncement = () => {
 
-  const userData = useContext(UserContext)
   const { user } = useContext(UserContext)
 
   const [visibility, setVisibility] = useState(false)
@@ -130,14 +129,6 @@ export const ModalCreateAnouncement = () => {
     return true;
   }
 
-  // const createUser = () => {
-  //   createAnouncement(userData[0].idusuario, title, address, description, modality, zone, edification, rooms, garage, price, newDate , arrayImages)
-  //   if (createAnouncement) {
-  //     Alert('Anuncio creado correctamente', '', 'success', 'OK','2000')
-  //   } else {
-  //     Alert('Error al crear el anuncio', ' ' ,'error', 'OK','2000')
-  //   }
-  // }
 
   const validateFormImage = () => {
     if (images.length === 0) {
@@ -163,14 +154,7 @@ export const ModalCreateAnouncement = () => {
 
   return (
     <>
-      <button onClick={() => changeModal()} className="noselect">
-        <span className='text'>Crear Publicacion</span>
-        <span className="icon"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" className="bi bi-house" viewBox="0 0 16 16">
-          <path d="M2 13.5V7h1v6.5a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5V7h1v6.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5zm11-11V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z" />
-          <path d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z" />
-        </svg>
-        </span>
-      </button>
+      <ProfileCardButton onClick={() => changeModal()}>Agregar Publicacion</ProfileCardButton>
       {visibility &&
         <Overlay>
           <Modal>
@@ -184,27 +168,27 @@ export const ModalCreateAnouncement = () => {
                 <div className="secondary-create-form">
                   <div className="create-progress">
                     <p className='form-stage'>1</p>
-                    <p>2</p>
-                    <p>3</p>
+                    <p className='form-stage-none'>2</p>
+                    <p className='form-stage-none'>3</p>
                   </div>
                   <div className="create-info">
                     <h2 className='create-subtitle'>Informacion Basica</h2>
                     <div className="required-info">
-                      <input type='text' placeholder='Titulo de la publicacion' className='create-input-add' onChange={(e) => {
+                      <input type='text' placeholder='Titulo de la publicacion' className='email-put' onChange={(e) => {
                         setTitle(e.target.value)
                         console.log(e.target.value)
                       }} />
                       <div className="modality-medium">
-                        <input className='create-input-add' type='text' placeholder='direccion' onChange={(e) => {
+                        <input className='email-put' type='text' placeholder='direccion' onChange={(e) => {
                           setAddress(e.target.value)
                           console.log(e.target.value)
                         }} />
-                        <input className='create-input-add' type='text' placeholder='ciudad' onChange={(e) => {
+                        <input className='email-put' type='text' placeholder='ciudad' onChange={(e) => {
                           setCity(e.target.value)
                           console.log(e.target.value)
                         }} />
                       </div>
-                      <textarea className='create-description' placeholder='descripcion de la vivienda ( detalles de la vivienda , consideraciones , aportes importantes a tener en cuenta )'
+                      <textarea className='email-put create-description' placeholder='descripcion de la vivienda ( detalles de la vivienda , consideraciones , aportes importantes a tener en cuenta )'
                         onChange={(e) => {
                           setDescription(e.target.value)
                           console.log(e.target.value);
@@ -212,7 +196,7 @@ export const ModalCreateAnouncement = () => {
                     </div>
                   </div>
                   <div className="first-action-container">
-                    <button className='create-action-button' onClick={validateForm}>Siguente</button>
+                    <button className='send-email create-action-button' onClick={validateForm}>Siguente</button>
                   </div>
                 </div>
               }
@@ -220,15 +204,15 @@ export const ModalCreateAnouncement = () => {
                 formSection === 1 &&
                 <div className="secondary-create-form">
                   <div className="create-progress">
-                    <p>1</p>
+                    <p className='form-stage-none'>1</p>
                     <p className='form-stage'>2</p>
-                    <p>3</p>
+                    <p className='form-stage-none'>3</p>
                   </div>
                   <div className="create-info">
                     <h2 className='create-subtitle'>Informacion detallada</h2>
                     <div className="required-info">
                       <div className="modality-medium">
-                        <select className='create-input-add' onChange={(e) => {
+                        <select className='email-put' onChange={(e) => {
                           setModality(e.target.value)
                           console.log(e.target.value)
                         }}>
@@ -236,7 +220,7 @@ export const ModalCreateAnouncement = () => {
                           <option value="venta">venta</option>
                           <option value="arrendo">arrendo</option>
                         </select>
-                        <select className='create-input-add' onChange={(e) => {
+                        <select className='email-put' onChange={(e) => {
                           setZone(e.target.value)
                           console.log(e.target.value);
                         }}>
@@ -248,7 +232,7 @@ export const ModalCreateAnouncement = () => {
                         </select>
                       </div>
                       <div className="modality-medium">
-                        <select className='create-input-add' onChange={(e) => {
+                        <select className='email-put' onChange={(e) => {
                           setEdification(e.target.value)
                           console.log(e.target.value);
                         }}>
@@ -259,24 +243,24 @@ export const ModalCreateAnouncement = () => {
                           <option value="local">local</option>
                           <option value="hogar">hogar</option>
                         </select>
-                        <input type='number' placeholder='habitaciones' className='create-input-add' onChange={(e) => {
+                        <input type='number' placeholder='habitaciones' className='email-put' onChange={(e) => {
                           setRooms(e.target.value)
                           console.log(e.target.value)
                         }} />
                       </div>
-                      <input type='text' placeholder='garaje' className='create-input-add' onChange={(e) => {
+                      <input type='text' placeholder='garaje' className='email-put' onChange={(e) => {
                         setGarage(e.target.value)
                         console.log(e.target.value)
                       }} />
-                      <input type='number' placeholder='precio' className='create-input-add' onChange={(e) => {
+                      <input type='number' placeholder='precio' className='email-put' onChange={(e) => {
                         setPrice(e.target.value)
                         console.log(e.target.value)
                       }} />
                     </div>
                   </div>
-                  <div className="create-action-container">
-                    <button className='create-action-button' onClick={decreaseStatus}>anterior</button>
-                    <button className='create-action-button' onClick={validateFormDetail}>siguente</button>
+                  <div className="first-action-container create-action-container">
+                    <button className='send-email create-action-button' onClick={decreaseStatus}>anterior</button>
+                    <button className='send-email create-action-button' onClick={validateFormDetail}>siguente</button>
                   </div>
                 </div>
               }
@@ -284,15 +268,15 @@ export const ModalCreateAnouncement = () => {
                 formSection === 2 &&
                 <div className="secondary-create-form">
                   <div className="create-progress">
-                    <p>1</p>
-                    <p>2</p>
+                    <p className='form-stage-none'>1</p>
+                    <p className='form-stage-none'>2</p>
                     <p className='form-stage'>3</p>
                   </div>
                   <div className="create-info">
                     <h2 className='create-subtitle'>Verificacion de datos</h2>
                     <div className="required-info">
-                      <br></br>
-                      <label className="btn btn-warning">
+                    
+                      <label className="btn btn-warning select-files">
                         <span>Seleccionar archivos </span>
                         <input hidden type="file" multiple onChange={(e) => { changeInput(e) }}></input>
                       </label>
@@ -318,9 +302,9 @@ export const ModalCreateAnouncement = () => {
                       </div>
                     </div>
                   </div>
-                  <div className="create-action-container">
-                    <button className='create-action-button' onClick={decreaseStatus}>Anterior</button>
-                    <button className='create-action-button' onClick={validateFormImage}>Publicar</button>
+                  <div className="first-action-container create-action-container">
+                    <button className='send-email create-action-button' onClick={decreaseStatus}>Anterior</button>
+                    <button className='send-email create-action-button' onClick={validateFormImage}>Publicar</button>
                   </div>
                 </div>
               }

@@ -10,31 +10,39 @@ export const Overlay = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 1;
+  z-index: 100;
 `;
 
 export const Modal = styled.div`
-  top: 12%;
+  top: 11%;
   position: fixed;
-  width: 45%;
-  height: 550px;
-  outline: solid 1px black;
+  width: 600px;
+  height: 510px;
   text-align: center;
   border-radius: 5px;
   background-color: #fff;
+  box-shadow: 5px 5px 4px 2px rgba(0,0,0,0.60);
 `
 
 export const ProfileModal = styled.div`
   padding: 1em;
-  width:30vw;
+  max-width: 350px;
+  width: 350px;
   text-align: center;
   border-radius: 10px;
   -webkit-box-shadow: 1px 5px 11px -2px #919191; 
   box-shadow: 1px 5px 11px -2px #919191;
   position: fixed;
-  top: 1.2%;
-  right: 1.5%;
+  top: 0.6%;
+  right: 0.7%;
   background: #FFFFFF;
+  z-index: 1;
+
+  @media screen and (max-width : 720px){
+    top: 8.5%;
+    width: 350px;
+    right: 3.8%;
+  }
 `;
 
 

@@ -1,9 +1,9 @@
 
 import React from "react";
 import {
-  BrowserRouter,
   Routes,
-  Route
+  Route,
+  HashRouter
 } from "react-router-dom";
 import { Contact } from "./Components/Page/Contact/Contact";
 import { Home } from "./Components/Page/Home/Home";
@@ -24,12 +24,15 @@ import { SearchResults } from "./Components/Page/SearchResults/SearchResults";
 import { OtherUser } from "./Components/Page/OtherUser/OtherUser";
 import { SuportP } from "./Components/Page/Support/Suports";
 import { CategoriesResult } from "./Components/Page/CategoriesResult/CategoriesResult";
+import { PrivacyPolity } from "./Components/Page/PrivacyPolity/PrivacyPolity";
+import { SeeAds } from "./Components/Page/SeeAdvertisement/SeeAdvertisement";
+
 
 
 function App() {
   return (
     <UserProvider>
-      <BrowserRouter>
+      <HashRouter>
         <Routes>
           <Route exact path="/" element={< Home />} />
           <Route exact path="/Contact" element={<Contact />} />
@@ -49,9 +52,10 @@ function App() {
           <Route exact path='/support' element={<SuportP />}/>
           <Route exact path="/user/profile" element={<OtherUser />}/>
           <Route exact path='/categories/' element={<CategoriesResult />}/> 
-
+          <Route exact path="/privacy&polity" element={<PrivacyPolity />}/>
+          <Route exact path='/ads' element={<SeeAds/>}/>
         </Routes>
-      </BrowserRouter>
+      </HashRouter>
     </UserProvider>
   );
 }

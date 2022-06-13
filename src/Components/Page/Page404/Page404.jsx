@@ -1,6 +1,6 @@
 import React from 'react'
 import { Header } from '../../Layout/Header/Header'
-import { RegisterFooter } from '../../Layout/RegisterFooter/RegisterFooter'
+import { Footer } from '../../Layout/Footer/Footer'
 import './Page404.css'
 import errorPage from '../../../images/404.jpg'
 import { useNavigate } from 'react-router-dom'
@@ -30,7 +30,7 @@ export const Page404 = () => {
                 </div>  
             </div>
         </div>
-        <RegisterFooter />
+        <Footer />
     </div>
   )
 }

@@ -1,10 +1,9 @@
 import React from 'react'
 import './FormSingUp.css'
 import { GoogleAuth } from '../../UI/GoogleAuth/GoogleAuth';
-import { FacebookAuth } from '../../UI/FacebookAuth/FacebookAuth';
 import { SelectDepartment } from '../../UI/SelectDepartment/SelectDepartment';
 import { SelectMunicipality } from '../../UI/SelectMunicipality/SelectMunicipality';
-import { urLDepartments, urlMunicipality} from '../../ApiRoutes';
+import { urLDepartments, urlMunicipality } from '../../ApiRoutes';
 import { useState, useEffect } from 'react'
 import axios from 'axios';
 import { postUsers } from '../../../methodsUsers';
@@ -43,10 +42,10 @@ export const FormSingUp = () => {
 
     const setEventToEmail = ((event) => {
         setEmail(event.target.value)
-        if(validator.isEmail(event.target.value)){
+        if (validator.isEmail(event.target.value)) {
             setemailError("")
         }
-        else{
+        else {
             setemailError("El correo no es valido.")
         }
         if (event.target.value === "") {
@@ -56,14 +55,14 @@ export const FormSingUp = () => {
 
     const SetEventToPassword = ((event) => {
         setPassword(event.target.value)
-        if (validator.isStrongPassword(event.target.value, { min: 8, max: undefined, minLowercase:1, minUppercase:1, minNumbers:1, minSymbols:1})) {
+        if (validator.isStrongPassword(event.target.value, { min: 8, max: undefined, minLowercase: 1, minUppercase: 1, minNumbers: 1, minSymbols: 1 })) {
             setpasswordError("")
         }
-        else{
+        else {
             setpasswordError("La contraseña debe contener al menos una mayuscula, una minuscula, un numero y un simbolo")
         }
         if (event.target.value === "") {
-            setpasswordError("")    
+            setpasswordError("")
         }
     })
 
@@ -71,7 +70,7 @@ export const FormSingUp = () => {
         fetchDeparments()
     }, [])
 
-    
+
 
     const [iddepartment, setIdDepartment] = useState()
     const [idmunicipality, setIdMunicipality] = useState()
@@ -113,18 +112,22 @@ export const FormSingUp = () => {
     }
 
     const userRegister = () => {
-        postUsers(name, lastName, parseInt(yearsOld), phoneNumber, email, password, parseInt(iddepartment), parseInt(idmunicipality) , ' ');
+        postUsers(name, lastName, parseInt(yearsOld), phoneNumber, email, password, parseInt(iddepartment), parseInt(idmunicipality), ' ');
         Alert("Registro exitoso", "Bienvenido a la comunidad", "success", "ok", "2000")
         navigate('/login')
-}
+    }
+
+    const redirectPolity = () => {
+        navigate('/privacy&polity')
+    }
 
 
-const validateDataInput = (e) => {
+    const validateDataInput = (e) => {
         e.preventDefault();
-        if(name === "" || lastName === "" || yearsOld === 0 || phoneNumber === "" || email === "" || password === "" || iddepartment === "" || idmunicipality === ""){
+        if (name === "" || lastName === "" || yearsOld === 0 || phoneNumber === "" || email === "" || password === "" || iddepartment === "" || idmunicipality === "") {
             Alert("Registro inválido", "Todos los campos son obligatorios", "error", "ok", "2000")
         }
-        else{
+        else {
             userRegister()
         }
     }
@@ -132,14 +135,13 @@ const validateDataInput = (e) => {
     return (
         <div className="form-register-valid">
             <form className='register-valid-info'>
-                <FacebookAuth buttonText={"Ingresar con facebook"} />
-                <br></br><br></br>
+             
                 < GoogleAuth
                     buttonText={"Iniciar sesión con Google"}
                 />
                 <div className="separator-container">
                     <div className="line-separator" />
-                    <p className='separator-info'>OR</p>
+                    <p className='separator-info'>O</p>
                     <div className="line-separator" />
                 </div>
                 <div className="info-register">
@@ -164,6 +166,7 @@ const validateDataInput = (e) => {
                         color: "red"
                     }}>{passwordError}</span>
                 </div>
+                <p className='register-polity'><input type='checkbox' />acepto los terminos de<p onClick={redirectPolity} className='polity-redirect'>politica y privacidad</p></p>
                 <button className="register-submit" disabled={false} onClick={validateDataInput}>REGISTRAR</button>
                 <div className="create-account-login create-account-register">
                     <p>Ya tienes cuenta...</p>

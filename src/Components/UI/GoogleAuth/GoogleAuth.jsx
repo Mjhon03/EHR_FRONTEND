@@ -1,51 +1,97 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { GoogleLogin } from 'react-google-login';
-import { postUsers } from '../../../methodsUsers';
 import axios from 'axios';
-import { urlUsers } from '../../ApiRoutes';
+import { urlLogin, urlUsers} from '../../ApiRoutes';
+import { useNavigate } from 'react-router';
+
 
 export const GoogleAuth = ({ buttonText }) => {
 
-    const[goEmail, setGoEmail] = useState({email: "email"})
-    const[goPassword, setGoPassword] = useState({password: "password"})
 
     const[ name , setName ] = useState("")
     const[ lastName , setLastName ] = useState("")
     const[ email , setEmail ] = useState("")
     const[ password , setPassword ] = useState("")
+    const[imageUrl, setimageUrl] = useState("")
 
-    const responseGoogle =  (response => {
+    const responseGoogle = (response => {
         console.log(response)
-
-        setGoEmail(response.profileObj.email)
-        setGoPassword(response.profileObj.googleId)
         setName(response.profileObj.givenName)
         setLastName(response.profileObj.familyName)
         setEmail(response.profileObj.email)
         setPassword(response.profileObj.googleId)
-
-        userGoogleValidate()
+        setimageUrl(response.profileObj.imageUrl)
     })
 
+    const validState = () => {
+        if (name === "" || lastName === "" ||  email === "" || password === "" || imageUrl === ""){
+            console.log("campo vacio");
+        }
+        else{
+            registerGoogleUser()
+        }
+    }
 
-    const userGoogleValidate =(()=>{
-        axios.get(urlUsers, {params:{email: goEmail, contraseña: goPassword}})
-        .then(response=>{
-            console.log(response.data)
-            if(response.data.length === 1){
-                console.log("usuario registrado anteriormente")
-            }else{
-                console.log("usuario registrado")
-                registerGoogleUser()
-            }
-        })
-        .catch(ex=>{
-            console.log(ex);    
-        })
+    useEffect(() =>{
+        validState()
     })
 
-    const registerGoogleUser  =() =>{
-        postUsers(name, lastName,0 ,"" , email , password , "A", 100 , 1121)
+    const navigate = useNavigate()
+
+    const registerGoogleUser  = () =>{
+        axios.post(`https://easy-house-rent.azurewebsites.net/verifyEmail?email=${email}`)
+            .then(response => {
+                console.log(response); 
+                if (response.data === true) {
+                    axios.post(urlLogin, {
+                        "email" : email,
+                        "password" : password
+                    })
+                    .then(res => {
+                        console.log(res);
+                        localStorage.setItem("userInfo", JSON.stringify(res.data))
+                        console.log(res);
+                        navigate('/')
+                        window.location.reload()
+                    })
+                    .catch(error => {
+                        console.log(error);
+                    })
+                }
+                else{
+                    axios.post(urlUsers, {
+                        "nombre" : name,
+                        "email" : email,
+                        "contrasenna" : password,
+                        "apellido" : lastName,
+                        "edad": 0,
+                        "telefono": "",
+                        "esatdo" : "A",
+                        "departamento": 100,
+                        "municipio": 1121,
+                        "foto": imageUrl
+                    })
+                    .then(resposenDataRegister =>{
+                        console.log(resposenDataRegister);
+                        axios.post(urlLogin, {
+                            "email" : email,
+                            "password" : password
+                        })
+                        .then(respo => {
+                            console.log(respo);
+                            localStorage.setItem("userInfo", JSON.stringify(respo.data))
+                            navigate('/')
+                            window.location.reload()
+                        })
+                        .catch(error => {
+                            console.log(error);
+                        })
+                    })
+                }
+            })
+            .catch(error => {
+                console.log(error);
+            })
     }
 
 

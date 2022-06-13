@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router';
 import { UserContext } from '../../../UserProvider/UserProvider';
 import axios from 'axios';
 import swal from 'sweetalert';
+import CurrencyFormat from 'react-currency-format';
 
 export const MyAnouncementCard = ({ data }) => {
     const { idusuario , idanuncio, titulo, direccion, zona ,ciudad, precio, url1 } = data
@@ -77,12 +78,12 @@ export const MyAnouncementCard = ({ data }) => {
                     }
                     <div className="aling-info">
                         <div className="name-atributes">
-                            <span className='title'>{titulo}</span>
-                            <span className='adress'>{direccion}-{ciudad}</span>
-                            <span className='adress'>{precio}</span>
+                            <p className='title-card'>{titulo}</p>
+                            <p className='adress-city'>{direccion}-{ciudad}</p>
+                            <p><CurrencyFormat value={precio}displayType={'text'} thousandSeparator={true} prefix={'$'} renderText={value => <p>{value}<b>co</b></p>} /></p>
                         </div>
                         <div className="button-visualizer">
-                            <button onClick={SendAnouncement} className='action-visualizer'>ver publicacion</button>
+                            <button onClick={SendAnouncement} className='action-visualizer'>Ver publicación</button>
                         </div>
                     </div>
                 </div>

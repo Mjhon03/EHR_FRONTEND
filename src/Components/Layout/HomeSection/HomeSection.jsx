@@ -30,7 +30,7 @@ export const HomeSection = () => {
             <div className='home-section-container'>
                 <div className="home-section-info">
                     <div className="section-container">
-                        <p className='section-container-slogan'>Aliado en busqueda de hogar</p>
+                        <p className='section-container-slogan'>Aliado en búsqueda de hogar</p>
                         <h3 className='section-container-title'>Easy House Rent</h3>
                     </div>
                     <div className="search-home-container">
@@ -44,21 +44,27 @@ export const HomeSection = () => {
                     <img className="house-icon" src='https://cdn-icons-png.flaticon.com/512/916/916771.png' alt='apartment-icon'></img>
                     <div className="rent-text">
                         <h3 className='rent-text-title'>Diversidad de inmuebles</h3>
+
                         <p className='rent-info-text'>Entre lo que podemos ofrecerte tenemos cosas como viviendas, locales, fincas, apartamentos<br></br> ¡y más!</p>
+
                     </div>
                 </div>
                 <div className="rent-info">
                     <img className="house-icon" src='https://cdn-icons-png.flaticon.com/512/1786/1786971.png' alt='apartment-icon'></img>
                     <div className="rent-text">
                         <h3 className='rent-text-title'>Facilidad de contacto</h3>
-                        <p className='rent-info-text'>contamos con medios que facilitan el contacto entre usuario y propietario.</p>
+
+                        <p className='rent-info-text'>Contamos con medios que falicitan el contacto entre usuario y propietario.</p>
+
                     </div>
                 </div>
                 <div className="rent-info">
                     <img className="house-icon" src='https://cdn-icons-png.flaticon.com/512/2971/2971926.png' alt='apartment-icon'></img>
                     <div className="cabin-text">
                         <h3 className='rent-text-title'>Diversidad de sectores</h3>
-                        <p className='rent-info-text'>publicaciones ofertadas no sólo en sector urbano, también en sector rural.</p>
+
+                        <p className='rent-info-text'>Publicaciones ofertadas no sólo en sector urbano, también en sector rural.</p>
+
                     </div>
 
                 </div>

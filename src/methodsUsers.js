@@ -1,6 +1,5 @@
 import axios from "axios";
-import { Alert } from "./Components/Alert";
-import { urlUsers } from "./Components/ApiRoutes";
+import { urlUsers, urlLogin } from "./Components/ApiRoutes";
 
 export const postUsers = (nombre, apellidos ,edad, telefono ,email ,contraseña , departamento , municipio , foto ) => {
     axios.post(urlUsers,{
@@ -16,7 +15,7 @@ export const postUsers = (nombre, apellidos ,edad, telefono ,email ,contraseña 
         "foto" : foto
     })
     .then(res =>{
-        Alert("Usuario registrado correctamente","Bienvenido a Easy House Rent","success","OK","2000");
+        console.log(res);
     })
 }
 
@@ -27,4 +26,16 @@ export const getUser = (email , password )=>{
     })
 }
 
-
+export const getlogin = (Goemail, Gopassword) => {
+    axios.post(urlLogin, {
+            "email" : Goemail,
+            "password" : Gopassword
+        })
+        .then(response => {
+            console.log(response);
+            localStorage.setItem("userInfo", JSON.stringify(response.data))
+        })
+        .catch(error => {
+            console.log();
+        })
+    }

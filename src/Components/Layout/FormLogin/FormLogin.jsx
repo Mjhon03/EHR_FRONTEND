@@ -1,9 +1,9 @@
 import React, { useState } from 'react'
+
 import { NavLink } from 'react-router-dom';
 import './FormLogin.css'
 import axios from 'axios'
 import { GoogleAuth } from '../../UI/GoogleAuth/GoogleAuth';
-import { FacebookAuth } from '../../UI/FacebookAuth/FacebookAuth';
 import { urlLogin } from '../../ApiRoutes';
 import { useNavigate } from 'react-router-dom'
 import validator from 'validator';
@@ -75,11 +75,10 @@ export const FormLogin = () => {
             <form className="login-valid-info">
                 <div className="auth-services">
                     <GoogleAuth buttonText={"Iniciar sesión con Google"} /><br></br><br></br>
-                    <FacebookAuth buttonText={"Ingresar por facebook"} />
                 </div>
                 <div className="separator-container">
                         <div className="line-separator" />
-                    <p className='separator-info'>OR</p>
+                    <p className='separator-info'>O</p>
                     <div className="line-separator" />
                 </div>
                 <div className="info">
@@ -99,8 +98,8 @@ export const FormLogin = () => {
                     <NavLink to='/forgotPassword'><p className='login-forgot-password'>Olvidaste tu contraseña</p></NavLink>
                 </div>
                 <div className="create-account-login">
-                    <p>No tienes cuenta.. </p>
-                    <NavLink to="/register"><p className='create-account-link'>Crea una</p></NavLink>
+                    <p>No tienes cuenta..  </p>
+                    <NavLink to="/register"><p className='create-account-link'> Crea una</p></NavLink>
                 </div>
             </form>
         </div>

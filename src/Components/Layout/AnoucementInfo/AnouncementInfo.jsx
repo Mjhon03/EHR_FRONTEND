@@ -1,12 +1,26 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router';
 import './AnouncementInfo.css'
 import emailjs from '@emailjs/browser';
 import axios from 'axios';
 import Carousel from 'react-elastic-carousel';
 import { MyAnouncementCard } from '../../UI/MyAnouncementCard/MyAnouncementCard';
+import { UserContext } from '../../../UserProvider/UserProvider';
+import 'react-inner-image-zoom/lib/InnerImageZoom/styles.min.css';
+import { UserImage } from '../../UI/UserImage/UserImage';
+import { AnouncementImages } from '../../UI/AnouncementImages/AnouncementImages';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEnvelopeCircleCheck, faLocationDot, faMessage, faUser } from '@fortawesome/free-solid-svg-icons';
+import CurrencyFormat from 'react-currency-format';
+import { faWhatsapp } from '@fortawesome/free-brands-svg-icons';
 
-export const AnouncementInfo = ({ data }) => {
+
+
+export const AnouncementInfo = ({ data, userData }) => {
+
+    const { user } = useContext(UserContext)
+
+    console.log(userData);
 
     const navigate = useNavigate()
 
@@ -28,7 +42,6 @@ export const AnouncementInfo = ({ data }) => {
     const [rooms, setRooms] = useState('')
     const [garage, setGarage] = useState('no')
 
-
     const getData = () => {
         if (data.length !== 0) {
             setIdAnouncement(data[0].idanuncio)
@@ -49,11 +62,13 @@ export const AnouncementInfo = ({ data }) => {
             setCity(data[0].ciudad)
         }
     }
-
     useEffect(() => {
         getData()
-    }, [data])
+    })
 
+    useEffect(() => {
+        getUserInformation()
+    })
     const sendOtherProfile = () => {
         navigate(`/user/profile?idUser=${idUser}`)
     }
@@ -69,12 +84,15 @@ export const AnouncementInfo = ({ data }) => {
             })
     }
 
+
+
     useEffect(() => {
         getEmailToSend()
         getRecomended()
     }, [idUser])
 
     let params = {
+
         toUser: email,
         anouncementTitle: title,
         post: `https://localhost:3000/anouncement/?idanounce=${idAnouncement}&adzone=${zone}`
@@ -103,9 +121,16 @@ export const AnouncementInfo = ({ data }) => {
     }
 
     const breakproint = [
+
         {
-            width: 500,
+            width: 100,
+            itemsToShow: 1
+        },
+        {
+            width: 415,
             itemsToShow: 2
+
+
         },
         {
             width: 880,
@@ -113,7 +138,7 @@ export const AnouncementInfo = ({ data }) => {
 
         },
         {
-            width: 1260,
+            width: 1280,
             itemsToShow: 4,
         },
     ]
@@ -123,7 +148,6 @@ export const AnouncementInfo = ({ data }) => {
     const getRecomended = () => {
         axios.get('https://easy-house-rent.azurewebsites.net/api/home/recommended', { params: { ciudad: city } })
             .then(response => {
-                console.log(response.data);
                 setRecomended(response.data)
             })
             .catch(err => {
@@ -131,48 +155,59 @@ export const AnouncementInfo = ({ data }) => {
             })
     }
 
+    const sendAlert = () => {
+        console.log('necesita autorizacion');
+    }
+
+    const [userEmail, setUserEmail] = useState('')
+    const [userName, setUserName] = useState(' ')
+    const [userLastName, setUserLastName] = useState('')
+
+    const getUserInformation = () => {
+        if (userData.length !== 0) {
+            setUserEmail(userData[0].email);
+            setUserName(userData[0].nombre)
+            setUserLastName(userData[0].apellidos)
+        }
+    }
+
     return (
         <>
-            <div className="anouncement-info-render">
-                <div className="anouncement-images-container">
-                    <div className="first-image">
-                        <img src={image1} alt="image1" className='anouncement-first-image' />
-                    </div>
-                    <div className="other-images-container">
-                        <div className="other-image-container">
-                            <img onMouseEnter={e => { changePhoto(e) }} src={image2} alt="image2" className='anouncement-other-image' />
-                        </div>
-                        <div className="other-image-container">
-                            <img src={image3} onMouseEnter={e => { changePhoto(e) }} alt="image3" className='anouncement-other-image' />
-                        </div>
-                        <div className="other-image-container">
-                            <img src={image4} alt="image4" onMouseEnter={e => { changePhoto(e) }} className='anouncement-other-image' />
-                        </div>
-                    </div>
+            <div className="advertisement-info">
+                <div className="prop-images">
+                    <AnouncementImages url1={image1} url2={image2} url3={image3} url4={image4} habitaciones={rooms} garaje={garage} modalidad={modality} />
                 </div>
-                <div className="anouncement-aditional-info">
-                    <div className="anouncement-extra-information">
-                        <h1 className='anouncement-title'>{title}</h1>
-                        <p className='anouncement-description'>{description}</p>
-                        <p>{adress}</p>
-                        <p>{editicacion}</p>
-                        <p>{modality}</p>
-                        <p>{value}</p>
-                        <p>{rooms}</p>
-                        <p>{garage}</p>
-                        <p>{city}</p>
+                <div className="prop-advertisement">
+                    <div className="prop-advertisement-subinfo">
+                        <h1>{title}</h1>
+                        <p>{description}</p>
+                        <div className="text-container-dot">
+                            <FontAwesomeIcon icon={faLocationDot} className='tools-render-action' />
+                            <p>{zone} - {city} - {adress}</p>
+                        </div>
+                    
+                        <p><CurrencyFormat value={value} displayType={'text'} thousandSeparator={true} prefix={'$'} renderText={value => <p>{value}<b>co</b></p>} /></p>
                     </div>
-                    <div className="anouncement-actions">
-                        <button className='anouncement-action-redirect' onClick={sendNotification}>notificacion de interes</button>
-                        <button className='anouncement-action-redirect'>chat con el propietario</button>
+                    <div className="user-target-data">
+                        <h2 className='user-data-title'>Propietario</h2>
+                        <div className="user-target">
+                            <UserImage userdata={userData} />
+                            <div className="user-target-info">
+                                <p>{userName} {userLastName}</p>
+                                <p>{userEmail}</p>
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div className="actions-user-anouncement">
-                    <button onClick={sendOtherProfile}>perfil de usuario</button>
+                    <div className="user-target-actions">
+                        <button className='target-profile-actions'><FontAwesomeIcon className='tools-render-action' icon={faUser} />ver perfil</button>
+                        <button className='target-profile-actions'><FontAwesomeIcon className='tools-render-action' icon={faEnvelopeCircleCheck} />notificar interes</button>
+                        <button className='target-profile-actions'><FontAwesomeIcon className='tools-render-action' icon={faMessage} />chat</button>
+                        <button className='target-profile-actions'><FontAwesomeIcon className='tools-render-action' icon={faWhatsapp} />contacto</button>
+                    </div>
                 </div>
             </div>
-            <div className="most-recent-container">
-                <h2>Publicaciones recomendadas</h2>
+            <div className="most-recent-container-home">
+                <h2 className='most-recent-title'>Publicaciones recomendadas</h2>
                 <Carousel itemsToShow={4} pagination={false}
                     breakPoints={breakproint}>
                     {recomended.map(

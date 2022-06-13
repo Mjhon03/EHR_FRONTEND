@@ -2,22 +2,21 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import { Header } from '../../Layout/Header/Header'
-import { RegisterFooter } from '../../Layout/RegisterFooter/RegisterFooter'
+import { Footer } from '../../Layout/Footer/Footer'
 import { ResultCards } from '../../UI/ResultCards/ResultCards'
 import './CategoriesResult.css'
+import { CategoriesNav } from '../../UI/CategoriesNav/CategoriesNav'
 
 export const CategoriesResult = () => {
 
     const [searchParams] = useSearchParams()
     let filter = searchParams.get('type')
-    console.log(filter)
 
     const [data, setData] = useState([])
 
     const getCategories = () => {
         axios.get('https://easy-house-rent.azurewebsites.net/api/home/edification', { params: { edification: filter } })
             .then(response => {
-                console.log(response.data);
                 setData(response.data)
             })
             .catch(err => {
@@ -32,6 +31,7 @@ export const CategoriesResult = () => {
     return (
         <>
             <Header />
+            <CategoriesNav />  
             <div className="cards-content">
                 {
                     data.map(
@@ -41,7 +41,7 @@ export const CategoriesResult = () => {
                     )
                 }
             </div>
-            <RegisterFooter />
+            <Footer />
         </>
     )
 }
