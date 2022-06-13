@@ -9,12 +9,18 @@ import { UserContext } from '../../../UserProvider/UserProvider';
 import 'react-inner-image-zoom/lib/InnerImageZoom/styles.min.css';
 import { UserImage } from '../../UI/UserImage/UserImage';
 import { AnouncementImages } from '../../UI/AnouncementImages/AnouncementImages';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEnvelopeCircleCheck, faLocationDot, faMessage, faUser } from '@fortawesome/free-solid-svg-icons';
+import CurrencyFormat from 'react-currency-format';
+import { faWhatsapp } from '@fortawesome/free-brands-svg-icons';
 
 
 
 export const AnouncementInfo = ({ data, userData }) => {
 
     const { user } = useContext(UserContext)
+
+    console.log(userData);
 
     const navigate = useNavigate()
 
@@ -77,6 +83,8 @@ export const AnouncementInfo = ({ data, userData }) => {
                 console.log(err);
             })
     }
+
+
 
     useEffect(() => {
         getEmailToSend()
@@ -167,13 +175,37 @@ export const AnouncementInfo = ({ data, userData }) => {
         <>
             <div className="advertisement-info">
                 <div className="prop-images">
-                    <AnouncementImages url1={image1} url2={image2} url3={image3} url4={image4} />
+                    <AnouncementImages url1={image1} url2={image2} url3={image3} url4={image4} habitaciones={rooms} garaje={garage} modalidad={modality} />
                 </div>
                 <div className="prop-advertisement">
-
+                    <div className="prop-advertisement-subinfo">
+                        <h1>{title}</h1>
+                        <p>{description}</p>
+                        <div className="text-container-dot">
+                            <FontAwesomeIcon icon={faLocationDot} className='tools-render-action' />
+                            <p>{zone} - {city} - {adress}</p>
+                        </div>
+                    
+                        <p><CurrencyFormat value={value} displayType={'text'} thousandSeparator={true} prefix={'$'} renderText={value => <p>{value}<b>co</b></p>} /></p>
+                    </div>
+                    <div className="user-target-data">
+                        <h2 className='user-data-title'>Propietario</h2>
+                        <div className="user-target">
+                            <UserImage userdata={userData} />
+                            <div className="user-target-info">
+                                <p>{userName} {userLastName}</p>
+                                <p>{userEmail}</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="user-target-actions">
+                        <button className='target-profile-actions'><FontAwesomeIcon className='tools-render-action' icon={faUser} />ver perfil</button>
+                        <button className='target-profile-actions'><FontAwesomeIcon className='tools-render-action' icon={faEnvelopeCircleCheck} />notificar interes</button>
+                        <button className='target-profile-actions'><FontAwesomeIcon className='tools-render-action' icon={faMessage} />chat</button>
+                        <button className='target-profile-actions'><FontAwesomeIcon className='tools-render-action' icon={faWhatsapp} />contacto</button>
+                    </div>
                 </div>
             </div>
-            <UserImage userdata={userData} />
             <div className="most-recent-container-home">
                 <h2 className='most-recent-title'>Publicaciones recomendadas</h2>
                 <Carousel itemsToShow={4} pagination={false}
