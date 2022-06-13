@@ -1,29 +1,28 @@
 .textTitle-nosotros{
     color: #ffffff;
-    font-size: 5rem;
-
+    font-size: 4.5rem;
 }
 .menu-documentation{
     display: flex;
     justify-content: center;
-    width: 450px;
+    width: auto;
     margin: auto;
     padding: 20px;
 }
 .link-documentation{
     margin: 15px;
     text-decoration: none;
-    color:rgba(136,136,136,0.70);
+    color:#595959;
     display: block;
 }
-
 .link-documentation::after{
     content: '';
     display: block;
     width: 0;
     height: 2px;
-    background-color: rgba(136,136,136,0.70);;
-    /* transition: width 3.s; */
+
+    background-color: rgba(136,136,136,0.70);
+
     transition: width 0.25s ease-out;
 }
 .link-documentation:hover::after{
@@ -32,25 +31,28 @@
 }
 .grid-div{
     background-color: #f4f4f4;
-    width: 350px;
-    height: 260px;
+    height: 350px;
+    width:50%;
     border-radius: 9px;
-    margin: auto;
-    padding: 15px;
-    color:rgba(136,136,136,0.70);
-    
-}
 
+    margin:2% auto;
+    padding: 5%;
+    color:rgba(136,136,136,0.70);  
+}
+.grid-div p {
+    text-align:justify;
+
+}
 .allcontainers{
     display: grid;
     grid-template-columns: repeat(2,1fr);
     grid-gap: 20px;
     align-content: center;
-    width: 70%;
+    width:95%;
     margin: auto;
     margin-top: 100px;
+    margin-top: 500px;
 }
-
 #grid-item-photo{
     background-color: #ffffff;
     display: flex;
@@ -58,27 +60,68 @@
     justify-items: center;
     overflow: hidden;
 }
-
-
 .title-content{
     height:300px ;
     display: flex;
     justify-content: center;
     align-items: center;
-    background-image: url("https://cdn.pixabay.com/photo/2018/06/22/11/02/schnoor-3490494_1280.jpg"); 
+    /* background-image: url("https://cdn.pixabay.com/photo/2018/06/22/11/02/schnoor-3490494_1280.jpg");  */
 }
 #filter{
     -webkit-backdrop-filter: blur(15px);
     backdrop-filter: blur(15px);
 }
 .Descriptive-img{
-    width: 350px;
-    padding: auto;
+    object-fit:cover;
+    width: 100%;
+    margin:auto;
     border-radius: 9px;
+}
+
+
+@media screen and (max-width:1200px){
+    .grid-div{
+        width:80%;
+    }
+}
+
+@media screen and (max-width:900px){
+    .grid-div{
+        width:80%;
+    }
 }
 
 @media screen and (max-width:720px){
     .allcontainers{
         grid-template-columns: repeat(1, 1fr);
+    }
+    .grid-div{
+        width:80%;
+        height:350px;
+    }
+    .Descriptive-img {
+        width:100%;
+    }
+    #grid-item-photo{
+        width:90%;
+    }
+}
+
+@media screen and (max-width:400px){
+    .allcontainers{
+        grid-template-columns: repeat(1, 1fr);
+    }
+    .grid-div {
+        width:90%;
+        height:370px;
+    }
+    .textTitle-nosotros{
+        font-size: 3.5rem;
+    } 
+    .grid-div p {
+        text-align:justify;
+    }
+    .divImageAboutUs {
+        height:290px;
     }
 }

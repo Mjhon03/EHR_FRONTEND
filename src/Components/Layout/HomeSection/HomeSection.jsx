@@ -44,21 +44,27 @@ export const HomeSection = () => {
                     <img className="house-icon" src='https://cdn-icons-png.flaticon.com/512/916/916771.png' alt='apartment-icon'></img>
                     <div className="rent-text">
                         <h3 className='rent-text-title'>Diversidad de inmuebles</h3>
-                        <p className='rent-info-text'>No sólo viviendas, también contamos con locales, apartamentos... etc.</p>
+
+                        <p className='rent-info-text'>Entre lo que podemos ofrecerte tenemos cosas como viviendas, locales, fincas, apartamentos<br></br> ¡y más!</p>
+
                     </div>
                 </div>
                 <div className="rent-info">
                     <img className="house-icon" src='https://cdn-icons-png.flaticon.com/512/1786/1786971.png' alt='apartment-icon'></img>
                     <div className="rent-text">
                         <h3 className='rent-text-title'>Facilidad de contacto</h3>
+
                         <p className='rent-info-text'>Contamos con medios que falicitan el contacto entre usuario y propietario.</p>
+
                     </div>
                 </div>
                 <div className="rent-info">
                     <img className="house-icon" src='https://cdn-icons-png.flaticon.com/512/2971/2971926.png' alt='apartment-icon'></img>
                     <div className="cabin-text">
                         <h3 className='rent-text-title'>Diversidad de sectores</h3>
+
                         <p className='rent-info-text'>Publicaciones ofertadas no sólo en sector urbano, también en sector rural.</p>
+
                     </div>
 
                 </div>
