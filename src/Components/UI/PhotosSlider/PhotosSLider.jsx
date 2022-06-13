@@ -51,7 +51,7 @@ export const PhotosSLider = () => {
         </div>
             <h1 className='carousel-title'>Nosotros</h1>
             <div className='first-description'>
-                <p className='text'>La plataforma que te brinda soluciones óptimas en búsqueda de inmuebles,<br></br>
+                <p className='text'>La plataforma que te brinda soluciones óptimas en búsqueda de inmuebles,
                 cada vez más cerca a ti. Quédate y descubre lo que tenemos para ofrecerte.
             </p>
             </div>

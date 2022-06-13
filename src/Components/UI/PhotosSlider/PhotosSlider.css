@@ -17,7 +17,6 @@
 } */
 
 
-
 .carousel-title{
     position: absolute;
     font-size: 5em;
@@ -36,4 +35,28 @@
 
 .text{
     text-align: center;
+}
+
+@media screen and (max-width: 400px){
+    .carousel-title{
+        font-size: 5rem;
+        margin-left:150%;
+        margin-top: 20%;
+        background-color: blue;
+    }
+    .first-description{
+        margin-top: 110%;
+        width: 90%;
+        
+       
+
+    }
+    .flex-carousel{
+        margin-right:-170% ;
+    }
+
+}
+
+@media screen and (max-width: 900px){
+    
 }
