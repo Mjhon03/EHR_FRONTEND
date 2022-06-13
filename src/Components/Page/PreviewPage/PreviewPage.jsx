@@ -1,9 +1,9 @@
-import { CategoriesNav } from "../../UI/CategoriesNav/CategoriesNav"
+import { AnouncementImages } from "../../UI/AnouncementImages/AnouncementImages"
 
 export const PreviewPage = () => {
   return (
     <>
-      < CategoriesNav />
+     <AnouncementImages /> 
     </>
   )
 }
