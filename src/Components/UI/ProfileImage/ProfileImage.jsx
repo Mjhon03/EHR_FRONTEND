@@ -24,7 +24,7 @@ export const ProfileImage = () => {
     }
 
     const changeDefaultImage = (photo) => {
-        if(photo.length === 0){
+        if(photo.length === 1){
             setImage('https://cdn.pixabay.com/photo/2018/11/13/21/43/instagram-3814050_960_720.png')
         }
         else{
@@ -69,7 +69,11 @@ export const ProfileImage = () => {
     }
 
     return (
-        <div className="profile-update">
+        <div className="profile-update-container">
+            <div className="background-image-container">
+
+            </div>
+          <div className="profile-update">
             <img src={image} className='background-profile' alt="profile"></img>
             <input id='image-update'
                 type='file'
@@ -85,5 +89,10 @@ export const ProfileImage = () => {
                 </button>
             </div>
         </div>
+            <div className="user-update-information">
+                
+            </div>
+        </div>
+        
     )
 }

@@ -62,7 +62,7 @@ export const ContactUs = () => {
                       <FontAwesomeIcon className='exit-contact' onClick={changeVisible} icon={faArrowRightFromBracket}></FontAwesomeIcon>
                     </div>
                     <h2 className='create-title'>Ponte en contacto</h2>
-                    <h4 className='create-title'>¡No dude en enviarnos un mensaje!</h4>
+                    <h4 className='create-title title-contact'>¡No dude en enviarnos un mensaje!</h4>
                     <input className='info-input-register' name='userName' type="text" placeholder='Nombre completo' /><br />
                     <input className='info-input-register' name='userEmail' type="email" placeholder='Email' /><br />
                     <textarea className='info-input-register contact-text' name="message" cols="30" rows="10" placeholder='Mensaje'></textarea><br />

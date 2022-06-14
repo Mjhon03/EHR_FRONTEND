@@ -16,6 +16,25 @@ export const Header = () => {
 
   const { user } = useContext(UserContext)
 
+  const [ miniaturePhoto , setMiniaturePhoto ] = useState('')
+
+  console.log(user);
+
+  const getMiniature = () => {
+    if(user !== null){
+      if(user[0].foto.length !== 1){
+        setMiniaturePhoto(user[0].foto)
+      }
+      else{
+        setMiniaturePhoto('https://cdn.pixabay.com/photo/2018/11/13/21/43/instagram-3814050_960_720.png')
+      }
+    }
+  }
+
+  useEffect(()=>{
+    getMiniature()
+  })
+
   const sendProfile = () => {
     navigate('/Profile')
   }
@@ -95,7 +114,7 @@ export const Header = () => {
         <div className="nouser-actions actions-profile">
                 <div className="miniature-container">
                     <div className="miniature-photo-container" >
-                      <img  onClick={sendProfile} src={user[0].foto} className='miniature-image' alt="miniature " />
+                      <img  onClick={sendProfile} src={miniaturePhoto} className='miniature-image' alt="miniature " />
                     </div>
                     <div className="profile-header">
                       <h3 onClick={sendProfile} className='miniature-name'>{user[0].nombre}</h3>
