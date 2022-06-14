@@ -33,24 +33,29 @@
 }
 
 .add-image-info{
-    outline: solid 1px red;
     width: 100%;
     margin: 1em 0 0 0;
-    background: #fff;
+    background: rgba(0,0,0,0.4);
     display: flex;
     justify-content: center;
-    gap: 0.5em;
+    gap: 1em;
+    cursor: pointer;
     align-items: center;
     height: 80px;
 }
 
 .images-add-info{
-    outline: solid 1px red;
-    height: 100%;
-    width: 30%;
+    padding: 0.5em;
+    border-radius: 5px;
+    width: 25%;
     display: flex;
     flex-direction: column;
-    gap: 0.2em;
+    gap: 0.1em;
     align-items: center;
     justify-content: center;
+    box-shadow: 3px 3px 2px 1px rgba(0,0,0,0.30);
+    background: rgb(229, 229, 229);
+    font-weight: bolder;
+    color: rgba(35,35,35,0.95);
 }
+

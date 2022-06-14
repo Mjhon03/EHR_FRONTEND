@@ -36,7 +36,6 @@ export const AnouncementInfo = ({ data, userData }) => {
     const [title, setTitle] = useState('')
     const [city, setCity] = useState('')
     const [description, setDescription] = useState('')
-    const [editicacion, setEedification] = useState('')
     const [adress, setAdress] = useState('')
     const [modality, setModality] = useState('')
     const [value, setValue] = useState('')
@@ -53,7 +52,6 @@ export const AnouncementInfo = ({ data, userData }) => {
             setImage3(data[0].url3)
             setImage4(data[0].url4)
             setDescription(data[0].descripcion)
-            setEedification(data[0].edificacion)
             setAdress(data[0].direccion)
             setModality(data[0].modalidad)
             setValue(data[0].precio)
@@ -63,9 +61,10 @@ export const AnouncementInfo = ({ data, userData }) => {
             setCity(data[0].ciudad)
         }
     }
+
     useEffect(() => {
         getData()
-    })
+    }, [data])
 
     useEffect(() => {
         getUserInformation()
@@ -75,17 +74,21 @@ export const AnouncementInfo = ({ data, userData }) => {
     }
 
     const [email, setEmail] = useState('')
+    const [ phone , setPhone ] = useState('')
 
-    const getEmailToSend = async () => {
+
+    const getEmailToSend = () => {
         axios.get('https://easy-house-rent.azurewebsites.net/api/Users/GetUser', { params: { idusuario: idUser } })
-            .then(response => {
+        .then(response => {
+            if(response.data.length !== 0){
                 setEmail(response.data[0].email)
-            }).catch(err => {
-                console.log(err);
-            })
+                setPhone(response.data[0].telefono)
+            }
+        })
     }
 
-
+    
+    
 
     useEffect(() => {
         getEmailToSend()
@@ -106,19 +109,6 @@ export const AnouncementInfo = ({ data, userData }) => {
             }, function (error) {
                 console.log(error);
             })
-    }
-
-    const changePhoto = (e) => {
-        if (e.target.alt === 'image2') {
-            setImage2(image1)
-            setImage1(e.target.src)
-        } else if (e.target.alt === 'image3') {
-            setImage3(image1)
-            setImage1(e.target.src)
-        } else if (e.target.alt === 'image4') {
-            setImage4(image1)
-            setImage1(e.target.src)
-        }
     }
 
     const breakproint = [
@@ -189,6 +179,17 @@ export const AnouncementInfo = ({ data, userData }) => {
         }
         else {
             console.log("else");
+
+    const sendToWhatsapp = () => {
+        if(phone.length === 0){
+            console.log('funcion no disponible ya que el usuario no tiene un numero de telefono registrado');
+            
+        }
+        else{
+            if(user !== null){
+                window.location.href = `https://api.whatsapp.com/send?phone=+57${phone}&text=Hola%20,%20mi%20nombre%20es%20${user[0].nombre}%20y%20estoy%20interesado%20en%20la%20pulicacion%20${title}%20alojada%20en%20la%20plataforma%20Easy%20House%20Rent%20`
+            }
+
         }
     }
 
@@ -200,30 +201,33 @@ export const AnouncementInfo = ({ data, userData }) => {
                 </div>
                 <div className="prop-advertisement">
                     <div className="prop-advertisement-subinfo">
-                        <h1>{title}</h1>
-                        <p>{description}</p>
+                        <h1 className='value-anouncement-render'>{title}</h1>
+                        <p className='description-value'>{description}</p>
                         <div className="text-container-dot">
                             <FontAwesomeIcon icon={faLocationDot} className='tools-render-action' />
-                            <p>{zone} - {city} - {adress}</p>
+                            <p className='description-value'>{zone} - {city} - {adress}</p>
                         </div>
 
-                        <p><CurrencyFormat value={value} displayType={'text'} thousandSeparator={true} prefix={'$'} renderText={value => <p>{value}<b>co</b></p>} /></p>
+
+                        <CurrencyFormat value={value} displayType={'text'} thousandSeparator={true} prefix={'$'} renderText={value => <p className='value-anouncement-render'>{value}co</p>} />
+
                     </div>
                     <div className="user-target-data">
                         <h2 className='user-data-title'>Propietario</h2>
                         <div className="user-target">
                             <UserImage userdata={userData} />
                             <div className="user-target-info">
-                                <p>{userName} {userLastName}</p>
-                                <p>{userEmail}</p>
+                                <p className='description-value'>{userName} {userLastName}</p>
+                                <p className='description-value value-email' >{userEmail}</p>
                             </div>
                         </div>
                     </div>
                     <div className="user-target-actions">
-                        <button className='target-profile-actions' ><FontAwesomeIcon className='tools-render-action' icon={faUser} />Ver perfil</button>
-                        <button className='target-profile-actions' ><FontAwesomeIcon className='tools-render-action' icon={faEnvelopeCircleCheck} />Notificar interés</button>
-                        <button className='target-profile-actions' ><FontAwesomeIcon className='tools-render-action' icon={faMessage} />Chat</button>
-                        <button className='target-profile-actions' ><FontAwesomeIcon className='tools-render-action' icon={faWhatsapp} />Contacto</button>
+                        <button className='target-profile-actions' onClick={sendOtherProfile}><FontAwesomeIcon className='tools-render-action' icon={faUser} />Ver perfil</button>
+                        <button className='target-profile-actions' onClick={sendNotification}><FontAwesomeIcon className='tools-render-action' icon={faEnvelopeCircleCheck} />Notificar interes</button>
+                        <button className='target-profile-actions' onClick={sendAlert}><FontAwesomeIcon className='tools-render-action' icon={faMessage} />Chat</button>
+                        <button className='target-profile-actions' onClick={sendToWhatsapp}><FontAwesomeIcon className='tools-render-action' icon={faWhatsapp} />Contacto</button>
+
                     </div>
                 </div>
             </div>

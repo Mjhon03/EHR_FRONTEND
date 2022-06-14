@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { UserContext } from '../../../UserProvider/UserProvider';
-import { UpdateInfo } from '../../Modal/UpateInfo/UpdateInfo'
 import { Header } from '../../Layout/Header/Header'
 import './Profile.css'
 import { ModalCreateAnouncement } from '../../Modal/ModalCreateAnouncement/ModalCreateAnouncement'
@@ -11,11 +10,10 @@ import { MyAnouncementCard } from '../../UI/MyAnouncementCard/MyAnouncementCard'
 import Carousel from 'react-elastic-carousel';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHouseCircleXmark } from '@fortawesome/free-solid-svg-icons';
+import { UpdateUserInfo } from '../../UI/UpdateUserInfo/UpdateUserInfo';
 
 export const Profile = () => {
     const { user } = useContext(UserContext)
-
-    console.log(user);
 
     const [userAnouncement, setUserAnouncement] = useState([])
 
@@ -32,7 +30,7 @@ export const Profile = () => {
     useEffect(() => {
         getAdversitement()
         displayMyAnouncement()
-    })
+    },[])
 
     const breakproint = [
 
@@ -86,7 +84,7 @@ export const Profile = () => {
                     </div>
                     <div className="line-profile-separator" />
                     <div className="add-settings-account">
-                        <UpdateInfo />
+                        <UpdateUserInfo />
                         <ModalCreateAnouncement />
                     </div>
                 </div>

@@ -1,13 +1,13 @@
 import React, { useState, useContext, useEffect } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHouseChimneyUser, faCircleInfo, faNewspaper, faHeadset, faCommentDots, faHouseLaptop } from '@fortawesome/free-solid-svg-icons'
+import { faHouseChimneyUser, faCircleInfo, faNewspaper, faCommentDots, faHouseLaptop } from '@fortawesome/free-solid-svg-icons'
 import './Header.css'
 import { NavLink } from 'react-router-dom'
 import { ProfileSettings } from '../../Modal/ProfileSettings/ProfileSettings'
 import { UserContext } from '../../../UserProvider/UserProvider'
 import { useNavigate } from 'react-router'
 import { NoUserMenu } from '../../UI/NoUserMenu/NoUserMenu'
-
+import { ContactUs } from '../../UI/ContactUs/ContactUs'
 
 export const Header = () => {
 
@@ -15,6 +15,10 @@ export const Header = () => {
   const [userSession, setUserSession] = useState(0)
 
   const { user } = useContext(UserContext)
+
+  const sendProfile = () => {
+    navigate('/Profile')
+  }
 
   const SetUserData = () => {
     if (user != null) {
@@ -52,7 +56,6 @@ export const Header = () => {
             <div className='viewTextIcon'><b><p>Inicio</p></b></div>
           </NavLink>
         </div>
-
         <div className='iconHeader'>
           <NavLink to='/ads'>
             <button className='header-action-button'><FontAwesomeIcon className='header-action-icon' icon={faHouseLaptop} /></button>
@@ -78,10 +81,7 @@ export const Header = () => {
           </NavLink>
         </div>
         <div className='iconHeader'>
-          <NavLink to='/'>
-            <button className='header-action-button action-responsive'><FontAwesomeIcon className='header-action-icon' icon={faHeadset} /></button>
-            <div className='viewTextIcon'><b><p>Contacto</p></b></div>
-          </NavLink>
+            <ContactUs />            
         </div>
       </div>
       {userSession === 0 &&
@@ -93,13 +93,12 @@ export const Header = () => {
       }
       {userSession === 1 &&
         <div className="nouser-actions actions-profile">
-            
                 <div className="miniature-container">
-                    <div className="miniature-photo-container">
-                      <img src={user[0].foto} className='miniature-image' alt="miniature " />
+                    <div className="miniature-photo-container" >
+                      <img  onClick={sendProfile} src={user[0].foto} className='miniature-image' alt="miniature " />
                     </div>
                     <div className="profile-header">
-                      <h3 className='miniature-name'>{user[0].nombre}</h3>
+                      <h3 onClick={sendProfile} className='miniature-name'>{user[0].nombre}</h3>
                       < ProfileSettings userData={user} />
                     </div>
                 </div>        

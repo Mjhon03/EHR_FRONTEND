@@ -14,8 +14,6 @@ export const Overlay = styled.div`
 `;
 
 export const Modal = styled.div`
-  top: 11%;
-  position: fixed;
   width: 600px;
   height: 510px;
   text-align: center;
