@@ -5,7 +5,7 @@ import {
   Route,
   HashRouter
 } from "react-router-dom";
-import { Contact } from "./Components/Page/Contact/Contact";
+
 import { Home } from "./Components/Page/Home/Home";
 import { Login } from "./Components/Page/Login/Login";
 import { Register } from "./Components/Page/Register/Register";
@@ -35,7 +35,6 @@ function App() {
       <HashRouter>
         <Routes>
           <Route exact path="/" element={< Home />} />
-          <Route exact path="/Contact" element={<Contact />} />
           <Route exact path="/login" element={<Login />} />
           <Route exact path="/register" element={<Register />} />
           <Route exact path="/aboutUs" element={<AboutUs />} />

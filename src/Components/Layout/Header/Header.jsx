@@ -1,13 +1,13 @@
 import React, { useState, useContext, useEffect } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHouseChimneyUser, faCircleInfo, faNewspaper, faHeadset, faCommentDots, faHouseLaptop } from '@fortawesome/free-solid-svg-icons'
+import { faHouseChimneyUser, faCircleInfo, faNewspaper, faCommentDots, faHouseLaptop } from '@fortawesome/free-solid-svg-icons'
 import './Header.css'
 import { NavLink } from 'react-router-dom'
 import { ProfileSettings } from '../../Modal/ProfileSettings/ProfileSettings'
 import { UserContext } from '../../../UserProvider/UserProvider'
 import { useNavigate } from 'react-router'
 import { NoUserMenu } from '../../UI/NoUserMenu/NoUserMenu'
-
+import { ContactUs } from '../../UI/ContactUs/ContactUs'
 
 export const Header = () => {
 
@@ -56,7 +56,6 @@ export const Header = () => {
             <div className='viewTextIcon'><b><p>Inicio</p></b></div>
           </NavLink>
         </div>
-
         <div className='iconHeader'>
           <NavLink to='/ads'>
             <button className='header-action-button'><FontAwesomeIcon className='header-action-icon' icon={faHouseLaptop} /></button>
@@ -82,10 +81,7 @@ export const Header = () => {
           </NavLink>
         </div>
         <div className='iconHeader'>
-          <NavLink to='/contact'>
-            <button className='header-action-button action-responsive'><FontAwesomeIcon className='header-action-icon' icon={faHeadset} /></button>
-            <div className='viewTextIcon'><b><p>Contacto</p></b></div>
-          </NavLink>
+            <ContactUs />            
         </div>
       </div>
       {userSession === 0 &&
