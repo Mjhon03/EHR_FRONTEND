@@ -15,8 +15,6 @@ import { UpdateUserInfo } from '../../UI/UpdateUserInfo/UpdateUserInfo';
 export const Profile = () => {
     const { user } = useContext(UserContext)
 
-    console.log(user);
-
     const [userAnouncement, setUserAnouncement] = useState([])
 
     const getAdversitement = () => {
@@ -32,7 +30,7 @@ export const Profile = () => {
     useEffect(() => {
         getAdversitement()
         displayMyAnouncement()
-    })
+    },[])
 
     const breakproint = [
 
