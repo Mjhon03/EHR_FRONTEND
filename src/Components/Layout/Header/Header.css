@@ -108,12 +108,8 @@
 .miniature-name{
     width: 80%;
     color: rgba(35,35,35,0.95);
+    cursor: pointer;
 }
-
-.miniature-container{
-    width: 50%;
-}
-
 
 .miniature-container{
     width: 85%;
@@ -122,13 +118,14 @@
     display: flex;
     border-radius: 5px;
     background: #FFF;
-    padding: 0.5em  1em    ;
+    padding: 0.5em  1em;
 }
 
 .miniature-photo-container{
     width: 2.7em;
     height: 2.5em;
     border-radius: 255px;
+    cursor: pointer;
 }
 
 .profile-header{

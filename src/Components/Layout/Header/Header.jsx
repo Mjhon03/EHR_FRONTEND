@@ -16,6 +16,10 @@ export const Header = () => {
 
   const { user } = useContext(UserContext)
 
+  const sendProfile = () => {
+    navigate('/Profile')
+  }
+
   const SetUserData = () => {
     if (user != null) {
       setUserSession(1)
@@ -93,13 +97,12 @@ export const Header = () => {
       }
       {userSession === 1 &&
         <div className="nouser-actions actions-profile">
-            
                 <div className="miniature-container">
-                    <div className="miniature-photo-container">
-                      <img src={user[0].foto} className='miniature-image' alt="miniature " />
+                    <div className="miniature-photo-container" >
+                      <img  onClick={sendProfile} src={user[0].foto} className='miniature-image' alt="miniature " />
                     </div>
                     <div className="profile-header">
-                      <h3 className='miniature-name'>{user[0].nombre}</h3>
+                      <h3 onClick={sendProfile} className='miniature-name'>{user[0].nombre}</h3>
                       < ProfileSettings userData={user} />
                     </div>
                 </div>        
