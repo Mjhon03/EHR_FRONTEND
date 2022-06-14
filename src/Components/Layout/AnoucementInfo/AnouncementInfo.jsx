@@ -20,6 +20,8 @@ export const AnouncementInfo = ({ data, userData }) => {
 
     const { user } = useContext(UserContext)
 
+    console.log(userData);
+
     const navigate = useNavigate()
 
     const [image1, setImage1] = useState('')
@@ -71,6 +73,7 @@ export const AnouncementInfo = ({ data, userData }) => {
     }
 
     const [email, setEmail] = useState('')
+    const [ phone , setPhone ] = useState('')
 
 
     const getEmailToSend = () => {
@@ -78,10 +81,12 @@ export const AnouncementInfo = ({ data, userData }) => {
         .then(response => {
             if(response.data.length !== 0){
                 setEmail(response.data[0].email)
-                console.log(response.data[0].email);
+                setPhone(response.data[0].telefono)
             }
         })
     }
+
+    
     
 
     useEffect(() => {
@@ -156,6 +161,18 @@ export const AnouncementInfo = ({ data, userData }) => {
         }
     }
 
+    const sendToWhatsapp = () => {
+        if(phone.length === 0){
+            console.log('funcion no disponible ya que el usuario no tiene un numero de telefono registrado');
+            
+        }
+        else{
+            if(user !== null){
+                window.location.href = `https://api.whatsapp.com/send?phone=+57${phone}&text=Hola%20,%20mi%20nombre%20es%20${user[0].nombre}%20y%20estoy%20interesado%20en%20la%20pulicacion%20${title}%20alojada%20en%20la%20plataforma%20Easy%20House%20Rent%20`
+            }
+        }
+    }
+
     return (
         <>
             <div className="advertisement-info">
@@ -184,10 +201,10 @@ export const AnouncementInfo = ({ data, userData }) => {
                         </div>
                     </div>
                     <div className="user-target-actions">
-                        <button className='target-profile-actions' onClick={sendOtherProfile}><FontAwesomeIcon className='tools-render-action' icon={faUser} />ver perfil</button>
-                        <button className='target-profile-actions' onClick={sendAlert}><FontAwesomeIcon className='tools-render-action' icon={faEnvelopeCircleCheck} />notificar interes</button>
-                        <button className='target-profile-actions' onClick={sendAlert}><FontAwesomeIcon className='tools-render-action' icon={faMessage} />chat</button>
-                        <button className='target-profile-actions' onClick={sendAlert}><FontAwesomeIcon className='tools-render-action' icon={faWhatsapp} />contacto</button>
+                        <button className='target-profile-actions' onClick={sendOtherProfile}><FontAwesomeIcon className='tools-render-action' icon={faUser} />Ver perfil</button>
+                        <button className='target-profile-actions' onClick={sendNotification}><FontAwesomeIcon className='tools-render-action' icon={faEnvelopeCircleCheck} />Notificar interes</button>
+                        <button className='target-profile-actions' onClick={sendAlert}><FontAwesomeIcon className='tools-render-action' icon={faMessage} />Chat</button>
+                        <button className='target-profile-actions' onClick={sendToWhatsapp}><FontAwesomeIcon className='tools-render-action' icon={faWhatsapp} />Contacto</button>
                     </div>
                 </div>
             </div>
