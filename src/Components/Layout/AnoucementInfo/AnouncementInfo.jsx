@@ -20,8 +20,6 @@ export const AnouncementInfo = ({ data, userData }) => {
 
     const { user } = useContext(UserContext)
 
-    console.log(userData);
-
     const navigate = useNavigate()
 
     const [image1, setImage1] = useState('')
@@ -35,7 +33,6 @@ export const AnouncementInfo = ({ data, userData }) => {
     const [title, setTitle] = useState('')
     const [city, setCity] = useState('')
     const [description, setDescription] = useState('')
-    const [editicacion, setEedification] = useState('')
     const [adress, setAdress] = useState('')
     const [modality, setModality] = useState('')
     const [value, setValue] = useState('')
@@ -52,7 +49,6 @@ export const AnouncementInfo = ({ data, userData }) => {
             setImage3(data[0].url3)
             setImage4(data[0].url4)
             setDescription(data[0].descripcion)
-            setEedification(data[0].edificacion)
             setAdress(data[0].direccion)
             setModality(data[0].modalidad)
             setValue(data[0].precio)
@@ -62,9 +58,10 @@ export const AnouncementInfo = ({ data, userData }) => {
             setCity(data[0].ciudad)
         }
     }
+
     useEffect(() => {
         getData()
-    })
+    }, [data])
 
     useEffect(() => {
         getUserInformation()
@@ -75,16 +72,17 @@ export const AnouncementInfo = ({ data, userData }) => {
 
     const [email, setEmail] = useState('')
 
-    const getEmailToSend = async () => {
+
+    const getEmailToSend = () => {
         axios.get('https://easy-house-rent.azurewebsites.net/api/Users/GetUser', { params: { idusuario: idUser } })
-            .then(response => {
+        .then(response => {
+            if(response.data.length !== 0){
                 setEmail(response.data[0].email)
-            }).catch(err => {
-                console.log(err);
-            })
+                console.log(response.data[0].email);
+            }
+        })
     }
-
-
+    
 
     useEffect(() => {
         getEmailToSend()
@@ -105,19 +103,6 @@ export const AnouncementInfo = ({ data, userData }) => {
             }, function (error) {
                 console.log(error);
             })
-    }
-
-    const changePhoto = (e) => {
-        if (e.target.alt === 'image2') {
-            setImage2(image1)
-            setImage1(e.target.src)
-        } else if (e.target.alt === 'image3') {
-            setImage3(image1)
-            setImage1(e.target.src)
-        } else if (e.target.alt === 'image4') {
-            setImage4(image1)
-            setImage1(e.target.src)
-        }
     }
 
     const breakproint = [
@@ -179,30 +164,30 @@ export const AnouncementInfo = ({ data, userData }) => {
                 </div>
                 <div className="prop-advertisement">
                     <div className="prop-advertisement-subinfo">
-                        <h1>{title}</h1>
-                        <p>{description}</p>
+                        <h1 className='value-anouncement-render'>{title}</h1>
+                        <p className='description-value'>{description}</p>
                         <div className="text-container-dot">
                             <FontAwesomeIcon icon={faLocationDot} className='tools-render-action' />
-                            <p>{zone} - {city} - {adress}</p>
+                            <p className='description-value'>{zone} - {city} - {adress}</p>
                         </div>
-                    
-                        <p><CurrencyFormat value={value} displayType={'text'} thousandSeparator={true} prefix={'$'} renderText={value => <p>{value}<b>co</b></p>} /></p>
+
+                        <CurrencyFormat value={value} displayType={'text'} thousandSeparator={true} prefix={'$'} renderText={value => <p className='value-anouncement-render'>{value}co</p>} />
                     </div>
                     <div className="user-target-data">
                         <h2 className='user-data-title'>Propietario</h2>
                         <div className="user-target">
                             <UserImage userdata={userData} />
                             <div className="user-target-info">
-                                <p>{userName} {userLastName}</p>
-                                <p>{userEmail}</p>
+                                <p className='description-value'>{userName} {userLastName}</p>
+                                <p className='description-value value-email' >{userEmail}</p>
                             </div>
                         </div>
                     </div>
                     <div className="user-target-actions">
-                        <button className='target-profile-actions'><FontAwesomeIcon className='tools-render-action' icon={faUser} />ver perfil</button>
-                        <button className='target-profile-actions'><FontAwesomeIcon className='tools-render-action' icon={faEnvelopeCircleCheck} />notificar interes</button>
-                        <button className='target-profile-actions'><FontAwesomeIcon className='tools-render-action' icon={faMessage} />chat</button>
-                        <button className='target-profile-actions'><FontAwesomeIcon className='tools-render-action' icon={faWhatsapp} />contacto</button>
+                        <button className='target-profile-actions' onClick={sendOtherProfile}><FontAwesomeIcon className='tools-render-action' icon={faUser} />ver perfil</button>
+                        <button className='target-profile-actions' onClick={sendAlert}><FontAwesomeIcon className='tools-render-action' icon={faEnvelopeCircleCheck} />notificar interes</button>
+                        <button className='target-profile-actions' onClick={sendAlert}><FontAwesomeIcon className='tools-render-action' icon={faMessage} />chat</button>
+                        <button className='target-profile-actions' onClick={sendAlert}><FontAwesomeIcon className='tools-render-action' icon={faWhatsapp} />contacto</button>
                     </div>
                 </div>
             </div>
