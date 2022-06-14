@@ -7,6 +7,7 @@ import axios from 'axios';
 import { UserContext } from '../../../UserProvider/UserProvider'
 import { createAnouncement } from '../../../methodAdversitement';
 import { Alert } from '../../Alert';
+import swal from 'sweetalert';
 
 export const ModalCreateAnouncement = () => {
 
@@ -36,20 +37,36 @@ export const ModalCreateAnouncement = () => {
     setVisibility(true)
   }
 
+
+  const validateCloseModal = () => {
+    swal({
+            title: `¿Esta seguro de cerrar la creacion anuncio?`,
+            text: `Una vez que lo cierre no lo podra recuperar la información`,
+            icon: `warning`,
+            buttons: true,
+            dangerMode: true,
+        })
+        .then((willDelete) => {
+            if (willDelete) {
+                setVisibility(false)
+        }
+    });
+  }
+
   const closeModal = () => {
     setVisibility(false)
   }
 
   const validateForm = () => {
     if (title === '' || description === '' || address === '') {
-      Alert("Error", "Por favor complete todos los campos", "error", "Ok", "2000")
+      Alert("Error", "Por favor complete todos los campos", "error", "Ok")
     } else {
       changeMoreStatus()
     }
   }
   const validateFormDetail = () => {
     if (zone === '' || edification === '' || rooms === 0 || garage === 0 || modality === '' || price === 0) {
-      Alert("Error", "Por favor complete todos los campos", "error", "Ok", "2000")
+      Alert("Error", "Por favor complete todos los campos", "error", "Ok")
     } else {
       changeMoreStatus()
     }
@@ -126,13 +143,12 @@ export const ModalCreateAnouncement = () => {
         })
     });
     setArraytImages(imagesUrl)
-    return true;
   }
 
 
   const validateFormImage = () => {
     if (images.length === 0) {
-      Alert("Error", "Por favor agregue al menos una imagen", "error", "Ok", "2000")
+      Alert("Error", "Por favor agregue al menos una imagen", "error", "Ok")
     } else {
       sendProfile()
     }
@@ -141,11 +157,25 @@ export const ModalCreateAnouncement = () => {
     createAnouncement(user[0].idusuario, title, address, city, description, modality, zone, edification, rooms, garage, price, newDate, arrayImages)
   }
 
+  useEffect (() => {
+    if (arrayImages.length > 0) {
+      awaitAnouncement()
+    }
+  },[arrayImages])
+
+
   const sendProfile = async () => {
-    awaitAnouncement() 
     await sendPhotos()
-    if (awaitAnouncement) {
-      Alert('El anuncio se ha creado correctamente', '', 'success', 'OK','2000')
+    if (sendPhotos) {
+      swal({
+            title: `El anuncio se ha creado correactamente`,
+            text: ``,
+            icon: `success`,
+            buttons: true,
+        })
+        .then((willcreate) => {
+          console.log("willcreate", willcreate);
+    });
     }
     closeModal()
     setimages([])
@@ -159,7 +189,7 @@ export const ModalCreateAnouncement = () => {
         <Overlay>
           <Modal>
             <div className="header-modal">
-              <FontAwesomeIcon className='header-modal-icon' onClick={closeModal} icon={faArrowRightFromBracket}></FontAwesomeIcon>
+              <FontAwesomeIcon className='header-modal-icon' onClick={validateCloseModal} icon={faArrowRightFromBracket}></FontAwesomeIcon>
             </div>
             <div className="modal-content-item">
               <h1 className='create-title'>Publica tu propiedad</h1>
