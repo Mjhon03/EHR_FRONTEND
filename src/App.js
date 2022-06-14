@@ -5,7 +5,7 @@ import {
   Route,
   HashRouter
 } from "react-router-dom";
-import { Contact } from "./Components/Page/Contact/Contact";
+
 import { Home } from "./Components/Page/Home/Home";
 import { Login } from "./Components/Page/Login/Login";
 import { Register } from "./Components/Page/Register/Register";
@@ -25,6 +25,7 @@ import { OtherUser } from "./Components/Page/OtherUser/OtherUser";
 import { SuportP } from "./Components/Page/Support/Suports";
 import { CategoriesResult } from "./Components/Page/CategoriesResult/CategoriesResult";
 import { PrivacyPolity } from "./Components/Page/PrivacyPolity/PrivacyPolity";
+import { SeeAds } from "./Components/Page/SeeAdvertisement/SeeAdvertisement";
 
 
 
@@ -34,7 +35,6 @@ function App() {
       <HashRouter>
         <Routes>
           <Route exact path="/" element={< Home />} />
-          <Route exact path="/Contact" element={<Contact />} />
           <Route exact path="/login" element={<Login />} />
           <Route exact path="/register" element={<Register />} />
           <Route exact path="/aboutUs" element={<AboutUs />} />
@@ -52,6 +52,7 @@ function App() {
           <Route exact path="/user/profile" element={<OtherUser />}/>
           <Route exact path='/categories/' element={<CategoriesResult />}/> 
           <Route exact path="/privacy&polity" element={<PrivacyPolity />}/>
+          <Route exact path='/ads' element={<SeeAds/>}/>
         </Routes>
       </HashRouter>
     </UserProvider>
