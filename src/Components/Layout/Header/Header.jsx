@@ -18,8 +18,6 @@ export const Header = () => {
 
   const [ miniaturePhoto , setMiniaturePhoto ] = useState('')
 
-  console.log(user);
-
   const getMiniature = () => {
     if(user !== null){
       if(user[0].foto.length !== 1){
