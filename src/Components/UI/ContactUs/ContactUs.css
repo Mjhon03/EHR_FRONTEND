@@ -72,3 +72,63 @@
     justify-content: flex-end;
     padding: 0.5em;
 }
+
+.contact-text{
+    max-width: 310px;
+    max-height: 216px;
+}
+
+@media screen and (max-width: 750px){
+    .div-container-contact-us{
+        width: 500px;
+    }
+
+    .div-contact-touch{
+        position: static;
+        width: 100%;
+        margin: 0;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .form-contact-us{
+        width: 100%;
+        justify-content: center;
+    }
+
+    .div-contact-us{
+        display: none;
+    }
+
+    .contact-text{
+        max-width: 399px;
+        max-height: 219px;
+    }
+}
+
+@media screen and (max-width : 560px){
+    .div-container-contact-us{
+        width: 400px;
+    }
+
+    .contact-text{
+        max-width: 317px;
+        max-height: 180px;
+    }
+
+}
+
+@media screen and (max-width : 450px ){
+    .div-container-contact-us{
+        width: 300px;
+    }
+
+    .contact-text{
+        max-width: 240px;
+        max-height: 110px;
+    }
+
+    .title-contact{
+        font-size: 12px;
+    }
+}

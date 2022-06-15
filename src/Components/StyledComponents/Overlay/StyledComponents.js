@@ -76,7 +76,7 @@ export const ProfileActionText = styled.p`
 `
 
 export const ProfileCardButton = styled.button`
-  width: 100%;
+  width: 300px;
   padding: 1.1em 2em;
   background-color: rgb(255, 255, 255);
   color: rgba(0, 0, 0, 0.65);

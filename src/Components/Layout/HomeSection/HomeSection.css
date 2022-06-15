@@ -97,8 +97,10 @@
     text-align: center;
     width: 100%;
     margin: 2% auto;
-    font-family: sans-serif;
-    color: rgb(37,46,53);
+    font-family: 'Mulish', sans-serif;  
+    color:  rgba(25, 25, 25, 0.95);
+    font-weight: bolder;
+    font-size: 120%;
 }
 
 @media screen and (max-width: 1600px){
