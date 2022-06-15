@@ -1,11 +1,13 @@
-import React, { useState } from 'react'
-import { postUsers } from '../../../methodsUsers';
+import React, { useEffect, useState } from 'react'
+import axios from 'axios';
 import { signInWithPopup, FacebookAuthProvider} from 'firebase/auth'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebook } from '@fortawesome/free-brands-svg-icons';
 import { authFacebook } from '../../../firebase-config';
+import { urlUsers, urlLogin } from '../../ApiRoutes';
+import { Navigate, useNavigate } from 'react-router';
 
-import axios from 'axios';import { urlUsers } from '../../ApiRoutes';
+
 
 export const FacebookAuth = ({ buttonText }) => {
 
@@ -16,6 +18,8 @@ export const FacebookAuth = ({ buttonText }) => {
 
     const[faEmail, setFaEmail] = useState({email: "email"})
     const[faPassword, setFaPassword] = useState({password: "password"})
+
+    const navigate = useNavigate()
 
     const signInWithFcebook = async () => {
         const provider = new FacebookAuthProvider();
@@ -29,29 +33,63 @@ export const FacebookAuth = ({ buttonText }) => {
                 setName(res.user.displayName)
                 setPhoneNumber(res.user.phoneNumber)
             })
-            userValidate()   
+            
         }
         
-    const registerUser  = () =>{
-        postUsers(name,'',0,phoneNumber,email,password,'A',100,1121)
-    }
-
-
-    const userValidate =(()=>{
-        axios.get(urlUsers, {params:{email: faEmail, contraseña: faPassword}})
-        .then(response=>{
-            console.log(response.data)
-            if(response.data.length === 1){
-                console.log("usuario registrado anteriormente")
-            }else{
-                registerUser()
-                console.log("usuario registrado")
+        const validState = () => {
+            if (name === "" ||  email === "" || password === "" || phoneNumber === "" || faEmail === "" || faPassword === ""){
             }
+            else{
+                registerFacebookUser()
+            }
+        }
+    
+        useEffect(() =>{
+            validState()
         })
-        .catch(ex=>{
-            console.log(ex);    
-        })
-    })
+
+        const registerFacebookUser = () => {
+            axios.post(`https://easy-house-rent.azurewebsites.net/verifyEmail?email=${email}`)
+            .then(response => {
+                if (response.data === true) {
+                    axios.post(urlLogin, {
+                        "email" : email,
+                        "password" : password
+                    })
+                    .then(res => {                        
+                        localStorage.setItem("userInfo", JSON.stringify(res.data))
+                        navigate('/')
+                        window.location.reload()
+                    })
+                }
+                else{
+                    axios.post(urlUsers, {
+                        "nombre" : name,
+                        "email" : email,
+                        "contrasenna" : password,
+                        "apellido" : "",
+                        "edad": 0,
+                        "telefono": phoneNumber,
+                        "esatdo" : "A",
+                        "departamento": 100,
+                        "municipio": 1121,
+                        "foto": ""
+                    })
+                    .then(resposenDataRegister =>{
+                        axios.post(urlLogin, {
+                            "email" : email,
+                            "password" : password
+                        })
+                        .then(respo => {
+                            localStorage.setItem("userInfo", JSON.stringify(respo.data))
+                            navigate('/')
+                            window.location.reload()
+                        })
+                    })
+                }
+            })
+        }
+
 
     return (
         <button type='button' className="facebook-auth" onClick={signInWithFcebook}><FontAwesomeIcon className="facebook-icon" icon={faFacebook}></FontAwesomeIcon>{ buttonText }</button>

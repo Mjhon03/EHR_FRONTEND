@@ -14,6 +14,8 @@ import CurrencyFormat from 'react-currency-format';
 import { faWhatsapp } from '@fortawesome/free-brands-svg-icons';
 import { MiniatureImage } from '../../UI/MiniatureImage/MiniatureImage';
 
+import swal from 'sweetalert';
+
 export const AnouncementInfo = ({ data, userData }) => {
 
     const { user } = useContext(UserContext)
@@ -157,6 +159,24 @@ export const AnouncementInfo = ({ data, userData }) => {
         }
     }
 
+    const noticeInterest = () => {
+        if (user === null) {
+            swal({
+                title: "Necesitas iniciar sesion",
+                text: "Para ver el perfil de otro usuario",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        navigate('/login')
+                    }
+                });
+        }
+        else {
+            console.log("else");
+
     const sendToWhatsapp = () => {
         if(phone.length === 0){
             console.log('funcion no disponible ya que el usuario no tiene un numero de telefono registrado');
@@ -166,6 +186,7 @@ export const AnouncementInfo = ({ data, userData }) => {
             if(user !== null){
                 window.location.href = `https://api.whatsapp.com/send?phone=+57${phone}&text=Hola%20,%20mi%20nombre%20es%20${user[0].nombre}%20y%20estoy%20interesado%20en%20la%20pulicacion%20${title}%20alojada%20en%20la%20plataforma%20Easy%20House%20Rent%20`
             }
+
         }
     }
 
@@ -184,7 +205,9 @@ export const AnouncementInfo = ({ data, userData }) => {
                             <p className='description-value'>{zone} - {city} - {adress}</p>
                         </div>
 
+
                         <CurrencyFormat value={value} displayType={'text'} thousandSeparator={true} prefix={'$'} renderText={value => <p className='value-anouncement-render'>{value}co</p>} />
+
                     </div>
                     <div className="user-target-data">
                         <h2 className='user-data-title'>Propietario</h2>
@@ -201,6 +224,7 @@ export const AnouncementInfo = ({ data, userData }) => {
                         <button className='target-profile-actions' onClick={sendNotification}><FontAwesomeIcon className='tools-render-action' icon={faEnvelopeCircleCheck} />Notificar interes</button>
                         <button className='target-profile-actions' onClick={sendAlert}><FontAwesomeIcon className='tools-render-action' icon={faMessage} />Chat</button>
                         <button className='target-profile-actions' onClick={sendToWhatsapp}><FontAwesomeIcon className='tools-render-action' icon={faWhatsapp} />Contacto</button>
+
                     </div>
                 </div>
             </div>

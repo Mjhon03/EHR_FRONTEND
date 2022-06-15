@@ -113,7 +113,7 @@ export const FormSingUp = () => {
 
     const userRegister = () => {
         postUsers(name, lastName, parseInt(yearsOld), phoneNumber, email, password, parseInt(iddepartment), parseInt(idmunicipality), ' ');
-        Alert("Registro exitoso", "Bienvenido a la comunidad", "success", "ok", "2000")
+        Alert("Registro exitoso", "Bienvenido a la comunidad", "success", "ok")
         navigate('/login')
     }
 
@@ -125,7 +125,7 @@ export const FormSingUp = () => {
     const validateDataInput = (e) => {
         e.preventDefault();
         if (name === "" || lastName === "" || yearsOld === 0 || phoneNumber === "" || email === "" || password === "" || iddepartment === "" || idmunicipality === "") {
-            Alert("Registro inválido", "Todos los campos son obligatorios", "error", "ok", "2000")
+            Alert("Registro inválido", "Todos los campos son obligatorios", "error", "ok")
         }
         else {
             userRegister()
