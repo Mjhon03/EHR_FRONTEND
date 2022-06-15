@@ -85,7 +85,6 @@ export const Profile = () => {
                                 <h2 className='not-anouncement-title'>Aun no tienes publicaciones...</h2>
                             </div>
                         </div>
-
                     }
                     {viewAnouncement === 1 &&
                         <Carousel itemsToShow={4} pagination={false}
