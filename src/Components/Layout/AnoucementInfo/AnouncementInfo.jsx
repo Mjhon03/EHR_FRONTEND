@@ -176,7 +176,9 @@ export const AnouncementInfo = ({ data, userData }) => {
         }
         else {
             console.log("else");
-
+        }
+    }
+    
     const sendToWhatsapp = () => {
         if(phone.length === 0){
             console.log('funcion no disponible ya que el usuario no tiene un numero de telefono registrado');
