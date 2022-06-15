@@ -1,11 +1,60 @@
 .BodySupport{
   width: 100%;
   text-align: center;
+  background-image:linear-gradient(90deg, rgba(34, 58, 52, 0.757) 50%, rgba(25, 30, 21, 0.65) 100%)git , url("https://fondosmil.com/fondo/52683.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
 }
+
+.FatherSupport{
+  width: 95%;
+  padding: 5em;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+.ImagePersonSupport{
+  height: 30em;
+}
+
+.TextArea{
+  width: 50%;
+  display: flex;
+  align-items: center;
+}
+
+
+.TituloSupport{
+  font-size: 2.5EM;
+  }
+
+.TextSupport{
+  font-size: 1.2em;
+}
+
+.ContacSupport{
+  font-size: 1.1em;
+}
+
+.OrganicerText{
+  border-radius: 15px;
+  background-color:rgb(229, 229, 229);
+  padding: 1em;
+}
+
+
+.OrganicerQuestions{
+  display: flex;
+  height: 25em;
+  width: 100%;
+}
+/* 
 
 .SingSuport{
   background: url("https://cdn.pixabay.com/photo/2021/12/19/12/27/road-6881040__340.jpg");
-  /* background: url("https://cdn.pixabay.com/photo/2015/03/07/03/50/smoke-662747_960_720.png"); */
+  background: url("https://cdn.pixabay.com/photo/2015/03/07/03/50/smoke-662747_960_720.png");
   width: 100%;
   height: 18em;
 }
@@ -37,16 +86,21 @@
   border-color: aliceblue;
   background: transparent;
   color: white;
-}
+} */
 
 .FrecuentsQuentions{
+  width: 95%;
+  margin: auto;
   padding-top:3em ;
-
+  padding-bottom: 3em;
+  background-color:rgb(229, 229, 229);
+  border-radius: 15px;
 }
+
 
 .FrecuentsQuentionsh4{
   font-size: 2em;
-  color: rgb(78, 81, 114);
+  color: rgb(0, 0, 0);
 }
 
 .Questionsspace{
@@ -57,10 +111,26 @@
 
 .Questions{
   font-size: 1.5em;
-  
+  transition: 500ms;
+}
+
+.Questions:hover{
+  font-size: 1.8em;
+  transition: 500ms;
+}
+/* 
+.Container-redesign{
+  width: 100%;
+  align-items: center;
+  margin-bottom: 3em;
+  display: flex;
+  justify-content: space-between;
 }
 
 .Manualspace{
+  border-radius: 15px;
+  margin: auto;
+  width: 40%;
   background: rgb(229,229,229);
   display: flex;
   align-items: center;
@@ -72,7 +142,7 @@
 }
 .textSpace{
   text-align: center;
-  width: 40%;
+  width: 80%;
 }
 
 .ManualH4{
@@ -80,7 +150,7 @@
 }
 
 .ManualP{
-
+  font-size: 1.4em;
 }
 
 li{
@@ -90,9 +160,11 @@ li{
 }
 
 .Emailspace{
-  display: flex;
-  align-items: center;
+  border-radius: 15px;
+  margin: auto;
+  width: 40%;
   justify-content: space-evenly;
+  background: rgb(229,229,229);
 }
 
 .Emailimg{
@@ -100,8 +172,7 @@ li{
 }
 
 .Emailtext{
-  width: 50%;
-  font-size: 1.2em;
+  font-size: 1.4em;
 }
 
 .EmailDirec{
@@ -110,4 +181,5 @@ li{
   align-items: center;
   justify-content: center;
   height: 3em;
-}
+} */
+
