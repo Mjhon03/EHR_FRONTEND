@@ -7,21 +7,18 @@ import Carousel from 'react-elastic-carousel';
 import { MyAnouncementCard } from '../../UI/MyAnouncementCard/MyAnouncementCard';
 import { UserContext } from '../../../UserProvider/UserProvider';
 import 'react-inner-image-zoom/lib/InnerImageZoom/styles.min.css';
-import { UserImage } from '../../UI/UserImage/UserImage';
 import { AnouncementImages } from '../../UI/AnouncementImages/AnouncementImages';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEnvelopeCircleCheck, faLocationDot, faMessage, faUser } from '@fortawesome/free-solid-svg-icons';
 import CurrencyFormat from 'react-currency-format';
 import { faWhatsapp } from '@fortawesome/free-brands-svg-icons';
+import { MiniatureImage } from '../../UI/MiniatureImage/MiniatureImage';
+
 import swal from 'sweetalert';
-
-
 
 export const AnouncementInfo = ({ data, userData }) => {
 
     const { user } = useContext(UserContext)
-
-    console.log(userData);
 
     const navigate = useNavigate()
 
@@ -215,7 +212,7 @@ export const AnouncementInfo = ({ data, userData }) => {
                     <div className="user-target-data">
                         <h2 className='user-data-title'>Propietario</h2>
                         <div className="user-target">
-                            <UserImage userdata={userData} />
+                            <MiniatureImage userdata={userData} />
                             <div className="user-target-info">
                                 <p className='description-value'>{userName} {userLastName}</p>
                                 <p className='description-value value-email' >{userEmail}</p>

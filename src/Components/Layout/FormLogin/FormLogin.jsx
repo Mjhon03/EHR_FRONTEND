@@ -88,10 +88,6 @@ export const FormLogin = () => {
                     <br></br>
                     <input type="password" minLength='8' required className='info-input-register' placeholder="Contraseña" onChange={SetEventToPassword} onKeyUp={e=>(enterLogin(e))} ></input>
                 </div>
-                <div className="remember-password">
-                    <input className='remember-check' type='checkbox'></input>
-                    <p>Recuérdame</p>
-                </div>
                 <div className="forgot-password">
                     <button className="register-submit" onClick={(e) => validateDataInput(e)}>Entrar</button>
                     <NavLink to='/forgotPassword'><p className='login-forgot-password'>Olvidaste tu contraseña</p></NavLink>
