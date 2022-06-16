@@ -33,6 +33,10 @@ export const UpdateUserInfo = () => {
     setPhone(user[0].telefono)
   }
 
+  useEffect(() => {
+    setStatus()
+  },[])
+
   const changeName = (e) =>{
     setName(e.target.value)
   }
@@ -48,14 +52,6 @@ export const UpdateUserInfo = () => {
   const changePhone = (e) =>{
     setPhone(e.target.value)
   }
-
-  useEffect(() => {
-    console.log(name)
-    console.log(lastName)
-    console.log(email)
-    console.log(phone);
-  })
-
 
   const sendDataUpdate = () => {
     axios.put('https://easy-house-rent.azurewebsites.net/api/Users' , {

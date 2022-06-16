@@ -21,17 +21,13 @@ export const Profile = () => {
         axios.get('https://easy-house-rent.azurewebsites.net/api/Advertisement/AdUser', { params: { idusuario: user[0].idusuario } })
             .then(response => {
                 setUserAnouncement(response.data)
-                console.log(response);
             })
             .catch(err => {
                 console.log(err);
             })
     }
 
-    useEffect(() => {
-        getAdversitement()
-        displayMyAnouncement()
-    },)
+    
 
     const breakproint = [
 
@@ -49,6 +45,11 @@ export const Profile = () => {
             itemsToShow: 4,
         },
     ]
+    
+    useEffect(() => {
+        getAdversitement()
+        displayMyAnouncement()
+    },)
 
     const [viewAnouncement, setViewAnouncement] = useState(0)
 
@@ -61,7 +62,6 @@ export const Profile = () => {
         }
     }
 
-    console.log(user);
 
     return (
         <>
