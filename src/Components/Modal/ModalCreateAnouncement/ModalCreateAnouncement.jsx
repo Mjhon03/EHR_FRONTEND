@@ -40,17 +40,17 @@ export const ModalCreateAnouncement = () => {
 
   const validateCloseModal = () => {
     swal({
-            title: `¿Esta seguro de cerrar la creacion anuncio?`,
-            text: `Una vez que lo cierre no lo podra recuperar la información`,
-            icon: `warning`,
-            buttons: true,
-            dangerMode: true,
-        })
-        .then((willDelete) => {
-            if (willDelete) {
-                setVisibility(false)
+      title: `¿Esta seguro de cerrar la creacion anuncio?`,
+      text: `Una vez que lo cierre no lo podra recuperar la información`,
+      icon: `warning`,
+      buttons: true,
+      dangerMode: true,
+    })
+      .then((willDelete) => {
+        if (willDelete) {
+          setVisibility(false)
         }
-    });
+      });
   }
 
   const closeModal = () => {
@@ -135,16 +135,16 @@ export const ModalCreateAnouncement = () => {
       formData.append("upload_preset", "anouncement")
       axios.post("https://api.cloudinary.com/v1_1/easyhouserent/image/upload", formData)
         .then(response => {
-          console.log(response.data.url);
           imagesUrl.push(response.data.url)
+          if (imagesUrl.length === images.length) {
+            awaitAnouncement(imagesUrl)
+          }
         })
         .catch(err => {
           console.log(err);
         })
     });
-    if(imagesUrl.length === images.length){
-      setArraytImages(imagesUrl)
-    }
+
   }
 
 
@@ -155,24 +155,23 @@ export const ModalCreateAnouncement = () => {
       sendProfile()
     }
   }
-  const awaitAnouncement = async () => {
-    console.log(arrayImages);
-    createAnouncement(user[0].idusuario, title, address, city, description, modality, zone, edification, rooms, garage, price, newDate, arrayImages)
+  const awaitAnouncement = async (imagesUrl) => {
+    createAnouncement(user[0].idusuario, title, address, city, description, modality, zone, edification, rooms, garage, price, newDate, imagesUrl)
   }
 
   const sendProfile = async () => {
     await sendPhotos()
     if (sendPhotos) {
       swal({
-            title: `El anuncio se ha creado correactamente`,
-            text: ``,
-            icon: `success`,
-            buttons: true,
-        })
+        title: `El anuncio se ha creado correactamente`,
+        text: ``,
+        icon: `success`,
+        buttons: true,
+      })
         .then((willcreate) => {
           console.log("willcreate", willcreate);
           awaitAnouncement()
-    });
+        });
     }
     closeModal()
     setimages([])
@@ -203,22 +202,18 @@ export const ModalCreateAnouncement = () => {
                     <div className="required-info">
                       <input type='text' placeholder='Titulo de la publicacion' className='email-put' onChange={(e) => {
                         setTitle(e.target.value)
-                        console.log(e.target.value)
                       }} />
                       <div className="modality-medium">
                         <input className='email-put' type='text' placeholder='direccion' onChange={(e) => {
                           setAddress(e.target.value)
-                          console.log(e.target.value)
                         }} />
                         <input className='email-put' type='text' placeholder='ciudad' onChange={(e) => {
                           setCity(e.target.value)
-                          console.log(e.target.value)
                         }} />
                       </div>
                       <textarea className='email-put create-description' placeholder='descripcion de la vivienda ( detalles de la vivienda , consideraciones , aportes importantes a tener en cuenta )'
                         onChange={(e) => {
                           setDescription(e.target.value)
-                          console.log(e.target.value);
                         }} />
                     </div>
                   </div>
@@ -241,7 +236,6 @@ export const ModalCreateAnouncement = () => {
                       <div className="modality-medium">
                         <select className='email-put' onChange={(e) => {
                           setModality(e.target.value)
-                          console.log(e.target.value)
                         }}>
                           <option value="">modalidad</option>
                           <option value="venta">venta</option>
@@ -249,7 +243,6 @@ export const ModalCreateAnouncement = () => {
                         </select>
                         <select className='email-put' onChange={(e) => {
                           setZone(e.target.value)
-                          console.log(e.target.value);
                         }}>
                           <option value="">zona</option>
                           <option value="rural">rural</option>
@@ -261,7 +254,6 @@ export const ModalCreateAnouncement = () => {
                       <div className="modality-medium">
                         <select className='email-put' onChange={(e) => {
                           setEdification(e.target.value)
-                          console.log(e.target.value);
                         }}>
                           <option value="">tipo de edificacion</option>
                           <option value="finca">finca</option>
@@ -272,16 +264,13 @@ export const ModalCreateAnouncement = () => {
                         </select>
                         <input type='number' placeholder='habitaciones' className='email-put' onChange={(e) => {
                           setRooms(e.target.value)
-                          console.log(e.target.value)
                         }} />
                       </div>
                       <input type='text' placeholder='garaje' className='email-put' onChange={(e) => {
                         setGarage(e.target.value)
-                        console.log(e.target.value)
                       }} />
                       <input type='number' placeholder='precio' className='email-put' onChange={(e) => {
                         setPrice(e.target.value)
-                        console.log(e.target.value)
                       }} />
                     </div>
                   </div>
@@ -302,7 +291,7 @@ export const ModalCreateAnouncement = () => {
                   <div className="create-info">
                     <h2 className='create-subtitle'>Verificacion de datos</h2>
                     <div className="required-info">
-                    
+
                       <label className="btn btn-warning select-files">
                         <span>Seleccionar archivos </span>
                         <input hidden type="file" multiple onChange={(e) => { changeInput(e) }}></input>
