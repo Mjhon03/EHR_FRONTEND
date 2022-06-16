@@ -31,17 +31,29 @@
   }
 
 .TextSupport{
-  font-size: 1.2em;
+  font-size: 1.6em;
 }
 
 .ContacSupport{
-  font-size: 1.1em;
+  width: 80%;
+  padding: 2%;
+  color: rgb(89,228,168) ;
+  background : rgb(37,46,53);
+  border: none;
+  border-radius: 5px;
+  font-size: 100%;
+  font-weight: bolder;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: 0.3s ease;
 }
 
 .OrganicerText{
   border-radius: 15px;
   background-color:rgb(229, 229, 229);
   padding: 1em;
+  height: 28.5em;
+  box-shadow: 1px 7px 11px 1px rgba(55,55,55,0.85);
 }
 
 
@@ -50,43 +62,6 @@
   height: 25em;
   width: 100%;
 }
-/* 
-
-.SingSuport{
-  background: url("https://cdn.pixabay.com/photo/2021/12/19/12/27/road-6881040__340.jpg");
-  background: url("https://cdn.pixabay.com/photo/2015/03/07/03/50/smoke-662747_960_720.png");
-  width: 100%;
-  height: 18em;
-}
-
-.SingSuporth1{
-  color: white;
-  padding-top: 2%;
-  font-size: 3em;
-}
-
-.SingSuporth4{
-  color: rgb(255, 255, 255);
-  font-size: 2em;
-}
-.SingSuportDIV{
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: rgb(255, 255, 255);
-  padding: 2%;
-}
-
-.loginTecnical{
-  font-size: 1em;
-  padding: 3px;
-  margin: 10px;
-  border:solid 3px;
-  border-color: aliceblue;
-  background: transparent;
-  color: white;
-} */
 
 .FrecuentsQuentions{
   width: 95%;
@@ -95,12 +70,12 @@
   padding-bottom: 3em;
   background-color:rgb(229, 229, 229);
   border-radius: 15px;
+  box-shadow: 1px 7px 11px 1px rgba(55,55,55,0.85);
 }
 
 
 .FrecuentsQuentionsh4{
   font-size: 2em;
-  color: rgb(0, 0, 0);
 }
 
 .Questionsspace{
@@ -112,74 +87,73 @@
 .Questions{
   font-size: 1.5em;
   transition: 500ms;
+  cursor: pointer;
+}
+.Checkbox-modal{
+  display: none;
+}
+.Checkbox-modal:checked ~ .ModalQuestions{
+  opacity: 1;
+  visibility: visible;
 }
 
 .Questions:hover{
   font-size: 1.8em;
   transition: 500ms;
 }
-/* 
-.Container-redesign{
+
+.ModalQuestions{
   width: 100%;
+  height: 50em;
+  display: flex;
+  justify-content: center;
   align-items: center;
-  margin-bottom: 3em;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.5);
+  transition: all 500ms ease;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.Container-ModalQuestions{
+  width: 30em;
+  height: 20em;
+  margin: auto;
+  background-color: white;
+  box-shadow: 1px 7px 25px rgba(0, 0, 0, 0.5);
+  transition: all 500ms ease;
+}
+
+.Header-questions{
+  height: 3em;
+  width: 100%;
+  padding: 2%;
+  color: rgb(89,228,168) ;
+  background : rgb(37,46,53);
+  border: none;
+  font-size: 100%;
+  font-weight: bolder;
+  letter-spacing: 1px;
   display: flex;
   justify-content: space-between;
 }
 
-.Manualspace{
-  border-radius: 15px;
+.Close-questions{
+  cursor: pointer;
+} 
+
+
+.Contenido-Modal-Questions{
+  width: 95%;
   margin: auto;
-  width: 40%;
-  background: rgb(229,229,229);
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  justify-content: space-evenly;
 }
 
-.Manualh1{
-  font-size: 12em;
+.Contenido-Modal-QuestionsP{
+  align-content: justify;
+  font-size: 19px;
 }
-.textSpace{
-  text-align: center;
-  width: 80%;
-}
-
-.ManualH4{
-  font-size: 1.5em;
-}
-
-.ManualP{
-  font-size: 1.4em;
-}
-
-li{
-  font-size: 1.2em;
-  margin: 1em;
-  list-style: none;
-}
-
-.Emailspace{
-  border-radius: 15px;
-  margin: auto;
-  width: 40%;
-  justify-content: space-evenly;
-  background: rgb(229,229,229);
-}
-
-.Emailimg{
-  max-height: 12em;
-}
-
-.Emailtext{
-  font-size: 1.4em;
-}
-
-.EmailDirec{
-  font-size: 2em;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 3em;
-} */
-
