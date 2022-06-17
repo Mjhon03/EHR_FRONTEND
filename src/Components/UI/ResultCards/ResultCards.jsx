@@ -14,12 +14,12 @@ export const ResultCards = ({ data }) => {
         navigate(`/anouncement/?idanounce=${idanuncio}&adzone=${zona}`)
     }
     return (
-        <div onClick={sendToSelect} key={idanuncio} className='card-render-container' >
+        <div  key={idanuncio} className='card-render-container' >
             <div className="card-img-render">
-                <img src={url1} alt="cardrender" className='card-img' />
+                <img  onClick={sendToSelect} src={url1} alt="cardrender" className='card-img' />
 
             </div>
-            <div className="card-info-render">
+            <div onClick={sendToSelect} className="card-info-render">
                 <div className="card-tools-render">
                     <p className='text-container-icon'><FontAwesomeIcon icon={faCalendarDays} className='tools-render-action' />{fecha}</p>
                     <h1 className='card-title-render'>{titulo}</h1>
@@ -29,7 +29,7 @@ export const ResultCards = ({ data }) => {
                     </div>
                 </div>
                 <div className="tools-actions">
-                    <CurrencyFormat value={precio} displayType={'text'} thousandSeparator={true} prefix={'$'} renderText={value => <p className='render-value'>{value}<b>co</b></p>} />
+                    <CurrencyFormat value={precio} displayType={'text'} thousandSeparator={true} prefix={'$'} renderText={value => <p className='render-value'>{value} <b>COP</b></p>} />
                     <div className="icons-actions">
                         <FontAwesomeIcon className='tools-render-action' icon={faEye} />
                         <FontAwesomeIcon className='tools-render-action' icon={faMaximize} />

@@ -20,7 +20,7 @@ export const Footer = () => {
             <NavLink to="/privacy&polity" className="footer-textInfo"><p>POLÍTICA DE PRIVACIDAD</p></NavLink>
             <NavLink to="/aboutUs" className="footer-textInfo"><p>SOBRE NOSOTROS</p></NavLink>
             <NavLink to='/contact' className='footer-textInfo'><p>CONTÁCTENOS</p></NavLink>
-            <a href='https://drive.google.com/drive/folders/1obo9D2blXSvf-dtLHS9bJo8NKRASVAKR?usp=sharing' target='_blank' rel='noreferrer' className='footer-textInfo'><p>DOCUMENTACIÓN</p></a>
+            <a href='https://docs.google.com/document/d/1DrMiacSmUaDV-KP539nJ3Ih5Rh1ChZUK/edit?usp=sharing&ouid=105302495081606426840&rtpof=true&sd=true' target='_blank' rel='noreferrer' className='footer-textInfo'><p>MANUAL DE USUARIO</p></a>
         </div>
     </div>
   )
