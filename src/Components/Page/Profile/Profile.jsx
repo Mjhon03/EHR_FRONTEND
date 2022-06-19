@@ -27,10 +27,7 @@ export const Profile = () => {
             })
     }
 
-    useEffect(() => {
-        getAdversitement()
-        displayMyAnouncement()
-    }, [])
+    
 
     const breakproint = [
 
@@ -48,6 +45,11 @@ export const Profile = () => {
             itemsToShow: 4,
         },
     ]
+    
+    useEffect(() => {
+        getAdversitement()
+        displayMyAnouncement()
+    },)
 
     const [viewAnouncement, setViewAnouncement] = useState(0)
 
@@ -60,7 +62,6 @@ export const Profile = () => {
         }
     }
 
-    console.log(user);
 
     return (
         <>

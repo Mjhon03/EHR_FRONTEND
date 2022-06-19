@@ -80,7 +80,7 @@ export const MyAnouncementCard = ({ data }) => {
                         <div className="name-atributes">
                             <p className='title-card'>{titulo}</p>
                             <p className='adress-city'>{direccion}-{ciudad}</p>
-                            <p><CurrencyFormat value={precio}displayType={'text'} thousandSeparator={true} prefix={'$'} renderText={value => <p>{value}<b>co</b></p>} /></p>
+                            <p><CurrencyFormat value={precio}displayType={'text'} thousandSeparator={true} prefix={'$'} renderText={value => <p>{value} <b>COP</b></p>} /></p>
                         </div>
                         <div className="button-visualizer">
                             <button onClick={SendAnouncement} className='action-visualizer'>Ver publicación</button>

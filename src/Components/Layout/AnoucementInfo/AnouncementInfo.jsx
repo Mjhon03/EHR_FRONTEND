@@ -13,6 +13,7 @@ import { faEnvelopeCircleCheck, faLocationDot, faMessage, faUser } from '@fortaw
 import CurrencyFormat from 'react-currency-format';
 import { faWhatsapp } from '@fortawesome/free-brands-svg-icons';
 import { MiniatureImage } from '../../UI/MiniatureImage/MiniatureImage';
+import { Alert } from '../../Alert'
 
 import swal from 'sweetalert';
 
@@ -71,21 +72,21 @@ export const AnouncementInfo = ({ data, userData }) => {
     }
 
     const [email, setEmail] = useState('')
-    const [ phone , setPhone ] = useState('')
+    const [phone, setPhone] = useState('')
 
 
     const getEmailToSend = () => {
         axios.get('https://easy-house-rent.azurewebsites.net/api/Users/GetUser', { params: { idusuario: idUser } })
-        .then(response => {
-            if(response.data.length !== 0){
-                setEmail(response.data[0].email)
-                setPhone(response.data[0].telefono)
-            }
-        })
+            .then(response => {
+                if (response.data.length !== 0) {
+                    setEmail(response.data[0].email)
+                    setPhone(response.data[0].telefono)
+                }
+            })
     }
 
-    
-    
+
+
 
     useEffect(() => {
         getEmailToSend()
@@ -100,12 +101,18 @@ export const AnouncementInfo = ({ data, userData }) => {
     };
 
     const sendNotification = () => {
-        emailjs.send('service_8uodl5r', 'template_i43k2ju', params, 'KYHPZomx00qkEwjDP')
-            .then(function (response) {
-                console.log(response);
-            }, function (error) {
-                console.log(error);
-            })
+        console.log(user);
+        if (user === null) {
+            noticeInterest('Debe estar logueado para poder enviar una notificación', '¿ Desea iniciar sesion ?')
+        }
+        else {
+            emailjs.send('service_8uodl5r', 'template_i43k2ju', params, 'KYHPZomx00qkEwjDP')
+                .then(function (response) {
+                    Alert('El correo fue enviado correctamente', '', 'success', 'Ok', '3000')
+                }, function (error) {
+                    console.log(error);
+                })
+        }
     }
 
     const breakproint = [
@@ -159,87 +166,88 @@ export const AnouncementInfo = ({ data, userData }) => {
         }
     }
 
-    const noticeInterest = () => {
-        if (user === null) {
-            swal({
-                title: "Necesitas iniciar sesion",
-                text: "Para ver el perfil de otro usuario",
-                icon: "warning",
-                buttons: true,
-                dangerMode: true,
-            })
-                .then((willDelete) => {
-                    if (willDelete) {
-                        navigate('/login')
-                    }
-                });
-        }
-        else {
-            console.log("else");
 
-    const sendToWhatsapp = () => {
-        if(phone.length === 0){
-            console.log('funcion no disponible ya que el usuario no tiene un numero de telefono registrado');
-            
-        }
-        else{
-            if(user !== null){
-                window.location.href = `https://api.whatsapp.com/send?phone=+57${phone}&text=Hola%20,%20mi%20nombre%20es%20${user[0].nombre}%20y%20estoy%20interesado%20en%20la%20pulicacion%20${title}%20alojada%20en%20la%20plataforma%20Easy%20House%20Rent%20`
+    const noticeInterest = (title, recomendation) => {
+        swal({
+            title: title,
+            text: recomendation,
+            icon: "warning",
+            buttons: true,
+            dangerMode: true,
+        })
+        .then((willDelete) => {
+            if (willDelete) {
+                navigate('/login')
             }
-
-        }
+        });
     }
 
-    return (
-        <>
-            <div className="advertisement-info">
-                <div className="prop-images">
-                    <AnouncementImages url1={image1} url2={image2} url3={image3} url4={image4} habitaciones={rooms} garaje={garage} modalidad={modality} />
+const sendToWhatsapp = () => {
+    if (phone.length === 0) {
+        console.log('funcion no disponible ya que el usuario no tiene un numero de telefono registrado');
+
+    }
+    else {
+        if (user === null) {
+            noticeInterest('Debe estar logueado para poder contactar con este usuario', '¿ Desea iniciar sesion ?')
+        }
+        else {
+            window.location.href = `https://api.whatsapp.com/send?phone=+57${phone}&text=Hola%20,%20mi%20nombre%20es%20${user[0].nombre}%20y%20estoy%20interesado%20en%20la%20pulicacion%20${title}%20alojada%20en%20la%20plataforma%20Easy%20House%20Rent%20`
+        }
+
+    }
+}
+
+return (
+    <>
+        <div className="advertisement-info">
+            <div className="prop-images">
+                <AnouncementImages url1={image1} url2={image2} url3={image3} url4={image4} habitaciones={rooms} garaje={garage} modalidad={modality} />
+            </div>
+            <div className="prop-advertisement">
+                <div className="prop-advertisement-subinfo">
+                    <h1 className='value-anouncement-render'>{title}</h1>
+                    <p className='description-value'>{description}</p>
+                    <div className="text-container-dot">
+                        <FontAwesomeIcon icon={faLocationDot} className='tools-render-action' />
+                        <p className='description-value'>{zone} - {city} - {adress}</p>
+                    </div>
+
+
+                    <CurrencyFormat value={value} displayType={'text'} thousandSeparator={true} prefix={'$'} renderText={value => <p className='value-anouncement-render'>{value} COP</p>} />
+
                 </div>
-                <div className="prop-advertisement">
-                    <div className="prop-advertisement-subinfo">
-                        <h1 className='value-anouncement-render'>{title}</h1>
-                        <p className='description-value'>{description}</p>
-                        <div className="text-container-dot">
-                            <FontAwesomeIcon icon={faLocationDot} className='tools-render-action' />
-                            <p className='description-value'>{zone} - {city} - {adress}</p>
-                        </div>
-
-
-                        <CurrencyFormat value={value} displayType={'text'} thousandSeparator={true} prefix={'$'} renderText={value => <p className='value-anouncement-render'>{value}co</p>} />
-
-                    </div>
-                    <div className="user-target-data">
-                        <h2 className='user-data-title'>Propietario</h2>
-                        <div className="user-target">
-                            <MiniatureImage userdata={userData} />
-                            <div className="user-target-info">
-                                <p className='description-value'>{userName} {userLastName}</p>
-                                <p className='description-value value-email' >{userEmail}</p>
-                            </div>
+                <div className="user-target-data">
+                    <h2 className='user-data-title'>Propietario</h2>
+                    <div className="user-target">
+                        <MiniatureImage userdata={userData} />
+                        <div className="user-target-info">
+                            <p className='description-value'>{userName} {userLastName}</p>
+                            <p className='description-value value-email' >{userEmail}</p>
                         </div>
                     </div>
-                    <div className="user-target-actions">
-                        <button className='target-profile-actions' onClick={sendOtherProfile}><FontAwesomeIcon className='tools-render-action' icon={faUser} />Ver perfil</button>
-                        <button className='target-profile-actions' onClick={sendNotification}><FontAwesomeIcon className='tools-render-action' icon={faEnvelopeCircleCheck} />Notificar interes</button>
-                        <button className='target-profile-actions' onClick={sendAlert}><FontAwesomeIcon className='tools-render-action' icon={faMessage} />Chat</button>
-                        <button className='target-profile-actions' onClick={sendToWhatsapp}><FontAwesomeIcon className='tools-render-action' icon={faWhatsapp} />Contacto</button>
+                </div>
+                <div className="user-target-actions">
+                    <button className='target-profile-actions' onClick={sendOtherProfile}><FontAwesomeIcon className='tools-render-action' icon={faUser} />Ver perfil</button>
+                    <button className='target-profile-actions' onClick={sendNotification}><FontAwesomeIcon className='tools-render-action' icon={faEnvelopeCircleCheck} />Notificar interes</button>
+                    <button className='target-profile-actions' onClick={sendAlert}><FontAwesomeIcon className='tools-render-action' icon={faMessage} />Chat</button>
+                    <button className='target-profile-actions' onClick={sendToWhatsapp}><FontAwesomeIcon className='tools-render-action' icon={faWhatsapp} />Contacto</button>
 
-                    </div>
                 </div>
             </div>
-            <div className="most-recent-container-home">
-                <h2 className='most-recent-title'>Publicaciones recomendadas</h2>
-                <Carousel itemsToShow={4} pagination={false}
-                    breakPoints={breakproint}>
-                    {recomended.map(
-                        recomended => (
-                            <MyAnouncementCard key={recomended.idanuncio} data={recomended} />
-                        )
+        </div>
+        <div className="most-recent-container-home">
+            <h2 className='most-recent-title'>Publicaciones recomendadas</h2>
+            <Carousel itemsToShow={4} pagination={false}
+                breakPoints={breakproint}>
+                {recomended.map(
+                    recomended => (
+                        <MyAnouncementCard key={recomended.idanuncio} data={recomended} />
                     )
-                    }
-                </Carousel>
-            </div>
-        </>
-    )
+                )
+                }
+            </Carousel>
+        </div>
+    </>
+)
 }

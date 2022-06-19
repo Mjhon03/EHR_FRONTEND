@@ -22,7 +22,7 @@ modality , zone , edification , rooms , garage , price , date , images ) =>{
         url4 : images[3]
     })
     .then(response => {
-        console.log(response.status);
+        console.log(response);
     })
     .catch(err => {
         console.log(err);
