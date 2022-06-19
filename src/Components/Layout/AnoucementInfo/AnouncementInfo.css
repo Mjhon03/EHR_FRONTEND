@@ -114,3 +114,20 @@
     background: rgb(229, 229, 229);
     box-shadow: 3px 3px 2px 1px rgba(0,0,0,0.30);
 }
+
+@media screen and (max-width: 1150px){
+    .advertisement-info{
+        flex-direction: column;
+    }
+
+    .advertisement-info{
+        padding: 2em 0;
+    }
+
+    .prop-advertisement{
+        max-width: 830px;
+        margin: auto;
+        gap: 1em;
+    }
+}
+

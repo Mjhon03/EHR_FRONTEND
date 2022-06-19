@@ -47,7 +47,7 @@ export const AnouncementImages = ({ url1, url2, url3, url4, habitaciones, garaje
                     </div>
                 </div>
             </div>
-            <br />
+            <br className='separator-images' />
             <div className="add-image-info">
                 <div className="images-add-info">
                     <p>modalidad</p>
