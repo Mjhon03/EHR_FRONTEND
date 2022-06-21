@@ -6,11 +6,11 @@ import { ModalCreateAnouncement } from '../../Modal/ModalCreateAnouncement/Modal
 import { Footer } from '../../Layout/Footer/Footer';
 import { ProfileImage } from '../../UI/ProfileImage/ProfileImage';
 import axios from 'axios';
-import { MyAnouncementCard } from '../../UI/MyAnouncementCard/MyAnouncementCard'
 import Carousel from 'react-elastic-carousel';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHouseCircleXmark } from '@fortawesome/free-solid-svg-icons';
 import { UpdateUserInfo } from '../../UI/UpdateUserInfo/UpdateUserInfo';
+import { UserAnouncementCard } from '../../UI/UserAnouncementCard/UserAnouncementCard';
 
 export const Profile = () => {
     const { user } = useContext(UserContext)
@@ -92,7 +92,7 @@ export const Profile = () => {
                             breakPoints={breakproint}>
                             {userAnouncement.map(
                                 userAnouncement => (
-                                    <MyAnouncementCard key={userAnouncement.idanuncio} data={userAnouncement} />
+                                    <UserAnouncementCard key={userAnouncement.idanuncio} data={userAnouncement} />
                                 )
                             )
                             }

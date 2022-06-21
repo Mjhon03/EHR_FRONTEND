@@ -108,7 +108,7 @@
     width: 100%;
 }
 
-.card .button-visualizer .action-visualizer {
+.action-visualizer {
     background: rgba(35, 35, 35, 0.95);
     outline: none;
     border: none;
