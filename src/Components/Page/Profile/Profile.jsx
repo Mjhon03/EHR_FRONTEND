@@ -16,6 +16,8 @@ import { UserAnouncementCard } from '../../UI/UserAnouncementCard/UserAnouncemen
 export const Profile = () => {
     const { user } = useContext(UserContext)
 
+    console.log(user);
+
     const [userAnouncement, setUserAnouncement] = useState([])
 
     const getAdversitement = () => {
