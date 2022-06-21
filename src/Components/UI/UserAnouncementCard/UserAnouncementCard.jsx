@@ -7,8 +7,9 @@ import { UserContext } from '../../../UserProvider/UserProvider';
 import axios from 'axios';
 import swal from 'sweetalert';
 import { UpdateAnouncement } from '../../Modal/UpdateAnouncement/UpdateAnouncement';
+import CurrencyFormat from 'react-currency-format';
 
-export const UserAnouncementCard = ({ data }) => {
+export const UserAnouncementCard = ({ data , allData }) => {
     const { idusuario, idanuncio, titulo, direccion, zona, ciudad, precio, url1 } = data
     const { user } = useContext(UserContext)
 
@@ -70,7 +71,7 @@ export const UserAnouncementCard = ({ data }) => {
                     {displayOptions &&
                         <div className="card-options">
                             <FontAwesomeIcon className='icon-action-mycard' icon={faTrash} onClick={confirmDelete} />
-                            <UpdateAnouncement />
+                            <UpdateAnouncement data={allData} />
                         </div>
                     }
                 </div>
@@ -79,9 +80,9 @@ export const UserAnouncementCard = ({ data }) => {
                 </div>
             </div>
             <div className="mycard-info">
-                <h3>{titulo}</h3>
+                <h3 className=''>{titulo}</h3>
                 <p>{direccion} {zona} {ciudad}</p>
-                <p>{precio}</p>
+                <CurrencyFormat value={precio} displayType={'text'} thousandSeparator={true} prefix={'$'} renderText={value => <p>{value} <b>COP</b></p>} />
             </div>
             <div className="mycard-footer">
                 <button onClick={SendAnouncement} className='action-visualizer'>Ver anuncio</button>

@@ -57,6 +57,10 @@
     transform: scale(1.1);
 }
 
+.mycard-info{
+    padding: 1em;
+}
+
 .mycard-footer{
     width: 100%;
     padding: 1em;

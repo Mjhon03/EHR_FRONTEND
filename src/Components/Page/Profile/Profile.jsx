@@ -12,6 +12,7 @@ import { faHouseCircleXmark } from '@fortawesome/free-solid-svg-icons';
 import { UpdateUserInfo } from '../../UI/UpdateUserInfo/UpdateUserInfo';
 import { UserAnouncementCard } from '../../UI/UserAnouncementCard/UserAnouncementCard';
 
+
 export const Profile = () => {
     const { user } = useContext(UserContext)
 
@@ -19,7 +20,7 @@ export const Profile = () => {
 
     const getAdversitement = () => {
         axios.get('https://easy-house-rent.azurewebsites.net/api/Advertisement/AdUser', { params: { idusuario: user[0].idusuario } })
-            .then(response => {
+                    .then(response => {
                 setUserAnouncement(response.data)
             })
             .catch(err => {
@@ -92,7 +93,7 @@ export const Profile = () => {
                             breakPoints={breakproint}>
                             {userAnouncement.map(
                                 userAnouncement => (
-                                    <UserAnouncementCard key={userAnouncement.idanuncio} data={userAnouncement} />
+                                    <UserAnouncementCard key={userAnouncement.idanuncio} data={userAnouncement}  allData={userAnouncement}/>
                                 )
                             )
                             }

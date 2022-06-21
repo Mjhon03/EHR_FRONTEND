@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom'
 import axios from 'axios';
 import validator from 'validator';
 import { Footer } from '../Footer/Footer';
+import { Alert } from '../../Alert';
 
 export const PasswordResetForm = () => {
 
@@ -89,10 +90,10 @@ export const PasswordResetForm = () => {
         e.preventDefault();
         axios.put(`https://easy-house-rent.azurewebsites.net/api/Password`, bodyParameters, { headers: { Authorization: `Bearer ${emailToken}` } })
             .then(response => {
-                alert('Contraseña ha sido actualizada correctamente')
+                Alert('Su contraseña ha sido actualizado correctamente', '', 'success', 'Ok', '3000')
                 navigate('/login')
             }).catch(ex => {
-                console.log(ex);
+                Alert('No se pudo actualizar su contraseña', '', 'error', 'Ok', '3000')
             })
     }
 
