@@ -16,8 +16,6 @@ import { UserAnouncementCard } from '../../UI/UserAnouncementCard/UserAnouncemen
 export const Profile = () => {
     const { user } = useContext(UserContext)
 
-    console.log(user);
-
     const [userAnouncement, setUserAnouncement] = useState([])
 
     const getAdversitement = () => {
@@ -32,22 +30,28 @@ export const Profile = () => {
 
     
 
-    const breakproint = [
-
+    const breakproint = [ 
+    
         {
-            width: 500,
-            itemsToShow: 2
+          width: 100,
+          itemsToShow : 1
         },
         {
-            width: 880,
-            itemsToShow: 3
-
+          width: 415,
+          itemsToShow : 2
+    
+          
         },
         {
-            width: 1260,
-            itemsToShow: 4,
+          width: 880,
+          itemsToShow: 3
+    
         },
-    ]
+        { 
+          width: 1280,
+          itemsToShow: 4,
+        },
+       ]
     
     useEffect(() => {
         getAdversitement()

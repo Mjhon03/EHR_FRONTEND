@@ -7,7 +7,7 @@
 
 .profile-user-container {
     margin: 1em auto 2em auto;
-    width: 80%;
+    width: 100%;
     display: flex;
     gap: 2em;
 
@@ -167,5 +167,32 @@
 
     .most-recent-container{
         width: 90%;
+    }
+}
+
+@media screen and ( max-width: 1130px){
+    .user-info-tools{
+        padding: 1em;
+    }
+}
+
+@media screen and (max-width : 800px ){
+    .user-info-tools{
+        padding: 0.5em;
+        width: 100%;
+        border-radius: 0;
+    }
+
+    .line-profile-separator{
+        width: 92%;
+    }
+    
+    .add-settings-account{
+        gap: 0.5em;
+    }
+
+    .most-recent-container{
+        width: 100%;
+        border-radius: 0;
     }
 }
