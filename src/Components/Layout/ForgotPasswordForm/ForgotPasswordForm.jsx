@@ -35,9 +35,7 @@ export const ForgotPasswordForm = () => {
                     setToken(`https://easyhouserent.azurewebsites.net/#/passwordReset/?token=${response.data.token}`)
                     localStorage.setItem('email', email)
                     sendEmail()
-                } else {
-                    console.log(response.data)
-                }
+                } 
             })
         }
     

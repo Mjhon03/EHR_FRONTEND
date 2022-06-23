@@ -7,24 +7,42 @@ import { useState } from 'react'
 import { UserContext } from '../../../UserProvider/UserProvider'
 import { Modal, Overlay, ProfileCardButton } from '../../StyledComponents/Overlay/StyledComponents'
 import './UpdateUserInfo.css'
+import swal from 'sweetalert';
 
 export const UpdateUserInfo = () => {
 
-  const { user , updateInfo } = useContext(UserContext)
+  const { user, updateInfo } = useContext(UserContext)
   const [visibility, setVisibility] = useState(false)
 
   const updateVisibility = () => {
     setVisibility(true)
   }
 
+
+
+  const validateCloseModal = () => {
+    swal({
+      title: `¿Esta seguro de cerrar la actualizacion del usuario?`,
+      text: `Una vez que lo cierre no lo podra recuperar la información`,
+      icon: `warning`,
+      buttons: true,
+      dangerMode: true,
+    })
+      .then((willDelete) => {
+        if (willDelete) {
+          closeModal()
+        }
+      });
+  }
+
   const closeModal = () => {
     setVisibility(false)
   }
 
-  const [ name , setName ] = useState(user[0].nombre)
-  const [ lastName , setLastName ] = useState(user[0].apellidos)
-  const [ email , setEmail ] = useState(user[0].email)
-  const [ phone , setPhone ] = useState(user[0].telefono)
+  const [name, setName] = useState(user[0].nombre)
+  const [lastName, setLastName] = useState(user[0].apellidos)
+  const [email, setEmail] = useState(user[0].email)
+  const [phone, setPhone] = useState(user[0].telefono)
 
   const setStatus = () => {
     setName(user[0].nombre)
@@ -35,41 +53,41 @@ export const UpdateUserInfo = () => {
 
   useEffect(() => {
     setStatus()
-  },[])
+  }, [])
 
-  const changeName = (e) =>{
+  const changeName = (e) => {
     setName(e.target.value)
   }
 
-  const changeLastName = (e) =>{
+  const changeLastName = (e) => {
     setLastName(e.target.value)
   }
 
-  const changeEmail = (e) =>{
+  const changeEmail = (e) => {
     setEmail(e.target.value)
   }
 
-  const changePhone = (e) =>{
+  const changePhone = (e) => {
     setPhone(e.target.value)
   }
 
   const sendDataUpdate = () => {
-    axios.put('https://easy-house-rent.azurewebsites.net/api/Users' , {
-      idusuario : user[0].idusuario,
-      nombre : name,
-      apellidos : lastName,
-      email : email,
-      telefono : phone
+    axios.put('https://easy-house-rent.azurewebsites.net/api/Users', {
+      idusuario: user[0].idusuario,
+      nombre: name,
+      apellidos: lastName,
+      email: email,
+      telefono: phone
     })
-    .then(res => {
-      console.log(res)
-      if(res.status === 200){
-        updateInfo( name, lastName, email, phone )
-      }
-    })
-    .catch(err => {
-      console.log(err)
-    })
+      .then(res => {
+        console.log(res)
+        if (res.status === 200) {
+          updateInfo(name, lastName, email, phone)
+        }
+      })
+      .catch(err => {
+        console.log(err)
+      })
   }
 
   return (
@@ -79,20 +97,20 @@ export const UpdateUserInfo = () => {
         <Overlay>
           <Modal>
             <div className="header-modal">
-              <FontAwesomeIcon className='header-modal-icon' onClick={closeModal} icon={faArrowRightFromBracket}></FontAwesomeIcon>
+              <FontAwesomeIcon className='header-modal-icon' onClick={validateCloseModal} icon={faArrowRightFromBracket}></FontAwesomeIcon>
             </div>
             <div className="update-content">
               <h1 className='create-title'>Actualiza tu informacion</h1>
             </div>
             <div className="update-render-info">
               <p>Nombres</p>
-              <input type="text" className='email-put' placeholder='Nombres' defaultValue={user[0].nombre} onChange={(e) => {changeName(e)}} ></input>
+              <input type="text" className='email-put' placeholder='Nombres' defaultValue={user[0].nombre} onChange={(e) => { changeName(e) }} ></input>
               <p>Apellidos</p>
-              <input type="text" className='email-put' placeholder='Apellidos' defaultValue={user[0].apellidos} onChange={(e) => {changeLastName(e)}}></input>
+              <input type="text" className='email-put' placeholder='Apellidos' defaultValue={user[0].apellidos} onChange={(e) => { changeLastName(e) }}></input>
               <p>Correo Electronico</p>
-              <input type="text" className='email-put' placeholder='Correo electronico' defaultValue={user[0].email} onChange={(e) => {changeEmail(e)}}></input>
+              <input type="text" className='email-put' placeholder='Correo electronico' defaultValue={user[0].email} onChange={(e) => { changeEmail(e) }}></input>
               <p>Telefono</p>
-              <input type="text" className='email-put' placeholder='Telefono' defaultValue={user[0].telefono} onChange={(e) => {changePhone(e)}} ></input>
+              <input type="text" className='email-put' placeholder='Telefono' defaultValue={user[0].telefono} onChange={(e) => { changePhone(e) }} ></input>
             </div>
             <div className="update-info-container">
               <button className='send-email' onClick={sendDataUpdate}>Actualizar</button>

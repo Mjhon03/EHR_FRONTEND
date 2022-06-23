@@ -19,13 +19,13 @@ export const ModalCreateAnouncement = () => {
   const [city, setCity] = useState('')
   const [title, setTitle] = useState('')
   const [description, setDescription] = useState('')
-  const [address, setAddress] = useState(' ')
-  const [zone, setZone] = useState(' ')
+  const [address, setAddress] = useState('')
+  const [zone, setZone] = useState('')
   const [edification, setEdification] = useState('')
-  const [rooms, setRooms] = useState(' ')
-  const [garage, setGarage] = useState(' ')
+  const [rooms, setRooms] = useState('')
+  const [garage, setGarage] = useState('')
   const [modality, setModality] = useState('')
-  const [price, setPrice] = useState(' ')
+  const [price, setPrice] = useState('')
 
   useEffect(() => {
   }, [formSection])
@@ -125,7 +125,6 @@ export const ModalCreateAnouncement = () => {
     setimages(newImgs);
   }
 
-  const [arrayImages, setArraytImages] = useState([])
 
   const sendPhotos = async () => {
     let imagesUrl = []
@@ -266,17 +265,21 @@ export const ModalCreateAnouncement = () => {
                           setRooms(e.target.value)
                         }} />
                       </div>
-                      <input type='text' placeholder='garaje' className='email-put' onChange={(e) => {
+                      <select className='email-put' onChange={(e) => {
                         setGarage(e.target.value)
-                      }} />
+                      }}>
+                        <option value="">garaje</option>
+                        <option value="si">si</option>
+                        <option value="no">no</option>
+                      </select>
                       <input type='number' placeholder='precio' className='email-put' onChange={(e) => {
                         setPrice(e.target.value)
                       }} />
                     </div>
                   </div>
                   <div className="first-action-container create-action-container">
-                    <button className='send-email create-action-button' onClick={decreaseStatus}>anterior</button>
-                    <button className='send-email create-action-button' onClick={validateFormDetail}>siguente</button>
+                    <button className='send-email create-action-button' onClick={decreaseStatus}>Anterior</button>
+                    <button className='send-email create-action-button' onClick={validateFormDetail}>Siguente</button>
                   </div>
                 </div>
               }

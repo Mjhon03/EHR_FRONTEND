@@ -212,10 +212,7 @@ return (
                         <FontAwesomeIcon icon={faLocationDot} className='tools-render-action' />
                         <p className='description-value'>{zone} - {city} - {adress}</p>
                     </div>
-
-
                     <CurrencyFormat value={value} displayType={'text'} thousandSeparator={true} prefix={'$'} renderText={value => <p className='value-anouncement-render'>{value} COP</p>} />
-
                 </div>
                 <div className="user-target-data">
                     <h2 className='user-data-title'>Propietario</h2>

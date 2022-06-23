@@ -95,7 +95,7 @@ export const ProfileImage = () => {
                     <div className="content-image-props">
                         <div className="content-props-user">
                             <FontAwesomeIcon className='tools-render-action' icon={faLocationDot}/>
-                            <p className='user-data-tools'>Quindio - pijao</p>
+                            <p className='user-data-tools'>{ user[0].nombreDepartamento} - {user[0].nombreMunicipio }</p>
                         </div>
                         <div className="content-props-user">
                             <FontAwesomeIcon className='tools-render-action' icon={ faEnvelope } />
