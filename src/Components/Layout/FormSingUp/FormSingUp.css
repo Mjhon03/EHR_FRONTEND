@@ -25,6 +25,7 @@
 }
 
 .register-valid-info{
+    max-width: 600px;
     margin: 5%;
     width: 40%;
     text-align: center;

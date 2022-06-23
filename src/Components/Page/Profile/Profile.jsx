@@ -6,11 +6,12 @@ import { ModalCreateAnouncement } from '../../Modal/ModalCreateAnouncement/Modal
 import { Footer } from '../../Layout/Footer/Footer';
 import { ProfileImage } from '../../UI/ProfileImage/ProfileImage';
 import axios from 'axios';
-import { MyAnouncementCard } from '../../UI/MyAnouncementCard/MyAnouncementCard'
 import Carousel from 'react-elastic-carousel';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHouseCircleXmark } from '@fortawesome/free-solid-svg-icons';
 import { UpdateUserInfo } from '../../UI/UpdateUserInfo/UpdateUserInfo';
+import { UserAnouncementCard } from '../../UI/UserAnouncementCard/UserAnouncementCard';
+
 
 export const Profile = () => {
     const { user } = useContext(UserContext)
@@ -19,7 +20,7 @@ export const Profile = () => {
 
     const getAdversitement = () => {
         axios.get('https://easy-house-rent.azurewebsites.net/api/Advertisement/AdUser', { params: { idusuario: user[0].idusuario } })
-            .then(response => {
+                    .then(response => {
                 setUserAnouncement(response.data)
             })
             .catch(err => {
@@ -29,22 +30,28 @@ export const Profile = () => {
 
     
 
-    const breakproint = [
-
+    const breakproint = [ 
+    
         {
-            width: 500,
-            itemsToShow: 2
+          width: 100,
+          itemsToShow : 1
         },
         {
-            width: 880,
-            itemsToShow: 3
-
+          width: 415,
+          itemsToShow : 2
+    
+          
         },
         {
-            width: 1260,
-            itemsToShow: 4,
+          width: 880,
+          itemsToShow: 3
+    
         },
-    ]
+        { 
+          width: 1280,
+          itemsToShow: 4,
+        },
+       ]
     
     useEffect(() => {
         getAdversitement()
@@ -92,7 +99,7 @@ export const Profile = () => {
                             breakPoints={breakproint}>
                             {userAnouncement.map(
                                 userAnouncement => (
-                                    <MyAnouncementCard key={userAnouncement.idanuncio} data={userAnouncement} />
+                                    <UserAnouncementCard key={userAnouncement.idanuncio} data={userAnouncement}  allData={userAnouncement}/>
                                 )
                             )
                             }

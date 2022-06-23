@@ -38,22 +38,28 @@ export const OtherUser = () => {
       })
   }
 
-  const breakproint = [
-
+  const breakproint = [ 
+    
     {
-      width: 500,
-      itemsToShow: 2
+      width: 100,
+      itemsToShow : 1
+    },
+    {
+      width: 415,
+      itemsToShow : 2
+
+      
     },
     {
       width: 880,
       itemsToShow: 3
 
     },
-    {
-      width: 1260,
+    { 
+      width: 1280,
       itemsToShow: 4,
     },
-  ]
+   ] 
 
   const [viewAnouncement, setViewAnouncement] = useState(0)
 

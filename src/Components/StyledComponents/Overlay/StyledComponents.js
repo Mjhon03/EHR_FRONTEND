@@ -93,6 +93,13 @@ export const ProfileCardButton = styled.button`
     color: rgba(0,0,0,0.65);
     padding: 1.1em 2.1em;
   }
+
+  @media screen and (max-width : 600px ) {
+    width: 100%;
+    padding: 1em 0.5em;
+    font-size: 12px;
+    
+  }
 `
 
 export const ProfileInfoContent = styled.div`
