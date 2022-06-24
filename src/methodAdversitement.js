@@ -22,7 +22,7 @@ export const createAnouncement = (iduser, title, adress, city, description,
         url4: images[3]
     })
         .then(response => {
-            console.log(response);
+            console.log(response.status);
         })
         .catch(err => {
             console.log(err);

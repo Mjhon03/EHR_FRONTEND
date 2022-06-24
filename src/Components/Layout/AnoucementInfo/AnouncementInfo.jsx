@@ -13,7 +13,7 @@ import { faEnvelopeCircleCheck, faLocationDot, faMessage, faUser } from '@fortaw
 import CurrencyFormat from 'react-currency-format';
 import { faWhatsapp } from '@fortawesome/free-brands-svg-icons';
 import { MiniatureImage } from '../../UI/MiniatureImage/MiniatureImage';
-import { Alert } from '../../Alert'
+import { Alert, AlertConfimation } from '../../Alert'
 
 import swal from 'sweetalert';
 
@@ -86,8 +86,6 @@ export const AnouncementInfo = ({ data, userData }) => {
     }
 
 
-
-
     useEffect(() => {
         getEmailToSend()
         getRecomended()
@@ -101,7 +99,6 @@ export const AnouncementInfo = ({ data, userData }) => {
     };
 
     const sendNotification = () => {
-        console.log(user);
         if (user === null) {
             noticeInterest('Debe estar logueado para poder enviar una notificación', '¿ Desea iniciar sesion ?')
         }
@@ -150,19 +147,19 @@ export const AnouncementInfo = ({ data, userData }) => {
             })
     }
 
-    const sendAlert = () => {
-        console.log('necesita autorizacion');
-    }
+
 
     const [userEmail, setUserEmail] = useState('')
     const [userName, setUserName] = useState(' ')
     const [userLastName, setUserLastName] = useState('')
+    const [ userId , setUserId] = useState(0)
 
     const getUserInformation = () => {
         if (userData.length !== 0) {
             setUserEmail(userData[0].email);
             setUserName(userData[0].nombre)
             setUserLastName(userData[0].apellidos)
+            setUserId(userData[0].idusuario)
         }
     }
 
@@ -175,76 +172,91 @@ export const AnouncementInfo = ({ data, userData }) => {
             buttons: true,
             dangerMode: true,
         })
-        .then((willDelete) => {
-            if (willDelete) {
-                navigate('/login')
-            }
-        });
+            .then((willDelete) => {
+                if (willDelete) {
+                    navigate('/login')
+                }
+            });
     }
 
-const sendToWhatsapp = () => {
-    if (phone.length === 0) {
-        console.log('funcion no disponible ya que el usuario no tiene un numero de telefono registrado');
+    const sendToWhatsapp = () => {
+        if (phone.length === 0) {
+            Alert('No tiene un numero de telefono registrado', '', 'warning', 'Ok')
 
-    }
-    else {
-        if (user === null) {
-            noticeInterest('Debe estar logueado para poder contactar con este usuario', '¿ Desea iniciar sesion ?')
         }
         else {
-            window.location.href = `https://api.whatsapp.com/send?phone=+57${phone}&text=Hola%20,%20mi%20nombre%20es%20${user[0].nombre}%20y%20estoy%20interesado%20en%20la%20pulicacion%20${title}%20alojada%20en%20la%20plataforma%20Easy%20House%20Rent%20`
+            if (user === null) {
+                noticeInterest('Debe estar logueado para poder contactar con este usuario', '¿ Desea iniciar sesion ?')
+            }
+            else {
+                window.location.href = `https://api.whatsapp.com/send?phone=+57${phone}&text=Hola%20,%20mi%20nombre%20es%20${user[0].nombre}%20y%20estoy%20interesado%20en%20la%20pulicacion%20${title}%20alojada%20en%20la%20plataforma%20Easy%20House%20Rent%20`
+            }
+
         }
-
     }
-}
 
-return (
-    <>
-        <div className="advertisement-info">
-            <div className="prop-images">
-                <AnouncementImages url1={image1} url2={image2} url3={image3} url4={image4} habitaciones={rooms} garaje={garage} modalidad={modality} />
-            </div>
-            <div className="prop-advertisement">
-                <div className="prop-advertisement-subinfo">
-                    <h1 className='value-anouncement-render'>{title}</h1>
-                    <p className='description-value'>{description}</p>
-                    <div className="text-container-dot">
-                        <FontAwesomeIcon icon={faLocationDot} className='tools-render-action' />
-                        <p className='description-value'>{zone} - {city} - {adress}</p>
-                    </div>
-                    <CurrencyFormat value={value} displayType={'text'} thousandSeparator={true} prefix={'$'} renderText={value => <p className='value-anouncement-render'>{value} COP</p>} />
+    const [ userStatus , setUserStatus ] = useState(true)
+
+    const validateUser = () => {
+        if(user[0].idusuario === userId ){
+            setUserStatus(false)
+        }
+    }
+
+    useEffect(()=>{
+        validateUser()
+    })
+
+
+    return (
+        <>
+            <div className="advertisement-info">
+                <div className="prop-images">
+                    <AnouncementImages url1={image1} url2={image2} url3={image3} url4={image4} habitaciones={rooms} garaje={garage} modalidad={modality} />
                 </div>
-                <div className="user-target-data">
-                    <h2 className='user-data-title'>Propietario</h2>
-                    <div className="user-target">
-                        <MiniatureImage userdata={userData} />
-                        <div className="user-target-info">
-                            <p className='description-value'>{userName} {userLastName}</p>
-                            <p className='description-value value-email' >{userEmail}</p>
+                <div className="prop-advertisement">
+                    <div className="prop-advertisement-subinfo">
+                        <h1 className='value-anouncement-render'>{title}</h1>
+                        <p className='description-value'>{description}</p>
+                        <div className="text-container-dot">
+                            <FontAwesomeIcon icon={faLocationDot} className='tools-render-action' />
+                            <p className='description-value'>{zone} - {city} - {adress}</p>
+                        </div>
+                        <CurrencyFormat value={value} displayType={'text'} thousandSeparator={true} prefix={'$'} renderText={value => <p className='value-anouncement-render'>{value} COP</p>} />
+                    </div>
+                    <div className="user-target-data">
+                        <h2 className='user-data-title'>Propietario</h2>
+                        <div className="user-target">
+                            <MiniatureImage userdata={userData} />
+                            <div className="user-target-info">
+                                <p className='description-value'>{userName} {userLastName}</p>
+                                <p className='description-value value-email' >{userEmail}</p>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div className="user-target-actions">
-                    <button className='target-profile-actions' onClick={sendOtherProfile}><FontAwesomeIcon className='tools-render-action' icon={faUser} />Ver perfil</button>
-                    <button className='target-profile-actions' onClick={sendNotification}><FontAwesomeIcon className='tools-render-action' icon={faEnvelopeCircleCheck} />Notificar interes</button>
-                    <button className='target-profile-actions' onClick={sendAlert}><FontAwesomeIcon className='tools-render-action' icon={faMessage} />Chat</button>
-                    <button className='target-profile-actions' onClick={sendToWhatsapp}><FontAwesomeIcon className='tools-render-action' icon={faWhatsapp} />Contacto</button>
-
+                    {
+                        userStatus &&
+                        <div className="user-target-actions">
+                        <button className='target-profile-actions' onClick={sendOtherProfile}><FontAwesomeIcon className='tools-render-action' icon={faUser} />Ver perfil</button>
+                        <button className='target-profile-actions' onClick={sendNotification}><FontAwesomeIcon className='tools-render-action' icon={faEnvelopeCircleCheck} />Notificar interes</button>
+                        <button className='target-profile-actions'><FontAwesomeIcon className='tools-render-action' icon={faMessage} />Chat</button>
+                        <button className='target-profile-actions' onClick={sendToWhatsapp}><FontAwesomeIcon className='tools-render-action' icon={faWhatsapp} />Contacto</button>
+                    </div>
+                    }
                 </div>
             </div>
-        </div>
-        <div className="most-recent-container-home">
-            <h2 className='most-recent-title'>Publicaciones recomendadas</h2>
-            <Carousel itemsToShow={4} pagination={false}
-                breakPoints={breakproint}>
-                {recomended.map(
-                    recomended => (
-                        <MyAnouncementCard key={recomended.idanuncio} data={recomended} />
+            <div className="most-recent-container-home">
+                <h2 className='most-recent-title'>Publicaciones recomendadas</h2>
+                <Carousel itemsToShow={4} pagination={false}
+                    breakPoints={breakproint}>
+                    {recomended.map(
+                        recomended => (
+                            <MyAnouncementCard key={recomended.idanuncio} data={recomended} />
+                        )
                     )
-                )
-                }
-            </Carousel>
-        </div>
-    </>
-)
+                    }
+                </Carousel>
+            </div>
+        </>
+    )
 }

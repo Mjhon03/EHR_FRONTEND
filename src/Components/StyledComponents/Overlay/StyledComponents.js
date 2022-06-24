@@ -20,6 +20,11 @@ export const Modal = styled.div`
   border-radius: 5px;
   background-color: #fff;
   box-shadow: 5px 5px 4px 2px rgba(0,0,0,0.60);
+
+  @media screen and (max-width: 610px){
+    max-width: 330px;
+    height: 420px;
+  }
 `
 
 export const ProfileModal = styled.div`

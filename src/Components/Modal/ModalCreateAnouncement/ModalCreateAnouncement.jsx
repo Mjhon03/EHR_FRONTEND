@@ -232,7 +232,7 @@ export const ModalCreateAnouncement = () => {
                   <div className="create-info">
                     <h2 className='create-subtitle'>Informacion detallada</h2>
                     <div className="required-info">
-                      <div className="modality-medium">
+                      <div className="modality-medium modality-complete">
                         <select className='email-put' onChange={(e) => {
                           setModality(e.target.value)
                         }}>

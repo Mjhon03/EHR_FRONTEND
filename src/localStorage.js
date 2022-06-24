@@ -8,7 +8,6 @@ export const localStorage = ( data ) =>{
         localStorage.setItem('telefono', datos.telefono)
         alert(`Bienvenido ${datos.nombre} ${datos.apellidos}`)
     }else{
-        console.log("datos no guardados ")
     }
 }
 
