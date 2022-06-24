@@ -103,13 +103,13 @@ export const UpdateUserInfo = () => {
               <h1 className='create-title'>Actualiza tu informacion</h1>
             </div>
             <div className="update-render-info">
-              <p>Nombres</p>
+              <p className='reduce-title'>Nombres</p>
               <input type="text" className='email-put' placeholder='Nombres' defaultValue={user[0].nombre} onChange={(e) => { changeName(e) }} ></input>
-              <p>Apellidos</p>
+              <p className='reduce-title'>Apellidos</p>
               <input type="text" className='email-put' placeholder='Apellidos' defaultValue={user[0].apellidos} onChange={(e) => { changeLastName(e) }}></input>
-              <p>Correo Electronico</p>
+              <p className='reduce-title'>Correo Electronico</p>
               <input type="text" className='email-put' placeholder='Correo electronico' defaultValue={user[0].email} onChange={(e) => { changeEmail(e) }}></input>
-              <p>Telefono</p>
+              <p className='reduce-title'>Telefono</p>
               <input type="text" className='email-put' placeholder='Telefono' defaultValue={user[0].telefono} onChange={(e) => { changePhone(e) }} ></input>
             </div>
             <div className="update-info-container">
