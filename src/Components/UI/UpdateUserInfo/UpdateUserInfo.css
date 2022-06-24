@@ -16,3 +16,13 @@
     padding: 0.5em 0;
 }
 
+@media screen and (max-width : 610px){
+    .reduce-title{
+        margin: -1% 0;
+    }
+
+
+    .update-render-info{
+        height: 295px;
+    }
+}

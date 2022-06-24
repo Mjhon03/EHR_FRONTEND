@@ -22,6 +22,7 @@
     color: #1C6EA4;
     text-decoration: underline;
     cursor: pointer;
+    margin: 0;
 }
 
 .register-valid-info{
@@ -125,6 +126,7 @@
 @media screen and (max-width: 450px){
     .register-valid-info{
         width: 90%;
+        padding: 2em 0;
     }
 }
 

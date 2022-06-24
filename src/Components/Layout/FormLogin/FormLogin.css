@@ -81,5 +81,6 @@
 @media screen and (max-width: 450px){
     .login-valid-info{
         width: 90%;
+        padding: 2em 0;
     }
 }

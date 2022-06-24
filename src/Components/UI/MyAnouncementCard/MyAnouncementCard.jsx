@@ -1,11 +1,6 @@
 import './MyAnouncementCard.css'
-import React, { useContext, useEffect, useState } from 'react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPen, faTrash } from '@fortawesome/free-solid-svg-icons';
+import React from 'react'
 import { useNavigate } from 'react-router';
-import { UserContext } from '../../../UserProvider/UserProvider';
-import axios from 'axios';
-import swal from 'sweetalert';
 import CurrencyFormat from 'react-currency-format';
 
 export const MyAnouncementCard = ({ data }) => {
