@@ -1,10 +1,9 @@
-import React, { useEffect, useContext, useState } from 'react'
-import { Overlay, Modal, ProfileCardButton } from '../../StyledComponents/Overlay/StyledComponents'
+import React, { useEffect , useState } from 'react'
+import { Overlay, Modal} from '../../StyledComponents/Overlay/StyledComponents'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faArrowRightFromBracket, faPen } from '@fortawesome/free-solid-svg-icons';
 import axios from 'axios';
-import { UserContext } from '../../../UserProvider/UserProvider'
-import { createAnouncement, updateAnouncement } from '../../../methodAdversitement';
+import { updateAnouncement } from '../../../methodAdversitement';
 import { Alert } from '../../Alert';
 import swal from 'sweetalert';
 

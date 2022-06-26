@@ -1,3 +1,0 @@
-(black) = rgb(37,46,53)
-(blue) =#113288
-(white) = #FFFFFF

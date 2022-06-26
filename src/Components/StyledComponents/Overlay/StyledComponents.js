@@ -93,6 +93,10 @@ export const ProfileCardButton = styled.button`
   cursor: pointer;
   margin: 0.5em 0;
   transition: ease 0.25s;
+  display: flex;
+ gap: 0.5em;
+ align-items: center;
+ justify-content: center;
 
   &:hover{
     color: rgba(0,0,0,0.65);

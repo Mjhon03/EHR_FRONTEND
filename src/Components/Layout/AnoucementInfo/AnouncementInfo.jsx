@@ -13,7 +13,7 @@ import { faEnvelopeCircleCheck, faLocationDot, faMessage, faUser } from '@fortaw
 import CurrencyFormat from 'react-currency-format';
 import { faWhatsapp } from '@fortawesome/free-brands-svg-icons';
 import { MiniatureImage } from '../../UI/MiniatureImage/MiniatureImage';
-import { Alert, AlertConfimation } from '../../Alert'
+import { Alert } from '../../Alert'
 
 import swal from 'sweetalert';
 
