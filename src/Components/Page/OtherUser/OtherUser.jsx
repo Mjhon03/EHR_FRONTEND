@@ -1,8 +1,10 @@
 import { faHouseCircleXmark } from '@fortawesome/free-solid-svg-icons'
+import { faMessage } from '@fortawesome/free-solid-svg-icons'
+import { faWhatsapp } from '@fortawesome/free-brands-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import axios from 'axios'
-import React, { useEffect, useState } from 'react'
-import { useSearchParams } from 'react-router-dom'
+import React, { useContext, useEffect, useState } from 'react'
+import { useNavigate, useSearchParams } from 'react-router-dom'
 import { Footer } from '../../Layout/Footer/Footer'
 import { Header } from '../../Layout/Header/Header'
 import { ProfileCardButton } from '../../StyledComponents/Overlay/StyledComponents'
@@ -10,19 +12,26 @@ import { UserImage } from '../../UI/UserImage/UserImage'
 import './OtherUser.css'
 import Carousel from 'react-elastic-carousel';
 import { MyAnouncementCard } from '../../UI/MyAnouncementCard/MyAnouncementCard'
+import { Alert } from '../../Alert'
+import { UserContext } from '../../../UserProvider/UserProvider'
+import swal from 'sweetalert'
 
 export const OtherUser = () => {
+
+  const { user } = useContext(UserContext)
 
   const [searchParams] = useSearchParams()
 
   let idUser = searchParams.get('idUser')
 
   const [userData, setUserData] = useState([])
+  const [userPhone, setUserPhone] = useState('')
 
   const getUserInfo = () => {
     axios.get('https://easy-house-rent.azurewebsites.net/api/Users/getUser', { params: { idusuario: idUser } })
       .then(response => {
         setUserData(response.data)
+        setUserPhone(response.data[0].telefono)
       })
   }
 
@@ -38,28 +47,28 @@ export const OtherUser = () => {
       })
   }
 
-  const breakproint = [ 
-    
+  const breakproint = [
+
     {
       width: 100,
-      itemsToShow : 1
+      itemsToShow: 1
     },
     {
       width: 415,
-      itemsToShow : 2
+      itemsToShow: 2
 
-      
+
     },
     {
       width: 880,
       itemsToShow: 3
 
     },
-    { 
+    {
       width: 1280,
       itemsToShow: 4,
     },
-   ] 
+  ]
 
   const [viewAnouncement, setViewAnouncement] = useState(0)
 
@@ -79,6 +88,39 @@ export const OtherUser = () => {
 
   useEffect(() => { getUserInfo() }, [])
 
+  const navigate = useNavigate()
+
+  const noticeInterest = (title, recomendation) => {
+    swal({
+      title: title,
+      text: recomendation,
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    })
+      .then((willDelete) => {
+        if (willDelete) {
+          navigate('/login')
+        }
+      });
+  }
+
+  const sendToWhatsapp = () => {
+    if (userPhone.length === 0) {
+      Alert('No tiene un numero de telefono registrado', '', 'warning', 'Ok')
+
+    }
+    else {
+      if (user === null) {
+        noticeInterest('Debe estar logueado para poder contactar con este usuario', '¿ Desea iniciar sesion ?')
+      }
+      else {
+        window.location.href = `https://api.whatsapp.com/send?phone=+57${userPhone}&text=Hola%20,%20mi%20nombre%20es%20${user[0].nombre}%20y%20estoy%20interesado%20en%20la%20pulicacion%20con%20el%20titulo%20de%20:%20______%20`
+      }
+
+    }
+  }
+
   return (
     <div className='profile-page'>
       <Header />
@@ -88,7 +130,14 @@ export const OtherUser = () => {
         </div>
         <div className="line-profile-separator" />
         <div className="add-settings-account">
-          <ProfileCardButton >Contactar</ProfileCardButton>
+          <ProfileCardButton onClick={sendToWhatsapp} >
+            <FontAwesomeIcon icon={faWhatsapp} />
+            whatsapp
+          </ProfileCardButton>
+          <ProfileCardButton>
+            <FontAwesomeIcon icon={faMessage} />
+            Chat
+          </ProfileCardButton>
           <ProfileCardButton >Reportar</ProfileCardButton>
         </div>
       </div>
