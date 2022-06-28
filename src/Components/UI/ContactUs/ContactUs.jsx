@@ -6,8 +6,19 @@ import { faInstagram, faTwitter } from '@fortawesome/free-brands-svg-icons';
 import { faArrowRightFromBracket, faEnvelope, faHeadset, faPhone } from '@fortawesome/free-solid-svg-icons';
 import { Alert } from '../../Alert'
 import { Overlay } from '../../StyledComponents/Overlay/StyledComponents';
+import { useEffect } from 'react';
 
-export const ContactUs = () => {
+export const ContactUs = ({ value }) => {
+
+  const [selectValue, setSelectValue] = useState('')
+
+  const changeValue = () => {
+    setSelectValue(value)
+  }
+
+  useEffect(() => {
+    changeValue()
+  })
 
   const SendEmailContact = (e) => {
     e.preventDefault()
@@ -28,8 +39,18 @@ export const ContactUs = () => {
 
   return (
     <>
-      <button onClick={changeVisible} className='header-action-button action-responsive'><FontAwesomeIcon className='header-action-icon'  icon={faHeadset} /></button>
-      <div className='viewTextIcon'><b><p>Contacto</p></b></div>
+      {selectValue === 'button' &&
+        <div>
+          <button onClick={changeVisible} className='header-action-button action-responsive'><FontAwesomeIcon className='header-action-icon' icon={faHeadset} /></button>
+          <div className='viewTextIcon'><b><p>Contacto</p></b></div>
+        </div>
+      }
+      {selectValue === 'text' &&
+        <p onClick={changeVisible} className='footer-textInfo'>CONTACTENOS</p>
+      }
+      {selectValue === 'support' &&
+        <button onClick={changeVisible} className='button-answer-content'>Enviar Pregunta</button>
+      }
       {
         visible &&
         <Overlay>
