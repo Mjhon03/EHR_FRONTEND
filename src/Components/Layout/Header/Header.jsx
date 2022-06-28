@@ -87,7 +87,7 @@ export const Header = () => {
     <div className="header-container">
       <div className={`header-logo-container ${userActivate}`}>
         <div className="logo-content">
-          <img onClick={sendHome} src="https://i.ibb.co/zQHyDyt/logo.png" alt="logoEhr" className='logo-header' />
+          <img onClick={sendHome} src="https://i.ibb.co/KLhPT0h/Ehr-png.png" alt="logoEhr" className='logo-header' />
         </div>
         <p onClick={sendHome} className='header-logo'>EHR</p>
       </div>

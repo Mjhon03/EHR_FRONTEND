@@ -198,8 +198,10 @@ export const AnouncementInfo = ({ data, userData }) => {
     const [ userStatus , setUserStatus ] = useState(true)
 
     const validateUser = () => {
-        if(user[0].idusuario === userId ){
-            setUserStatus(false)
+        if (user !== null) {
+            if(user[0].idusuario === userId ){
+                setUserStatus(false)
+            }
         }
     }
 
