@@ -121,7 +121,6 @@ export const ModalCreateAnouncement = () => {
     const newImgs = images.filter(function (element) {
       return element.index !== indice;
     });
-    console.log(newImgs);
     setimages(newImgs);
   }
 
@@ -143,7 +142,6 @@ export const ModalCreateAnouncement = () => {
           console.log(err);
         })
     });
-
   }
 
 
