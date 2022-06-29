@@ -32,6 +32,13 @@
 .error-title{
     font-size: 550%;
     margin: 0 0 5% 0;
+    color:  rgb(37,46,53);
+}
+
+.error-subtitle{
+    color:  rgb(37,46,53);
+    font-weight: 500;
+    line-height: 30px;
 }
 
 .error-relink{
@@ -103,6 +110,7 @@
         width: 95%;
         margin: 2% auto;
         font-size: 90%;
+        line-height: 20px;
     }
     
     .not-found-container{
