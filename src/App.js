@@ -24,6 +24,7 @@ import { CategoriesResult } from "./Components/Page/CategoriesResult/CategoriesR
 import { PrivacyPolity } from "./Components/Page/PrivacyPolity/PrivacyPolity";
 import { SeeAds } from "./Components/Page/SeeAdvertisement/SeeAdvertisement";
 import { Support } from "./Components/Page/Support/Support";
+import { Chat } from "./Components/Page/Chat/Chat";
 
 
 
@@ -49,6 +50,7 @@ function App() {
           <Route exact path='/categories/' element={<CategoriesResult />}/> 
           <Route exact path="/privacy&polity" element={<PrivacyPolity />}/>
           <Route exact path='/ads' element={<SeeAds/>}/>
+          <Route exact path="/chat" element={<Chat />}/>
         </Routes>
       </HashRouter>
     </UserProvider>

@@ -3,7 +3,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faAngleDown } from '@fortawesome/free-solid-svg-icons'
 import './NoUserMenu.css'
 import { NavLink } from 'react-router-dom'
-import { ContactUs } from '../ContactUs/ContactUs'
 
 export const NoUserMenu = () => {
 
