@@ -1,4 +1,4 @@
-import { faAddressBook, faArrowPointer, faCheck, faCode, faHandPointer, faShieldHalved, faTractor } from '@fortawesome/free-solid-svg-icons'
+import { faAddressBook, faArrowPointer, faCheck, faCode, faShieldHalved, faTractor } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
 import { Footer } from '../../Layout/Footer/Footer'

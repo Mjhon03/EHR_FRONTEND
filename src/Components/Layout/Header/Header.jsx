@@ -49,7 +49,7 @@ export const Header = () => {
 
   const chatRedirect = () => {
     if (user !== null) {
-      navigate('/login')
+      navigate('/chat')
     }
     else {
       noticeInterest('¡No tienes una cuenta!', 'Para poder contactar con otros usuarios, debes tener una cuenta')

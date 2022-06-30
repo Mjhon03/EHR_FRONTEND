@@ -24,7 +24,6 @@ export const NoUserMenu = () => {
                     <div className="menu-singout-responsive">
                         <NavLink to='/login'><button className='singout-button'>Ingresar</button></NavLink>
                         <NavLink to='/register'><button className='singout-button'>Registrarme</button></NavLink>
-                        <NavLink to='Contact'><button className='singout-button'>Contacto</button></NavLink>
                         <NavLink to='/support'><button className='singout-button'>Soporte</button></NavLink>
                     </div>
                 </div>

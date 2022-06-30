@@ -22,7 +22,7 @@ export const HomeSection = () => {
         if (charCode===13){
             sendSearch()
         }
-    }
+    } 
 
     return (
 
