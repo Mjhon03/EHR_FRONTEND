@@ -7,6 +7,7 @@ import { faArrowRightFromBracket, faEnvelope, faHeadset, faPhone } from '@fortaw
 import { Alert } from '../../Alert'
 import { Overlay } from '../../StyledComponents/Overlay/StyledComponents';
 import { useEffect } from 'react';
+import { useSyncExternalStore } from 'react';
 
 export const ContactUs = ({ value }) => {
 
@@ -16,19 +17,49 @@ export const ContactUs = ({ value }) => {
     setSelectValue(value)
   }
 
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [message, setMessage] = useState('')
+
+  let params = {
+    user: name,
+    email: email,
+    message: message
+  }
+
   useEffect(() => {
     changeValue()
   })
 
+  const changeEmail = (e) => {
+    setEmail(e.target.value)
+  }
+
+  const changeName = (e) => {
+    setName(e.target.value)
+  }
+
+  const changeMessage = (e) => {
+    setMessage(e.target.value)
+  }
+
   const SendEmailContact = (e) => {
     e.preventDefault()
-    emailjs.sendForm('service_lkmzngd', 'template_8es2kip', e.target, 'djlvhn3a_9RYyEcPe')
-      .then(response => {
-        Alert('El correo fue enviado correctamente', '', 'success', 'Ok', '3000')
-      })
-      .catch(error => {
-        Alert('No se pudo enviar el correo', '', 'error', 'Ok', '3000')
-      })
+    if (name.length !== 0 || email.length !== 0 || message.length !== 0) {
+      if (name.trim !== ' ' || email.trim !== ' ' || message.trim !== ' ') {
+        emailjs.send('service_lkmzngd', 'template_8es2kip', params, 'djlvhn3a_9RYyEcPe')
+          .then(response => {
+            Alert('El correo fue enviado correctamente', '', 'success', 'Ok', '3000')
+          })
+          .catch(error => {
+            Alert('No se pudo enviar el correo', '', 'error', 'Ok', '3000')
+          })
+      } else {
+        Alert('Todos los campos son obligatorios', '', 'error', 'Ok', '3000')
+      }
+    } else {
+      Alert('Todos los campos son obligatorios', '', 'error', 'Ok', '3000')
+    }
   }
 
   const [visible, setVisible] = useState(false)
@@ -84,9 +115,9 @@ export const ContactUs = ({ value }) => {
                     </div>
                     <h2 className='create-title'>Ponte en contacto</h2>
                     <h4 className='create-title title-contact'>¡No dude en enviarnos un mensaje!</h4>
-                    <input className='info-input-register' name='userName' type="text" placeholder='Nombre completo' /><br />
-                    <input className='info-input-register' name='userEmail' type="email" placeholder='Email' /><br />
-                    <textarea className='info-input-register contact-text' name="message" cols="30" rows="10" placeholder='Mensaje'></textarea><br />
+                    <input className='info-input-register' onChange={(e) => { changeName(e) }} type="text" placeholder='Nombre completo' /><br />
+                    <input className='info-input-register' onChange={(e) => { changeEmail(e) }} name='userEmail' type="email" placeholder='Email' /><br />
+                    <textarea className='info-input-register contact-text' onChange={(e) => { changeMessage(e) }} cols="30" rows="10" placeholder='Mensaje'></textarea><br />
                     <button className='register-submit'>Enviar</button>
                   </form>
                 </div>

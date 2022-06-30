@@ -14,7 +14,7 @@ export const CategoriesResult = () => {
 
     const [data, setData] = useState([])
 
-    const getCategories = () => {
+    const getCategories = async () => {
         axios.get('https://easy-house-rent.azurewebsites.net/api/home/edification', { params: { edification: filter } })
             .then(response => {
                 setData(response.data)

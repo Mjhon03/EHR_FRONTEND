@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { useState } from 'react'
 import { useEffect } from 'react'
 import { NavLink, useNavigate } from 'react-router-dom'
+import swal from 'sweetalert'
 import { ProfileAction, ProfileActionText, ProfileModal, SettingsSpace } from '../../StyledComponents/Overlay/StyledComponents'
 import './ProfileSettings.css'
 
@@ -22,12 +23,40 @@ export const ProfileSettings = ({ userData }) => {
     }
   }
 
-  const deleteSesion = () => {
-    localStorage.removeItem("userInfo")
-    localStorage.setItem("userInfo", null)
-    navigate('/')
-    window.location.reload()
+  const sendChat = () => {
+    navigate('/chat')
   }
+
+  const sendProfile = () => {
+    navigate('/profile')
+  }
+
+  const sendSupport = () => {
+    navigate('/support')
+  }
+
+  const sendContact = () => {
+    navigate('/contact')
+  }
+
+  const deleteSesion = () => {
+    swal({
+      title: `¿Esta seguro de cerrar sesion ?`,
+      icon: `warning`,
+      buttons: true,
+      dangerMode: true,
+    })
+      .then((willDelete) => {
+        if (willDelete) {
+          localStorage.removeItem("userInfo")
+          localStorage.setItem("userInfo", null)
+          navigate('/')
+          window.location.reload()
+        }
+      });
+  }
+
+
   const [ miniaturePhoto , setMiniaturePhoto ] = useState('')
 
 
@@ -45,6 +74,7 @@ export const ProfileSettings = ({ userData }) => {
   useEffect(()=>{
     getMiniature()
   })
+
 
   return (
     <>
@@ -65,10 +95,10 @@ export const ProfileSettings = ({ userData }) => {
             </NavLink>
             <SettingsSpace />
             <div className="settings-container">
-              <ProfileAction><FontAwesomeIcon className='settings-action-icon' icon={faRocketchat} /><ProfileActionText>Mensajes</ProfileActionText></ProfileAction>
-              <ProfileAction><FontAwesomeIcon className='settings-action-icon' icon={faGears} /><ProfileActionText>Configuracion</ProfileActionText></ProfileAction>
-              <ProfileAction><FontAwesomeIcon className='settings-action-icon' icon={faCircleInfo} /><ProfileActionText>soporte</ProfileActionText></ProfileAction>
-              <ProfileAction><FontAwesomeIcon className='settings-action-icon' icon={faIdCardClip} /><ProfileActionText>Contacto</ProfileActionText></ProfileAction>
+              <ProfileAction onClick={sendChat} ><FontAwesomeIcon className='settings-action-icon' icon={faRocketchat} /><ProfileActionText>Mensajes</ProfileActionText></ProfileAction>
+              <ProfileAction onClick={sendProfile} ><FontAwesomeIcon className='settings-action-icon' icon={faGears} /><ProfileActionText>Configuracion</ProfileActionText></ProfileAction>
+              <ProfileAction onClick={sendSupport}><FontAwesomeIcon className='settings-action-icon' icon={faCircleInfo} /><ProfileActionText>soporte</ProfileActionText></ProfileAction>
+              <ProfileAction onClick={sendContact}><FontAwesomeIcon className='settings-action-icon' icon={faIdCardClip} /><ProfileActionText>Contacto</ProfileActionText></ProfileAction>
             </div>
             <SettingsSpace />
             <div className="settings-action-container">

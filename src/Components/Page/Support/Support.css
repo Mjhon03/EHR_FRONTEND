@@ -129,6 +129,8 @@
     
 .most-popular-answer-container{
     width: 100%;
+    max-width: 1200px;
+    margin: auto;
     display: flex;
     flex-wrap: wrap;
     gap: 1.5em;
