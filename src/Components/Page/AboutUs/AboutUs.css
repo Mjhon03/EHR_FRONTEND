@@ -31,13 +31,14 @@
 }
 
 .tags-container {
+    max-width: 1400px;
+    margin: auto;
     width: 100%;
     padding: 2em;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
     gap: 2em;
-    background: linear-gradient(90deg, rgba(6, 6, 6, 0.45) 20%, rgba(18, 19, 17, 0) 100%);
 }
 
 .slogan-image-container {
