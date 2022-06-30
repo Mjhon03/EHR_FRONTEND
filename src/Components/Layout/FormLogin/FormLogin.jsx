@@ -16,6 +16,8 @@ export const FormLogin = () => {
     const [email, setemail] = useState("")
     const [password, setpassword] = useState("")
     const [emailError, setemailError] = useState("")
+    const [passwordShow, setpasswordShow] = useState(false)
+
 
     const setEventToEmail = ((event) => {
         setemail(event.target.value)
@@ -67,6 +69,9 @@ export const FormLogin = () => {
         }
     }
 
+    const togglePassword = (() => {
+        setpasswordShow(!passwordShow)
+    })
 
     
     return (
@@ -86,7 +91,9 @@ export const FormLogin = () => {
                         color: "red",
                     }}>{emailError}</span>
                     <br></br>
-                    <input type="password" minLength='8' required className='info-input-register' placeholder="Contraseña" onChange={SetEventToPassword} onKeyUp={e=>(enterLogin(e))} ></input>
+                    <input type={passwordShow  ? "text" : "password"} minLength='8' required className='info-input-register' placeholder="Contraseña" onChange={SetEventToPassword} onKeyUp={e=>(enterLogin(e))}></input>
+                    <button onClick={togglePassword}>show password</button>
+                    <br />
                 </div>
                 <div className="forgot-password">
                     <button className="register-submit" onClick={(e) => validateDataInput(e)}>Entrar</button>
