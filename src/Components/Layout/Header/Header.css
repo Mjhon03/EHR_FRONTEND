@@ -34,7 +34,8 @@
     cursor: pointer;
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
+    padding: 0 0.5em 0 0;
 }
 .header-logo{
     cursor: pointer;
@@ -83,6 +84,7 @@
 .nouser-action{
     width: 100%;
     text-align: center;
+    
 }
 .nouser-action button:hover {
     background: rgba(0,0,0,0.6);
@@ -93,7 +95,7 @@
       border-radius: 5px;
       width: 90%;
       border: none;
-      font-size: 0.8em;
+      font-size: 0.98em;
       font-weight: bolder;
       color: rgba(0,0,0,0.7);
       transition: 0.3s ease;

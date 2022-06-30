@@ -1,127 +1,263 @@
-.textTitle-nosotros{
-    color: #ffffff;
-    font-size: 4.5rem;
-}
-.menu-documentation{
-    display: flex;
-    justify-content: center;
-    width: auto;
-    margin: auto;
-    padding: 20px;
-}
-.link-documentation{
-    margin: 15px;
-    text-decoration: none;
-    color:#595959;
-    display: block;
-}
-.link-documentation::after{
-    content: '';
-    display: block;
-    width: 0;
-    height: 2px;
-
-    background-color: rgba(136,136,136,0.70);
-
-    transition: width 0.25s ease-out;
-}
-.link-documentation:hover::after{
+.banner-about-container {
     width: 100%;
-    transition: width 3.s;
+    height: 410px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    background: linear-gradient(90deg, rgba(0, 0, 0, 0.8) 30%, rgba(18, 19, 17, 0) 100%), url("https://i.ibb.co/b7pBZ3C/grupo.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    padding: 0 0 3em 3em;
 }
-.grid-div{
-    background-color: #f4f4f4;
-    height: 350px;
-    width:50%;
-    border-radius: 9px;
 
-    margin:2% auto;
-    padding: 5%;
-    color:rgba(136,136,136,0.70);  
+.banner-about-title {
+    font-size: 2.5em;
+    color: rgba(230, 230, 230, 0.65);
+    width: 100%;
+    line-height: 50px;
 }
-.grid-div p {
-    text-align:justify;
 
+.banner-about-text {
+    font-size: 18px;
 }
-.allcontainers{
-    display: grid;
-    grid-template-columns: repeat(2,1fr);
-    grid-gap: 20px;
-    align-content: center;
-    width:95%;
-    margin: auto;
-    margin-top: 100px;
-    margin-top: 500px;
+
+.about-slogan {
+    padding: 2em;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    gap: 2em;
 }
-#grid-item-photo{
-    background-color: #ffffff;
+
+.tags-container {
+    width: 100%;
+    padding: 2em;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 2em;
+    background: linear-gradient(90deg, rgba(6, 6, 6, 0.45) 20%, rgba(18, 19, 17, 0) 100%);
+}
+
+.slogan-image-container {
+    width: 400px;
+    height: 300px;
+}
+
+.slogan-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    animation: floating 3s ease-in-out infinite
+}
+
+
+@keyframes floating {
+    0% {
+        transform: translate(0, 0px);
+    }
+
+    50% {
+        transform: translate(0, 15px);
+    }
+
+    100% {
+        transform: translate(0, -0px);
+    }
+}
+
+
+
+.text-slogan-container {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1.5em;
+}
+
+
+.slogan-title {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 3em;
+    color: rgb(37, 46, 53);
+}
+
+.slogan-text {
+    color: rgb(37, 46, 53);
+    font-weight: 400;
+    font-size: 1.1em;
+    text-align: center;
+}
+
+.tags-content {
     display: flex;
     align-items: center;
-    justify-items: center;
-    overflow: hidden;
-}
-.title-content{
-    height:300px ;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    /* background-image: url("https://cdn.pixabay.com/photo/2018/06/22/11/02/schnoor-3490494_1280.jpg");  */
-}
-#filter{
-    -webkit-backdrop-filter: blur(15px);
-    backdrop-filter: blur(15px);
-}
-.Descriptive-img{
-    object-fit:cover;
+    padding: 1em;
+    border-radius: 10px;
+    box-shadow: 1px 5px 11px -2px #6e6d6d;
+    max-width: 400px;
     width: 100%;
-    margin:auto;
-    border-radius: 9px;
+    height: 210px;
+    gap: 1.25em;
+    background: #FFF;
+    transition: all 0.3s ease;
+}
+
+.tags-content:hover {
+    box-shadow: 1px 5px 11px -2px #6e6d6d;
+    transform: scale(1.04);
+}
+
+.icon-about{
+    width: 30px;
+    height: 25px; 
+    font-size: 15px;
+    border-radius: 10px;
+    padding: 1em;
+    color: rgb(89, 228, 168);
+    background: rgb(37, 46, 53);
+}
+
+.line-about {
+    width: 4px;
+    height: 70%;
+    border-radius: 255px;
+    background: rgb(47, 56, 63);
+}
+
+.tags-text-content {
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+}
+
+.tag-title {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    color: rgb(37, 46, 53);
+}
+
+.tag-tile {
+    font-family: 'Mulish', sans-serif;
+    color: rgba(25, 25, 25);
+    font-weight: bolder;
+    font-size: 16px;
+    text-align: center;
 }
 
 
-@media screen and (max-width:1200px){
-    .grid-div{
-        width:80%;
+@media screen and (max-width : 920px) {
+    .banner-about-title {
+        font-size: 1.7em;
+        line-height: 35px;
     }
-}
 
-@media screen and (max-width:900px){
-    .grid-div{
-        width:80%;
+    .banner-about-text {
+        font-size: 14px;
     }
-}
 
-@media screen and (max-width:720px){
-    .allcontainers{
-        grid-template-columns: repeat(1, 1fr);
+    .slogan-title {
+        font-size: 2em;
     }
-    .grid-div{
-        width:80%;
-        height:350px;
-    }
-    .Descriptive-img {
-        width:100%;
-    }
-    #grid-item-photo{
-        width:90%;
-    }
-}
 
-@media screen and (max-width:400px){
-    .allcontainers{
-        grid-template-columns: repeat(1, 1fr);
+    .slogan-text {
+        font-size: 0.9em;
     }
-    .grid-div {
-        width:90%;
-        height:370px;
+
+    @media screen and (max-width: 750px) {
+        .slogan-image-container {
+            width: 300px;
+            height: 200px;
+        }
+
+        .about-slogan {
+            justify-content: flex-start;
+        }
+
+        .text-slogan-container {
+            width: 100%;
+            padding: 0 3em;
+
+        }
     }
-    .textTitle-nosotros{
-        font-size: 3.5rem;
-    } 
-    .grid-div p {
-        text-align:justify;
+
+    @media screen and (max-width: 600px) {
+
+        .banner-about-container {
+            padding: 0 0 1em 1em;
+            height: 325px;
+        }
+
+        .banner-about-title {
+            font-size: 1.2em;
+            line-height: 30px;
+        }
+
+        .banner-about-text {
+            font-size: 12px;
+        }
+
+        .about-slogan {
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 2em;
+        }
+
+        .text-slogan-container {
+            width: 100%;
+            padding: 2em;
+            gap: 1em;
+        }
     }
-    .divImageAboutUs {
-        height:290px;
+
+    @media screen and (max-width: 400px) {
+        .banner-about-container {
+            height: 250px;
+        }
+
+        .about-slogan {
+            padding: 2em 1em 1em 1em;
+            gap: 0.75em;
+        }
+
+        .tags-content{
+            padding: 1em;
+            height: 160px;
+        }
+
+        .tags-text-content{
+            gap: 0.4em;
+        }
+        
+        .tag-title {
+            font-size: 14px;
+        }
+
+        .tag-tile{
+            font-size: 13px;
+        }
+
+        .line-about{
+            width: 2px;
+            height: 80%;
+        }
+
+        .icon-about{
+            width: 18px;
+            height: 16px;
+            padding: 0.75em;
+        }
     }
 }

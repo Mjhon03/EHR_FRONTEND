@@ -15,16 +15,16 @@ import { Profile } from "./Components/Page/Profile/Profile"
 import { Anouncement } from "./Components/Page/Anouncement/Anouncement";
 import { PasswordResetForm } from "./Components/Layout/PasswordReset/PasswordResetForm";
 import { ModifyPasswordForm } from "./Components/Layout/ConfirmModifyPassword/ModifyPasswordForm";
-import { ShareP } from "./Components/Page/Share/Share"
 import { Page404 } from "./Components/Page/Page404/Page404";
 import { ModalCreateAnouncement } from "./Components/Modal/ModalCreateAnouncement/ModalCreateAnouncement";
 import { UserProvider } from "./UserProvider/UserProvider";
 import { SearchResults } from "./Components/Page/SearchResults/SearchResults";
 import { OtherUser } from "./Components/Page/OtherUser/OtherUser";
-import { SuportP } from "./Components/Page/Support/Suports";
 import { CategoriesResult } from "./Components/Page/CategoriesResult/CategoriesResult";
 import { PrivacyPolity } from "./Components/Page/PrivacyPolity/PrivacyPolity";
 import { SeeAds } from "./Components/Page/SeeAdvertisement/SeeAdvertisement";
+import { Support } from "./Components/Page/Support/Support";
+import { Chat } from "./Components/Page/Chat/Chat";
 
 
 
@@ -42,15 +42,15 @@ function App() {
           <Route exact path="/modifyPassword/" element={< ModifyPasswordForm />} />
           <Route exact path="/profile" element={<Profile />} />
           <Route exact path="/anouncement" element={<Anouncement />} />
-          <Route exact path="/share" element={<ShareP />} />
           <Route exact path="*" element={<Page404 />} />
           <Route exact path='/createAnouncement' element={<ModalCreateAnouncement />} />
           <Route exact path='/result' element={<SearchResults />}/>
-          <Route exact path='/support' element={<SuportP />}/>
+          <Route exact path='/support' element={<Support/>}/>
           <Route exact path="/user/profile" element={<OtherUser />}/>
           <Route exact path='/categories/' element={<CategoriesResult />}/> 
           <Route exact path="/privacy&polity" element={<PrivacyPolity />}/>
           <Route exact path='/ads' element={<SeeAds/>}/>
+          <Route exact path="/chat" element={<Chat />}/>
         </Routes>
       </HashRouter>
     </UserProvider>

@@ -65,10 +65,9 @@
 }
 
 .search-home-submit:hover{
-            
     background: rgb(89,228,168) ;
-    color : #FFFFFF;
-    transform: scale(105%);
+    color : rgb(37,46,53);
+    transform: scale(103%);
 }
 
 .content-page-info{

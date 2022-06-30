@@ -1,71 +1,78 @@
+import { faAddressBook, faArrowPointer, faCheck, faCode, faShieldHalved, faTractor } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
-import './AboutUs.css'
-import '../../UI/PhotosSlider/PhotosSLider'
-import { Header } from '../../Layout/Header/Header'
-
-import { PhotosSLider } from '../../UI/PhotosSlider/PhotosSLider'
-
 import { Footer } from '../../Layout/Footer/Footer'
+import { Header } from '../../Layout/Header/Header'
+import './AboutUs.css'
 
 export const AboutUs = () => {
   return (
     <>
-      < Header />
-      <div className='title-content' id='filter'>
-        <PhotosSLider/>
+      <Header />
+      <div className="banner-about-container">
+        <div className="banner-about-title">
+          <h1>EASY HOUSE RENT</h1>
+          <p className='banner-about-text'>Información sobre nosotros y el desarrollo del aplicativo</p>
+        </div>
       </div>
-
-      <div className='allcontainers'>
-        <div className='grid-div'>
-          <p>Ubicados en el Quindío somos un equipo de jóvenes  desarrolladores  web con altas expectativas en lo que podemos  lograr,
-            y conocimiento suficiente en la industria para crear productos innovadores.
-            Uniendo toda nuestra excepcional  creatividad hemos trabajado juntos  para crear,A
-            diseñar y desarrollar Easy House Rent. </p>
+      <div className="about-slogan">
+        <div className="slogan-image-container">
+          <img className='slogan-img' src="https://cdni.iconscout.com/illustration/premium/thumb/boy-making-decision-with-help-of-discussion-2527773-2114679.png" alt="group" />
         </div>
-        <div className='grid-div divImageAboutUs' id='grid-item-photo'>
-          <img alt='investigate' src='https://img.freepik.com/free-vector/software-developing-programmers-investigates-code_90220-174.jpg?t=st=1652926756~exp=1652927356~hmac=bebcd8fa111e9bedbaa31d462678bde3d0d5fb12561a8ae27b9f425db0ace298&w=740' className='Descriptive-img' />
+        <div className="text-slogan-container">
+          <h2 className='slogan-title'>Nuestra idea</h2>
+          <p className='slogan-text'>Esta nace de generar facilidad al usuario en la tarea de emprender la búsqueda de un inmueble, con Easy House Rent el esfuerzo se minimiza obteniendo diversas opciones en cuestión de segundos, eligiendo la de tu preferencia y contactando directamente con su propietario.</p>
         </div>
-        <div className='grid-div divImageAboutUs' id='grid-item-photo'>
-          <img alt='concept' src='https://img.freepik.com/free-vector/meeting-concept-illustration_114360-895.jpg?t=st=1652767271~exp=1652767871~hmac=b7b3d7b3c91b42cdbfd701f3ab33bc176e248a069cd49ddcfb82425db9a24567&w=740' className='Descriptive-img' />
+      </div>
+      <div className="tags-container">
+        <div className="tags-content">
+          <FontAwesomeIcon icon={faCode} className='icon-about' />
+          <div className="line-about" />
+          <div className="tags-text-content">
+            <h2 className='tag-title'>Equipo</h2>
+            <p className='tag-tile'>Somos un equipo de jóvenes desarrolladores donde logramos unir toda nuestra creatividad y logrando un fuerte trabajo coletivo hemos creado esta solución software.</p>
+          </div>
         </div>
-        <div className='grid-div'>
-          <p>
-            Nuestra idea nace  generar facilidad al usuario en una tarea  que podría significar algo de trabajo para este, como en este
-            caso sería emprender un trayecto en busca de un inmueble, con Easy House Rent harás un esfuerzo mínimo, y obtendrás  los mejores
-            resultados , pretendemos que sea de gran ayuda.
-          </p>
+        <div className="tags-content">
+          <FontAwesomeIcon icon={faAddressBook} className='icon-about' />
+          <div className="line-about" />
+          <div className="tags-text-content">
+            <h2 className='tag-title'>Roles</h2>
+            <p className='tag-tile'>Para el desarrollo cada integrante fue ubicado según sus habilidades para lograr una mayor productividad y eficiencia en los roles desempeñados.</p>
+          </div>
         </div>
-        <div className='grid-div' >
-          <p>En Easy House rent nuestra prioridad es  ofrecerte el alcance de encontrar inmuebles desde
-            la comodidad de tu casa, ahorrándote la molestia y el tiempo de caminar por horas para
-            encontrar tu destino, contamos con variedad de opciones para  que encuentres lo que se
-            ajusta a tus necesidades.</p>
+        <div className="tags-content">
+          <FontAwesomeIcon icon={faArrowPointer} className='icon-about' />
+          <div className="line-about" />
+          <div className="tags-text-content">
+            <h2 className='tag-title'>Integridad</h2>
+            <p className='tag-tile'>Hemos desarrollado una interfaz adaptable, que permite al usuario mayor accesibilidad a nuestro sistema, ya que prioriza la adaptación de este en cualquier dispositivo.</p>
+          </div>
         </div>
-        <div className='grid-div divImageAboutUs' id='grid-item-photo'>
-          <img alt='making' src='https://cdni.iconscout.com/illustration/premium/thumb/boy-making-decision-with-help-of-discussion-2527773-2114679.png' className='Descriptive-img' />
+        <div className="tags-content">
+          <FontAwesomeIcon icon={faTractor} className='icon-about' />
+          <div className="line-about" />
+          <div className="tags-text-content">
+            <h2 className='tag-title'>Sectores</h2>
+            <p className='tag-tile'>En Easy House Rent optamos porque el usuario encuentre más opciones a su alcance.</p>
+          </div>
         </div>
-        <div className='grid-div divImageAboutUs' id='grid-item-photo'>
-          <img alt='cognitive' src='https://dev.cognitive.la/uploads/covid192_1615227029.jpg' className='Descriptive-img' />
+        <div className="tags-content">
+          <FontAwesomeIcon icon={faCheck} className='icon-about' />
+          <div className="line-about" />
+          <div className="tags-text-content">
+            <h2 className='tag-title'>Responsabilidad</h2>
+            <p className='tag-tile'>Nuestro equipo de trabajo ha logrado cumplir con cada tarea propuesta para lograr el objetivo.</p>
+          </div>
         </div>
-        <div className='grid-div' >
-          <p>Queremos contagiarte de la facilidad que puede significar  para ti utilizar Easy House Rent
-            cuando de buscar vivienda se trata , Easy house rent es único porque busca compartirte las
-            mejores alternativas de inmuebles existentes en Armenia Quindío y sus alrededores,
-            Easy house rent es contar con diferentes elecciones para ti y para todos.</p>
+        <div className="tags-content">
+          <FontAwesomeIcon icon={faShieldHalved} className='icon-about' />
+          <div className="line-about" />
+          <div className="tags-text-content">
+            <h2 className='tag-title'>Seguridad</h2>
+            <p className='tag-tile'>Hemos logrado implementar certificados de seguridad y transferencia de datos para un sitio más seguro.</p>
+          </div>
         </div>
-        <div className='grid-div'>
-          <p>
-            A solo un click podrías encontrar lo que tanto has estado buscando, las herramientas incluidas en
-            nuestra plataforma te permitirán realizar acciones como navegar, publicar, ponerte en contacto con
-            los usuarios que consideres pertinente y muchas otras opciones más que facilitarán tu búsqueda a la
-            hora de querer encontrar  algo en específico.</p>
-        </div>
-        <div className='grid-div divImageAboutUs' id='grid-item-photo'>
-          <img alt='report' src='https://atlantaagentmagazine.com/wp-content/uploads/sites/6/2021/02/2020-Report-scaled.jpg' className='Descriptive-img' />
-        </div>
-      </div >
-      <div className='menu-documentation'>
-        <a href="https://docs.google.com/document/d/1DrMiacSmUaDV-KP539nJ3Ih5Rh1ChZUK/edit" className='link-documentation'>¿Cómo usarlo?</a>
       </div>
       <Footer />
     </>

@@ -2,7 +2,6 @@ import React from 'react'
 import { Header } from '../../Layout/Header/Header'
 import { Footer } from '../../Layout/Footer/Footer'
 import './Page404.css'
-import errorPage from '../../../images/404.jpg'
 import { useNavigate } from 'react-router-dom'
 
 export const Page404 = () => {
@@ -26,7 +25,7 @@ export const Page404 = () => {
 
                 </div>
                 <div className="error-image-container">
-                    <img className="error-image" src={ errorPage } alt='errorPage'></img>
+                    <img className="error-image" src='https://i.ibb.co/ZX3qykz/404.jpg' alt='errorPage'></img>
                 </div>  
             </div>
         </div>

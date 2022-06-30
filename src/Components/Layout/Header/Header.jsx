@@ -8,28 +8,55 @@ import { UserContext } from '../../../UserProvider/UserProvider'
 import { useNavigate } from 'react-router'
 import { NoUserMenu } from '../../UI/NoUserMenu/NoUserMenu'
 import { ContactUs } from '../../UI/ContactUs/ContactUs'
+import swal from 'sweetalert'
 
 export const Header = () => {
 
-  const [ userActivate , setUserActivate] = useState('default')
+  const [userActivate, setUserActivate] = useState('default')
   const [userSession, setUserSession] = useState(0)
 
   const { user } = useContext(UserContext)
 
-  const [ miniaturePhoto , setMiniaturePhoto ] = useState('')
+  const navigate = useNavigate()
+
+  const [miniaturePhoto, setMiniaturePhoto] = useState('')
 
   const getMiniature = () => {
-    if(user !== null){
-      if(user[0].foto.length !== 1){
+    if (user !== null) {
+      if (user[0].foto.length !== 1) {
         setMiniaturePhoto(user[0].foto)
       }
-      else{
+      else {
         setMiniaturePhoto('https://cdn.pixabay.com/photo/2018/11/13/21/43/instagram-3814050_960_720.png')
       }
     }
   }
 
-  useEffect(()=>{
+  const noticeInterest = (title, recomendation) => {
+    swal({
+      title: title,
+      text: recomendation,
+      icon: "warning",
+      buttons: true,
+      dangerMode: true,
+    })
+      .then((willDelete) => {
+        if (willDelete) {
+          navigate('/login')
+        }
+      });
+  }
+
+  const chatRedirect = () => {
+    if (user !== null) {
+      navigate('/chat')
+    }
+    else {
+      noticeInterest('¡No tienes una cuenta!', 'Para poder contactar con otros usuarios, debes tener una cuenta')
+    }
+  }
+
+  useEffect(() => {
     getMiniature()
   })
 
@@ -50,7 +77,6 @@ export const Header = () => {
     SetUserData()
   })
 
-  const navigate = useNavigate()
 
   const sendHome = () => {
     navigate('/')
@@ -60,10 +86,10 @@ export const Header = () => {
   return (
     <div className="header-container">
       <div className={`header-logo-container ${userActivate}`}>
-        <div className="logo-content"> 
-          <img onClick={sendHome}  src="https://i.ibb.co/zQHyDyt/logo.png" alt="logoEhr" className='logo-header' />
+        <div className="logo-content">
+          <img onClick={sendHome} src="https://i.ibb.co/KLhPT0h/Ehr-png.png" alt="logoEhr" className='logo-header' />
         </div>
-        <p onClick={sendHome}  className='header-logo'>EHR</p>
+        <p onClick={sendHome} className='header-logo'>EHR</p>
       </div>
       <div className="header-actions">
 
@@ -76,8 +102,12 @@ export const Header = () => {
         <div className='iconHeader'>
           <NavLink to='/ads'>
             <button className='header-action-button'><FontAwesomeIcon className='header-action-icon' icon={faHouseLaptop} /></button>
-            <div className='viewTextIcon'><b><p>Anuncios</p></b></div>          
+            <div className='viewTextIcon'><b><p>Anuncios</p></b></div>
           </NavLink>
+        </div>
+        <div className='iconHeader' onClick={chatRedirect}>
+          <button className='header-action-button'><FontAwesomeIcon className='header-action-icon' icon={faCommentDots} /></button>
+          <div className='viewTextIcon'><b><p>Chat</p></b></div>
         </div>
         <div className='iconHeader'>
           <NavLink to='/AboutUs'>
@@ -85,12 +115,7 @@ export const Header = () => {
             <div className='viewTextIcon'><b><p>Nosotros</p></b></div>
           </NavLink>
         </div>
-        <div className='iconHeader'>
-          <NavLink to='/'>
-            <button className='header-action-button'><FontAwesomeIcon className='header-action-icon' icon={faCommentDots} /></button>
-            <div className='viewTextIcon'><b><p>Chat</p></b></div>
-          </NavLink>
-        </div>
+
         <div className='iconHeader'>
           <NavLink to='/support'>
             <button className='header-action-button action-responsive'><FontAwesomeIcon className='header-action-icon' icon={faNewspaper} /></button>
@@ -98,7 +123,7 @@ export const Header = () => {
           </NavLink>
         </div>
         <div className='iconHeader'>
-            <ContactUs />            
+          <ContactUs value={'button'}/>
         </div>
       </div>
       {userSession === 0 &&
@@ -110,15 +135,15 @@ export const Header = () => {
       }
       {userSession === 1 &&
         <div className="nouser-actions actions-profile">
-                <div className="miniature-container">
-                    <div className="miniature-photo-container" >
-                      <img  onClick={sendProfile} src={miniaturePhoto} className='miniature-image' alt="miniature " />
-                    </div>
-                    <div className="profile-header">
-                      <h3 onClick={sendProfile} className='miniature-name'>{user[0].nombre}</h3>
-                      < ProfileSettings userData={user} />
-                    </div>
-                </div>        
+          <div className="miniature-container">
+            <div className="miniature-photo-container" >
+              <img onClick={sendProfile} src={miniaturePhoto} className='miniature-image' alt="miniature " />
+            </div>
+            <div className="profile-header">
+              <h3 onClick={sendProfile} className='miniature-name'>{user[0].nombre}</h3>
+              < ProfileSettings userData={user} />
+            </div>
+          </div>
         </div>
       }
     </div>
