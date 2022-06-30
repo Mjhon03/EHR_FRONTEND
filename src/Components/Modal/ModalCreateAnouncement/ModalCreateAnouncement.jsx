@@ -177,7 +177,7 @@ export const ModalCreateAnouncement = () => {
 
   return (
     <>
-      <ProfileCardButton onClick={() => changeModal()}>Agregar Publicacion</ProfileCardButton>
+      <ProfileCardButton onClick={() => changeModal()}>Agregar Publicación</ProfileCardButton>
       {visibility &&
         <Overlay>
           <Modal>
@@ -195,20 +195,20 @@ export const ModalCreateAnouncement = () => {
                     <p className='form-stage-none'>3</p>
                   </div>
                   <div className="create-info">
-                    <h2 className='create-subtitle'>Informacion Basica</h2>
+                    <h2 className='create-subtitle'>Información Básica</h2>
                     <div className="required-info">
-                      <input type='text' placeholder='Titulo de la publicacion' className='email-put' onChange={(e) => {
+                      <input type='text' placeholder='Titulo de la publicación' className='email-put' onChange={(e) => {
                         setTitle(e.target.value)
                       }} />
                       <div className="modality-medium">
-                        <input className='email-put' type='text' placeholder='direccion' onChange={(e) => {
+                        <input className='email-put' type='text' placeholder='Dirección' onChange={(e) => {
                           setAddress(e.target.value)
                         }} />
-                        <input className='email-put' type='text' placeholder='ciudad' onChange={(e) => {
+                        <input className='email-put' type='text' placeholder='Ciudad' onChange={(e) => {
                           setCity(e.target.value)
                         }} />
                       </div>
-                      <textarea className='email-put create-description' placeholder='descripcion de la vivienda ( detalles de la vivienda , consideraciones , aportes importantes a tener en cuenta )'
+                      <textarea className='email-put create-description' placeholder='Descripción de la vivienda (detalles de la vivienda, consideraciones, aportes importantes para tener en cuenta).'
                         onChange={(e) => {
                           setDescription(e.target.value)
                         }} />
@@ -228,49 +228,49 @@ export const ModalCreateAnouncement = () => {
                     <p className='form-stage-none'>3</p>
                   </div>
                   <div className="create-info">
-                    <h2 className='create-subtitle'>Informacion detallada</h2>
+                    <h2 className='create-subtitle'>Información detallada</h2>
                     <div className="required-info">
                       <div className="modality-medium modality-complete">
                         <select className='email-put' onChange={(e) => {
                           setModality(e.target.value)
                         }}>
-                          <option value="">modalidad</option>
-                          <option value="venta">venta</option>
-                          <option value="arrendo">arrendo</option>
+                          <option value="">Modalidad</option>
+                          <option value="venta">Venta</option>
+                          <option value="arrendo">Arrendo</option>
                         </select>
                         <select className='email-put' onChange={(e) => {
                           setZone(e.target.value)
                         }}>
-                          <option value="">zona</option>
-                          <option value="rural">rural</option>
-                          <option value="norte">norte</option>
-                          <option value="sur">sur</option>
-                          <option value="centro">centro</option>
+                          <option value="">Zona</option>
+                          <option value="rural">Rural</option>
+                          <option value="norte">Norte</option>
+                          <option value="sur">Sur</option>
+                          <option value="centro">Centro</option>
                         </select>
                       </div>
                       <div className="modality-medium">
                         <select className='email-put' onChange={(e) => {
                           setEdification(e.target.value)
                         }}>
-                          <option value="">tipo de edificacion</option>
-                          <option value="finca">finca</option>
-                          <option value="apartamento">apartamento</option>
-                          <option value="terreno">terreno</option>
-                          <option value="local">local</option>
-                          <option value="hogar">hogar</option>
+                          <option value="">Tipo de edificación</option>
+                          <option value="finca">Finca</option>
+                          <option value="apartamento">Apartamento</option>
+                          <option value="terreno">Terreno</option>
+                          <option value="local">Local</option>
+                          <option value="hogar">Hogar</option>
                         </select>
-                        <input type='number' placeholder='habitaciones' className='email-put' onChange={(e) => {
+                        <input type='number' placeholder='Habitaciones' className='email-put' onChange={(e) => {
                           setRooms(e.target.value)
                         }} />
                       </div>
                       <select className='email-put' onChange={(e) => {
                         setGarage(e.target.value)
                       }}>
-                        <option value="">garaje</option>
-                        <option value="si">si</option>
-                        <option value="no">no</option>
+                        <option value="">Garaje</option>
+                        <option value="si">Si</option>
+                        <option value="no">No</option>
                       </select>
-                      <input type='number' placeholder='precio' className='email-put' onChange={(e) => {
+                      <input type='number' placeholder='Precio' className='email-put' onChange={(e) => {
                         setPrice(e.target.value)
                       }} />
                     </div>
@@ -290,7 +290,7 @@ export const ModalCreateAnouncement = () => {
                     <p className='form-stage'>3</p>
                   </div>
                   <div className="create-info">
-                    <h2 className='create-subtitle'>Verificacion de datos</h2>
+                    <h2 className='create-subtitle'>Verificación de datos</h2>
                     <div className="required-info">
 
                       <label className="btn btn-warning select-files">

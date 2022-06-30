@@ -46,7 +46,7 @@ export const ContactUs = ({ value }) => {
         </div>
       }
       {selectValue === 'text' &&
-        <p onClick={changeVisible} className='footer-textInfo'>CONTACTENOS</p>
+        <p onClick={changeVisible} className='footer-textInfo'>CONTÁCTENOS</p>
       }
       {selectValue === 'support' &&
         <button onClick={changeVisible} className='button-answer-content'>Enviar Pregunta</button>
