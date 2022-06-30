@@ -12,6 +12,7 @@ import { faArrowRightFromBracket, faArrowRightToBracket, faArrowUpFromBracket, f
 import { UpdateUserInfo } from '../../UI/UpdateUserInfo/UpdateUserInfo';
 import { UserAnouncementCard } from '../../UI/UserAnouncementCard/UserAnouncementCard';
 import { Modal, Overlay, ProfileCardButton } from '../../StyledComponents/Overlay/StyledComponents';
+import { Alert } from '../../Alert';
 
 
 export const Profile = () => {
@@ -80,6 +81,8 @@ export const Profile = () => {
     const [newPassword , setNewPassword ] = useState('')
     const [newPasswordConfirm , setNewPasswordConfirm ] = useState('')
 
+    const [passwordErrorMacht, setpasswordErrorMacht ] = useState('')
+
     const changeOldPassword = (e) => {
         setOldPassword(e.target.value)
     }
@@ -91,6 +94,26 @@ export const Profile = () => {
     const changeNewPasswordConfirm = (e) => {
         setNewPasswordConfirm(e.target.value)
     }
+
+    const changePassword = () => {
+        axios.put('https://easy-house-rent.azurewebsites.net/api/User/ChangePassword', {
+            idusuario: user[0].idusuario,
+            password: oldPassword,
+            newPassword: newPassword,
+        })
+        .then(response => {
+            Alert('Password changed successfully', '', 'success', 'Ok')
+        })
+    }
+
+    const comparePassword = () => {
+        if (newPassword === newPasswordConfirm) {
+            changePassword()
+        } else {
+            setpasswordErrorMacht('Las constraseñas no coinciden')
+        }
+    }
+
 
     return (
         <>
@@ -122,10 +145,10 @@ export const Profile = () => {
                                         <input type="password" className='email-put' placeholder='********'></input>
                                         <p className='reduce-title'>Confirmar Nueva Contraseña</p>
                                         <input type="password" className='email-put' placeholder='********'></input>
-
+                                        <span style={{color: "red"}}>{passwordErrorMacht}</span>
                                     </div>
                                     <div className="update-info-container">
-                                        <button className='send-email' >Actualizar</button>
+                                        <button className='send-email' onClick={comparePassword} >Actualizar</button>
                                     </div>
                                 </Modal>
                             </Overlay>
