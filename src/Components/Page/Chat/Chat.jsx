@@ -31,16 +31,18 @@ export const Chat = () => {
     const [message, setMessage] = useState('')
 
     const onPress = (e) => {
-        let nombre = `${user[0].nombre} ${user[0].apellidos}`
-        db.collection('messages').add({
-            timestamp: Date.now(),
-            date: date,
-            message,
-            name : nombre,
-            user: user[0].idusuario,
-            photo: user[0].foto
-        })
-        changeDefault()
+        if (message.trim() !== '') {
+            let nombre = `${user[0].nombre} ${user[0].apellidos}`
+            db.collection('messages').add({
+                timestamp: Date.now(),
+                date: date,
+                message,
+                name: nombre,
+                user: user[0].idusuario,
+                photo: user[0].foto
+            })
+            changeDefault()
+        }
     }
 
     const sendEvent = (event) => {
@@ -58,7 +60,7 @@ export const Chat = () => {
         <div className='chat-box'>
             <Header />
             <div className="chat-container">
-                
+
                 <div className="chat-form-content">
                     <div className="messages-container">
                         {
