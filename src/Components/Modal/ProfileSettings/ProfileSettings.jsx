@@ -95,6 +95,7 @@ export const ProfileSettings = ({ userData }) => {
             </NavLink>
             <SettingsSpace />
             <div className="settings-container">
+
               <ProfileAction onClick={sendChat} ><FontAwesomeIcon className='settings-action-icon' icon={faRocketchat} /><ProfileActionText>Mensajes</ProfileActionText></ProfileAction>
               <ProfileAction onClick={sendProfile} ><FontAwesomeIcon className='settings-action-icon' icon={faGears} /><ProfileActionText>Configuracion</ProfileActionText></ProfileAction>
               <ProfileAction onClick={sendSupport}><FontAwesomeIcon className='settings-action-icon' icon={faCircleInfo} /><ProfileActionText>soporte</ProfileActionText></ProfileAction>
@@ -102,7 +103,7 @@ export const ProfileSettings = ({ userData }) => {
             </div>
             <SettingsSpace />
             <div className="settings-action-container">
-              <button className='settings-close' onClick={deleteSesion} >Cerrar sesion</button>
+              <button className='settings-close' onClick={deleteSesion} >Cerrar sesión</button>
             </div>
           </ProfileModal>
         </div>
