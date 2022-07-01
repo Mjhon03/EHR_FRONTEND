@@ -13,6 +13,7 @@ import { UpdateUserInfo } from '../../UI/UpdateUserInfo/UpdateUserInfo';
 import { UserAnouncementCard } from '../../UI/UserAnouncementCard/UserAnouncementCard';
 import { Modal, Overlay, ProfileCardButton } from '../../StyledComponents/Overlay/StyledComponents';
 import { Alert } from '../../Alert';
+import validator from 'validator';
 
 
 export const Profile = () => {
@@ -89,6 +90,15 @@ export const Profile = () => {
 
     const changeNewPassword = (e) => {
         setNewPassword(e.target.value)
+        if(validator.isStrongPassword(e.target.value, { min: 8, max: undefined, minLowercase: 1, minUppercase: 1, minNumbers: 1, minSymbols: 1 })){
+            setpasswordErrorMacht("")
+        }
+        else{
+            setpasswordErrorMacht("La contraseña debe contener al menos una mayuscula, una minuscula, un numero y un simbolo")
+        }
+        if (e.target.value === "") {
+            setpasswordErrorMacht("")
+        }
     }
 
     const changeNewPasswordConfirm = (e) => {
@@ -110,12 +120,13 @@ export const Profile = () => {
 
     const comparePassword = () => {
         if (newPassword === newPasswordConfirm) {
-            changePassword()
+            setpasswordErrorMacht('')
         } else {
             setpasswordErrorMacht('Las constraseñas no coinciden')
         }
     }
 
+    useEffect(() => {comparePassword()}, [newPasswordConfirm])
 
     return (
         <>
