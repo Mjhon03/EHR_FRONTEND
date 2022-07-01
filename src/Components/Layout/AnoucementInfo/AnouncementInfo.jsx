@@ -95,7 +95,7 @@ export const AnouncementInfo = ({ data, userData }) => {
 
         toUser: email,
         anouncementTitle: title,
-        post: `https://localhost:3000/anouncement/?idanounce=${idAnouncement}&adzone=${zone}`
+        post: `https://easyhouserent.azurewebsites.net/anouncement/?idanounce=${idAnouncement}&adzone=${zone}`
     };
 
     const sendNotification = () => {
@@ -127,7 +127,6 @@ export const AnouncementInfo = ({ data, userData }) => {
         {
             width: 880,
             itemsToShow: 3
-
         },
         {
             width: 1280,
