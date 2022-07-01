@@ -135,7 +135,7 @@ export const FormSingUp = () => {
     return (
         <div className="form-register-valid">
             <form className='register-valid-info'>
-             
+            
                 < GoogleAuth
                     buttonText={"Iniciar sesión con Google"}
                 />
