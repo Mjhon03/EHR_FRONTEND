@@ -35,8 +35,8 @@ export const ProfileSettings = ({ userData }) => {
     navigate('/support')
   }
 
-  const sendContact = () => {
-    navigate('/contact')
+  const sendAbout = () => {
+    navigate('/AboutUs')
   }
 
   const deleteSesion = () => {
@@ -99,7 +99,7 @@ export const ProfileSettings = ({ userData }) => {
               <ProfileAction onClick={sendChat} ><FontAwesomeIcon className='settings-action-icon' icon={faRocketchat} /><ProfileActionText>Mensajes</ProfileActionText></ProfileAction>
               <ProfileAction onClick={sendProfile} ><FontAwesomeIcon className='settings-action-icon' icon={faGears} /><ProfileActionText>Configuracion</ProfileActionText></ProfileAction>
               <ProfileAction onClick={sendSupport}><FontAwesomeIcon className='settings-action-icon' icon={faCircleInfo} /><ProfileActionText>soporte</ProfileActionText></ProfileAction>
-              <ProfileAction onClick={sendContact}><FontAwesomeIcon className='settings-action-icon' icon={faIdCardClip} /><ProfileActionText>Contacto</ProfileActionText></ProfileAction>
+              <ProfileAction onClick={sendAbout}><FontAwesomeIcon className='settings-action-icon' icon={faIdCardClip} /><ProfileActionText>Nosotros</ProfileActionText></ProfileAction>
             </div>
             <SettingsSpace />
             <div className="settings-action-container">

@@ -1,10 +1,8 @@
 import React from 'react';
-import { useLocation } from 'react-router';
 import { NavLink } from 'react-router-dom';
 
 export const ModifyPasswordForm = () => {
 
-    let location = useLocation();
     return (
         <div className='div-passwordReset'>
             <div className='div-infoReset'>
