@@ -12,6 +12,8 @@ import { faArrowRightFromBracket, faArrowRightToBracket, faArrowUpFromBracket, f
 import { UpdateUserInfo } from '../../UI/UpdateUserInfo/UpdateUserInfo';
 import { UserAnouncementCard } from '../../UI/UserAnouncementCard/UserAnouncementCard';
 import { Modal, Overlay, ProfileCardButton } from '../../StyledComponents/Overlay/StyledComponents';
+import { Alert } from '../../Alert';
+import validator from 'validator';
 
 
 export const Profile = () => {
@@ -80,17 +82,51 @@ export const Profile = () => {
     const [newPassword , setNewPassword ] = useState('')
     const [newPasswordConfirm , setNewPasswordConfirm ] = useState('')
 
+    const [passwordErrorMacht, setpasswordErrorMacht ] = useState('')
+
     const changeOldPassword = (e) => {
         setOldPassword(e.target.value)
     }
 
     const changeNewPassword = (e) => {
         setNewPassword(e.target.value)
+        if(validator.isStrongPassword(e.target.value, { min: 8, max: undefined, minLowercase: 1, minUppercase: 1, minNumbers: 1, minSymbols: 1 })){
+            setpasswordErrorMacht("")
+        }
+        else{
+            setpasswordErrorMacht("La contraseña debe contener al menos una mayuscula, una minuscula, un numero y un simbolo")
+        }
+        if (e.target.value === "") {
+            setpasswordErrorMacht("")
+        }
     }
 
     const changeNewPasswordConfirm = (e) => {
         setNewPasswordConfirm(e.target.value)
     }
+
+    const changePassword = () => {
+        axios.put('https://easy-house-rent.azurewebsites.net/api/Password/confirmpassword',  { 
+            email: user[0].email, 
+            password: newPassword,
+            validatePassword:oldPassword
+        } )
+        .then(response => {
+            console.log(response);
+            Alert('Password changed successfully', '', 'success', 'Ok')
+            changePasswordVisible()
+        })
+    }
+
+    const comparePassword = () => {
+        if (newPassword === newPasswordConfirm) {
+            setpasswordErrorMacht('')
+        } else {
+            setpasswordErrorMacht('Las constraseñas no coinciden')
+        }
+    }
+
+    useEffect(() => {comparePassword()}, [newPasswordConfirm])
 
     return (
         <>
@@ -119,13 +155,15 @@ export const Profile = () => {
                                         <p className='reduce-title'>Contraseña anterior</p>
                                         <input type="password" className='email-put' placeholder='********' onChange={(e) => changeOldPassword(e) } />
                                         <p className='reduce-title'>Nueva contraseña</p>
-                                        <input type="password" className='email-put' placeholder='********'></input>
+                                        <input type="password" className='email-put' placeholder='********' onChange={(e) => changeNewPassword(e)}></input>
                                         <p className='reduce-title'>Confirmar Nueva Contraseña</p>
-                                        <input type="password" className='email-put' placeholder='********'></input>
-
+                                        <input type="password" className='email-put' placeholder='********' onChange={(e) => changeNewPasswordConfirm(e)}></input>
+                                        <br />
+                                        <span style={{color: "red"}}>{passwordErrorMacht}</span>
+                                        <br />
                                     </div>
                                     <div className="update-info-container">
-                                        <button className='send-email' >Actualizar</button>
+                                        <button className='send-email' onClick={comparePassword} >Actualizar</button>
                                     </div>
                                 </Modal>
                             </Overlay>
