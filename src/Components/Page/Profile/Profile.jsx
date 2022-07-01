@@ -96,13 +96,15 @@ export const Profile = () => {
     }
 
     const changePassword = () => {
-        axios.put('https://easy-house-rent.azurewebsites.net/api/User/ChangePassword', {
-            idusuario: user[0].idusuario,
-            password: oldPassword,
-            newPassword: newPassword,
-        })
+        axios.put('https://easy-house-rent.azurewebsites.net/api/Password/confirmpassword',  { 
+            email: user[0].email, 
+            password: newPassword,
+            validatePassword:oldPassword
+        } )
         .then(response => {
+            console.log(response);
             Alert('Password changed successfully', '', 'success', 'Ok')
+            changePasswordVisible()
         })
     }
 
@@ -142,10 +144,12 @@ export const Profile = () => {
                                         <p className='reduce-title'>Contraseña anterior</p>
                                         <input type="password" className='email-put' placeholder='********' onChange={(e) => changeOldPassword(e) } />
                                         <p className='reduce-title'>Nueva contraseña</p>
-                                        <input type="password" className='email-put' placeholder='********'></input>
+                                        <input type="password" className='email-put' placeholder='********' onChange={(e) => changeNewPassword(e)}></input>
                                         <p className='reduce-title'>Confirmar Nueva Contraseña</p>
-                                        <input type="password" className='email-put' placeholder='********'></input>
+                                        <input type="password" className='email-put' placeholder='********' onChange={(e) => changeNewPasswordConfirm(e)}></input>
+                                        <br />
                                         <span style={{color: "red"}}>{passwordErrorMacht}</span>
+                                        <br />
                                     </div>
                                     <div className="update-info-container">
                                         <button className='send-email' onClick={comparePassword} >Actualizar</button>
